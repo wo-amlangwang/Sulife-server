@@ -20,7 +20,7 @@ mongoose.connect(mongoURL,function(err) {
   }
 });
 //use middlewares for every route
-
+app.use(express.static('client'));
 app.use(cookieParser());
 app.use(bodyParser());
 app.use(session({'cookieName' : 'session',

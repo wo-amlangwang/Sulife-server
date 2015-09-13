@@ -1,0 +1,80 @@
+/**************************************************
+
+    Yellow color scheme
+
+**************************************************/
+
+
+/*
+    Body
+==============================*/
+
+body {
+    color: #fff;
+
+    background-color: #d7a50c;
+    background-image: url(../img/background-yellow.png);
+}
+
+
+/*
+    Text selection
+==============================*/
+
+::selection {
+    background: #fff;
+    color: #000;
+}
+
+::-moz-selection {
+    background: #fff;
+    color: #000;
+}
+
+
+/*
+    Subscription form
+==============================*/
+
+.subscribe-email:focus {
+    -webkit-box-shadow: 0 0 8px #fff;
+    -moz-box-shadow: 0 0 8px #fff;
+    box-shadow: 0 0 8px #fff;
+}
+
+.subscribe-email::-webkit-input-placeholder  { color: #864804 }
+.subscribe-email:-moz-placeholder { color: #864804 }
+.subscribe-email::placeholder { color: #864804 }
+
+.subscribe-submit {
+    background: #b46105;
+    color: #fff;
+}
+
+.subscribe-submit:hover {
+    background: #864804;
+}
+
+.subscribe-submit:active {
+    -webkit-box-shadow: 0 0 8px #864804;
+    -moz-box-shadow: 0 0 8px #864804;
+    box-shadow: 0 0 8px #864804;
+}
+
+.subscribe-tooltip.success {
+    background: #0c0;
+}
+
+.subscribe-tooltip.error {
+    background: #c00;
+}
+
+
+/*
+    Countdown
+==============================*/
+
+.countdown-number {
+    background: #fff;
+    color: #b35f05;
+}

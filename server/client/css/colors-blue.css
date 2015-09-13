@@ -1,0 +1,80 @@
+/**************************************************
+
+    Blue color scheme
+
+**************************************************/
+
+
+/*
+    Body
+==============================*/
+
+body {
+    color: #fff;
+
+    background-color: #078ce5;
+    background-image: url(../img/background-blue.png);
+}
+
+
+/*
+    Text selection
+==============================*/
+
+::selection {
+    background: #fff;
+    color: #000;
+}
+
+::-moz-selection {
+    background: #fff;
+    color: #000;
+}
+
+
+/*
+    Subscription form
+==============================*/
+
+.subscribe-email:focus {
+    -webkit-box-shadow: 0 0 8px #fff;
+    -moz-box-shadow: 0 0 8px #fff;
+    box-shadow: 0 0 8px #fff;
+}
+
+.subscribe-email::-webkit-input-placeholder  { color: #34247a }
+.subscribe-email:-moz-placeholder { color: #34247a }
+.subscribe-email::placeholder { color: #34247a }
+
+.subscribe-submit {
+    background: #34247a;
+    color: #fff;
+}
+
+.subscribe-submit:hover {
+    background: #3d1766;
+}
+
+.subscribe-submit:active {
+    -webkit-box-shadow: 0 0 8px #cb2cd3;
+    -moz-box-shadow: 0 0 8px #cb2cd3;
+    box-shadow: 0 0 8px #cb2cd3;
+}
+
+.subscribe-tooltip.success {
+    background: #00c126;
+}
+
+.subscribe-tooltip.error {
+    background: #ff224f;
+}
+
+
+/*
+    Countdown
+==============================*/
+
+.countdown-number {
+    background: #fff;
+    color: #1178d2;
+}

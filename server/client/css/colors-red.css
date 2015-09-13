@@ -1,0 +1,80 @@
+/**************************************************
+
+    Red color scheme
+
+**************************************************/
+
+
+/*
+    Body
+==============================*/
+
+body {
+    color: #fff;
+
+    background-color: #b01236;
+    background-image: url(../img/background-red.png);
+}
+
+
+/*
+    Text
+==============================*/
+
+::selection {
+    background: #fff;
+    color: #000;
+}
+
+::-moz-selection {
+    background: #fff;
+    color: #000;
+}
+
+
+/*
+    Subscription form
+==============================*/
+
+.subscribe-email:focus {
+    -webkit-box-shadow: 0 0 8px #fff;
+    -moz-box-shadow: 0 0 8px #fff;
+    box-shadow: 0 0 8px #fff;
+}
+
+.subscribe-email::-webkit-input-placeholder  { color: #620735 }
+.subscribe-email:-moz-placeholder { color: #620735 }
+.subscribe-email::placeholder { color: #620735 }
+
+.subscribe-submit {
+    background: #620735;
+    color: #fff;
+}
+
+.subscribe-submit:hover {
+    background: #420423;
+}
+
+.subscribe-submit:active {
+    -webkit-box-shadow: 0 0 8px #420423;
+    -moz-box-shadow: 0 0 8px #420423;
+    box-shadow: 0 0 8px #420423;
+}
+
+.subscribe-tooltip.success {
+    background: #0a0;
+}
+
+.subscribe-tooltip.error {
+    background: #f00;
+}
+
+
+/*
+    Countdown
+==============================*/
+
+.countdown-number {
+    background: #fff;
+    color: #b71336;
+}

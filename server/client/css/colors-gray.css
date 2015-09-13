@@ -1,0 +1,80 @@
+/**************************************************
+
+    Gray color scheme
+
+**************************************************/
+
+
+/*
+    Body
+==============================*/
+
+body {
+    color: #333;
+    background-color: #999;
+
+    background-image: url(../img/background-gray.png);
+}
+
+
+/*
+    Text selection
+==============================*/
+
+::selection {
+    background: #fff;
+    color: #000;
+}
+
+::-moz-selection {
+    background: #fff;
+    color: #000;
+}
+
+
+/*
+    Subscription form
+==============================*/
+
+.subscribe-email:focus {
+    -webkit-box-shadow: 0 0 8px #fff;
+    -moz-box-shadow: 0 0 8px #fff;
+    box-shadow: 0 0 8px #fff;
+}
+
+.subscribe-email::-webkit-input-placeholder  { color: #494949 }
+.subscribe-email:-moz-placeholder { color: #494949 }
+.subscribe-email::placeholder { color: #494949 }
+
+.subscribe-submit {
+    background: #575757;
+    color: #fff;
+}
+
+.subscribe-submit:hover {
+    background: #494949;
+}
+
+.subscribe-submit:active {
+    -webkit-box-shadow: 0 0 8px #494949;
+    -moz-box-shadow: 0 0 8px #494949;
+    box-shadow: 0 0 8px #494949;
+}
+
+.subscribe-tooltip.success {
+    background: #caffca;
+}
+
+.subscribe-tooltip.error {
+    background: #ffaeae;
+}
+
+
+/*
+    Countdown
+==============================*/
+
+.countdown-number {
+    background: #fff;
+    color: #5a5959;
+}

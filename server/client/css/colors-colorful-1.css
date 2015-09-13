@@ -1,0 +1,80 @@
+/**************************************************
+
+    Colorful-1 color scheme
+
+**************************************************/
+
+
+/*
+    Body
+==============================*/
+
+body {
+    color: #fff;
+
+    background-color: #0c4933;
+    background-image: url(../img/background-colorful-1.png);
+}
+
+
+/*
+    Text selection
+==============================*/
+
+::selection {
+    background: #fff;
+    color: #000;
+}
+
+::-moz-selection {
+    background: #fff;
+    color: #000;
+}
+
+
+/*
+    Subscription form
+==============================*/
+
+.subscribe-email:focus {
+    -webkit-box-shadow: 0 0 8px #fff;
+    -moz-box-shadow: 0 0 8px #fff;
+    box-shadow: 0 0 8px #fff;
+}
+
+.subscribe-email::-webkit-input-placeholder  { color: #d76b00 }
+.subscribe-email:-moz-placeholder { color: #d76b00 }
+.subscribe-email::placeholder { color: #d76b00 }
+
+.subscribe-submit {
+    background: #d76b00;
+    color: #fff;
+}
+
+.subscribe-submit:hover {
+    background: #b05800;
+}
+
+.subscribe-submit:active {
+    -webkit-box-shadow: 0 0 8px #b05800;
+    -moz-box-shadow: 0 0 8px #b05800;
+    box-shadow: 0 0 8px #b05800;
+}
+
+.subscribe-tooltip.success {
+    background: #0a0;
+}
+
+.subscribe-tooltip.error {
+    background: #a00;
+}
+
+
+/*
+    Countdown
+==============================*/
+
+.countdown-number {
+    background: #fff;
+    color: #0c5912;
+}
