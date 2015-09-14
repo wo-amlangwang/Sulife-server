@@ -3,7 +3,6 @@ var app = express();
 //used to connected mongodb
 var mongoose = require('mongoose');
 //express middlewares
-var flash = require('connect-flash');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('client-sessions');
@@ -19,6 +18,9 @@ mongoose.connect(mongoURL,function(err) {
     console.log('Connect to mongodb');
   }
 });
+
+require('./passport/passport-local.js')(passport);
+
 //use middlewares for every route
 app.use(express.static('client'));
 app.use(cookieParser());
@@ -29,7 +31,6 @@ app.use(session({'cookieName' : 'session',
                  'activeDuration' : 5 * 60 * 1000}));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(flash());
 //give app and passport router
 var router = require('./router.js');
 router(app,passport);
