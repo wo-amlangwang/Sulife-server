@@ -1,9 +1,15 @@
 module.exports = function(app,passport){
   app.post('/register',function(req,res,next) {
     passport.authenticate('local-signup',function(err,user,info) {
-      //console.log(err);
-      //console.log(user);
-      //console.log(info);
+      if(err){
+        res.status(503).send(err);
+      }else {
+        if(user){
+          res.status(200).send({'message' : 'OK'});
+        }else {
+          res.status(409).send(info);
+        }
+      }
     })(req,res,next);
   });
 }
