@@ -20,7 +20,7 @@ module.exports = function(passport) {
       if(err){
         return done(err);
       }
-      if(!user){
+      if(user){
         return done(null, false, {message : 'no such user'});
       }
 
