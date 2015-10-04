@@ -1,7 +1,6 @@
 var express = require('express');
 var app = express();
 //used to connected mongodb
-var test1 = 1;
 var mongoose = require('mongoose');
 //express middlewares
 var cookieParser = require('cookie-parser');
