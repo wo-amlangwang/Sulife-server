@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var session = require('client-sessions');
 //require main passport
 var passport = require('passport');
+var test = "test0";
 //connect to mongo db
 var mongoURL = require('./mongo_modules/mongoURL.json').url;
 mongoose.connect(mongoURL,function(err) {
