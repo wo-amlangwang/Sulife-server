@@ -25,4 +25,7 @@ module.exports = function(app,passport){
       }
     })(req,res,next);
   });
+  app.post('/event'function(req,res,next) {
+    // body...
+  });
 }
