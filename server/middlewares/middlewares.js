@@ -1,4 +1,5 @@
 var makeToken = require('./makeToken.js');
+var thisPostEvent = require('./postEvent.js').postEvent;
 
 module.exports = {
   verifyToken : function(req,res,next) {
@@ -13,5 +14,6 @@ module.exports = {
       });
     }
   },
-  
+  postEvent : thisPostEvent
+
 }
