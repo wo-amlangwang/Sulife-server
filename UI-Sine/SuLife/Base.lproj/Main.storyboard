@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="uH0-c6-ygV">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <scenes>
@@ -17,12 +16,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Protected" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rg7-YZ-j4n">
-                                <rect key="frame" x="144" y="228" width="76" height="23"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="74K-dj-fCQ">
+                                <rect key="frame" x="87" y="335" width="200" height="30"/>
+                                <color key="backgroundColor" red="0.29803921570000003" green="0.50196078430000002" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Continue">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="plt-5X-B6F" kind="presentation" id="cWy-rQ-0My"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcom Back!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JX6-4g-8Ix">
+                                <rect key="frame" x="133" y="290" width="109" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cFf-g6-5Io">
+                                <rect key="frame" x="87" y="386" width="200" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.19554125000776279" blue="0.31685973672780909" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Logout">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="logoutButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="S7W-5H-f8h"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" semanticContentAttribute="playback" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="MainBack" translatesAutoresizingMaskIntoConstraints="NO" id="zSv-8Z-Z3F">
+                                <rect key="frame" x="127" y="147" width="120" height="120"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -40,7 +64,7 @@
         <!--LoginView-->
         <scene sceneID="dHq-yH-bof">
             <objects>
-                <viewController title="LoginView" id="bQ5-fc-8Wo" sceneMemberID="viewController">
+                <viewController title="LoginView" id="bQ5-fc-8Wo" customClass="LoginVC" customModule="SuLife" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Fy1-Sm-gio"/>
                         <viewControllerLayoutGuide type="bottom" id="yOb-oh-y4G"/>
@@ -74,7 +98,7 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XtG-ao-fFm">
                                 <rect key="frame" x="87" y="412" width="200" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.45452083177663893" blue="0.51962454597119756" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="0.19554125" blue="0.31685973670000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="tintColor" red="0.022721238260453025" green="0.44054067622465831" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Register">
@@ -82,7 +106,7 @@
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="vyQ-55-CyE" kind="presentation" identifier="login-register" id="ZPm-H9-yUu"/>
+                                    <segue destination="vyQ-55-CyE" kind="presentation" id="dcp-Kd-05R"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qt4-T4-z7J">
@@ -99,7 +123,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ei9-kY-MIh">
-                                <rect key="frame" x="87" y="363" width="200" height="30"/>
+                                <rect key="frame" x="87" y="360" width="200" height="30"/>
                                 <color key="backgroundColor" red="0.29803921570000003" green="0.50196078430000002" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Login">
@@ -107,7 +131,7 @@
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="plt-5X-B6F" kind="presentation" id="Cex-CI-LmM"/>
+                                    <action selector="loginButtonTapped:" destination="bQ5-fc-8Wo" eventType="touchUpInside" id="961-PI-9yb"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -119,10 +143,14 @@
                         </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="userEmailTextField" destination="qWh-Yk-b41" id="Evx-7J-H2H"/>
+                        <outlet property="userPasswordTextField" destination="5Ih-BI-XaD" id="sHO-F2-zmV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BUU-OA-iIE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1317.5" y="349.5"/>
+            <point key="canvasLocation" x="1322.5" y="349.5"/>
         </scene>
         <!--CalenderView-->
         <scene sceneID="jad-ns-XXr">
@@ -135,6 +163,14 @@
                     <view key="view" contentMode="scaleToFill" id="Qy8-Vx-FM4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Calendar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yxj-wW-iLu">
+                                <rect key="frame" x="153" y="149" width="69" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -146,7 +182,7 @@
         <!--RegisterView-->
         <scene sceneID="Rim-FO-Qva">
             <objects>
-                <viewController title="RegisterView" id="vyQ-55-CyE" sceneMemberID="viewController">
+                <viewController title="RegisterView" id="vyQ-55-CyE" customClass="RegisterVC" customModule="SuLife" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="OR4-gm-rbt"/>
                         <viewControllerLayoutGuide type="bottom" id="CAG-mL-QTz"/>
@@ -239,7 +275,8 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="bQ5-fc-8Wo" kind="presentation" identifier="registerView-loginView" id="xk2-fE-mh3"/>
+                                    <action selector="iHaveAnAccountButtonTapped:" destination="vyQ-55-CyE" eventType="touchUpInside" id="Miy-Dc-WLq"/>
+                                    <segue destination="bQ5-fc-8Wo" kind="presentation" id="0vJ-Gx-qWA"/>
                                 </connections>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="8VI-eI-bab">
@@ -258,7 +295,7 @@
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="8KJ-UX-YQw" kind="presentation" id="u7I-HC-J0d"/>
+                                    <action selector="registerButtonTapped:" destination="vyQ-55-CyE" eventType="touchUpInside" id="epu-jq-Hpl"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ar-YA-x6k">
@@ -281,7 +318,16 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="uSk-zA-SB7"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="userEmailTextField" destination="BhY-Jd-tZ1" id="dzN-Tx-hFg"/>
+                        <outlet property="userFisrtNameTextField" destination="Nxa-Ec-iTg" id="zvk-Jp-gKQ"/>
+                        <outlet property="userLastNameTextField" destination="fn1-d6-adL" id="ZHF-56-lYp"/>
+                        <outlet property="userMidNameTextField" destination="Sl9-yP-ugh" id="eSO-Vp-Tkd"/>
+                        <outlet property="userPasswordTextField" destination="gak-3e-Jza" id="Aa5-mq-rCf"/>
+                        <outlet property="userRepeatPasswordTextField" destination="86N-6Z-NS1" id="umj-K5-QeI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OHJ-kV-kMD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -398,9 +444,6 @@
                                 <state key="normal" title="Do it later">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="plt-5X-B6F" kind="presentation" id="ljv-GH-96A"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sNO-Dt-bM8">
                                 <rect key="frame" x="87" y="546" width="200" height="30"/>
@@ -411,9 +454,6 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <connections>
-                                    <segue destination="plt-5X-B6F" kind="presentation" id="Tfy-aH-9OD"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -429,6 +469,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="lJf-Wh-mnK"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="inx-3n-CP6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -454,8 +495,10 @@
             <point key="canvasLocation" x="330" y="399"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="MainBack" width="16" height="16"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ljv-GH-96A"/>
-        <segue reference="xk2-fE-mh3"/>
+        <segue reference="0vJ-Gx-qWA"/>
     </inferredMetricsTieBreakers>
 </document>
