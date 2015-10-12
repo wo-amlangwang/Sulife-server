@@ -3,6 +3,7 @@ var thisPostEvent = require('./postEvent.js').postEvent;
 var thisdeleteEvent = require('./deleteEvent.js').deleteEvent;
 var thisgetEvent = require('./getEvent.js').getEvent;
 var thiseditEvent = require('./editEvent.js').editEvent;
+var thisgetAllEvent = require('./getAllEvent.js').getAllEvent;
 
 module.exports = {
   verifyToken : function(req,res,next) {
@@ -20,5 +21,6 @@ module.exports = {
   postEvent : thisPostEvent,
   deleteEvent : thisdeleteEvent,
   getEvent : thisgetEvent,
-  editEvent : thiseditEvent
+  editEvent : thiseditEvent,
+  getAllEvent : thisgetAllEvent
 }
