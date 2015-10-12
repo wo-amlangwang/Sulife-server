@@ -1,13 +1,23 @@
+<<<<<<< HEAD
 var makeToken = require('./makeToken.js');
 var thisPostEvent = require('./postEvent.js').postEvent;
 var thisdeleteEvent = require('./deleteEvent.js').deleteEvent;
+=======
+var makeToken = require('./maketoken.js');
+var thisPostEvent = require('./postEvent.js').postEvent;
+var thisdeleteEvent = require('./deleteEvent.js').deleteEvent;
+var thisgetEvent = require('./getEvent.js').getEvent;
+var thiseditEvent = require('./editEvent.js').editEvent;
+var thisgetAllEvent = require('./getAllEvent.js').getAllEvent;
+var thischeckmailbox = require('./checkmailbox.js').checkmailbox;
+>>>>>>> wo-amlangwang/master
 
 module.exports = {
   verifyToken : function(req,res,next) {
-    if(res.token === undefined){
+    if(req.headers['x-access-token'] === undefined){
       res.status(403).send({"message" : "need Token"});
     }else {
-      makeToken.verifyToken(req.token).then(function(result) {
+      makeToken.checkToken(req.body.token).then(function(result) {
         req.userid = result.id;
         return next();
       }).catch(function(err) {
@@ -16,6 +26,14 @@ module.exports = {
     }
   },
   postEvent : thisPostEvent,
+<<<<<<< HEAD
   delete : thisdeleteEvent
 
+=======
+  deleteEvent : thisdeleteEvent,
+  getEvent : thisgetEvent,
+  editEvent : thiseditEvent,
+  getAllEvent : thisgetAllEvent,
+  checkmailbox : thischeckmailbox
+>>>>>>> wo-amlangwang/master
 }

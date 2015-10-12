@@ -1,4 +1,4 @@
-var makeToken = require('./middlewares/makeToken.js');
+var makeToken = require('./middlewares/maketoken.js');
 var middlewares = require('./middlewares/middlewares.js');
 module.exports = function(app,passport){
   app.post('/register',function(req,res,next) {
@@ -34,7 +34,15 @@ module.exports = function(app,passport){
       }
     })(req,res,next);
   });
+<<<<<<< HEAD
   app.post('/event',middlewares.verifyToken,middlewares.postEvent);
   app.delete('/event/:eventid',middlewares.verifyToken,middlewares.deleteEvent);
   app.get('/event/:eventid',middlewares.verifyToken,middlewares.getEvent);
+=======
+  app.post('/event' , middlewares.verifyToken , middlewares.checkmailbox , middlewares.postEvent);
+  app.get('/event' , middlewares.verifyToken , middlewares.checkmailbox , middlewares.getAllEvent);
+  app.delete('/event/:eventid' , middlewares.verifyToken , middlewares.checkmailbox , middlewares.deleteEvent);
+  app.get('/event/:eventid' , middlewares.verifyToken , middlewares.checkmailbox , middlewares.getEvent);
+  app.post('/event/:eventid' , middlewares.verifyToken , middlewares.checkmailbox , middlewares.editEvent);
+>>>>>>> wo-amlangwang/master
 }

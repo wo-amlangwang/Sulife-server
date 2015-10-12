@@ -20,7 +20,7 @@ module.exports = function(passport) {
       if(err){
         return done(err);
       }
-      if(user){
+      if(!user){
         return done(null, false, {message : 'no such user'});
       }
 
@@ -42,7 +42,7 @@ module.exports = function(passport) {
         return done(err);
       }
 
-      if(!user){
+      if(user){
         return done(null, false, {message : 'used user'});
       } else {
         var newUser = new User();

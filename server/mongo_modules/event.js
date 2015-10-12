@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var eventSchema = mongoose.Schema({
-  userid : Number,
+  userid : String,
   title : String,
   detail : String,
   starttime : Date,
