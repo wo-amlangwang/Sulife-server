@@ -4,11 +4,13 @@ module.exports = {
     Event.find({'userid' : req.userid}).sort({'starttime' : -1})
     .exec(function(err, events) {
       if(err){
-        res.status(500).send({'message' : 'something wrong when get data from database',
-                              'err' : err});
+        req.reJson['message'] = 'something wrong when get data from database';
+        req.reJson['err'] = err;
+        res.status(500).send(req.reJson);
       }else {
-        res.status(200),send({'message' : 'OK! Events list followed',
-                              'Events' : events});
+        req.reJson['message'] = 'OK! Events list followed';
+        req.reJson['Events'] = events;
+        res.status(200),send(req.reJson);
       }
     });
   }

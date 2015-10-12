@@ -10,10 +10,12 @@ module.exports = {
     newEvent.share = false; //TODO will implement more detail later.
     newEvent.save(function(err) {
       if(err){
-        res.status(500).send({'message'  : 'something wrong when put into database',
-                              'err' : err});
+        req.reJson['message'] = 'something wrong when put into database';
+        req.reJson['err'] = err;
+        res.status(500).send(req.reJson);
       }else {
-        res.status(200).send({'message' : 'OK!'});
+        req.reJson['message'] = 'OK!';
+        res.status(200).send(req.reJson);
       }
     });
 

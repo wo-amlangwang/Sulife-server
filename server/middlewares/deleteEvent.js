@@ -5,12 +5,15 @@ module.exports = {
       if(thisevent){
         if(req.userid === thisevent.userid){
           thisevent.remove();
-          res.status(200).send({'message' : 'OK!'});
+          req.reJson['message'] = 'OK!';
+          res.status(200).send(req.reJson);
         }else{
-          res.status(403).send({'message' : 'You have no right to do this'});
+          req.reJson['message'] = 'You have no right to do this';
+          res.status(403).send(req.reJson);
         }
       }else {
-        res.status(403).send({'message' : 'no such event'});
+        req.reJson['message'] = 'No such event';
+        res.status(403).send(req.reJson);
       }
     });
   }

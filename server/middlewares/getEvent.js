@@ -3,14 +3,17 @@ module.exports = {
   getEvent : function(req, res, next) {
     Event.findOne({'id' : req.params.eventid}, function(err, thisevent) {
       if(err){
-        res.status(500).send({'message'  : 'something wrong when get data from database',
-                              'err' : err});
+        req.reJson['message'] = 'something wrong when get data from database';
+        req.reJson['err'] = err;
+        res.status(500).send(req.reJson);
       }else{
         if(req.userid === thisevent.userid){
-          res.status(200).send({'message' : 'OK! Event followed',
-                                'event' : thisevent});
+          req.reJson['message'] = 'OK! Event followed';
+          req.reJson['event'] = thisevent;
+          res.status(200).send(req.reJson);
         } else {
-          res.status(403).send({'message' : 'You have no right to do this'});
+          req.reJson['message'] = 'You have no right to do this';
+          res.status(403).send(req.reJson);
         }
       }
     });
