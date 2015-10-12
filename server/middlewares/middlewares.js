@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+var makeToken = require('./makeToken.js');
+var thisPostEvent = require('./postEvent.js').postEvent;
+var thisdeleteEvent = require('./deleteEvent.js').deleteEvent;
+=======
 var makeToken = require('./maketoken.js');
 var thisPostEvent = require('./postEvent.js').postEvent;
 var thisdeleteEvent = require('./deleteEvent.js').deleteEvent;
@@ -5,6 +10,7 @@ var thisgetEvent = require('./getEvent.js').getEvent;
 var thiseditEvent = require('./editEvent.js').editEvent;
 var thisgetAllEvent = require('./getAllEvent.js').getAllEvent;
 var thischeckmailbox = require('./checkmailbox.js').checkmailbox;
+>>>>>>> wo-amlangwang/master
 
 module.exports = {
   verifyToken : function(req,res,next) {
@@ -20,9 +26,14 @@ module.exports = {
     }
   },
   postEvent : thisPostEvent,
+<<<<<<< HEAD
+  delete : thisdeleteEvent
+
+=======
   deleteEvent : thisdeleteEvent,
   getEvent : thisgetEvent,
   editEvent : thiseditEvent,
   getAllEvent : thisgetAllEvent,
   checkmailbox : thischeckmailbox
+>>>>>>> wo-amlangwang/master
 }
