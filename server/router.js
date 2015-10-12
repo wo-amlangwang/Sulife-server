@@ -36,4 +36,5 @@ module.exports = function(app,passport){
   });
   app.post('/event',middlewares.verifyToken,middlewares.postEvent);
   app.delete('/event/:eventid',middlewares.verifyToken,middlewares.deleteEvent);
+  app.get('/event/:eventid', middlewares.verifyToken, middlewares.deleteEvent);
 }
