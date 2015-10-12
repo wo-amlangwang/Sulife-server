@@ -1,4 +1,4 @@
-var makeToken = require('./middlewares/makeToken.js');
+var makeToken = require('./middlewares/maketoken.js');
 var middlewares = require('./middlewares/middlewares.js');
 module.exports = function(app,passport){
   app.post('/register',function(req,res,next) {
