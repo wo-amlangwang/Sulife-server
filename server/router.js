@@ -34,5 +34,7 @@ module.exports = function(app,passport){
       }
     })(req,res,next);
   });
-  app.post('/event',middlewares.verifyToken,/*TODO add other middlewars!!!!1*/);
+  app.post('/event',middlewares.verifyToken,middlewares.postEvent);
+  app.delete('/event/:eventid',middlewares.verifyToken,middlewares.deleteEvent);
+  app.get('/event/:eventid',middlewares.verifyToken,middlewares.getEvent);
 }
