@@ -3,36 +3,36 @@
 
 /register:
 
-method: post
-request body: email(required),password(required)
+method: post<br />
+request body: email(required),password(required)<br />
 detail: this url is used to register for the user
 
 /local/login:
 
-method: post
-request body: email(required),password(required)
+method: post<br />
+request body: email(required),password(required)<br />
 detail: this url is used to get Access_Token from the server
 
 /event:
 
-method: get
-request body: NULL
+method: get<br />
+request body: NULL<br />
 detail: this url is used get all events of the user with token
 
-method: post
-request body: title(required),detail(required),starttime,endtime,share
+method: post<br />
+request body: title(required),detail(required),starttime,endtime,share<br />
 detail: this url is used to post new event with token
 
 /event/:eventid:
 
-method: get
-request body: NULL
+method: get<br />
+request body: NULL<br />
 detail: this url is used get event with token and eventid
 
-method: post
-request body: title,detail,starttime,endtime,share
+method: post<br />
+request body: title,detail,starttime,endtime,share<br />
 detail: this url is used to edit event with token and eventid
 
-method: delete
-request body: NULL
+method: delete<br />
+request body: NULL<br />
 detail: this url is used to delete event with token and eventid
