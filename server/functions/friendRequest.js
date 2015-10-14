@@ -20,6 +20,9 @@ module.exports = {
           if(err){
             //handle err TODO
           }else {
+            socket.emit('friendRequest',{'status' : 100,
+                                         'requestID' : data.id,
+                                         'message' : 'ok'});
             ping(socket);
           }
         });
