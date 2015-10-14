@@ -13,6 +13,7 @@ module.exports = {
     }else {
       makeToken.checkToken(req.headers['x-access-token']).then(function(result) {
         req.userid = result.id;
+        req.reJson = {};
         return next();
       }).catch(function(err) {
         console.log(err);

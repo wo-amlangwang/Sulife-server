@@ -10,7 +10,7 @@ module.exports = {
       }else {
         req.reJson['message'] = 'OK! Events list followed';
         req.reJson['Events'] = events;
-        res.status(200),send(req.reJson);
+        res.status(200).send(req.reJson);
       }
     });
   }
