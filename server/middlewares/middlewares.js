@@ -9,7 +9,7 @@ var thischeckmailbox = require('./checkmailbox.js').checkmailbox;
 module.exports = {
   verifyToken : function(req,res,next) {
     if(req.headers['x-access-token'] === undefined){
-      res.status(403).send({"message" : "need Token"});
+      res.status(401).send({"message" : "need Token"});
     }else {
       makeToken.checkToken(req.headers['x-access-token']).then(function(result) {
         req.userid = result.id;
@@ -17,7 +17,7 @@ module.exports = {
         return next();
       }).catch(function(err) {
         console.log(err);
-        res.status(403).send({"message" : "bad token"});
+        res.status(401).send({"message" : "bad token"});
       });
     }
   },

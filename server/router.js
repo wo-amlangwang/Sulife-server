@@ -1,6 +1,6 @@
 var makeToken = require('./middlewares/maketoken.js');
 var middlewares = require('./middlewares/middlewares.js');
-module.exports = function(app,passport,socket){
+module.exports = function(app,passport){
   app.post('/register',function(req,res,next) {
     passport.authenticate('local-signup',function(err,user,info) {
       if(err){

@@ -13,7 +13,7 @@ module.exports = {
         }
       }else {
         req.reJson['message'] = 'No such event';
-        res.status(403).send(req.reJson);
+        res.status(404).send(req.reJson);
       }
     });
   }
