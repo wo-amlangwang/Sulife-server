@@ -15,10 +15,12 @@ module.exports = {
         NewMail.taker = data.target;
         NewMail.issuenumber = 100;
         NewMail.issuedetail = 'A friend request';
-        NewMail.send = false;
+        NewMail.solved = false;
         NewMail.save(function(err) {
           if(err){
-            //handle err TODO
+            socket.emit('friendRequest',{'status' : 300,
+                                         'requestID' : data.id,
+                                         'message' : err});
           }else {
             socket.emit('friendRequest',{'status' : 100,
                                          'requestID' : data.id,

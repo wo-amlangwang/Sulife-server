@@ -6,7 +6,7 @@ var mailboxSchema = mongoose.Schema({
   taker : String,
   issuenumber : Number,
   issuedetail : String,
-  send : Boolean
+  solved : Boolean,
 });
 
 module.exports = mongoose.model('Mailbox', mailboxSchema);

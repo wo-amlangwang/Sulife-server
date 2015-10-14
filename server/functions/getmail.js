@@ -8,7 +8,7 @@ module.exports = {
                              'message' : 'need token'});
     }else {
       make.checkToken(data.token).then(function(decoded) {
-        Mailbox.find({'taker' : decoded.id,'send' : false},function(err,mails) {
+        Mailbox.find({'taker' : decoded.id},function(err,mails) {
           if(err){
             socket.emit('getmail',{'status' : 300,
                                    'requestID' : data.id,
@@ -17,10 +17,6 @@ module.exports = {
             socket.emit('getmail',{'status' : 100,
                                    'requestID' : data.id,
                                    'message' : mails});
-            for(mail in mails){
-              mail.send = true;
-              mail.sava();
-            }
           }
         });
       }).catch(function(err) {
