@@ -8,6 +8,9 @@ var bodyParser = require('body-parser');
 var session = require('client-sessions');
 //require main passport
 var passport = require('passport');
+
+var server = require('http').Server(app);
+var socket = require('socket.io')(server);
 //connect to mongo db
 var mongoURL = require('./mongo_modules/mongoURL.json').url;
 mongoose.connect(mongoURL,function(err) {
@@ -32,11 +35,10 @@ app.use(session({'cookieName' : 'session',
 app.use(passport.initialize());
 app.use(passport.session());
 //give app and passport router
-var router = require('./router.js');
-router(app,passport);
+require('./router.js')(app,passport,socket);
 //listen on port
 var port = process.env.PORT || 4000;
-app.listen(port,function(err) {
+server.listen(port,function(err) {
   if(err) {
     console.log(err);
     process.exit();
