@@ -36,9 +36,9 @@ module.exports = function(app,passport){
   });
   app.post('/event' , middlewares.verifyToken , middlewares.postEvent);
   app.get('/event' , middlewares.verifyToken , middlewares.getAllEvent);
-  app.delete('/event/:eventid' , middlewares.verifyToken , middlewares.deleteEvent);
-  app.get('/event/:eventid' , middlewares.verifyToken , middlewares.getEvent);
-  app.post('/event/:eventid' , middlewares.verifyToken , middlewares.editEvent);
+  app.delete('/event/:eventid' , middlewares.verifyToken , middlewares.checkEventid , middlewares.deleteEvent);
+  app.get('/event/:eventid' , middlewares.verifyToken , middlewares.checkEventid ,middlewares.getEvent);
+  app.post('/event/:eventid' , middlewares.verifyToken , middlewares.checkEventid ,middlewares.editEvent);
   app.get('/profile' , middlewares.verifyToken , middlewares.getProfile);
   app.post('/profile' , middlewares.verifyToken , middlewares.editProfile);
 }
