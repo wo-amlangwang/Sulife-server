@@ -1,7 +1,7 @@
 var Event = require('../mongo_modules/event.js');
 module.exports = {
   getEvent : function(req, res, next) {
-    Event.findOne({'id' : req.params.eventid}, function(err, thisevent) {
+    Event.findOne({'_id' : req.params.eventid}, function(err, thisevent) {
       if(err){
         req.reJson['message'] = 'something wrong when get data from database';
         req.reJson['err'] = err;
