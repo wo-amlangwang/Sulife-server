@@ -5,6 +5,8 @@ var thisgetEvent = require('./getEvent.js').getEvent;
 var thiseditEvent = require('./editEvent.js').editEvent;
 var thisgetAllEvent = require('./getAllEvent.js').getAllEvent;
 var thischeckmailbox = require('./checkmailbox.js').checkmailbox;
+var thisgetProfile = require('./getProfile.js').getProfile;
+var thiseditProfile = require('./editProfile.js').editProfile;
 
 module.exports = {
   verifyToken : function(req,res,next) {
@@ -26,5 +28,7 @@ module.exports = {
   getEvent : thisgetEvent,
   editEvent : thiseditEvent,
   getAllEvent : thisgetAllEvent,
-  checkmailbox : thischeckmailbox
+  checkmailbox : thischeckmailbox,
+  getProfile : thisgetProfile,
+  editProfile : thiseditProfile
 }

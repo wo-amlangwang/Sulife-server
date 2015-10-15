@@ -39,4 +39,6 @@ module.exports = function(app,passport){
   app.delete('/event/:eventid' , middlewares.verifyToken , middlewares.deleteEvent);
   app.get('/event/:eventid' , middlewares.verifyToken , middlewares.getEvent);
   app.post('/event/:eventid' , middlewares.verifyToken , middlewares.editEvent);
+  app.get('/profile' , middlewares.verifyToken , middlewares.getProfile);
+  app.post('/profile' , middlewares.verifyToken , middlewares.editProfile);
 }
