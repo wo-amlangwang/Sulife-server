@@ -86,10 +86,10 @@ class LoginVC: UIViewController {
                 var urlData: NSData?
                 do {
                     urlData = try NSURLConnection.sendSynchronousRequest(request, returningResponse:&response)
-                } //catch let error as NSError {
-                    //reponseError = error
-                    //urlData = nil
-                //}
+                } catch let error as NSError {
+                    reponseError = error
+                    urlData = nil
+                }
                 
                 if ( urlData != nil )
                 {
