@@ -36,3 +36,9 @@ detail: this url is used to edit event with token and eventid
 method: delete<br />
 request body: NULL<br />
 detail: this url is used to delete event with token and eventid
+
+/profile
+
+method: get<br />
+request body: NULL<br />
+detail: this url is used get profile with token

@@ -1,4 +1,4 @@
-var Friendlist = require('../mongo_modules/friendlist.js');
+var friendlist = require('../mongo_modules/friendlist.js');
 module.exports = {
   buildFriendRelationship : function(req,res,next) {
     var userid1 = req.mail.sender;
