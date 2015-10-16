@@ -51,6 +51,6 @@ module.exports = function(app,passport){
   app.post('/friendRequest' , middlewares.verifyToken , middlewares.friendRequest);
   app.get('/getMail', middlewares.verifyToken , middlewares.getMail);
   app.post('/acceptFriendRequest' , middlewares.verifyToken , middlewares.acceptFriendRequest, middlewares.buildFriendRelationship);
-  app.post('/rejectFreindRequest' , middlewares.verifyToken , middlewares.rejectFreindRequest);
-  app.get('/getFreinds' ,  middlewares.verifyToken , middlewares.getFreinds);
+  app.post('/rejectFriendRequest' , middlewares.verifyToken , middlewares.rejectFriendRequest);
+  app.get('/getFriends' ,  middlewares.verifyToken , middlewares.getFriends);
 }

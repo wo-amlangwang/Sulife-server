@@ -1,6 +1,6 @@
 var Mailbox = require('../mongo_modules/mailbox.js');
 module.exports = {
-  rejectFreindRequest : function(req,res,next){
+  rejectFriendRequest : function(req,res,next){
     if(req.body.mailid === undefined){
       req.reJson['message'] = 'need mailid';
       res.status(404).send(req.reJson);

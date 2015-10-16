@@ -1,6 +1,6 @@
 var Friendlist = require('../mongo_modules/friendlist.js');
 module.exports = {
-  getFreinds : function(req,res,next) {
+  getFriends : function(req,res,next) {
     Friendlist.find({'userid1' : req.userid},function(err,relationships) {
       if(err){
         req.reJson['message'] = 'something wrong when get data from database';

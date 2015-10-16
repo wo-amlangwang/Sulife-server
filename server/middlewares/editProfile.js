@@ -23,7 +23,7 @@ module.exports = {
           if(req.body.lastname != undefined){
             profile.lastname = req.body.lastname;
           }
-          profile.sava(function(err) {
+          profile.save(function(err) {
             req.reJson['message'] = 'OK!';
             res.status(200).send(req.reJson);
           });
