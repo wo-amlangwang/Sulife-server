@@ -41,4 +41,38 @@ detail: this url is used to delete event with token and eventid
 
 method: get<br />
 request body: NULL<br />
-detail: this url is used get profile with token
+detail: get profile with token
+
+method: post<br />
+request body: firstname, lastname<br />
+detail: edit profile with token
+
+/friendRequest
+
+method: post<br />
+request body: taker(required)<br />
+detail: send friend request with token
+
+/getMail
+
+method: get<br />
+request body: null<br />
+detail: get email list in mailbox with token
+
+/acceptFriendRequest
+
+method: post<br />
+request body: mailid(required)<br />
+detail: accept friend request with token
+
+/rejectFriendRequest
+
+method: post<br />
+request body: mailid(required)<br />
+detail: reject friend request with token
+
+/getFriends
+
+method: get<br />
+request body: null<br />
+detail: get friend list (relationship list) with token
