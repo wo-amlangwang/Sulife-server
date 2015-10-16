@@ -8,6 +8,11 @@ var thischeckmailbox = require('./checkmailbox.js').checkmailbox;
 var thisgetProfile = require('./getProfile.js').getProfile;
 var thiseditProfile = require('./editProfile.js').editProfile;
 var thischeckEventid = require('./checkEventid.js').checkEventid;
+var thisfriendRequest = require('./friendRequest.js').friendRequest;
+var thisgetMail = require('./getMail.js').getMail;
+var thisacceptFriendRequest = require('./acceptFriendRequest').acceptFriendRequest;
+var thisrejectFriendRequest = require('./rejectFreindRequest').rejectFreindRequest;
+var thisbuildFriendRelationship = require('./buildFriendRelationship').buildFriendRelationship;
 
 module.exports = {
   verifyToken : function(req,res,next) {
@@ -32,5 +37,10 @@ module.exports = {
   checkmailbox : thischeckmailbox,
   getProfile : thisgetProfile,
   editProfile : thiseditProfile,
-  checkEventid : thischeckEventid
+  checkEventid : thischeckEventid,
+  friendRequest : thisfriendRequest,
+  getMail : thisgetMail,
+  acceptFriendRequest : thisacceptFriendRequest,
+  rejectFreindRequest : thisrejectFriendRequest,
+  buildFriendRelationship : thisbuildFriendRelationship
 }

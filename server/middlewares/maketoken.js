@@ -3,7 +3,7 @@ var key = require('./config').mykey;
 module.exports={
   makeToken : function(userid) {
     var ps = new Promise(function(fullfill,reject){
-      var token = jwt.sign(userid,key,{expiresIn : 1440},{ algorithm: 'RS256'});
+      var token = jwt.sign(userid,key,{expiresIn : 1440*60*24},{ algorithm: 'RS256'});
       fullfill(token);
     });
     return ps;

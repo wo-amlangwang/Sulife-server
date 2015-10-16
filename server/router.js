@@ -7,7 +7,14 @@ module.exports = function(app,passport){
         res.status(503).send(err);
       }else {
         if(user){
-          res.status(200).send({'message' : 'OK'});
+          makeToken.makeToken({'id' : user.id}).then(function(token) {
+            res.status(200).send({'message' : 'OK',
+                                  'Access_Token' : token});
+          }).catch(function(err) {
+            console.log(err);
+            res.status(500).send({'message' : 'Server err',
+                                  'err' : err});
+          });
         }else {
           res.status(409).send(info);
         }
@@ -41,4 +48,8 @@ module.exports = function(app,passport){
   app.post('/event/:eventid' , middlewares.verifyToken , middlewares.checkEventid ,middlewares.editEvent);
   app.get('/profile' , middlewares.verifyToken , middlewares.getProfile);
   app.post('/profile' , middlewares.verifyToken , middlewares.editProfile);
+  app.post('/friendRequest' , middlewares.verifyToken , middlewares.friendRequest);
+  app.get('/getMail', middlewares.verifyToken , middlewares.getMail);
+  app.post('/acceptFriendRequest' , middlewares.verifyToken , middlewares.acceptFriendRequest, middlewares.buildFriendRelationship);
+  app.post('/rejectFreindRequest' , middlewares.verifyToken , middlewares.rejectFreindRequest);
 }
