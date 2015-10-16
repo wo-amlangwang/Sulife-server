@@ -1,7 +1,7 @@
 var Profile = require('../mongo_modules/profile.js');
 module.exports = {
   getProfile : function(req,res,next) {
-    Profile.findOne({'userid' : req.userid},function(err,profile) {
+    Profile.findOne({'userid' : req.body.userid},function(err,profile) {
       if(err){
         req.reJson['message'] = 'something wrong when get data from database';
         req.reJson['err'] = err;

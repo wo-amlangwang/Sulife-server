@@ -13,6 +13,7 @@ var thisgetMail = require('./getMail.js').getMail;
 var thisacceptFriendRequest = require('./acceptFriendRequest').acceptFriendRequest;
 var thisrejectFriendRequest = require('./rejectFreindRequest').rejectFreindRequest;
 var thisbuildFriendRelationship = require('./buildFriendRelationship').buildFriendRelationship;
+var thisgetFriends = require('./getFreinds').getFreinds;
 
 module.exports = {
   verifyToken : function(req,res,next) {
@@ -42,5 +43,7 @@ module.exports = {
   getMail : thisgetMail,
   acceptFriendRequest : thisacceptFriendRequest,
   rejectFreindRequest : thisrejectFriendRequest,
-  buildFriendRelationship : thisbuildFriendRelationship
+  buildFriendRelationship : thisbuildFriendRelationship,
+  getFreinds : thisgetFriends
+
 }
