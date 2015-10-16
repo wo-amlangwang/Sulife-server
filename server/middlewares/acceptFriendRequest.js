@@ -1,3 +1,4 @@
+var Mailbox = require('../mongo_modules/mailbox.js');
 module.exports = {
   acceptFriendRequest : function(req,res,next) {
     if(req.body.mailid === undefined){
