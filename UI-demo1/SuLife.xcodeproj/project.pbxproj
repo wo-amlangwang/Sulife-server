@@ -1,0 +1,607 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2540E2061BD1862600D43D89 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2540E2051BD1862600D43D89 /* EventManager.swift */; settings = {ASSET_TAGS = (); }; };
+		2540E20E1BD1933700D43D89 /* EventTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2540E20D1BD1933700D43D89 /* EventTableVC.swift */; settings = {ASSET_TAGS = (); }; };
+		2540E2111BD1938C00D43D89 /* NewEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2540E2101BD1938C00D43D89 /* NewEventVC.swift */; settings = {ASSET_TAGS = (); }; };
+		2540E2131BD193A200D43D89 /* EventDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2540E2121BD193A200D43D89 /* EventDetailVC.swift */; settings = {ASSET_TAGS = (); }; };
+		256FD1171BD010BA00DFB16B /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256FD1161BD010BA00DFB16B /* MapVC.swift */; };
+		25B41CB61BA7413B00F40620 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B41CB51BA7413B00F40620 /* AppDelegate.swift */; };
+		25B41CB81BA7413B00F40620 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B41CB71BA7413B00F40620 /* ViewController.swift */; };
+		25B41CBB1BA7413B00F40620 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25B41CB91BA7413B00F40620 /* Main.storyboard */; };
+		25B41CC01BA7413B00F40620 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25B41CBE1BA7413B00F40620 /* LaunchScreen.xib */; };
+		25B41CCC1BA7413B00F40620 /* SuLifeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B41CCB1BA7413B00F40620 /* SuLifeTests.swift */; };
+		25E2B2FD1BCC08830077C57D /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E2B2FC1BCC08830077C57D /* RegisterVC.swift */; };
+		25F26CA01BCC47D000849D73 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F26C9F1BCC47D000849D73 /* LoginVC.swift */; };
+		25F26CA21BCC60B300849D73 /* DailyCalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F26CA11BCC60B300849D73 /* DailyCalendarVC.swift */; };
+		25F26CE01BCF32A400849D73 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F26CDF1BCF32A400849D73 /* ProfileVC.swift */; };
+		25F26CE21BCF47DF00849D73 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25F26CE11BCF47DF00849D73 /* Images.xcassets */; };
+		25F26CE51BCF493500849D73 /* ContactsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F26CE41BCF493500849D73 /* ContactsVC.swift */; };
+		25F26CE71BCF544B00849D73 /* TaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F26CE61BCF544B00849D73 /* TaskVC.swift */; };
+		635A829C1BD070E500B0E57A /* ViewControllerCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A827F1BD070E500B0E57A /* ViewControllerCVC.swift */; };
+		635A829D1BD070E500B0E57A /* MainCVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 635A82801BD070E500B0E57A /* MainCVC.storyboard */; };
+		635A829E1BD070E500B0E57A /* CVCalendarContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A82811BD070E500B0E57A /* CVCalendarContentViewController.swift */; };
+		635A829F1BD070E500B0E57A /* CVCalendarMonthContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A82821BD070E500B0E57A /* CVCalendarMonthContentViewController.swift */; };
+		635A82A01BD070E500B0E57A /* CVCalendarWeekContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A82831BD070E500B0E57A /* CVCalendarWeekContentViewController.swift */; };
+		635A82A11BD070E500B0E57A /* CVCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A82841BD070E500B0E57A /* CVCalendarView.swift */; };
+		635A82A21BD070E500B0E57A /* CVCalendarMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A82851BD070E500B0E57A /* CVCalendarMenuView.swift */; };
+		635A82A31BD070E500B0E57A /* CVCalendarMonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A82861BD070E500B0E57A /* CVCalendarMonthView.swift */; };
+		635A82A41BD070E500B0E57A /* CVCalendarWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A82871BD070E500B0E57A /* CVCalendarWeekView.swift */; };
+		635A82A51BD070E500B0E57A /* CVCalendarDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A82881BD070E500B0E57A /* CVCalendarDayView.swift */; };
+		635A82A61BD070E500B0E57A /* CVAuxiliaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A82891BD070E500B0E57A /* CVAuxiliaryView.swift */; };
+		635A82A71BD070E500B0E57A /* CVCalendarViewAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A828A1BD070E500B0E57A /* CVCalendarViewAnimator.swift */; };
+		635A82A81BD070E500B0E57A /* CVCalendarTouchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A828B1BD070E500B0E57A /* CVCalendarTouchController.swift */; };
+		635A82A91BD070E500B0E57A /* CVCalendarDayViewControlCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A828C1BD070E500B0E57A /* CVCalendarDayViewControlCoordinator.swift */; };
+		635A82AA1BD070E500B0E57A /* CVCalendarViewAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A828D1BD070E500B0E57A /* CVCalendarViewAppearance.swift */; };
+		635A82AB1BD070E500B0E57A /* CVCalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A828E1BD070E500B0E57A /* CVCalendarManager.swift */; };
+		635A82AC1BD070E500B0E57A /* CVDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A828F1BD070E500B0E57A /* CVDate.swift */; };
+		635A82AD1BD070E500B0E57A /* CVSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A82901BD070E500B0E57A /* CVSet.swift */; };
+		635A82AE1BD070E500B0E57A /* CVCalendarViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A82911BD070E500B0E57A /* CVCalendarViewDelegate.swift */; };
+		635A82AF1BD070E500B0E57A /* CVCalendarMenuViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A82921BD070E500B0E57A /* CVCalendarMenuViewDelegate.swift */; };
+		635A82B01BD070E500B0E57A /* CVCalendarViewAnimatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A82931BD070E500B0E57A /* CVCalendarViewAnimatorDelegate.swift */; };
+		635A82B11BD070E500B0E57A /* CVCalendarViewAppearanceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A82941BD070E500B0E57A /* CVCalendarViewAppearanceDelegate.swift */; };
+		635A82B21BD070E500B0E57A /* CVRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A82951BD070E500B0E57A /* CVRange.swift */; };
+		635A82B31BD070E500B0E57A /* CVShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A82961BD070E500B0E57A /* CVShape.swift */; };
+		635A82B41BD070E500B0E57A /* CVSelectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A82971BD070E500B0E57A /* CVSelectionType.swift */; };
+		635A82B51BD070E500B0E57A /* CVScrollDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A82981BD070E500B0E57A /* CVScrollDirection.swift */; };
+		635A82B61BD070E500B0E57A /* CVCalendarWeekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A82991BD070E500B0E57A /* CVCalendarWeekday.swift */; };
+		635A82B71BD070E500B0E57A /* CVCalendarViewPresentationMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A829A1BD070E500B0E57A /* CVCalendarViewPresentationMode.swift */; };
+		635A82B81BD070E500B0E57A /* CVWeekdaySymbolType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A829B1BD070E500B0E57A /* CVWeekdaySymbolType.swift */; };
+		635A82BA1BD0741500B0E57A /* MainCVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 635A82B91BD0741500B0E57A /* MainCVC.storyboard */; };
+		63E90AB91BD0AC34004E1522 /* NewContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E90AB81BD0AC34004E1522 /* NewContactViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		25B41CC61BA7413B00F40620 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 25B41CA81BA7413B00F40620 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 25B41CAF1BA7413B00F40620;
+			remoteInfo = SuLife;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2540E2051BD1862600D43D89 /* EventManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
+		2540E20D1BD1933700D43D89 /* EventTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableVC.swift; sourceTree = "<group>"; };
+		2540E2101BD1938C00D43D89 /* NewEventVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewEventVC.swift; sourceTree = "<group>"; };
+		2540E2121BD193A200D43D89 /* EventDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailVC.swift; sourceTree = "<group>"; };
+		256FD1161BD010BA00DFB16B /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
+		25B41CB01BA7413B00F40620 /* SuLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		25B41CB41BA7413B00F40620 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		25B41CB51BA7413B00F40620 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		25B41CB71BA7413B00F40620 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		25B41CBA1BA7413B00F40620 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		25B41CBF1BA7413B00F40620 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		25B41CC51BA7413B00F40620 /* SuLifeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SuLifeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		25B41CCA1BA7413B00F40620 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		25B41CCB1BA7413B00F40620 /* SuLifeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuLifeTests.swift; sourceTree = "<group>"; };
+		25E2B2FC1BCC08830077C57D /* RegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		25F26C9F1BCC47D000849D73 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		25F26CA11BCC60B300849D73 /* DailyCalendarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyCalendarVC.swift; sourceTree = "<group>"; };
+		25F26CDF1BCF32A400849D73 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		25F26CE11BCF47DF00849D73 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		25F26CE41BCF493500849D73 /* ContactsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsVC.swift; sourceTree = "<group>"; };
+		25F26CE61BCF544B00849D73 /* TaskVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskVC.swift; sourceTree = "<group>"; };
+		635A827F1BD070E500B0E57A /* ViewControllerCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerCVC.swift; sourceTree = "<group>"; };
+		635A82801BD070E500B0E57A /* MainCVC.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainCVC.storyboard; sourceTree = "<group>"; };
+		635A82811BD070E500B0E57A /* CVCalendarContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarContentViewController.swift; sourceTree = "<group>"; };
+		635A82821BD070E500B0E57A /* CVCalendarMonthContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarMonthContentViewController.swift; sourceTree = "<group>"; };
+		635A82831BD070E500B0E57A /* CVCalendarWeekContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarWeekContentViewController.swift; sourceTree = "<group>"; };
+		635A82841BD070E500B0E57A /* CVCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarView.swift; sourceTree = "<group>"; };
+		635A82851BD070E500B0E57A /* CVCalendarMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarMenuView.swift; sourceTree = "<group>"; };
+		635A82861BD070E500B0E57A /* CVCalendarMonthView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarMonthView.swift; sourceTree = "<group>"; };
+		635A82871BD070E500B0E57A /* CVCalendarWeekView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarWeekView.swift; sourceTree = "<group>"; };
+		635A82881BD070E500B0E57A /* CVCalendarDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarDayView.swift; sourceTree = "<group>"; };
+		635A82891BD070E500B0E57A /* CVAuxiliaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVAuxiliaryView.swift; sourceTree = "<group>"; };
+		635A828A1BD070E500B0E57A /* CVCalendarViewAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarViewAnimator.swift; sourceTree = "<group>"; };
+		635A828B1BD070E500B0E57A /* CVCalendarTouchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarTouchController.swift; sourceTree = "<group>"; };
+		635A828C1BD070E500B0E57A /* CVCalendarDayViewControlCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarDayViewControlCoordinator.swift; sourceTree = "<group>"; };
+		635A828D1BD070E500B0E57A /* CVCalendarViewAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarViewAppearance.swift; sourceTree = "<group>"; };
+		635A828E1BD070E500B0E57A /* CVCalendarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarManager.swift; sourceTree = "<group>"; };
+		635A828F1BD070E500B0E57A /* CVDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVDate.swift; sourceTree = "<group>"; };
+		635A82901BD070E500B0E57A /* CVSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVSet.swift; sourceTree = "<group>"; };
+		635A82911BD070E500B0E57A /* CVCalendarViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarViewDelegate.swift; sourceTree = "<group>"; };
+		635A82921BD070E500B0E57A /* CVCalendarMenuViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarMenuViewDelegate.swift; sourceTree = "<group>"; };
+		635A82931BD070E500B0E57A /* CVCalendarViewAnimatorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarViewAnimatorDelegate.swift; sourceTree = "<group>"; };
+		635A82941BD070E500B0E57A /* CVCalendarViewAppearanceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarViewAppearanceDelegate.swift; sourceTree = "<group>"; };
+		635A82951BD070E500B0E57A /* CVRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVRange.swift; sourceTree = "<group>"; };
+		635A82961BD070E500B0E57A /* CVShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVShape.swift; sourceTree = "<group>"; };
+		635A82971BD070E500B0E57A /* CVSelectionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVSelectionType.swift; sourceTree = "<group>"; };
+		635A82981BD070E500B0E57A /* CVScrollDirection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVScrollDirection.swift; sourceTree = "<group>"; };
+		635A82991BD070E500B0E57A /* CVCalendarWeekday.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarWeekday.swift; sourceTree = "<group>"; };
+		635A829A1BD070E500B0E57A /* CVCalendarViewPresentationMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarViewPresentationMode.swift; sourceTree = "<group>"; };
+		635A829B1BD070E500B0E57A /* CVWeekdaySymbolType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVWeekdaySymbolType.swift; sourceTree = "<group>"; };
+		635A82B91BD0741500B0E57A /* MainCVC.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainCVC.storyboard; sourceTree = "<group>"; };
+		63E90AB81BD0AC34004E1522 /* NewContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewContactViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		25B41CAD1BA7413B00F40620 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		25B41CC21BA7413B00F40620 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		25B41CA71BA7413B00F40620 = {
+			isa = PBXGroup;
+			children = (
+				25B41CB21BA7413B00F40620 /* SuLife */,
+				25B41CC81BA7413B00F40620 /* SuLifeTests */,
+				25B41CB11BA7413B00F40620 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		25B41CB11BA7413B00F40620 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				25B41CB01BA7413B00F40620 /* SuLife.app */,
+				25B41CC51BA7413B00F40620 /* SuLifeTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		25B41CB21BA7413B00F40620 /* SuLife */ = {
+			isa = PBXGroup;
+			children = (
+				25B41CB51BA7413B00F40620 /* AppDelegate.swift */,
+				25B41CB71BA7413B00F40620 /* ViewController.swift */,
+				635A827F1BD070E500B0E57A /* ViewControllerCVC.swift */,
+				635A82801BD070E500B0E57A /* MainCVC.storyboard */,
+				635A82B91BD0741500B0E57A /* MainCVC.storyboard */,
+				635A82811BD070E500B0E57A /* CVCalendarContentViewController.swift */,
+				635A82821BD070E500B0E57A /* CVCalendarMonthContentViewController.swift */,
+				635A82831BD070E500B0E57A /* CVCalendarWeekContentViewController.swift */,
+				635A82841BD070E500B0E57A /* CVCalendarView.swift */,
+				635A82851BD070E500B0E57A /* CVCalendarMenuView.swift */,
+				635A82861BD070E500B0E57A /* CVCalendarMonthView.swift */,
+				635A82871BD070E500B0E57A /* CVCalendarWeekView.swift */,
+				635A82881BD070E500B0E57A /* CVCalendarDayView.swift */,
+				635A82891BD070E500B0E57A /* CVAuxiliaryView.swift */,
+				635A828A1BD070E500B0E57A /* CVCalendarViewAnimator.swift */,
+				635A828B1BD070E500B0E57A /* CVCalendarTouchController.swift */,
+				635A828C1BD070E500B0E57A /* CVCalendarDayViewControlCoordinator.swift */,
+				635A828D1BD070E500B0E57A /* CVCalendarViewAppearance.swift */,
+				635A828E1BD070E500B0E57A /* CVCalendarManager.swift */,
+				635A828F1BD070E500B0E57A /* CVDate.swift */,
+				635A82901BD070E500B0E57A /* CVSet.swift */,
+				635A82911BD070E500B0E57A /* CVCalendarViewDelegate.swift */,
+				635A82921BD070E500B0E57A /* CVCalendarMenuViewDelegate.swift */,
+				635A82931BD070E500B0E57A /* CVCalendarViewAnimatorDelegate.swift */,
+				635A82941BD070E500B0E57A /* CVCalendarViewAppearanceDelegate.swift */,
+				635A82951BD070E500B0E57A /* CVRange.swift */,
+				635A82961BD070E500B0E57A /* CVShape.swift */,
+				635A82971BD070E500B0E57A /* CVSelectionType.swift */,
+				635A82981BD070E500B0E57A /* CVScrollDirection.swift */,
+				635A82991BD070E500B0E57A /* CVCalendarWeekday.swift */,
+				635A829A1BD070E500B0E57A /* CVCalendarViewPresentationMode.swift */,
+				635A829B1BD070E500B0E57A /* CVWeekdaySymbolType.swift */,
+				25B41CB91BA7413B00F40620 /* Main.storyboard */,
+				25F26CE11BCF47DF00849D73 /* Images.xcassets */,
+				25B41CBE1BA7413B00F40620 /* LaunchScreen.xib */,
+				25E2B2FC1BCC08830077C57D /* RegisterVC.swift */,
+				25F26C9F1BCC47D000849D73 /* LoginVC.swift */,
+				25F26CDF1BCF32A400849D73 /* ProfileVC.swift */,
+				25F26CA11BCC60B300849D73 /* DailyCalendarVC.swift */,
+				25F26CE41BCF493500849D73 /* ContactsVC.swift */,
+				256FD1161BD010BA00DFB16B /* MapVC.swift */,
+				25F26CE61BCF544B00849D73 /* TaskVC.swift */,
+				25B41CB31BA7413B00F40620 /* Supporting Files */,
+				63E90AB81BD0AC34004E1522 /* NewContactViewController.swift */,
+				2540E2051BD1862600D43D89 /* EventManager.swift */,
+				2540E20D1BD1933700D43D89 /* EventTableVC.swift */,
+				2540E2101BD1938C00D43D89 /* NewEventVC.swift */,
+				2540E2121BD193A200D43D89 /* EventDetailVC.swift */,
+			);
+			path = SuLife;
+			sourceTree = "<group>";
+		};
+		25B41CB31BA7413B00F40620 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				25B41CB41BA7413B00F40620 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		25B41CC81BA7413B00F40620 /* SuLifeTests */ = {
+			isa = PBXGroup;
+			children = (
+				25B41CCB1BA7413B00F40620 /* SuLifeTests.swift */,
+				25B41CC91BA7413B00F40620 /* Supporting Files */,
+			);
+			path = SuLifeTests;
+			sourceTree = "<group>";
+		};
+		25B41CC91BA7413B00F40620 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				25B41CCA1BA7413B00F40620 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		25B41CAF1BA7413B00F40620 /* SuLife */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 25B41CCF1BA7413B00F40620 /* Build configuration list for PBXNativeTarget "SuLife" */;
+			buildPhases = (
+				25B41CAC1BA7413B00F40620 /* Sources */,
+				25B41CAD1BA7413B00F40620 /* Frameworks */,
+				25B41CAE1BA7413B00F40620 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SuLife;
+			productName = SuLife;
+			productReference = 25B41CB01BA7413B00F40620 /* SuLife.app */;
+			productType = "com.apple.product-type.application";
+		};
+		25B41CC41BA7413B00F40620 /* SuLifeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 25B41CD21BA7413B00F40620 /* Build configuration list for PBXNativeTarget "SuLifeTests" */;
+			buildPhases = (
+				25B41CC11BA7413B00F40620 /* Sources */,
+				25B41CC21BA7413B00F40620 /* Frameworks */,
+				25B41CC31BA7413B00F40620 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				25B41CC71BA7413B00F40620 /* PBXTargetDependency */,
+			);
+			name = SuLifeTests;
+			productName = SuLifeTests;
+			productReference = 25B41CC51BA7413B00F40620 /* SuLifeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		25B41CA81BA7413B00F40620 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Sine Feng";
+				TargetAttributes = {
+					25B41CAF1BA7413B00F40620 = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					25B41CC41BA7413B00F40620 = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = 25B41CAF1BA7413B00F40620;
+					};
+				};
+			};
+			buildConfigurationList = 25B41CAB1BA7413B00F40620 /* Build configuration list for PBXProject "SuLife" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 25B41CA71BA7413B00F40620;
+			productRefGroup = 25B41CB11BA7413B00F40620 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				25B41CAF1BA7413B00F40620 /* SuLife */,
+				25B41CC41BA7413B00F40620 /* SuLifeTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		25B41CAE1BA7413B00F40620 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25F26CE21BCF47DF00849D73 /* Images.xcassets in Resources */,
+				25B41CBB1BA7413B00F40620 /* Main.storyboard in Resources */,
+				635A82BA1BD0741500B0E57A /* MainCVC.storyboard in Resources */,
+				635A829D1BD070E500B0E57A /* MainCVC.storyboard in Resources */,
+				25B41CC01BA7413B00F40620 /* LaunchScreen.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		25B41CC31BA7413B00F40620 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		25B41CAC1BA7413B00F40620 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				635A82B71BD070E500B0E57A /* CVCalendarViewPresentationMode.swift in Sources */,
+				2540E20E1BD1933700D43D89 /* EventTableVC.swift in Sources */,
+				635A82AC1BD070E500B0E57A /* CVDate.swift in Sources */,
+				25F26CE01BCF32A400849D73 /* ProfileVC.swift in Sources */,
+				635A829F1BD070E500B0E57A /* CVCalendarMonthContentViewController.swift in Sources */,
+				635A82A81BD070E500B0E57A /* CVCalendarTouchController.swift in Sources */,
+				635A829E1BD070E500B0E57A /* CVCalendarContentViewController.swift in Sources */,
+				635A82B31BD070E500B0E57A /* CVShape.swift in Sources */,
+				635A82B51BD070E500B0E57A /* CVScrollDirection.swift in Sources */,
+				25E2B2FD1BCC08830077C57D /* RegisterVC.swift in Sources */,
+				25B41CB81BA7413B00F40620 /* ViewController.swift in Sources */,
+				635A82AD1BD070E500B0E57A /* CVSet.swift in Sources */,
+				635A82B41BD070E500B0E57A /* CVSelectionType.swift in Sources */,
+				635A82A71BD070E500B0E57A /* CVCalendarViewAnimator.swift in Sources */,
+				635A82B01BD070E500B0E57A /* CVCalendarViewAnimatorDelegate.swift in Sources */,
+				635A82AA1BD070E500B0E57A /* CVCalendarViewAppearance.swift in Sources */,
+				2540E2111BD1938C00D43D89 /* NewEventVC.swift in Sources */,
+				635A82A91BD070E500B0E57A /* CVCalendarDayViewControlCoordinator.swift in Sources */,
+				63E90AB91BD0AC34004E1522 /* NewContactViewController.swift in Sources */,
+				635A82A01BD070E500B0E57A /* CVCalendarWeekContentViewController.swift in Sources */,
+				635A82A21BD070E500B0E57A /* CVCalendarMenuView.swift in Sources */,
+				2540E2131BD193A200D43D89 /* EventDetailVC.swift in Sources */,
+				635A82B21BD070E500B0E57A /* CVRange.swift in Sources */,
+				25F26CE71BCF544B00849D73 /* TaskVC.swift in Sources */,
+				635A829C1BD070E500B0E57A /* ViewControllerCVC.swift in Sources */,
+				635A82A51BD070E500B0E57A /* CVCalendarDayView.swift in Sources */,
+				635A82A11BD070E500B0E57A /* CVCalendarView.swift in Sources */,
+				25F26CA01BCC47D000849D73 /* LoginVC.swift in Sources */,
+				25B41CB61BA7413B00F40620 /* AppDelegate.swift in Sources */,
+				635A82B81BD070E500B0E57A /* CVWeekdaySymbolType.swift in Sources */,
+				25F26CE51BCF493500849D73 /* ContactsVC.swift in Sources */,
+				635A82A41BD070E500B0E57A /* CVCalendarWeekView.swift in Sources */,
+				635A82A31BD070E500B0E57A /* CVCalendarMonthView.swift in Sources */,
+				635A82AF1BD070E500B0E57A /* CVCalendarMenuViewDelegate.swift in Sources */,
+				635A82A61BD070E500B0E57A /* CVAuxiliaryView.swift in Sources */,
+				635A82AB1BD070E500B0E57A /* CVCalendarManager.swift in Sources */,
+				635A82AE1BD070E500B0E57A /* CVCalendarViewDelegate.swift in Sources */,
+				2540E2061BD1862600D43D89 /* EventManager.swift in Sources */,
+				635A82B61BD070E500B0E57A /* CVCalendarWeekday.swift in Sources */,
+				256FD1171BD010BA00DFB16B /* MapVC.swift in Sources */,
+				635A82B11BD070E500B0E57A /* CVCalendarViewAppearanceDelegate.swift in Sources */,
+				25F26CA21BCC60B300849D73 /* DailyCalendarVC.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		25B41CC11BA7413B00F40620 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25B41CCC1BA7413B00F40620 /* SuLifeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		25B41CC71BA7413B00F40620 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 25B41CAF1BA7413B00F40620 /* SuLife */;
+			targetProxy = 25B41CC61BA7413B00F40620 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		25B41CB91BA7413B00F40620 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				25B41CBA1BA7413B00F40620 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		25B41CBE1BA7413B00F40620 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				25B41CBF1BA7413B00F40620 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		25B41CCD1BA7413B00F40620 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		25B41CCE1BA7413B00F40620 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		25B41CD01BA7413B00F40620 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = SuLife/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Sine.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		25B41CD11BA7413B00F40620 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = SuLife/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Sine.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		25B41CD31BA7413B00F40620 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SuLifeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Sine.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SuLife.app/SuLife";
+			};
+			name = Debug;
+		};
+		25B41CD41BA7413B00F40620 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SuLifeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Sine.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SuLife.app/SuLife";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		25B41CAB1BA7413B00F40620 /* Build configuration list for PBXProject "SuLife" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25B41CCD1BA7413B00F40620 /* Debug */,
+				25B41CCE1BA7413B00F40620 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		25B41CCF1BA7413B00F40620 /* Build configuration list for PBXNativeTarget "SuLife" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25B41CD01BA7413B00F40620 /* Debug */,
+				25B41CD11BA7413B00F40620 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		25B41CD21BA7413B00F40620 /* Build configuration list for PBXNativeTarget "SuLifeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25B41CD31BA7413B00F40620 /* Debug */,
+				25B41CD41BA7413B00F40620 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 25B41CA81BA7413B00F40620 /* Project object */;
+}
