@@ -7,12 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2534A8FA1BD3EA7D0049FFF6 /* GroupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2534A8F91BD3EA7D0049FFF6 /* GroupVC.swift */; settings = {ASSET_TAGS = (); }; };
+		256EE1DE1BD6D852008518DA /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256EE1DD1BD6D852008518DA /* UserManager.swift */; settings = {ASSET_TAGS = (); }; };
+		256FD1171BD010BA00DFB16B /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256FD1161BD010BA00DFB16B /* MapVC.swift */; settings = {ASSET_TAGS = (); }; };
 		25B41CB61BA7413B00F40620 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B41CB51BA7413B00F40620 /* AppDelegate.swift */; };
 		25B41CB81BA7413B00F40620 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B41CB71BA7413B00F40620 /* ViewController.swift */; };
 		25B41CBB1BA7413B00F40620 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25B41CB91BA7413B00F40620 /* Main.storyboard */; };
-		25B41CBD1BA7413B00F40620 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25B41CBC1BA7413B00F40620 /* Images.xcassets */; };
 		25B41CC01BA7413B00F40620 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25B41CBE1BA7413B00F40620 /* LaunchScreen.xib */; };
 		25B41CCC1BA7413B00F40620 /* SuLifeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B41CCB1BA7413B00F40620 /* SuLifeTests.swift */; };
+		25DC51E81BD3C911007E8C04 /* ContactVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DC51E71BD3C911007E8C04 /* ContactVC.swift */; settings = {ASSET_TAGS = (); }; };
+		25E2B2FD1BCC08830077C57D /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E2B2FC1BCC08830077C57D /* RegisterVC.swift */; settings = {ASSET_TAGS = (); }; };
+		25F26CA01BCC47D000849D73 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F26C9F1BCC47D000849D73 /* LoginVC.swift */; settings = {ASSET_TAGS = (); }; };
+		25F26CA21BCC60B300849D73 /* DailyCalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F26CA11BCC60B300849D73 /* DailyCalendarVC.swift */; settings = {ASSET_TAGS = (); }; };
+		25F26CE01BCF32A400849D73 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F26CDF1BCF32A400849D73 /* ProfileVC.swift */; settings = {ASSET_TAGS = (); }; };
+		25F26CE21BCF47DF00849D73 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25F26CE11BCF47DF00849D73 /* Images.xcassets */; settings = {ASSET_TAGS = (); }; };
+		25F26CE71BCF544B00849D73 /* TaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F26CE61BCF544B00849D73 /* TaskVC.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,16 +35,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2534A8F91BD3EA7D0049FFF6 /* GroupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupVC.swift; sourceTree = "<group>"; };
+		256EE1DD1BD6D852008518DA /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		256FD1161BD010BA00DFB16B /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		25B41CB01BA7413B00F40620 /* SuLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25B41CB41BA7413B00F40620 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25B41CB51BA7413B00F40620 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		25B41CB71BA7413B00F40620 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		25B41CBA1BA7413B00F40620 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		25B41CBC1BA7413B00F40620 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		25B41CBF1BA7413B00F40620 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		25B41CC51BA7413B00F40620 /* SuLifeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SuLifeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		25B41CCA1BA7413B00F40620 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25B41CCB1BA7413B00F40620 /* SuLifeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuLifeTests.swift; sourceTree = "<group>"; };
+		25DC51E71BD3C911007E8C04 /* ContactVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactVC.swift; sourceTree = "<group>"; };
+		25E2B2FC1BCC08830077C57D /* RegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		25F26C9F1BCC47D000849D73 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		25F26CA11BCC60B300849D73 /* DailyCalendarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyCalendarVC.swift; sourceTree = "<group>"; };
+		25F26CDF1BCF32A400849D73 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		25F26CE11BCF47DF00849D73 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		25F26CE61BCF544B00849D73 /* TaskVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,8 +98,17 @@
 				25B41CB51BA7413B00F40620 /* AppDelegate.swift */,
 				25B41CB71BA7413B00F40620 /* ViewController.swift */,
 				25B41CB91BA7413B00F40620 /* Main.storyboard */,
-				25B41CBC1BA7413B00F40620 /* Images.xcassets */,
+				25F26CE11BCF47DF00849D73 /* Images.xcassets */,
 				25B41CBE1BA7413B00F40620 /* LaunchScreen.xib */,
+				25E2B2FC1BCC08830077C57D /* RegisterVC.swift */,
+				25F26C9F1BCC47D000849D73 /* LoginVC.swift */,
+				25F26CDF1BCF32A400849D73 /* ProfileVC.swift */,
+				25F26CA11BCC60B300849D73 /* DailyCalendarVC.swift */,
+				256FD1161BD010BA00DFB16B /* MapVC.swift */,
+				25F26CE61BCF544B00849D73 /* TaskVC.swift */,
+				25DC51E71BD3C911007E8C04 /* ContactVC.swift */,
+				2534A8F91BD3EA7D0049FFF6 /* GroupVC.swift */,
+				256EE1DD1BD6D852008518DA /* UserManager.swift */,
 				25B41CB31BA7413B00F40620 /* Supporting Files */,
 			);
 			path = SuLife;
@@ -156,7 +183,8 @@
 		25B41CA81BA7413B00F40620 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Sine Feng";
 				TargetAttributes = {
 					25B41CAF1BA7413B00F40620 = {
@@ -192,9 +220,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25F26CE21BCF47DF00849D73 /* Images.xcassets in Resources */,
 				25B41CBB1BA7413B00F40620 /* Main.storyboard in Resources */,
 				25B41CC01BA7413B00F40620 /* LaunchScreen.xib in Resources */,
-				25B41CBD1BA7413B00F40620 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,8 +240,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25DC51E81BD3C911007E8C04 /* ContactVC.swift in Sources */,
+				25F26CE01BCF32A400849D73 /* ProfileVC.swift in Sources */,
+				2534A8FA1BD3EA7D0049FFF6 /* GroupVC.swift in Sources */,
+				25E2B2FD1BCC08830077C57D /* RegisterVC.swift in Sources */,
 				25B41CB81BA7413B00F40620 /* ViewController.swift in Sources */,
+				25F26CE71BCF544B00849D73 /* TaskVC.swift in Sources */,
+				25F26CA01BCC47D000849D73 /* LoginVC.swift in Sources */,
 				25B41CB61BA7413B00F40620 /* AppDelegate.swift in Sources */,
+				256FD1171BD010BA00DFB16B /* MapVC.swift in Sources */,
+				256EE1DE1BD6D852008518DA /* UserManager.swift in Sources */,
+				25F26CA21BCC60B300849D73 /* DailyCalendarVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +313,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -342,8 +380,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = SuLife/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Sine.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -352,8 +392,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = SuLife/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Sine.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -372,6 +414,7 @@
 				);
 				INFOPLIST_FILE = SuLifeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Sine.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SuLife.app/SuLife";
 			};
@@ -387,6 +430,7 @@
 				);
 				INFOPLIST_FILE = SuLifeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Sine.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SuLife.app/SuLife";
 			};
@@ -411,6 +455,7 @@
 				25B41CD11BA7413B00F40620 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		25B41CD21BA7413B00F40620 /* Build configuration list for PBXNativeTarget "SuLifeTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +464,7 @@
 				25B41CD41BA7413B00F40620 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
