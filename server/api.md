@@ -47,6 +47,20 @@ method: post<br />
 request body: firstname, lastname<br />
 detail: edit profile with token
 
+
+
+
+
+
+
+
+
+
+
+don't use this part!!!
+
+
+
 /friendRequest
 
 method: post<br />
