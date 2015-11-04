@@ -48,10 +48,12 @@ module.exports = function(app,passport){
   app.post('/event/:eventid' , middlewares.verifyToken , middlewares.checkEventid ,middlewares.editEvent);
   app.get('/profile' , middlewares.verifyToken , middlewares.getProfile);
   app.post('/profile' , middlewares.verifyToken , middlewares.editProfile);
+  //This part will be update by push notification
+  /**
   app.post('/friendRequest' , middlewares.verifyToken , middlewares.friendRequest);
   app.get('/getMail', middlewares.verifyToken , middlewares.getMail);
   app.post('/acceptFriendRequest' , middlewares.verifyToken , middlewares.acceptFriendRequest, middlewares.buildFriendRelationship);
   app.post('/rejectFriendRequest' , middlewares.verifyToken , middlewares.rejectFriendRequest);
   app.get('/getFriends' ,  middlewares.verifyToken , middlewares.getFriends);
-  app.post('/findUser' , middlewares.verifyToken , middlewares.findUser);
+  app.post('/findUser' , middlewares.verifyToken , middlewares.findUser);**/
 }

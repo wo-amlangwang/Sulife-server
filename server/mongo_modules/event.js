@@ -4,8 +4,8 @@ var eventSchema = mongoose.Schema({
   userid : String,
   title : String,
   detail : String,
-  starttime : Date,
-  endtime : Date,
+  starttime : { type : Date, default: Date.now },
+  endtime : { type : Date, default: Date.now },
   share : Boolean
 });
 
