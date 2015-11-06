@@ -1,0 +1,660 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2557230F1BED079400A57F58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2557230E1BED079400A57F58 /* AppDelegate.swift */; };
+		255723111BED079400A57F58 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255723101BED079400A57F58 /* ViewController.swift */; };
+		255723141BED079400A57F58 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 255723121BED079400A57F58 /* Main.storyboard */; };
+		255723241BED079500A57F58 /* SuLife_Demo2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255723231BED079500A57F58 /* SuLife_Demo2Tests.swift */; };
+		2557232F1BED079500A57F58 /* SuLife_Demo2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2557232E1BED079500A57F58 /* SuLife_Demo2UITests.swift */; };
+		2557233D1BED08FC00A57F58 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2557233C1BED08FC00A57F58 /* Images.xcassets */; };
+		2557233F1BED10EB00A57F58 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2557233E1BED10EB00A57F58 /* LaunchScreen.xib */; };
+		2557235E1BED2C9300A57F58 /* ViewControllerCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255723411BED2C9300A57F58 /* ViewControllerCVC.swift */; };
+		2557235F1BED2C9300A57F58 /* MainCVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 255723421BED2C9300A57F58 /* MainCVC.storyboard */; };
+		255723601BED2C9300A57F58 /* CVCalendarMonthContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255723431BED2C9300A57F58 /* CVCalendarMonthContentViewController.swift */; };
+		255723611BED2C9300A57F58 /* CVCalendarContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255723441BED2C9300A57F58 /* CVCalendarContentViewController.swift */; };
+		255723621BED2C9300A57F58 /* CVCalendarWeekContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255723451BED2C9300A57F58 /* CVCalendarWeekContentViewController.swift */; };
+		255723631BED2C9300A57F58 /* CVCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255723461BED2C9300A57F58 /* CVCalendarView.swift */; };
+		255723641BED2C9300A57F58 /* CVCalendarMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255723471BED2C9300A57F58 /* CVCalendarMenuView.swift */; };
+		255723651BED2C9300A57F58 /* CVCalendarMonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255723481BED2C9300A57F58 /* CVCalendarMonthView.swift */; };
+		255723661BED2C9300A57F58 /* CVCalendarWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255723491BED2C9300A57F58 /* CVCalendarWeekView.swift */; };
+		255723671BED2C9300A57F58 /* CVCalendarDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2557234A1BED2C9300A57F58 /* CVCalendarDayView.swift */; };
+		255723681BED2C9300A57F58 /* CVAuxiliaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2557234B1BED2C9300A57F58 /* CVAuxiliaryView.swift */; };
+		255723691BED2C9300A57F58 /* CVCalendarViewAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2557234C1BED2C9300A57F58 /* CVCalendarViewAnimator.swift */; };
+		2557236A1BED2C9300A57F58 /* CVCalendarTouchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2557234D1BED2C9300A57F58 /* CVCalendarTouchController.swift */; };
+		2557236B1BED2C9300A57F58 /* CVCalendarDayViewControlCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2557234E1BED2C9300A57F58 /* CVCalendarDayViewControlCoordinator.swift */; };
+		2557236C1BED2C9300A57F58 /* CVCalendarViewAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2557234F1BED2C9300A57F58 /* CVCalendarViewAppearance.swift */; };
+		2557236D1BED2C9300A57F58 /* CVCalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255723501BED2C9300A57F58 /* CVCalendarManager.swift */; };
+		2557236E1BED2C9300A57F58 /* CVDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255723511BED2C9300A57F58 /* CVDate.swift */; };
+		2557236F1BED2C9300A57F58 /* CVSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255723521BED2C9300A57F58 /* CVSet.swift */; };
+		255723701BED2C9300A57F58 /* CVCalendarViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255723531BED2C9300A57F58 /* CVCalendarViewDelegate.swift */; };
+		255723711BED2C9300A57F58 /* CVCalendarMenuViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255723541BED2C9300A57F58 /* CVCalendarMenuViewDelegate.swift */; };
+		255723721BED2C9300A57F58 /* CVCalendarViewAnimatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255723551BED2C9300A57F58 /* CVCalendarViewAnimatorDelegate.swift */; };
+		255723731BED2C9300A57F58 /* CVCalendarViewAppearanceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255723561BED2C9300A57F58 /* CVCalendarViewAppearanceDelegate.swift */; };
+		255723741BED2C9300A57F58 /* CVRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255723571BED2C9300A57F58 /* CVRange.swift */; };
+		255723751BED2C9300A57F58 /* CVShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255723581BED2C9300A57F58 /* CVShape.swift */; };
+		255723761BED2C9300A57F58 /* CVSelectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255723591BED2C9300A57F58 /* CVSelectionType.swift */; };
+		255723771BED2C9400A57F58 /* CVScrollDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2557235A1BED2C9300A57F58 /* CVScrollDirection.swift */; };
+		255723781BED2C9400A57F58 /* CVCalendarWeekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2557235B1BED2C9300A57F58 /* CVCalendarWeekday.swift */; };
+		255723791BED2C9400A57F58 /* CVCalendarViewPresentationMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2557235C1BED2C9300A57F58 /* CVCalendarViewPresentationMode.swift */; };
+		2557237A1BED2C9400A57F58 /* CVWeekdaySymbolType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2557235D1BED2C9300A57F58 /* CVWeekdaySymbolType.swift */; };
+		2557237C1BED304000A57F58 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2557237B1BED304000A57F58 /* LoginVC.swift */; };
+		2557237E1BED309E00A57F58 /* StartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2557237D1BED309E00A57F58 /* StartVC.swift */; };
+		255723801BED32F300A57F58 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2557237F1BED32F300A57F58 /* RegisterVC.swift */; };
+		255723821BED41EA00A57F58 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255723811BED41EA00A57F58 /* ProfileVC.swift */; };
+		255723841BED41F100A57F58 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255723831BED41F100A57F58 /* MapVC.swift */; };
+		255723871BED420A00A57F58 /* ContactVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255723851BED420A00A57F58 /* ContactVC.swift */; };
+		255723881BED420A00A57F58 /* GroupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255723861BED420A00A57F58 /* GroupVC.swift */; };
+		2557238A1BED453200A57F58 /* EventsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255723891BED453200A57F58 /* EventsTVC.swift */; };
+		2557238C1BED454C00A57F58 /* ToDoListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2557238B1BED454C00A57F58 /* ToDoListTVC.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		255723201BED079500A57F58 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 255723031BED079400A57F58 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2557230A1BED079400A57F58;
+			remoteInfo = "SuLife-Demo2";
+		};
+		2557232B1BED079500A57F58 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 255723031BED079400A57F58 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2557230A1BED079400A57F58;
+			remoteInfo = "SuLife-Demo2";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2557230B1BED079400A57F58 /* SuLife-Demo2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SuLife-Demo2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2557230E1BED079400A57F58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		255723101BED079400A57F58 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		255723131BED079400A57F58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2557231A1BED079500A57F58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2557231F1BED079500A57F58 /* SuLife-Demo2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SuLife-Demo2Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		255723231BED079500A57F58 /* SuLife_Demo2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuLife_Demo2Tests.swift; sourceTree = "<group>"; };
+		255723251BED079500A57F58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2557232A1BED079500A57F58 /* SuLife-Demo2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SuLife-Demo2UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2557232E1BED079500A57F58 /* SuLife_Demo2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuLife_Demo2UITests.swift; sourceTree = "<group>"; };
+		255723301BED079500A57F58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2557233C1BED08FC00A57F58 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		2557233E1BED10EB00A57F58 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		255723411BED2C9300A57F58 /* ViewControllerCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerCVC.swift; sourceTree = "<group>"; };
+		255723421BED2C9300A57F58 /* MainCVC.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainCVC.storyboard; sourceTree = "<group>"; };
+		255723431BED2C9300A57F58 /* CVCalendarMonthContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarMonthContentViewController.swift; sourceTree = "<group>"; };
+		255723441BED2C9300A57F58 /* CVCalendarContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarContentViewController.swift; sourceTree = "<group>"; };
+		255723451BED2C9300A57F58 /* CVCalendarWeekContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarWeekContentViewController.swift; sourceTree = "<group>"; };
+		255723461BED2C9300A57F58 /* CVCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarView.swift; sourceTree = "<group>"; };
+		255723471BED2C9300A57F58 /* CVCalendarMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarMenuView.swift; sourceTree = "<group>"; };
+		255723481BED2C9300A57F58 /* CVCalendarMonthView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarMonthView.swift; sourceTree = "<group>"; };
+		255723491BED2C9300A57F58 /* CVCalendarWeekView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarWeekView.swift; sourceTree = "<group>"; };
+		2557234A1BED2C9300A57F58 /* CVCalendarDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarDayView.swift; sourceTree = "<group>"; };
+		2557234B1BED2C9300A57F58 /* CVAuxiliaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVAuxiliaryView.swift; sourceTree = "<group>"; };
+		2557234C1BED2C9300A57F58 /* CVCalendarViewAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarViewAnimator.swift; sourceTree = "<group>"; };
+		2557234D1BED2C9300A57F58 /* CVCalendarTouchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarTouchController.swift; sourceTree = "<group>"; };
+		2557234E1BED2C9300A57F58 /* CVCalendarDayViewControlCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarDayViewControlCoordinator.swift; sourceTree = "<group>"; };
+		2557234F1BED2C9300A57F58 /* CVCalendarViewAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarViewAppearance.swift; sourceTree = "<group>"; };
+		255723501BED2C9300A57F58 /* CVCalendarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarManager.swift; sourceTree = "<group>"; };
+		255723511BED2C9300A57F58 /* CVDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVDate.swift; sourceTree = "<group>"; };
+		255723521BED2C9300A57F58 /* CVSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVSet.swift; sourceTree = "<group>"; };
+		255723531BED2C9300A57F58 /* CVCalendarViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarViewDelegate.swift; sourceTree = "<group>"; };
+		255723541BED2C9300A57F58 /* CVCalendarMenuViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarMenuViewDelegate.swift; sourceTree = "<group>"; };
+		255723551BED2C9300A57F58 /* CVCalendarViewAnimatorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarViewAnimatorDelegate.swift; sourceTree = "<group>"; };
+		255723561BED2C9300A57F58 /* CVCalendarViewAppearanceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarViewAppearanceDelegate.swift; sourceTree = "<group>"; };
+		255723571BED2C9300A57F58 /* CVRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVRange.swift; sourceTree = "<group>"; };
+		255723581BED2C9300A57F58 /* CVShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVShape.swift; sourceTree = "<group>"; };
+		255723591BED2C9300A57F58 /* CVSelectionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVSelectionType.swift; sourceTree = "<group>"; };
+		2557235A1BED2C9300A57F58 /* CVScrollDirection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVScrollDirection.swift; sourceTree = "<group>"; };
+		2557235B1BED2C9300A57F58 /* CVCalendarWeekday.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarWeekday.swift; sourceTree = "<group>"; };
+		2557235C1BED2C9300A57F58 /* CVCalendarViewPresentationMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarViewPresentationMode.swift; sourceTree = "<group>"; };
+		2557235D1BED2C9300A57F58 /* CVWeekdaySymbolType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVWeekdaySymbolType.swift; sourceTree = "<group>"; };
+		2557237B1BED304000A57F58 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		2557237D1BED309E00A57F58 /* StartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartVC.swift; sourceTree = "<group>"; };
+		2557237F1BED32F300A57F58 /* RegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		255723811BED41EA00A57F58 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		255723831BED41F100A57F58 /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
+		255723851BED420A00A57F58 /* ContactVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactVC.swift; sourceTree = "<group>"; };
+		255723861BED420A00A57F58 /* GroupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupVC.swift; sourceTree = "<group>"; };
+		255723891BED453200A57F58 /* EventsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTVC.swift; sourceTree = "<group>"; };
+		2557238B1BED454C00A57F58 /* ToDoListTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoListTVC.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		255723081BED079400A57F58 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2557231C1BED079500A57F58 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		255723271BED079500A57F58 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		255723021BED079400A57F58 = {
+			isa = PBXGroup;
+			children = (
+				2557230D1BED079400A57F58 /* SuLife-Demo2 */,
+				255723221BED079500A57F58 /* SuLife-Demo2Tests */,
+				2557232D1BED079500A57F58 /* SuLife-Demo2UITests */,
+				2557230C1BED079400A57F58 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2557230C1BED079400A57F58 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2557230B1BED079400A57F58 /* SuLife-Demo2.app */,
+				2557231F1BED079500A57F58 /* SuLife-Demo2Tests.xctest */,
+				2557232A1BED079500A57F58 /* SuLife-Demo2UITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2557230D1BED079400A57F58 /* SuLife-Demo2 */ = {
+			isa = PBXGroup;
+			children = (
+				2557230E1BED079400A57F58 /* AppDelegate.swift */,
+				255723101BED079400A57F58 /* ViewController.swift */,
+				2557233C1BED08FC00A57F58 /* Images.xcassets */,
+				255723121BED079400A57F58 /* Main.storyboard */,
+				2557233E1BED10EB00A57F58 /* LaunchScreen.xib */,
+				2557231A1BED079500A57F58 /* Info.plist */,
+				255723401BED2C8100A57F58 /* CVCalendar */,
+				2557237D1BED309E00A57F58 /* StartVC.swift */,
+				2557237B1BED304000A57F58 /* LoginVC.swift */,
+				2557237F1BED32F300A57F58 /* RegisterVC.swift */,
+				255723811BED41EA00A57F58 /* ProfileVC.swift */,
+				255723831BED41F100A57F58 /* MapVC.swift */,
+				255723851BED420A00A57F58 /* ContactVC.swift */,
+				255723861BED420A00A57F58 /* GroupVC.swift */,
+				255723891BED453200A57F58 /* EventsTVC.swift */,
+				2557238B1BED454C00A57F58 /* ToDoListTVC.swift */,
+			);
+			path = "SuLife-Demo2";
+			sourceTree = "<group>";
+		};
+		255723221BED079500A57F58 /* SuLife-Demo2Tests */ = {
+			isa = PBXGroup;
+			children = (
+				255723231BED079500A57F58 /* SuLife_Demo2Tests.swift */,
+				255723251BED079500A57F58 /* Info.plist */,
+			);
+			path = "SuLife-Demo2Tests";
+			sourceTree = "<group>";
+		};
+		2557232D1BED079500A57F58 /* SuLife-Demo2UITests */ = {
+			isa = PBXGroup;
+			children = (
+				2557232E1BED079500A57F58 /* SuLife_Demo2UITests.swift */,
+				255723301BED079500A57F58 /* Info.plist */,
+			);
+			path = "SuLife-Demo2UITests";
+			sourceTree = "<group>";
+		};
+		255723401BED2C8100A57F58 /* CVCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				255723411BED2C9300A57F58 /* ViewControllerCVC.swift */,
+				255723421BED2C9300A57F58 /* MainCVC.storyboard */,
+				255723431BED2C9300A57F58 /* CVCalendarMonthContentViewController.swift */,
+				255723441BED2C9300A57F58 /* CVCalendarContentViewController.swift */,
+				255723451BED2C9300A57F58 /* CVCalendarWeekContentViewController.swift */,
+				255723461BED2C9300A57F58 /* CVCalendarView.swift */,
+				255723471BED2C9300A57F58 /* CVCalendarMenuView.swift */,
+				255723481BED2C9300A57F58 /* CVCalendarMonthView.swift */,
+				255723491BED2C9300A57F58 /* CVCalendarWeekView.swift */,
+				2557234A1BED2C9300A57F58 /* CVCalendarDayView.swift */,
+				2557234B1BED2C9300A57F58 /* CVAuxiliaryView.swift */,
+				2557234C1BED2C9300A57F58 /* CVCalendarViewAnimator.swift */,
+				2557234D1BED2C9300A57F58 /* CVCalendarTouchController.swift */,
+				2557234E1BED2C9300A57F58 /* CVCalendarDayViewControlCoordinator.swift */,
+				2557234F1BED2C9300A57F58 /* CVCalendarViewAppearance.swift */,
+				255723501BED2C9300A57F58 /* CVCalendarManager.swift */,
+				255723511BED2C9300A57F58 /* CVDate.swift */,
+				255723521BED2C9300A57F58 /* CVSet.swift */,
+				255723531BED2C9300A57F58 /* CVCalendarViewDelegate.swift */,
+				255723541BED2C9300A57F58 /* CVCalendarMenuViewDelegate.swift */,
+				255723551BED2C9300A57F58 /* CVCalendarViewAnimatorDelegate.swift */,
+				255723561BED2C9300A57F58 /* CVCalendarViewAppearanceDelegate.swift */,
+				255723571BED2C9300A57F58 /* CVRange.swift */,
+				255723581BED2C9300A57F58 /* CVShape.swift */,
+				255723591BED2C9300A57F58 /* CVSelectionType.swift */,
+				2557235A1BED2C9300A57F58 /* CVScrollDirection.swift */,
+				2557235B1BED2C9300A57F58 /* CVCalendarWeekday.swift */,
+				2557235C1BED2C9300A57F58 /* CVCalendarViewPresentationMode.swift */,
+				2557235D1BED2C9300A57F58 /* CVWeekdaySymbolType.swift */,
+			);
+			name = CVCalendar;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2557230A1BED079400A57F58 /* SuLife-Demo2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 255723331BED079500A57F58 /* Build configuration list for PBXNativeTarget "SuLife-Demo2" */;
+			buildPhases = (
+				255723071BED079400A57F58 /* Sources */,
+				255723081BED079400A57F58 /* Frameworks */,
+				255723091BED079400A57F58 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SuLife-Demo2";
+			productName = "SuLife-Demo2";
+			productReference = 2557230B1BED079400A57F58 /* SuLife-Demo2.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2557231E1BED079500A57F58 /* SuLife-Demo2Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 255723361BED079500A57F58 /* Build configuration list for PBXNativeTarget "SuLife-Demo2Tests" */;
+			buildPhases = (
+				2557231B1BED079500A57F58 /* Sources */,
+				2557231C1BED079500A57F58 /* Frameworks */,
+				2557231D1BED079500A57F58 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				255723211BED079500A57F58 /* PBXTargetDependency */,
+			);
+			name = "SuLife-Demo2Tests";
+			productName = "SuLife-Demo2Tests";
+			productReference = 2557231F1BED079500A57F58 /* SuLife-Demo2Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		255723291BED079500A57F58 /* SuLife-Demo2UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 255723391BED079500A57F58 /* Build configuration list for PBXNativeTarget "SuLife-Demo2UITests" */;
+			buildPhases = (
+				255723261BED079500A57F58 /* Sources */,
+				255723271BED079500A57F58 /* Frameworks */,
+				255723281BED079500A57F58 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2557232C1BED079500A57F58 /* PBXTargetDependency */,
+			);
+			name = "SuLife-Demo2UITests";
+			productName = "SuLife-Demo2UITests";
+			productReference = 2557232A1BED079500A57F58 /* SuLife-Demo2UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		255723031BED079400A57F58 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0710;
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = "Sine Feng";
+				TargetAttributes = {
+					2557230A1BED079400A57F58 = {
+						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = N33N8736G4;
+					};
+					2557231E1BED079500A57F58 = {
+						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = N33N8736G4;
+						TestTargetID = 2557230A1BED079400A57F58;
+					};
+					255723291BED079500A57F58 = {
+						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = N33N8736G4;
+						TestTargetID = 2557230A1BED079400A57F58;
+					};
+				};
+			};
+			buildConfigurationList = 255723061BED079400A57F58 /* Build configuration list for PBXProject "SuLife-Demo2" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 255723021BED079400A57F58;
+			productRefGroup = 2557230C1BED079400A57F58 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2557230A1BED079400A57F58 /* SuLife-Demo2 */,
+				2557231E1BED079500A57F58 /* SuLife-Demo2Tests */,
+				255723291BED079500A57F58 /* SuLife-Demo2UITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		255723091BED079400A57F58 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2557233D1BED08FC00A57F58 /* Images.xcassets in Resources */,
+				2557233F1BED10EB00A57F58 /* LaunchScreen.xib in Resources */,
+				2557235F1BED2C9300A57F58 /* MainCVC.storyboard in Resources */,
+				255723141BED079400A57F58 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2557231D1BED079500A57F58 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		255723281BED079500A57F58 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		255723071BED079400A57F58 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2557237C1BED304000A57F58 /* LoginVC.swift in Sources */,
+				255723751BED2C9300A57F58 /* CVShape.swift in Sources */,
+				2557237A1BED2C9400A57F58 /* CVWeekdaySymbolType.swift in Sources */,
+				255723771BED2C9400A57F58 /* CVScrollDirection.swift in Sources */,
+				2557236A1BED2C9300A57F58 /* CVCalendarTouchController.swift in Sources */,
+				255723601BED2C9300A57F58 /* CVCalendarMonthContentViewController.swift in Sources */,
+				2557238A1BED453200A57F58 /* EventsTVC.swift in Sources */,
+				255723611BED2C9300A57F58 /* CVCalendarContentViewController.swift in Sources */,
+				255723651BED2C9300A57F58 /* CVCalendarMonthView.swift in Sources */,
+				255723661BED2C9300A57F58 /* CVCalendarWeekView.swift in Sources */,
+				255723691BED2C9300A57F58 /* CVCalendarViewAnimator.swift in Sources */,
+				255723791BED2C9400A57F58 /* CVCalendarViewPresentationMode.swift in Sources */,
+				255723741BED2C9300A57F58 /* CVRange.swift in Sources */,
+				2557236E1BED2C9300A57F58 /* CVDate.swift in Sources */,
+				255723761BED2C9300A57F58 /* CVSelectionType.swift in Sources */,
+				255723711BED2C9300A57F58 /* CVCalendarMenuViewDelegate.swift in Sources */,
+				255723801BED32F300A57F58 /* RegisterVC.swift in Sources */,
+				255723881BED420A00A57F58 /* GroupVC.swift in Sources */,
+				2557237E1BED309E00A57F58 /* StartVC.swift in Sources */,
+				2557236D1BED2C9300A57F58 /* CVCalendarManager.swift in Sources */,
+				255723681BED2C9300A57F58 /* CVAuxiliaryView.swift in Sources */,
+				2557238C1BED454C00A57F58 /* ToDoListTVC.swift in Sources */,
+				2557236C1BED2C9300A57F58 /* CVCalendarViewAppearance.swift in Sources */,
+				2557235E1BED2C9300A57F58 /* ViewControllerCVC.swift in Sources */,
+				255723111BED079400A57F58 /* ViewController.swift in Sources */,
+				255723671BED2C9300A57F58 /* CVCalendarDayView.swift in Sources */,
+				2557236F1BED2C9300A57F58 /* CVSet.swift in Sources */,
+				255723631BED2C9300A57F58 /* CVCalendarView.swift in Sources */,
+				255723841BED41F100A57F58 /* MapVC.swift in Sources */,
+				2557230F1BED079400A57F58 /* AppDelegate.swift in Sources */,
+				255723871BED420A00A57F58 /* ContactVC.swift in Sources */,
+				255723701BED2C9300A57F58 /* CVCalendarViewDelegate.swift in Sources */,
+				255723641BED2C9300A57F58 /* CVCalendarMenuView.swift in Sources */,
+				255723781BED2C9400A57F58 /* CVCalendarWeekday.swift in Sources */,
+				255723721BED2C9300A57F58 /* CVCalendarViewAnimatorDelegate.swift in Sources */,
+				255723821BED41EA00A57F58 /* ProfileVC.swift in Sources */,
+				255723621BED2C9300A57F58 /* CVCalendarWeekContentViewController.swift in Sources */,
+				2557236B1BED2C9300A57F58 /* CVCalendarDayViewControlCoordinator.swift in Sources */,
+				255723731BED2C9300A57F58 /* CVCalendarViewAppearanceDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2557231B1BED079500A57F58 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				255723241BED079500A57F58 /* SuLife_Demo2Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		255723261BED079500A57F58 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2557232F1BED079500A57F58 /* SuLife_Demo2UITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		255723211BED079500A57F58 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2557230A1BED079400A57F58 /* SuLife-Demo2 */;
+			targetProxy = 255723201BED079500A57F58 /* PBXContainerItemProxy */;
+		};
+		2557232C1BED079500A57F58 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2557230A1BED079400A57F58 /* SuLife-Demo2 */;
+			targetProxy = 2557232B1BED079500A57F58 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		255723121BED079400A57F58 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				255723131BED079400A57F58 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		255723311BED079500A57F58 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		255723321BED079500A57F58 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		255723341BED079500A57F58 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "SuLife-Demo2/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Sine.SuLife-Demo2";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		255723351BED079500A57F58 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "SuLife-Demo2/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Sine.SuLife-Demo2";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		255723371BED079500A57F58 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "SuLife-Demo2Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Sine.SuLife-Demo2Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SuLife-Demo2.app/SuLife-Demo2";
+			};
+			name = Debug;
+		};
+		255723381BED079500A57F58 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "SuLife-Demo2Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Sine.SuLife-Demo2Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SuLife-Demo2.app/SuLife-Demo2";
+			};
+			name = Release;
+		};
+		2557233A1BED079500A57F58 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "SuLife-Demo2UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Sine.SuLife-Demo2UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "SuLife-Demo2";
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		2557233B1BED079500A57F58 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "SuLife-Demo2UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Sine.SuLife-Demo2UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "SuLife-Demo2";
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		255723061BED079400A57F58 /* Build configuration list for PBXProject "SuLife-Demo2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				255723311BED079500A57F58 /* Debug */,
+				255723321BED079500A57F58 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		255723331BED079500A57F58 /* Build configuration list for PBXNativeTarget "SuLife-Demo2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				255723341BED079500A57F58 /* Debug */,
+				255723351BED079500A57F58 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		255723361BED079500A57F58 /* Build configuration list for PBXNativeTarget "SuLife-Demo2Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				255723371BED079500A57F58 /* Debug */,
+				255723381BED079500A57F58 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		255723391BED079500A57F58 /* Build configuration list for PBXNativeTarget "SuLife-Demo2UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2557233A1BED079500A57F58 /* Debug */,
+				2557233B1BED079500A57F58 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 255723031BED079400A57F58 /* Project object */;
+}
