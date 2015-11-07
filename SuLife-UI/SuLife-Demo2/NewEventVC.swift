@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 class NewEventVC: UIViewController {
 
     @IBOutlet weak var titleTextField: UITextField!
@@ -49,35 +51,50 @@ class NewEventVC: UIViewController {
         let eventStart = startTimeTextField.text!
         let eventEnd = endTimeTextField.text!
         
+        let post:NSString = "title=\(eventTitle)&detail=\(eventDetail)&starttime=\(eventStart)&endtime=\(eventEnd)"
         
-        var dataSet:NSMutableDictionary = NSMutableDictionary()
-        dataSet.setObject(eventTitle, forKey: "eventTitle")
-        dataSet.setObject(eventDetail, forKey: "eventDetail")
-        dataSet.setObject(eventStart, forKey: "eventStartTime")
-        dataSet.setObject(eventEnd, forKey: "eventEndTime")
+        NSLog("PostData: %@",post);
         
-        if (eventList != nil) {
-            // data already available, or is first to do
-            var newMutableList:NSMutableArray = NSMutableArray()
-            for dict:AnyObject in eventList! {
-                newMutableList.addObject(dict as! NSDictionary)
-            }
+        let url:NSURL = NSURL(string:"https://damp-retreat-5682.herokuapp.com/event")!
+        
+        let postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+        
+        let postLength:NSString = String( postData.length )
+        
+        let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "POST"
+        request.HTTPBody = postData
+        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        
+        
+        var reponseError: NSError?
+        var response: NSURLResponse?
+        
+        var urlData: NSData?
+        do {
+            urlData = try NSURLConnection.sendSynchronousRequest(request, returningResponse:&response)
+        } catch let error as NSError {
+            reponseError = error
+            urlData = nil
+        }
+        
+        if ( urlData != nil ) {
+            let res = response as! NSHTTPURLResponse!;
             
-            userDefaults.removeObjectForKey("eventList")
-            newMutableList.addObject(dataSet)
-            userDefaults.setObject(newMutableList, forKey: "eventList")
+            NSLog("Response code: %ld", res.statusCode);
+            
+            if (res.statusCode >= 200 && res.statusCode < 300)
+            {
+                let responseData:NSString  = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
+                
+                NSLog("Response ==> %@", responseData);
+                
+                //var error: NSError?
+            }
         }
-        else
-        {
-            userDefaults.removeObjectForKey("eventList")
-            eventList = NSMutableArray()
-            eventList!.addObject(dataSet)
-            userDefaults.setObject(eventList, forKey: "eventList")
-        }
-        
-        // save
-        userDefaults.synchronize()
-        self.navigationController?.popToRootViewControllerAnimated(true)
+
         
     }
 }

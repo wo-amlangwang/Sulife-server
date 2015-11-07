@@ -8,6 +8,7 @@
 
 import UIKit
 
+//var accountToken = ""
 
 
 class LoginVC: UIViewController {
@@ -119,6 +120,8 @@ class LoginVC: UIViewController {
                             //[jsonData[@"success"] integerValue];
                             
                             NSLog("Success: %@", success);
+                          //  accountToken = jsonData.valueForKey("Access_Token") as! NSString as String
+                           //  NSLog("accountToken: %@", accountToken);
                             //NSLog("Token: &@", token);
                             
                             //======================================
