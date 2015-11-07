@@ -139,7 +139,7 @@ class LoginVC: UIViewController {
                                 
                                 //loginToken = token as NSString
                                 
-                                self.performSegueWithIdentifier("loginToMain", sender: self)
+                                self.dismissViewControllerAnimated(true, completion: nil)
                             } else {
                                 var error_msg:NSString
                                 
