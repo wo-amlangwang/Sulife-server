@@ -67,7 +67,7 @@ class NewEventVC: UIViewController {
         request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
-        
+        request.setValue(accountToken, forHTTPHeaderField: "x-access-token")
         
         var reponseError: NSError?
         var response: NSURLResponse?
