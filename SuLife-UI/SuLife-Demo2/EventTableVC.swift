@@ -16,6 +16,7 @@ class EventTableVC: UITableViewController {
     
     // reload data in table
     override func viewDidAppear(animated: Bool) {
+        /*
         var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         
         var eventFromDefaults:NSMutableArray? = userDefaults.objectForKey("eventList") as? NSMutableArray
@@ -23,6 +24,56 @@ class EventTableVC: UITableViewController {
         if ((eventFromDefaults) != nil) {
             events = eventFromDefaults!
         }
+        */
+        
+        let url:NSURL = NSURL(string:"https://damp-retreat-5682.herokuapp.com/event")!
+        
+        var post = ""
+        
+        let postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+        
+        let postLength:NSString = String( postData.length )
+        
+        let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "get"
+        request.HTTPBody = postData
+        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue(accountToken, forHTTPHeaderField: "x-access-token")
+        
+        var reponseError: NSError?
+        var response: NSURLResponse?
+        
+        var urlData: NSData?
+        do {
+            urlData = try NSURLConnection.sendSynchronousRequest(request, returningResponse:&response)
+        } catch let error as NSError {
+            reponseError = error
+            urlData = nil
+        }
+        
+        if ( urlData != nil ) {
+            let res = response as! NSHTTPURLResponse!;
+            
+            if(res==nil){
+                NSLog("fuck alex");
+          //  NSLog("Response code: %ld", res.statusCode);
+            }
+            
+            //if (res.statusCode >= 200 && res.statusCode < 300)
+            //{
+                let responseData:NSString  = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
+                
+                NSLog("Response ==> %@", responseData);
+                
+                //var error: NSError?
+            //}
+        }
+        
+
+    
+        
         self.tableView.reloadData()
     }
     
