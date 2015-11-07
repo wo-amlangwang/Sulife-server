@@ -10,6 +10,9 @@ import UIKit
 
 var accountToken = ""
 
+let registerURL = "https://damp-retreat-5682.herokuapp.com/register"
+let loginURL = "https://damp-retreat-5682.herokuapp.com/local/login"
+let eventURL = "https://damp-retreat-5682.herokuapp.com/event"
 
 class LoginVC: UIViewController {
     
@@ -71,7 +74,7 @@ class LoginVC: UIViewController {
                 
                 NSLog("PostData: %@",post);
                 
-                let url:NSURL = NSURL(string:"https://damp-retreat-5682.herokuapp.com/local/login")!
+                let url:NSURL = NSURL(string: loginURL)!
                 
                 let postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
                 

@@ -55,7 +55,7 @@ class NewEventVC: UIViewController {
         
         NSLog("PostData: %@",post);
         
-        let url:NSURL = NSURL(string:"https://damp-retreat-5682.herokuapp.com/event")!
+        let url:NSURL = NSURL(string: eventURL)!
         
         let postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
         
