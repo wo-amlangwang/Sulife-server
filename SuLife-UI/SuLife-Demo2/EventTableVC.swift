@@ -1,16 +1,16 @@
 //
-//  ToDoListTVC.swift
-//  SuLife-Demo2
+//  EventsTVC.swift
+//  SuLife
 //
-//  Created by Sine Feng on 11/6/15.
+//  Created by Sine Feng on 10/16/15.
 //  Copyright © 2015 Sine Feng. All rights reserved.
 //
 
 import UIKit
 
-class ToDoListTVC: UITableViewController {
-
-    var tasks:NSMutableArray = NSMutableArray()
+class EventTableVC: UITableViewController {
+    
+    var events:NSMutableArray = NSMutableArray()
     
     
     
@@ -18,10 +18,10 @@ class ToDoListTVC: UITableViewController {
     override func viewDidAppear(animated: Bool) {
         var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         
-        var taskFromDefaults:NSMutableArray? = userDefaults.objectForKey("todoList") as? NSMutableArray
+        var eventFromDefaults:NSMutableArray? = userDefaults.objectForKey("eventList") as? NSMutableArray
         
-        if ((taskFromDefaults) != nil) {
-            tasks = taskFromDefaults!
+        if ((eventFromDefaults) != nil) {
+            events = eventFromDefaults!
         }
         self.tableView.reloadData()
     }
@@ -50,15 +50,15 @@ class ToDoListTVC: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return tasks.count
+        return events.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
         
         // Configure the cell...
-        var task:NSDictionary = tasks.objectAtIndex(indexPath.row) as! NSDictionary
-        cell.textLabel?.text = task.objectForKey("taskTitle") as? String
+        var event:NSDictionary = events.objectAtIndex(indexPath.row) as! NSDictionary
+        cell.textLabel?.text = event.objectForKey("eventTitle") as? String
         
         return cell
     }
@@ -69,66 +69,67 @@ class ToDoListTVC: UITableViewController {
         
         if (segue == "schowDetail" && segue!.identifier == "schowDetail"){
             var selectedIndexPath:NSIndexPath = self.tableView.indexPathForSelectedRow!
-            var taskDetailVC:TaskDetailVC = segue!.destinationViewController as! TaskDetailVC
-            taskDetailVC.task = tasks.objectAtIndex(selectedIndexPath.row) as! NSDictionary
+            var eventDetailVC:EventDetailVC = segue!.destinationViewController as! EventDetailVC
+            eventDetailVC.event = events.objectAtIndex(selectedIndexPath.row) as! NSDictionary
         }
         
     }
-
-
+    
+    
+    
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
+    let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+    
+    // Configure the cell...
+    
+    return cell
     }
     */
-
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    // Return false if you do not want the specified item to be editable.
+    return true
     }
     */
-
+    
     /*
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    if editingStyle == .Delete {
+    // Delete the row from the data source
+    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+    } else if editingStyle == .Insert {
+    // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    }
     }
     */
-
+    
     /*
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
+    
     }
     */
-
+    
     /*
     // Override to support conditional rearranging of the table view.
     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+    // Return false if you do not want the item to be re-orderable.
+    return true
     }
     */
-
+    
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }

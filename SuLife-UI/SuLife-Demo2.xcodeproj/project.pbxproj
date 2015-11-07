@@ -21,7 +21,7 @@
 		255723841BED41F100A57F58 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255723831BED41F100A57F58 /* MapVC.swift */; };
 		255723871BED420A00A57F58 /* ContactVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255723851BED420A00A57F58 /* ContactVC.swift */; };
 		255723881BED420A00A57F58 /* GroupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255723861BED420A00A57F58 /* GroupVC.swift */; };
-		2557238A1BED453200A57F58 /* EventsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255723891BED453200A57F58 /* EventsTVC.swift */; };
+		2557238A1BED453200A57F58 /* EventTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255723891BED453200A57F58 /* EventTableVC.swift */; };
 		2557238C1BED454C00A57F58 /* ToDoListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2557238B1BED454C00A57F58 /* ToDoListTVC.swift */; };
 		25EDC7EC1BED6E930061C5B2 /* CVCalendarContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EDC7D11BED6E930061C5B2 /* CVCalendarContentViewController.swift */; };
 		25EDC7ED1BED6E930061C5B2 /* CVCalendarMonthContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EDC7D21BED6E930061C5B2 /* CVCalendarMonthContentViewController.swift */; };
@@ -51,6 +51,12 @@
 		25EDC8051BED6E930061C5B2 /* CVCalendarViewPresentationMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EDC7EA1BED6E930061C5B2 /* CVCalendarViewPresentationMode.swift */; };
 		25EDC8061BED6E930061C5B2 /* CVWeekdaySymbolType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EDC7EB1BED6E930061C5B2 /* CVWeekdaySymbolType.swift */; };
 		25EDC8081BED6F200061C5B2 /* ViewControllerCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EDC8071BED6F200061C5B2 /* ViewControllerCVC.swift */; };
+		25EDC8101BED76360061C5B2 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EDC80D1BED76360061C5B2 /* EventManager.swift */; };
+		25EDC8111BED76360061C5B2 /* NewEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EDC80E1BED76360061C5B2 /* NewEventVC.swift */; };
+		25EDC8121BED76360061C5B2 /* EventDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EDC80F1BED76360061C5B2 /* EventDetailVC.swift */; };
+		25EDC8141BED83BF0061C5B2 /* NewTaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EDC8131BED83BF0061C5B2 /* NewTaskVC.swift */; };
+		25EDC8161BED83DB0061C5B2 /* TaskDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EDC8151BED83DB0061C5B2 /* TaskDetailVC.swift */; };
+		25EDC8181BED83F90061C5B2 /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EDC8171BED83F90061C5B2 /* TaskManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,7 +97,7 @@
 		255723831BED41F100A57F58 /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		255723851BED420A00A57F58 /* ContactVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactVC.swift; sourceTree = "<group>"; };
 		255723861BED420A00A57F58 /* GroupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupVC.swift; sourceTree = "<group>"; };
-		255723891BED453200A57F58 /* EventsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTVC.swift; sourceTree = "<group>"; };
+		255723891BED453200A57F58 /* EventTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableVC.swift; sourceTree = "<group>"; };
 		2557238B1BED454C00A57F58 /* ToDoListTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoListTVC.swift; sourceTree = "<group>"; };
 		25EDC7D11BED6E930061C5B2 /* CVCalendarContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarContentViewController.swift; sourceTree = "<group>"; };
 		25EDC7D21BED6E930061C5B2 /* CVCalendarMonthContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarMonthContentViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +127,12 @@
 		25EDC7EA1BED6E930061C5B2 /* CVCalendarViewPresentationMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarViewPresentationMode.swift; sourceTree = "<group>"; };
 		25EDC7EB1BED6E930061C5B2 /* CVWeekdaySymbolType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVWeekdaySymbolType.swift; sourceTree = "<group>"; };
 		25EDC8071BED6F200061C5B2 /* ViewControllerCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerCVC.swift; sourceTree = "<group>"; };
+		25EDC80D1BED76360061C5B2 /* EventManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
+		25EDC80E1BED76360061C5B2 /* NewEventVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewEventVC.swift; sourceTree = "<group>"; };
+		25EDC80F1BED76360061C5B2 /* EventDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailVC.swift; sourceTree = "<group>"; };
+		25EDC8131BED83BF0061C5B2 /* NewTaskVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTaskVC.swift; sourceTree = "<group>"; };
+		25EDC8151BED83DB0061C5B2 /* TaskDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailVC.swift; sourceTree = "<group>"; };
+		25EDC8171BED83F90061C5B2 /* TaskManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,22 +183,21 @@
 		2557230D1BED079400A57F58 /* SuLife-Demo2 */ = {
 			isa = PBXGroup;
 			children = (
-				2557230E1BED079400A57F58 /* AppDelegate.swift */,
-				255723101BED079400A57F58 /* ViewController.swift */,
 				2557233C1BED08FC00A57F58 /* Images.xcassets */,
 				255723121BED079400A57F58 /* Main.storyboard */,
 				2557233E1BED10EB00A57F58 /* LaunchScreen.xib */,
 				2557231A1BED079500A57F58 /* Info.plist */,
+				25EDC80C1BED74F20061C5B2 /* Map */,
+				25EDC80B1BED74860061C5B2 /* Contacts */,
+				25EDC80A1BED747A0061C5B2 /* Event */,
+				25EDC8091BED74720061C5B2 /* ToDoList */,
+				2557230E1BED079400A57F58 /* AppDelegate.swift */,
+				255723101BED079400A57F58 /* ViewController.swift */,
 				25EDC7D01BED6E6C0061C5B2 /* CVCalendar */,
 				2557237D1BED309E00A57F58 /* StartVC.swift */,
 				2557237B1BED304000A57F58 /* LoginVC.swift */,
 				2557237F1BED32F300A57F58 /* RegisterVC.swift */,
 				255723811BED41EA00A57F58 /* ProfileVC.swift */,
-				255723831BED41F100A57F58 /* MapVC.swift */,
-				255723851BED420A00A57F58 /* ContactVC.swift */,
-				255723861BED420A00A57F58 /* GroupVC.swift */,
-				255723891BED453200A57F58 /* EventsTVC.swift */,
-				2557238B1BED454C00A57F58 /* ToDoListTVC.swift */,
 			);
 			path = "SuLife-Demo2";
 			sourceTree = "<group>";
@@ -242,6 +253,45 @@
 				25EDC7EB1BED6E930061C5B2 /* CVWeekdaySymbolType.swift */,
 			);
 			name = CVCalendar;
+			sourceTree = "<group>";
+		};
+		25EDC8091BED74720061C5B2 /* ToDoList */ = {
+			isa = PBXGroup;
+			children = (
+				25EDC8131BED83BF0061C5B2 /* NewTaskVC.swift */,
+				2557238B1BED454C00A57F58 /* ToDoListTVC.swift */,
+				25EDC8151BED83DB0061C5B2 /* TaskDetailVC.swift */,
+				25EDC8171BED83F90061C5B2 /* TaskManager.swift */,
+			);
+			name = ToDoList;
+			sourceTree = "<group>";
+		};
+		25EDC80A1BED747A0061C5B2 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				255723891BED453200A57F58 /* EventTableVC.swift */,
+				25EDC80D1BED76360061C5B2 /* EventManager.swift */,
+				25EDC80E1BED76360061C5B2 /* NewEventVC.swift */,
+				25EDC80F1BED76360061C5B2 /* EventDetailVC.swift */,
+			);
+			name = Event;
+			sourceTree = "<group>";
+		};
+		25EDC80B1BED74860061C5B2 /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				255723851BED420A00A57F58 /* ContactVC.swift */,
+				255723861BED420A00A57F58 /* GroupVC.swift */,
+			);
+			name = Contacts;
+			sourceTree = "<group>";
+		};
+		25EDC80C1BED74F20061C5B2 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				255723831BED41F100A57F58 /* MapVC.swift */,
+			);
+			name = Map;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -387,25 +437,30 @@
 				25EDC7EC1BED6E930061C5B2 /* CVCalendarContentViewController.swift in Sources */,
 				25EDC8011BED6E930061C5B2 /* CVShape.swift in Sources */,
 				25EDC8031BED6E930061C5B2 /* CVScrollDirection.swift in Sources */,
-				2557238A1BED453200A57F58 /* EventsTVC.swift in Sources */,
+				2557238A1BED453200A57F58 /* EventTableVC.swift in Sources */,
+				25EDC8101BED76360061C5B2 /* EventManager.swift in Sources */,
 				255723801BED32F300A57F58 /* RegisterVC.swift in Sources */,
 				25EDC7FB1BED6E930061C5B2 /* CVSet.swift in Sources */,
 				25EDC8021BED6E930061C5B2 /* CVSelectionType.swift in Sources */,
 				25EDC7F51BED6E930061C5B2 /* CVCalendarViewAnimator.swift in Sources */,
 				25EDC7FE1BED6E930061C5B2 /* CVCalendarViewAnimatorDelegate.swift in Sources */,
+				25EDC8161BED83DB0061C5B2 /* TaskDetailVC.swift in Sources */,
 				25EDC7F81BED6E930061C5B2 /* CVCalendarViewAppearance.swift in Sources */,
 				25EDC7F71BED6E930061C5B2 /* CVCalendarDayViewControlCoordinator.swift in Sources */,
 				25EDC7EE1BED6E930061C5B2 /* CVCalendarWeekContentViewController.swift in Sources */,
 				25EDC7F01BED6E930061C5B2 /* CVCalendarMenuView.swift in Sources */,
 				25EDC8001BED6E930061C5B2 /* CVRange.swift in Sources */,
+				25EDC8111BED76360061C5B2 /* NewEventVC.swift in Sources */,
 				255723881BED420A00A57F58 /* GroupVC.swift in Sources */,
 				2557237E1BED309E00A57F58 /* StartVC.swift in Sources */,
 				25EDC7F31BED6E930061C5B2 /* CVCalendarDayView.swift in Sources */,
 				25EDC7EF1BED6E930061C5B2 /* CVCalendarView.swift in Sources */,
+				25EDC8181BED83F90061C5B2 /* TaskManager.swift in Sources */,
 				2557238C1BED454C00A57F58 /* ToDoListTVC.swift in Sources */,
 				255723111BED079400A57F58 /* ViewController.swift in Sources */,
 				25EDC8061BED6E930061C5B2 /* CVWeekdaySymbolType.swift in Sources */,
 				255723841BED41F100A57F58 /* MapVC.swift in Sources */,
+				25EDC8121BED76360061C5B2 /* EventDetailVC.swift in Sources */,
 				25EDC7F21BED6E930061C5B2 /* CVCalendarWeekView.swift in Sources */,
 				25EDC7F11BED6E930061C5B2 /* CVCalendarMonthView.swift in Sources */,
 				25EDC7FD1BED6E930061C5B2 /* CVCalendarMenuViewDelegate.swift in Sources */,
@@ -413,6 +468,7 @@
 				25EDC7F91BED6E930061C5B2 /* CVCalendarManager.swift in Sources */,
 				25EDC7FC1BED6E930061C5B2 /* CVCalendarViewDelegate.swift in Sources */,
 				25EDC8041BED6E930061C5B2 /* CVCalendarWeekday.swift in Sources */,
+				25EDC8141BED83BF0061C5B2 /* NewTaskVC.swift in Sources */,
 				2557230F1BED079400A57F58 /* AppDelegate.swift in Sources */,
 				255723871BED420A00A57F58 /* ContactVC.swift in Sources */,
 				25EDC7FF1BED6E930061C5B2 /* CVCalendarViewAppearanceDelegate.swift in Sources */,
