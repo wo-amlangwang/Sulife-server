@@ -51,6 +51,12 @@ class NewEventVC: UIViewController {
         let eventStart = startTimeTextField.text!
         let eventEnd = endTimeTextField.text!
         
+        var dataSet:NSMutableDictionary = NSMutableDictionary()
+        dataSet.setObject(eventTitle, forKey: "eventTitle")
+        dataSet.setObject(eventDetail, forKey: "eventDetail")
+        dataSet.setObject(eventStart, forKey: "eventStartTime")
+        dataSet.setObject(eventEnd, forKey: "eventEndTime")
+        
         let post:NSString = "title=\(eventTitle)&detail=\(eventDetail)&starttime=\(eventStart)&endtime=\(eventEnd)"
         
         NSLog("PostData: %@",post);
@@ -95,9 +101,10 @@ class NewEventVC: UIViewController {
                         
                         let success:NSString = jsonResult.valueForKey("message") as! NSString
                         
-                        if (success == "OK") {
+                        if (success == "OK!") {
                             NSLog("Add Event Successfully")
-                        self.performSegueWithIdentifier("newToEventsTable", sender: self)
+                            //var eventToken = jsonResult.valueForKey("Event") as! NSString as String
+                            self.navigationController!.popToRootViewControllerAnimated(true)
                             
                         } else {
                             let alertView:UIAlertView = UIAlertView()

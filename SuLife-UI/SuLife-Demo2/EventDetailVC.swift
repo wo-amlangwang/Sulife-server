@@ -25,7 +25,7 @@ class EventDetailVC: UIViewController {
         startTimeTextField.userInteractionEnabled = false
         endTimeTextField.userInteractionEnabled = false
         
-        titleTextField.text = event.objectForKey("eventTitel") as? String
+        titleTextField.text = event.objectForKey("eventTitle") as? String
         detailTextField.text = event.objectForKey("eventDetail") as? String
         startTimeTextField.text = event.objectForKey("eventStartTime") as? String
         endTimeTextField.text = event.objectForKey("eventEndTime") as? String

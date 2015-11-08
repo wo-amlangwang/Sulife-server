@@ -155,7 +155,7 @@
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="j07-MG-iBe" kind="push" identifier="loginToRegister" id="wSe-LB-aS9"/>
+                                    <segue destination="j07-MG-iBe" kind="presentation" identifier="loginToRegister" id="wSe-LB-aS9"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k2E-OW-DWE">
@@ -235,7 +235,7 @@
                         <viewControllerLayoutGuide type="bottom" id="RIR-ln-n8k"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="YKK-Me-mI2">
-                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bvJ-oz-6H4">
@@ -245,7 +245,7 @@
                                 </state>
                                 <connections>
                                     <action selector="iHaveAnAccountButtonTapped:" destination="j07-MG-iBe" eventType="touchUpInside" id="mbl-s3-pks"/>
-                                    <segue destination="IJa-U8-Q5u" kind="push" identifier="registerToLogin" id="oH1-Tb-0B6"/>
+                                    <segue destination="IJa-U8-Q5u" kind="presentation" identifier="registerToLogin" id="oH1-Tb-0B6"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p5C-VL-KHO">
@@ -259,7 +259,6 @@
                                 </state>
                                 <connections>
                                     <action selector="registerButtonTapped:" destination="j07-MG-iBe" eventType="touchUpInside" id="3Df-Hw-A1C"/>
-                                    <segue destination="09O-H2-0Y4" kind="modal" identifier="registerToMain" id="SAa-2e-GKz"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="200" translatesAutoresizingMaskIntoConstraints="NO" id="FGy-tE-X2w">
@@ -349,6 +348,7 @@
                         <outlet property="userLastNameTextField" destination="ghM-0m-fA9" id="bpd-Yf-Jvu"/>
                         <outlet property="userPasswordTextField" destination="Ag8-5z-Min" id="ceo-xn-EdV"/>
                         <outlet property="userRepeatPasswordTextField" destination="rmi-Xi-Fks" id="cS2-l1-WE9"/>
+                        <segue destination="09O-H2-0Y4" kind="presentation" identifier="registerToMain" id="bbd-Mf-m0H"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Kn-Jn-Y3F" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -883,7 +883,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ash-Dp-E88"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="DgB-BW-cfc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" borderStyle="roundedRect" placeholder="Detail:" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="MhA-Cp-x2G">
@@ -992,6 +992,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="EventList" destination="0ra-Md-2Mv" id="yGl-WS-wsV"/>
+                        <segue destination="IJa-U8-Q5u" kind="presentation" identifier="eventTableToLogin" id="VDk-fS-4Nh"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5X-Vi-a8e" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1091,7 +1092,6 @@
                         <outlet property="endTimeTextField" destination="KtG-Ll-67c" id="eJg-aA-IV1"/>
                         <outlet property="startTimeTextField" destination="ImW-eJ-ifZ" id="eDM-lc-XSH"/>
                         <outlet property="titleTextField" destination="8LH-Rg-oEA" id="OCP-wc-rl8"/>
-                        <segue destination="EMq-Ng-Jhd" kind="modal" identifier="newToEventsTable" id="FlC-dy-9GA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h4s-bq-nrh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1344,8 +1344,7 @@
         <image name="task1" width="48" height="46"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tsq-NJ-VdF"/>
-        <segue reference="nKh-uT-iZC"/>
-        <segue reference="FlC-dy-9GA"/>
+        <segue reference="VDk-fS-4Nh"/>
+        <segue reference="bbd-Mf-m0H"/>
     </inferredMetricsTieBreakers>
 </document>

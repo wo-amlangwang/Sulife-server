@@ -31,7 +31,7 @@ class EventTableVC: UITableViewController {
         */
         
         /* get data from server */
-        let url:NSURL = NSURL(string:"https://damp-retreat-5682.herokuapp.com/event")!
+        let url:NSURL = NSURL(string: eventURL)!
         
         var post = ""
         
@@ -43,8 +43,8 @@ class EventTableVC: UITableViewController {
         request.HTTPMethod = "get"
         request.HTTPBody = postData
         request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        //request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        //request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.setValue(accountToken, forHTTPHeaderField: "x-access-token")
         
         var reponseError: NSError?
@@ -71,14 +71,47 @@ class EventTableVC: UITableViewController {
             //}
             
             let responseData:NSString = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
-            
+
             NSLog("Response ==> %@", responseData);
+            
+            var error: NSError?
+            
+            do {
+                if let jsonResult = try NSJSONSerialization.JSONObjectWithData(urlData!, options: []) as? NSDictionary {
+                    
+                    let success:NSString = jsonResult.valueForKey("message") as! NSString
+                    
+                    if (success != "OK! Events list followed") {
+                        NSLog("Add Event Successfully")
+                        let myAlert = UIAlertController(title: "Access Failed!", message: "Please Log In Again! ", preferredStyle: UIAlertControllerStyle.Alert)
+                        
+                        myAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
+                            myAlert .dismissViewControllerAnimated(true, completion: nil)
+                            self.performSegueWithIdentifier("eventTableToLogin", sender: self)
+                        }))
+                        presentViewController(myAlert, animated: true, completion: nil)
+                        
+                    }
+                }
+            } catch {
+                print(error)
+            }
+
+            
             events = responseData.componentsSeparatedByString("title\":\"")
             
+        } else {
+            let alertView:UIAlertView = UIAlertView()
+            alertView.title = "urlData Equals to NULL!"
+            alertView.message = "Connection fail!"
+            if let error = reponseError {
+                alertView.message = (error.localizedDescription)
+            }
+            alertView.delegate = self
+            alertView.addButtonWithTitle("OK")
+            alertView.show()
+
         }
-        
-        
-        
         
         self.tableView.reloadData()
     }
