@@ -13,5 +13,19 @@ module.exports = {
         res.status(200).send(req.reJson);
       }
     });
+  },
+  getEventByDate : function(req,res,next) {
+    Event.find({'userid' : req.userid , 'endtime' : {'$gte' : req.body.starttime}})
+    .exec(function(err,events) {
+      if(err){
+        req.reJson['message'] = 'something wrong when get data from database';
+        req.reJson['err'] = err;
+        res.status(500).send(req.reJson);
+      }else {
+        req.reJson['message'] = 'OK! Events list followed';
+        req.reJson['Events'] = events;
+        res.status(200).send(req.reJson);
+      }
+    });
   }
 }
