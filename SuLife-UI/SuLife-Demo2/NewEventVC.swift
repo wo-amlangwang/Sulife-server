@@ -53,15 +53,15 @@ class NewEventVC: UIViewController {
         let eventTitle = titleTextField.text!
         let eventDetail = detailTextField.text!
         
-<<<<<<< HEAD
-        var dataSet:NSMutableDictionary = NSMutableDictionary()
-        dataSet.setObject(eventTitle, forKey: "eventTitle")
-        dataSet.setObject(eventDetail, forKey: "eventDetail")
-        dataSet.setObject(eventStart, forKey: "eventStartTime")
-        dataSet.setObject(eventEnd, forKey: "eventEndTime")
+
+        //var dataSet:NSMutableDictionary = NSMutableDictionary()
+        //dataSet.setObject(eventTitle, forKey: "eventTitle")
+        //dataSet.setObject(eventDetail, forKey: "eventDetail")
+        //dataSet.setObject(eventStart, forKey: "eventStartTime")
+        //dataSet.setObject(eventEnd, forKey: "eventEndTime")
         
-        let post:NSString = "title=\(eventTitle)&detail=\(eventDetail)&starttime=\(eventStart)&endtime=\(eventEnd)"
-=======
+        //let post:NSString = "title=\(eventTitle)&detail=\(eventDetail)&starttime=\(eventStart)&endtime=\(eventEnd)"
+
         // Get date from input and convert format
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
@@ -70,7 +70,6 @@ class NewEventVC: UIViewController {
 
         // Post to server
         let post:NSString = "title=\(eventTitle)&detail=\(eventDetail)&starttime=\(startDate)&endtime=\(endDate)"
->>>>>>> origin/master
         
         NSLog("PostData: %@",post);
         
@@ -119,12 +118,9 @@ class NewEventVC: UIViewController {
                         
                         if (success == "OK!") {
                             NSLog("Add Event Successfully")
-<<<<<<< HEAD
+                            
                             //var eventToken = jsonResult.valueForKey("Event") as! NSString as String
                             self.navigationController!.popToRootViewControllerAnimated(true)
-=======
-                        //self.performSegueWithIdentifier("newToEventsTable", sender: self)
->>>>>>> origin/master
                             
                         } else {
                             let alertView:UIAlertView = UIAlertView()
