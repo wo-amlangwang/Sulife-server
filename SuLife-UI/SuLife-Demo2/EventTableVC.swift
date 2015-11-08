@@ -26,7 +26,7 @@ class EventTableVC: UITableViewController {
         var eventFromDefaults:NSMutableArray? = userDefaults.objectForKey("eventList") as? NSMutableArray
         
         if ((eventFromDefaults) != nil) {
-            events = eventFromDefaults!
+        events = eventFromDefaults!
         }
         */
         
@@ -77,8 +77,8 @@ class EventTableVC: UITableViewController {
             
         }
         
-
-    
+        
+        
         
         self.tableView.reloadData()
     }
@@ -118,7 +118,7 @@ class EventTableVC: UITableViewController {
         
         cell.textLabel?.text = event.substringToIndex(event.rangeOfString("\"").location) as? String
         
-
+        
         return cell
     }
     
@@ -129,7 +129,7 @@ class EventTableVC: UITableViewController {
         if (segue == "schowDetail" && segue!.identifier == "schowDetail"){
             var selectedIndexPath:NSIndexPath = self.tableView.indexPathForSelectedRow!
             var eventDetailVC:EventDetailVC = segue!.destinationViewController as! EventDetailVC
-           // eventDetailVC.event = events.objectAtIndex(selectedIndexPath.row) as! NSDictionary
+            // eventDetailVC.event = events.objectAtIndex(selectedIndexPath.row) as! NSDictionary
         }
         
     }

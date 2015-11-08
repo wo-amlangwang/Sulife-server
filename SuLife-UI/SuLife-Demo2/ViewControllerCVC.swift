@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 class ViewControllerCVC: UIViewController {
     // MARK: - Properties
     @IBOutlet weak var calendarView: CVCalendarView!
@@ -152,7 +154,7 @@ extension ViewControllerCVC: CVCalendarViewDelegate, CVCalendarMenuViewDelegate 
 
 // MARK: - CVCalendarViewDelegate
 /*
-extension ViewController: CVCalendarViewDelegate {
+extension ViewControllerCVC: CVCalendarViewDelegate {
     func preliminaryView(viewOnDayView dayView: DayView) -> UIView {
         let circleView = CVAuxiliaryView(dayView: dayView, rect: dayView.bounds, shape: CVShape.Circle)
         circleView.fillColor = .colorFromCode(0xCCCCCC)
