@@ -167,7 +167,11 @@ class EventTableVC: UITableViewController {
         
     }
     
-    
+    // Close newevent automatically after saving it
+    @IBAction func close(segue: UIStoryboardSegue) {
+        NSLog("closed");
+        tableView.reloadData();
+    }
     
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

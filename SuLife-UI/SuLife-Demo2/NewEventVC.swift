@@ -14,8 +14,11 @@ class NewEventVC: UIViewController {
 
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var detailTextField: UITextField!
-    @IBOutlet weak var startTimeTextField: UITextField!
-    @IBOutlet weak var endTimeTextField: UITextField!
+    @IBOutlet weak var startTimePicker: UIDatePicker!
+    @IBOutlet weak var endTimePicker: UIDatePicker!
+    
+    var startDate : NSString = ""
+    var endDate : NSString = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,19 +41,19 @@ class NewEventVC: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
     @IBAction func addEventTapped(sender: UIButton) {
         
         // TODO SERVER
-        var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+       // var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         
-        var eventList: NSMutableArray? = userDefaults.objectForKey("eventList") as? NSMutableArray
+       // var eventList: NSMutableArray? = userDefaults.objectForKey("eventList") as? NSMutableArray
         
+        // Get title and detail from input
         let eventTitle = titleTextField.text!
         let eventDetail = detailTextField.text!
-        let eventStart = startTimeTextField.text!
-        let eventEnd = endTimeTextField.text!
         
+<<<<<<< HEAD
         var dataSet:NSMutableDictionary = NSMutableDictionary()
         dataSet.setObject(eventTitle, forKey: "eventTitle")
         dataSet.setObject(eventDetail, forKey: "eventDetail")
@@ -58,6 +61,16 @@ class NewEventVC: UIViewController {
         dataSet.setObject(eventEnd, forKey: "eventEndTime")
         
         let post:NSString = "title=\(eventTitle)&detail=\(eventDetail)&starttime=\(eventStart)&endtime=\(eventEnd)"
+=======
+        // Get date from input and convert format
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        startDate = dateFormatter.stringFromDate(startTimePicker.date)
+        endDate = dateFormatter.stringFromDate(endTimePicker.date)
+
+        // Post to server
+        let post:NSString = "title=\(eventTitle)&detail=\(eventDetail)&starttime=\(startDate)&endtime=\(endDate)"
+>>>>>>> origin/master
         
         NSLog("PostData: %@",post);
         
@@ -70,7 +83,10 @@ class NewEventVC: UIViewController {
         let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "POST"
         request.HTTPBody = postData
-        request.setValue(accountToken as String, forHTTPHeaderField: "x-access-token")
+        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue(accountToken, forHTTPHeaderField: "x-access-token")
         
         var reponseError: NSError?
         var response: NSURLResponse?
@@ -103,8 +119,12 @@ class NewEventVC: UIViewController {
                         
                         if (success == "OK!") {
                             NSLog("Add Event Successfully")
+<<<<<<< HEAD
                             //var eventToken = jsonResult.valueForKey("Event") as! NSString as String
                             self.navigationController!.popToRootViewControllerAnimated(true)
+=======
+                        //self.performSegueWithIdentifier("newToEventsTable", sender: self)
+>>>>>>> origin/master
                             
                         } else {
                             let alertView:UIAlertView = UIAlertView()
@@ -113,6 +133,7 @@ class NewEventVC: UIViewController {
                             alertView.delegate = self
                             alertView.addButtonWithTitle("OK")
                             alertView.show()
+                            NSLog("1")
                         }
                         
                     }
@@ -131,6 +152,7 @@ class NewEventVC: UIViewController {
                 alertView.delegate = self
                 alertView.addButtonWithTitle("OK")
                 alertView.show()
+                NSLog("2")
             }
             
         } else {
@@ -142,5 +164,16 @@ class NewEventVC: UIViewController {
             alertView.show()
         }
     }
-
+    
+    
+    /* Close keyboard when clicking enter*/
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder();
+        return true;
+    }
+    
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        titleTextField.resignFirstResponder();
+        detailTextField.resignFirstResponder();
+    }
 }
