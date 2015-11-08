@@ -10,41 +10,20 @@ import UIKit
 
 class EventTableVC: UITableViewController {
     
-    // var events:NSMutableArray = NSMutableArray()
     // MARK: Properties
     
     @IBOutlet var EventList: UITableView!
     
-    
     var events : [NSString] = []
+    var titles : [NSString] = []
     
     // reload data in table
     override func viewDidAppear(animated: Bool) {
-        /*
-        var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        
-        var eventFromDefaults:NSMutableArray? = userDefaults.objectForKey("eventList") as? NSMutableArray
-        
-        if ((eventFromDefaults) != nil) {
-        events = eventFromDefaults!
-        }
-        */
         
         /* get data from server */
         let url:NSURL = NSURL(string: eventURL)!
-        
-        var post = ""
-        
-        let postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
-        
-        let postLength:NSString = String( postData.length )
-        
         let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "get"
-        request.HTTPBody = postData
-        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
-        //request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        //request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.setValue(accountToken, forHTTPHeaderField: "x-access-token")
         
         var reponseError: NSError?
@@ -61,14 +40,9 @@ class EventTableVC: UITableViewController {
         if ( urlData != nil ) {
             let res = response as! NSHTTPURLResponse!;
             
-            if(res==nil){
+            if(res == nil){
                 NSLog("No Response!");
             }
-            
-            //if (res.statusCode >= 200 && res.statusCode < 300)
-            //{
-            //var error: NSError?
-            //}
             
             let responseData:NSString = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
 
@@ -96,8 +70,8 @@ class EventTableVC: UITableViewController {
             } catch {
                 print(error)
             }
-
             
+            // Parse response string to get events title
             events = responseData.componentsSeparatedByString("title\":\"")
             
         } else {
@@ -138,7 +112,7 @@ class EventTableVC: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        // return number of events
         return events.count - 1
     }
     
@@ -146,11 +120,10 @@ class EventTableVC: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
         
         // Configure the cell...
-        // var event:NSDictionary = events.objectAtIndex(indexPath.row) as! NSDictionary
+
         var event = events[indexPath.row + 1] as NSString
         
         cell.textLabel?.text = event.substringToIndex(event.rangeOfString("\"").location) as? String
-        
         
         return cell
     }
@@ -158,14 +131,36 @@ class EventTableVC: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue?, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
-        
-        if (segue == "schowDetail" && segue!.identifier == "schowDetail"){
-            var selectedIndexPath:NSIndexPath = self.tableView.indexPathForSelectedRow!
-            var eventDetailVC:EventDetailVC = segue!.destinationViewController as! EventDetailVC
-            // eventDetailVC.event = events.objectAtIndex(selectedIndexPath.row) as! NSDictionary
+        if (segue?.identifier == "showDetail") {
+            let vc = segue?.destinationViewController as! EventDetailVC
+            let indexPath = tableView.indexPathForSelectedRow
+            if let index = indexPath {
+                let tempStr : NSString = events[index.row]
+                let endTime : [NSString] = tempStr.componentsSeparatedByString("endtime\":\"")
+                let startTime : [NSString] = endTime[1].componentsSeparatedByString("starttime\":\"")
+                let detail : [NSString] = startTime[1].componentsSeparatedByString("detail\":\"")
+                let st = startTime[1].substringToIndex(startTime[1].rangeOfString(".").location - 3).stringByReplacingOccurrencesOfString("T", withString: " ")
+                let et = endTime[1].substringToIndex(endTime[1].rangeOfString(".").location - 3).stringByReplacingOccurrencesOfString("T", withString: " ")
+                NSLog("index ==> %d", index.row);
+                NSLog("detail ==> %@", detail[1]);
+                NSLog("st ==> %@", st);
+                NSLog("et ==> %@", et);
+                vc.eventDetail = EventModel(title : events[index.row + 1].substringToIndex(events[index.row + 1].rangeOfString("\"").location) as String,
+                    detail : detail[1].substringToIndex(detail[1].rangeOfString("\"").location),
+                    startTime : dateFromString(st),
+                    endTime : dateFromString(et))
+            }
         }
         
     }
+    
+    func dateFromString (str : String) -> NSDate {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        let date = dateFormatter.dateFromString(str)
+        return date!
+    }
+    
     
     // Close newevent automatically after saving it
     @IBAction func close(segue: UIStoryboardSegue) {
@@ -173,59 +168,17 @@ class EventTableVC: UITableViewController {
         tableView.reloadData();
     }
     
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-    
-    // Configure the cell...
-    
-    return cell
-    }
-    */
-    
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    // Return false if you do not want the specified item to be editable.
-    return true
-    }
-    */
-    
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-    if editingStyle == .Delete {
-    // Delete the row from the data source
-    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-    } else if editingStyle == .Insert {
-    // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }
-    }
-    */
-    
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-    
-    }
-    */
-    
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    // Return false if you do not want the item to be re-orderable.
-    return true
-    }
-    */
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
-    
 }
+
+// Local Data
+// var events:NSMutableArray = NSMutableArray()
+/*
+var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+
+var eventFromDefaults:NSMutableArray? = userDefaults.objectForKey("eventList") as? NSMutableArray
+
+if ((eventFromDefaults) != nil) {
+events = eventFromDefaults!
+}
+*/
+// var event:NSDictionary = events.objectAtIndex(indexPath.row) as! NSDictionary

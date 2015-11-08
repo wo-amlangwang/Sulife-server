@@ -12,8 +12,11 @@ class EventDetailVC: UIViewController {
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var detailTextField: UITextField!
-    @IBOutlet weak var startTimeTextField: UITextField!
-    @IBOutlet weak var endTimeTextField: UITextField!
+    @IBOutlet weak var startTimePicker: UIDatePicker!
+    @IBOutlet weak var endTimePicker: UIDatePicker!
+
+    
+    var eventDetail : EventModel?
     
     var event:NSDictionary = NSDictionary()
     
@@ -22,13 +25,18 @@ class EventDetailVC: UIViewController {
         
         titleTextField.userInteractionEnabled = false
         detailTextField.userInteractionEnabled = false
-        startTimeTextField.userInteractionEnabled = false
-        endTimeTextField.userInteractionEnabled = false
+        startTimePicker.userInteractionEnabled = false
+        endTimePicker.userInteractionEnabled = false
         
-        titleTextField.text = event.objectForKey("eventTitle") as? String
+        /*titleTextField.text = event.objectForKey("eventTitle") as? String
         detailTextField.text = event.objectForKey("eventDetail") as? String
         startTimeTextField.text = event.objectForKey("eventStartTime") as? String
-        endTimeTextField.text = event.objectForKey("eventEndTime") as? String
+        endTimeTextField.text = event.objectForKey("eventEndTime") as? String*/
+        
+        titleTextField.text = eventDetail?.title as? String
+        detailTextField.text = eventDetail?.detail as? String
+        startTimePicker.date = (eventDetail?.startTime)!
+        endTimePicker.date = (eventDetail?.endTime)!
         
         // Do any additional setup after loading the view.
         
