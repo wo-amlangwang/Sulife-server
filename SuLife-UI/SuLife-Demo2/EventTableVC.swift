@@ -10,9 +10,13 @@ import UIKit
 
 class EventTableVC: UITableViewController {
     
-    var events:NSMutableArray = NSMutableArray()
+    // var events:NSMutableArray = NSMutableArray()
+    // MARK: Properties
+    
+    @IBOutlet var EventList: UITableView!
     
     
+    var events : [NSString] = []
     
     // reload data in table
     override func viewDidAppear(animated: Bool) {
@@ -26,6 +30,7 @@ class EventTableVC: UITableViewController {
         }
         */
         
+        /* get data from server */
         let url:NSURL = NSURL(string:"https://damp-retreat-5682.herokuapp.com/event")!
         
         var post = ""
@@ -57,18 +62,19 @@ class EventTableVC: UITableViewController {
             let res = response as! NSHTTPURLResponse!;
             
             if(res==nil){
-                NSLog("fuck alex");
-          //  NSLog("Response code: %ld", res.statusCode);
+                NSLog("No Response!");
             }
             
             //if (res.statusCode >= 200 && res.statusCode < 300)
             //{
-                let responseData:NSString  = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
-                
-                NSLog("Response ==> %@", responseData);
-                
-                //var error: NSError?
+            //var error: NSError?
             //}
+            
+            let responseData:NSString = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
+            
+            NSLog("Response ==> %@", responseData);
+            events = responseData.componentsSeparatedByString("title\":\"")
+            
         }
         
 
@@ -76,7 +82,6 @@ class EventTableVC: UITableViewController {
         
         self.tableView.reloadData()
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,16 +106,19 @@ class EventTableVC: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return events.count
+        return events.count - 1
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
         
         // Configure the cell...
-        var event:NSDictionary = events.objectAtIndex(indexPath.row) as! NSDictionary
-        cell.textLabel?.text = event.objectForKey("eventTitle") as? String
+        // var event:NSDictionary = events.objectAtIndex(indexPath.row) as! NSDictionary
+        var event = events[indexPath.row + 1] as NSString
         
+        cell.textLabel?.text = event.substringToIndex(event.rangeOfString("\"").location) as? String
+        
+
         return cell
     }
     
@@ -121,7 +129,7 @@ class EventTableVC: UITableViewController {
         if (segue == "schowDetail" && segue!.identifier == "schowDetail"){
             var selectedIndexPath:NSIndexPath = self.tableView.indexPathForSelectedRow!
             var eventDetailVC:EventDetailVC = segue!.destinationViewController as! EventDetailVC
-            eventDetailVC.event = events.objectAtIndex(selectedIndexPath.row) as! NSDictionary
+           // eventDetailVC.event = events.objectAtIndex(selectedIndexPath.row) as! NSDictionary
         }
         
     }

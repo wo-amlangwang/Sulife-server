@@ -31,6 +31,7 @@ class EventDetailVC: UIViewController {
         endTimeTextField.text = event.objectForKey("eventEndTime") as? String
         
         // Do any additional setup after loading the view.
+
     }
     
     @IBAction func deleteItem(sender: AnyObject) {
