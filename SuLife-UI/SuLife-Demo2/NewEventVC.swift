@@ -14,8 +14,11 @@ class NewEventVC: UIViewController {
 
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var detailTextField: UITextField!
-    @IBOutlet weak var startTimeTextField: UITextField!
-    @IBOutlet weak var endTimeTextField: UITextField!
+    @IBOutlet weak var startTimePicker: UIDatePicker!
+    @IBOutlet weak var endTimePicker: UIDatePicker!
+    
+    var startDate : NSString = ""
+    var endDate : NSString = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +41,7 @@ class NewEventVC: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
     @IBAction func addEventTapped(sender: UIButton) {
         
         // TODO SERVER
@@ -46,12 +49,18 @@ class NewEventVC: UIViewController {
         
         var eventList: NSMutableArray? = userDefaults.objectForKey("eventList") as? NSMutableArray
         
+        // Get title and detail from input
         let eventTitle = titleTextField.text!
         let eventDetail = detailTextField.text!
-        let eventStart = startTimeTextField.text!
-        let eventEnd = endTimeTextField.text!
         
-        let post:NSString = "title=\(eventTitle)&detail=\(eventDetail)&starttime=\(eventStart)&endtime=\(eventEnd)"
+        // Get date from input and convert format
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        startDate = dateFormatter.stringFromDate(startTimePicker.date)
+        endDate = dateFormatter.stringFromDate(endTimePicker.date)
+
+        // Post to server
+        let post:NSString = "title=\(eventTitle)&detail=\(eventDetail)&starttime=\(startDate)&endtime=\(endDate)"
         
         NSLog("PostData: %@",post);
         
@@ -94,7 +103,17 @@ class NewEventVC: UIViewController {
                 //var error: NSError?
             }
         }
-
-        
+    }
+    
+    
+    /* Close keyboard when clicking enter*/
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder();
+        return true;
+    }
+    
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        titleTextField.resignFirstResponder();
+        detailTextField.resignFirstResponder();
     }
 }
