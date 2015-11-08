@@ -45,9 +45,9 @@ class NewEventVC: UIViewController {
     @IBAction func addEventTapped(sender: UIButton) {
         
         // TODO SERVER
-        var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+       // var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         
-        var eventList: NSMutableArray? = userDefaults.objectForKey("eventList") as? NSMutableArray
+       // var eventList: NSMutableArray? = userDefaults.objectForKey("eventList") as? NSMutableArray
         
         // Get title and detail from input
         let eventTitle = titleTextField.text!
@@ -73,7 +73,10 @@ class NewEventVC: UIViewController {
         let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "POST"
         request.HTTPBody = postData
-        request.setValue(accountToken as String, forHTTPHeaderField: "x-access-token")
+        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue(accountToken, forHTTPHeaderField: "x-access-token")
         
         var reponseError: NSError?
         var response: NSURLResponse?
@@ -104,9 +107,9 @@ class NewEventVC: UIViewController {
                         
                         let success:NSString = jsonResult.valueForKey("message") as! NSString
                         
-                        if (success == "OK") {
+                        if (success == "OK!") {
                             NSLog("Add Event Successfully")
-                        self.performSegueWithIdentifier("newToEventsTable", sender: self)
+                        //self.performSegueWithIdentifier("newToEventsTable", sender: self)
                             
                         } else {
                             let alertView:UIAlertView = UIAlertView()
@@ -115,6 +118,7 @@ class NewEventVC: UIViewController {
                             alertView.delegate = self
                             alertView.addButtonWithTitle("OK")
                             alertView.show()
+                            NSLog("1")
                         }
                         
                     }
@@ -133,6 +137,7 @@ class NewEventVC: UIViewController {
                 alertView.delegate = self
                 alertView.addButtonWithTitle("OK")
                 alertView.show()
+                NSLog("2")
             }
             
         } else {
@@ -156,5 +161,4 @@ class NewEventVC: UIViewController {
         titleTextField.resignFirstResponder();
         detailTextField.resignFirstResponder();
     }
-
 }
