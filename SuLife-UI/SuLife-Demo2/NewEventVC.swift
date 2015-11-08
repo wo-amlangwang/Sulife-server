@@ -64,10 +64,7 @@ class NewEventVC: UIViewController {
         let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "POST"
         request.HTTPBody = postData
-        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        request.setValue(accountToken, forHTTPHeaderField: "x-access-token")
+        request.setValue(accountToken as String, forHTTPHeaderField: "x-access-token")
         
         var reponseError: NSError?
         var response: NSURLResponse?
@@ -91,10 +88,52 @@ class NewEventVC: UIViewController {
                 
                 NSLog("Response ==> %@", responseData);
                 
-                //var error: NSError?
+                var error: NSError?
+                
+                do {
+                    if let jsonResult = try NSJSONSerialization.JSONObjectWithData(urlData!, options: []) as? NSDictionary {
+                        
+                        let success:NSString = jsonResult.valueForKey("message") as! NSString
+                        
+                        if (success == "OK") {
+                            NSLog("Add Event Successfully")
+                        self.performSegueWithIdentifier("newToEventsTable", sender: self)
+                            
+                        } else {
+                            let alertView:UIAlertView = UIAlertView()
+                            alertView.title = "Add New Event Failed!"
+                            alertView.message = "Please Try Again!"
+                            alertView.delegate = self
+                            alertView.addButtonWithTitle("OK")
+                            alertView.show()
+                        }
+                        
+                    }
+                } catch {
+                    print(error)
+                }
+                
+                
+                
+                //[jsonData[@"success"] integerValue];
+                
+            } else {
+                let alertView:UIAlertView = UIAlertView()
+                alertView.title = "Add New Event Failed!"
+                alertView.message = "System Error!"
+                alertView.delegate = self
+                alertView.addButtonWithTitle("OK")
+                alertView.show()
             }
+            
+        } else {
+            let alertView:UIAlertView = UIAlertView()
+            alertView.title = "Add New Event Failed!"
+            alertView.message = "Response Error!"
+            alertView.delegate = self
+            alertView.addButtonWithTitle("OK")
+            alertView.show()
         }
-
-        
     }
+
 }

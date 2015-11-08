@@ -111,12 +111,13 @@ class RegisterVC: UIViewController {
                         
                         
                         let success:NSString = jsonData.valueForKey("message") as! NSString
-                        let mytoken:NSString = jsonData.valueForKey("Access_Token") as! NSString
+                        NSLog("Success: %@", success);
+                        accountToken = jsonData.valueForKey("Access_Token") as! NSString as String
+                        NSLog("accountToken: %@", accountToken);
                         
                         //[jsonData[@"success"] integerValue];
                         
                         NSLog("Success: %@", success);
-                        NSLog("token is : %@", mytoken);
                         if(success == "OK")
                         {
                             NSLog("Sign Up SUCCESS");
@@ -131,7 +132,7 @@ class RegisterVC: UIViewController {
                             // Send firstName & lastName to database
                             //======================================
                             
-                            sendUserPrfileToDB(mytoken, firstname: userLastName, lastname: userFirstName)
+                            sendUserPrfileToDB(accountToken, firstname: userLastName, lastname: userFirstName)
                             
                             //=======================================
                             // Auot login
@@ -212,7 +213,7 @@ class RegisterVC: UIViewController {
             
             NSLog("PostData: %@",post);
             
-            let url:NSURL = NSURL(string: "https://damp-retreat-5682.herokuapp.com/profile")!
+            let url:NSURL = NSURL(string: profileURL)!
             
             let postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
             
