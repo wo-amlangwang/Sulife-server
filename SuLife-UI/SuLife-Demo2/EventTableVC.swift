@@ -69,7 +69,6 @@ class EventTableVC: UITableViewController {
                 if let jsonResult = try NSJSONSerialization.JSONObjectWithData(urlData!, options: []) as? NSDictionary {
                     
                     let success:NSString = jsonResult.valueForKey("message") as! NSString
-                    resArray = jsonResult.valueForKey("Events") as! [NSDictionary]
                     
                     if (success != "OK! Events list followed") {
                         NSLog("Get Event Failed")
@@ -81,6 +80,8 @@ class EventTableVC: UITableViewController {
                         }))
                         presentViewController(myAlert, animated: true, completion: nil)
                         
+                    } else {
+                        resArray = jsonResult.valueForKey("Events") as! [NSDictionary]
                     }
                 }
             } catch {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Idj-Rj-tcw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Idj-Rj-tcw">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
@@ -430,28 +430,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D1Y-Fq-aCn">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                <items>
-                                    <navigationItem title="Map" id="dTd-UN-1bD"/>
-                                </items>
-                            </navigationBar>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="f5u-9m-UAS">
-                                <rect key="frame" x="82" y="230" width="240" height="128"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="lcj-ek-cdc">
+                                <rect key="frame" x="0.0" y="52" width="414" height="635"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="f5u-9m-UAS" firstAttribute="width" secondItem="1yG-P2-cnO" secondAttribute="width" id="9f2-Xg-PqB"/>
-                            <constraint firstItem="f5u-9m-UAS" firstAttribute="centerX" secondItem="1yG-P2-cnO" secondAttribute="centerX" id="K8H-Cs-fFn"/>
-                            <constraint firstItem="f5u-9m-UAS" firstAttribute="height" secondItem="1yG-P2-cnO" secondAttribute="height" id="YBS-x9-a3a"/>
-                            <constraint firstItem="f5u-9m-UAS" firstAttribute="centerY" secondItem="1yG-P2-cnO" secondAttribute="centerY" id="fUl-Kl-NRh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lcj-ek-cdc" secondAttribute="trailing" constant="-20" id="CtU-Uo-Wh6"/>
+                            <constraint firstItem="lcj-ek-cdc" firstAttribute="leading" secondItem="1yG-P2-cnO" secondAttribute="leadingMargin" constant="-20" id="tmL-HV-a6Q"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="d0g-gm-mXn"/>
+                    <navigationItem key="navigationItem" title="Map" id="d0g-gm-mXn">
+                        <barButtonItem key="rightBarButtonItem" title="Refresh" id="FTL-Ml-Gii">
+                            <connections>
+                                <action selector="updateLocation:" destination="qT7-Hq-tz6" id="Abo-Wh-BDm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
-                        <outlet property="theMap" destination="f5u-9m-UAS" id="GmT-tN-u2u"/>
+                        <outlet property="mapView" destination="lcj-ek-cdc" id="vrQ-Mc-687"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tce-P2-O8E" userLabel="First Responder" sceneMemberID="firstResponder"/>

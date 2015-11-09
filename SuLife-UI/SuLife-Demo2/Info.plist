@@ -30,6 +30,10 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Update Location</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Upadte location</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
