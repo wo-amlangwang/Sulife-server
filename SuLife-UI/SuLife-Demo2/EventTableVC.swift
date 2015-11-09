@@ -13,8 +13,8 @@ class EventTableVC: UITableViewController {
     // MARK: Properties
     
     @IBOutlet var EventList: UITableView!
-    
-    var events : [NSString] = []
+
+    var resArray : [NSDictionary] = []
     
     // reload data in table
     override func viewDidAppear(animated: Bool) {
@@ -69,6 +69,7 @@ class EventTableVC: UITableViewController {
                 if let jsonResult = try NSJSONSerialization.JSONObjectWithData(urlData!, options: []) as? NSDictionary {
                     
                     let success:NSString = jsonResult.valueForKey("message") as! NSString
+                    resArray = jsonResult.valueForKey("Events") as! [NSDictionary]
                     
                     if (success != "OK! Events list followed") {
                         NSLog("Get Event Failed")
@@ -85,9 +86,6 @@ class EventTableVC: UITableViewController {
             } catch {
                 print(error)
             }
-            
-            // Parse response string to get events title
-            events = responseData.componentsSeparatedByString("title\":\"")
             
         } else {
             let alertView:UIAlertView = UIAlertView()
@@ -128,7 +126,7 @@ class EventTableVC: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // return number of events
-        return events.count - 1
+        return resArray.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -136,9 +134,9 @@ class EventTableVC: UITableViewController {
         
         // Configure the cell...
 
-        var event = events[indexPath.row + 1] as NSString
+        var event = resArray[indexPath.row] as NSDictionary
         
-        cell.textLabel?.text = event.substringToIndex(event.rangeOfString("\"").location) as? String
+        cell.textLabel?.text = event.valueForKey("title") as? String;
         
         return cell
     }
@@ -150,20 +148,19 @@ class EventTableVC: UITableViewController {
             let vc = segue?.destinationViewController as! EventDetailVC
             let indexPath = tableView.indexPathForSelectedRow
             if let index = indexPath {
-                let tempStr : NSString = events[index.row + 1]
-                let detail : [NSString] = events[index.row].componentsSeparatedByString("detail\":\"")
-                let endTime : [NSString] = tempStr.componentsSeparatedByString("endtime\":\"")
-                let startTime : [NSString] = endTime[1].componentsSeparatedByString("starttime\":\"")
-                let st = startTime[1].substringToIndex(startTime[1].rangeOfString(".").location - 3).stringByReplacingOccurrencesOfString("T", withString: " ")
-                let et = endTime[1].substringToIndex(endTime[1].rangeOfString(".").location - 3).stringByReplacingOccurrencesOfString("T", withString: " ")
-                NSLog("index ==> %d", index.row);
-                NSLog("detail ==> %@", detail[1]);
+                let event : NSDictionary = resArray[index.row]
+                let id = event.valueForKey("_id") as? NSString
+                let title = event.valueForKey("title") as? NSString
+                let detail = event.valueForKey("detail") as? NSString
+                let st = event.valueForKey("starttime") as! NSString
+                let et = event.valueForKey("endtime") as! NSString
+                let share = event.valueForKey("share") as? Bool
+                let startTime = st.substringToIndex(st.rangeOfString(".").location - 3).stringByReplacingOccurrencesOfString("T", withString: " ")
+                let endTime = et.substringToIndex(et.rangeOfString(".").location - 3).stringByReplacingOccurrencesOfString("T", withString: " ")
+                NSLog("detail ==> %@", detail!);
                 NSLog("st ==> %@", st);
                 NSLog("et ==> %@", et);
-                vc.eventDetail = EventModel(title : events[index.row + 1].substringToIndex(events[index.row + 1].rangeOfString("\"").location) as String,
-                    detail : detail[1].substringToIndex(detail[1].rangeOfString("\"").location),
-                    startTime : dateFromString(st),
-                    endTime : dateFromString(et))
+                vc.eventDetail = EventModel(title: title!, detail: detail!, startTime: dateFromString(startTime), endTime: dateFromString(endTime), id: id!, share: share!)
             }
         }
         

@@ -13,11 +13,15 @@ class EventModel: NSObject {
     var detail : NSString
     var startTime : NSDate
     var endTime : NSDate
+    var id : NSString
+    var share : Bool
     
-    init (title : NSString, detail : NSString, startTime : NSDate, endTime : NSDate) {
+    init (title : NSString, detail : NSString, startTime : NSDate, endTime : NSDate, id : NSString, share : Bool) {
         self.title = title
         self.detail = detail
         self.startTime = startTime
         self.endTime = endTime
+        self.id = id
+        self.share = share
     }
 }

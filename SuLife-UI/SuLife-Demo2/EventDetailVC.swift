@@ -28,11 +28,6 @@ class EventDetailVC: UIViewController {
         startTimePicker.userInteractionEnabled = false
         endTimePicker.userInteractionEnabled = false
         
-        /*titleTextField.text = event.objectForKey("eventTitle") as? String
-        detailTextField.text = event.objectForKey("eventDetail") as? String
-        startTimeTextField.text = event.objectForKey("eventStartTime") as? String
-        endTimeTextField.text = event.objectForKey("eventEndTime") as? String*/
-        
         titleTextField.text = eventDetail?.title as? String
         detailTextField.text = eventDetail?.detail as? String
         startTimePicker.date = (eventDetail?.startTime)!
@@ -43,24 +38,75 @@ class EventDetailVC: UIViewController {
     }
     
     @IBAction func deleteItem(sender: AnyObject) {
+        /* get data from server */
+        NSLog("id ==> %@", (eventDetail?.id)!);
+        let deleteurl = eventURL + "/" + ((eventDetail?.id)! as String)
+        let url:NSURL = NSURL(string: deleteurl)!
+        let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "delete"
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue(accountToken, forHTTPHeaderField: "x-access-token")
         
-        var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        var reponseError: NSError?
+        var response: NSURLResponse?
         
-        var itemListArray:NSMutableArray = userDefaults.objectForKey("itemList") as! NSMutableArray
-        
-        var mutableItemList:NSMutableArray = NSMutableArray()
-        
-        for dict:AnyObject in itemListArray{
-            mutableItemList.addObject(dict as! NSDictionary)
+        var urlData: NSData?
+        do {
+            urlData = try NSURLConnection.sendSynchronousRequest(request, returningResponse:&response)
+        } catch let error as NSError {
+            reponseError = error
+            urlData = nil
         }
         
-        mutableItemList.removeObject(event)
+        if ( urlData != nil ) {
+            let res = response as! NSHTTPURLResponse!;
+            
+            if(res == nil){
+                NSLog("No Response!");
+            }
+            
+            let responseData:NSString = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
+            
+            NSLog("Response ==> %@", responseData);
+            
+            var error: NSError?
+            
+            do {
+                if let jsonResult = try NSJSONSerialization.JSONObjectWithData(urlData!, options: []) as? NSDictionary {
+                    
+                    let success:NSString = jsonResult.valueForKey("message") as! NSString
+                    
+                    /*if (success != "OK! Events list followed") {
+                        NSLog("Get Event Failed")
+                        let myAlert = UIAlertController(title: "Access Failed!", message: "Please Log In Again! ", preferredStyle: UIAlertControllerStyle.Alert)
+                        
+                        myAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
+                            myAlert .dismissViewControllerAnimated(true, completion: nil)
+                            self.performSegueWithIdentifier("eventTableToLogin", sender: self)
+                        }))
+                        presentViewController(myAlert, animated: true, completion: nil)
+                        
+                    }*/
+                }
+            } catch {
+                print(error)
+            }
+            
+            
+        } else {
+            let alertView:UIAlertView = UIAlertView()
+            alertView.title = "urlData Equals to NULL!"
+            alertView.message = "Connection fail!"
+            if let error = reponseError {
+                alertView.message = (error.localizedDescription)
+            }
+            alertView.delegate = self
+            alertView.addButtonWithTitle("OK")
+            alertView.show()
+            
+        }
         
-        userDefaults.removeObjectForKey("itemList")
-        userDefaults.setObject(mutableItemList, forKey: "itemList")
-        userDefaults.synchronize()
-        
-        self.navigationController!.popToRootViewControllerAnimated(true)
         
     }
     

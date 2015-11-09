@@ -958,7 +958,7 @@
                         <barButtonItem key="rightBarButtonItem" image="delete" id="aAv-Ph-sWD">
                             <inset key="imageInsets" minX="15" minY="10" maxX="0.0" maxY="10"/>
                             <connections>
-                                <action selector="deleteItem:" destination="1Gy-JQ-l53" id="PNn-o6-HFj"/>
+                                <action selector="deleteItem:" destination="1Gy-JQ-l53" id="03h-WS-LgR"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
