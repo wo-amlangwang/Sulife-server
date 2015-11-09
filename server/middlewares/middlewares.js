@@ -15,6 +15,7 @@ var thisrejectFriendRequest = require('./rejectFriendRequest.js').rejectFriendRe
 var thisbuildFriendRelationship = require('./buildFriendRelationship.js').buildFriendRelationship;
 var thisgetFriends = require('./getFriends.js').getFriends;
 var thisfindUser = require('./findUser.js').findUser;
+var getEventByDate = require('./getAllEvent.js').getEventByDate;
 
 module.exports = {
   verifyToken : function(req,res,next) {
@@ -46,5 +47,6 @@ module.exports = {
   rejectFriendRequest : thisrejectFriendRequest,
   buildFriendRelationship : thisbuildFriendRelationship,
   getFriends : thisgetFriends,
-  findUser : thisfindUser
+  findUser : thisfindUser,
+  getEventByDate : getEventByDate
 }

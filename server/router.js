@@ -43,17 +43,16 @@ module.exports = function(app,passport){
   });
   app.post('/event' , middlewares.verifyToken , middlewares.postEvent);
   app.get('/event' , middlewares.verifyToken , middlewares.getAllEvent);
+  app.post('/eventd' , middlewares.verifyToken, middlewares.getEventByDate);
   app.delete('/event/:eventid' , middlewares.verifyToken , middlewares.checkEventid , middlewares.deleteEvent);
   app.get('/event/:eventid' , middlewares.verifyToken , middlewares.checkEventid ,middlewares.getEvent);
   app.post('/event/:eventid' , middlewares.verifyToken , middlewares.checkEventid ,middlewares.editEvent);
   app.get('/profile' , middlewares.verifyToken , middlewares.getProfile);
   app.post('/profile' , middlewares.verifyToken , middlewares.editProfile);
-  //This part will be update by push notification
-  /**
   app.post('/friendRequest' , middlewares.verifyToken , middlewares.friendRequest);
   app.get('/getMail', middlewares.verifyToken , middlewares.getMail);
   app.post('/acceptFriendRequest' , middlewares.verifyToken , middlewares.acceptFriendRequest, middlewares.buildFriendRelationship);
   app.post('/rejectFriendRequest' , middlewares.verifyToken , middlewares.rejectFriendRequest);
   app.get('/getFriends' ,  middlewares.verifyToken , middlewares.getFriends);
-  app.post('/findUser' , middlewares.verifyToken , middlewares.findUser);**/
+  app.post('/findUser' , middlewares.verifyToken , middlewares.findUser);
 }
