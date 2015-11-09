@@ -13,6 +13,7 @@ var accountToken = ""
 let registerURL = "https://damp-retreat-5682.herokuapp.com/register"
 let loginURL = "https://damp-retreat-5682.herokuapp.com/local/login"
 let eventURL = "https://damp-retreat-5682.herokuapp.com/event"
+let eventByDateURL = "https://damp-retreat-5682.herokuapp.com/eventd"
 let profileURL = "https://damp-retreat-5682.herokuapp.com/profile"
 
 class LoginVC: UIViewController {

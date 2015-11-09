@@ -67,7 +67,7 @@ class NewEventVC: UIViewController {
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
         startDate = dateFormatter.stringFromDate(startTimePicker.date)
         endDate = dateFormatter.stringFromDate(endTimePicker.date)
-
+        
         // Post to server
         let post:NSString = "title=\(eventTitle)&detail=\(eventDetail)&starttime=\(startDate)&endtime=\(endDate)"
         

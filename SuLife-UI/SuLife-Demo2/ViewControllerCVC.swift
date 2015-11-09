@@ -8,7 +8,8 @@
 
 import UIKit
 
-
+// Global variable for selected date
+var dateSelected : CVDate?
 
 class ViewControllerCVC: UIViewController {
     // MARK: - Properties
@@ -61,8 +62,10 @@ extension ViewControllerCVC: CVCalendarViewDelegate, CVCalendarMenuViewDelegate 
     }
     
     func didSelectDayView(dayView: CVCalendarDayView) {
-        let date = dayView.date
+        dateSelected = dayView.date
         print("\(calendarView.presentedDate.commonDescription) is selected!")
+        NSLog("NSdate ==> %@", (dateSelected?.convertedDate())!)
+        NSLog("date ==> %@", dateSelected!)
     }
     
     func presentedDateUpdated(date: CVDate) {

@@ -15,15 +15,30 @@ class EventTableVC: UITableViewController {
     @IBOutlet var EventList: UITableView!
     
     var events : [NSString] = []
-    var titles : [NSString] = []
     
     // reload data in table
     override func viewDidAppear(animated: Bool) {
+        /* get selected date */
+        var date : NSDate = dateSelected != nil ? (dateSelected?.convertedDate())! : NSDate()
+        
+        /* parse date to proper format */
+        let sd = stringFromDate(date).componentsSeparatedByString(" ")
+        let sdTime = sd[0] + " 00:01"
+        let edTime = sd[0] + " 23:59"
         
         /* get data from server */
-        let url:NSURL = NSURL(string: eventURL)!
+        let post:NSString = "title=&detail=&starttime=\(sdTime)&endtime=\(edTime)"
+        NSLog("PostData: %@",post);
+        let postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+        let postLength:NSString = String( postData.length )
+
+        let url:NSURL = NSURL(string: eventByDateURL)!
         let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
-        request.HTTPMethod = "get"
+        request.HTTPMethod = "post"
+        request.HTTPBody = postData
+        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.setValue(accountToken, forHTTPHeaderField: "x-access-token")
         
         var reponseError: NSError?
@@ -56,7 +71,7 @@ class EventTableVC: UITableViewController {
                     let success:NSString = jsonResult.valueForKey("message") as! NSString
                     
                     if (success != "OK! Events list followed") {
-                        NSLog("Add Event Successfully")
+                        NSLog("Get Event Failed")
                         let myAlert = UIAlertController(title: "Access Failed!", message: "Please Log In Again! ", preferredStyle: UIAlertControllerStyle.Alert)
                         
                         myAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
@@ -135,10 +150,10 @@ class EventTableVC: UITableViewController {
             let vc = segue?.destinationViewController as! EventDetailVC
             let indexPath = tableView.indexPathForSelectedRow
             if let index = indexPath {
-                let tempStr : NSString = events[index.row]
+                let tempStr : NSString = events[index.row + 1]
+                let detail : [NSString] = events[index.row].componentsSeparatedByString("detail\":\"")
                 let endTime : [NSString] = tempStr.componentsSeparatedByString("endtime\":\"")
                 let startTime : [NSString] = endTime[1].componentsSeparatedByString("starttime\":\"")
-                let detail : [NSString] = startTime[1].componentsSeparatedByString("detail\":\"")
                 let st = startTime[1].substringToIndex(startTime[1].rangeOfString(".").location - 3).stringByReplacingOccurrencesOfString("T", withString: " ")
                 let et = endTime[1].substringToIndex(endTime[1].rangeOfString(".").location - 3).stringByReplacingOccurrencesOfString("T", withString: " ")
                 NSLog("index ==> %d", index.row);
@@ -161,6 +176,12 @@ class EventTableVC: UITableViewController {
         return date!
     }
     
+    func stringFromDate (date : NSDate) -> String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        let strDate = dateFormatter.stringFromDate(date)
+        return strDate
+    }
     
     // Close newevent automatically after saving it
     @IBAction func close(segue: UIStoryboardSegue) {

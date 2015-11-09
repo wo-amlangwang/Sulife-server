@@ -39,7 +39,6 @@ public final class CVCalendarView: UIView {
     public var animator: Animator!
     public var contentController: ContentViewController!
     public var calendarMode: CalendarMode!
-    
     public var (weekViewSize, dayViewSize): (CGSize?, CGSize?)
     
     private var validated = false
