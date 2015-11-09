@@ -443,13 +443,13 @@
                     <navigationItem key="navigationItem" title="Map" id="d0g-gm-mXn">
                         <barButtonItem key="rightBarButtonItem" title="Refresh" id="FTL-Ml-Gii">
                             <connections>
-                                <action selector="updateLocation:" destination="qT7-Hq-tz6" id="Abo-Wh-BDm"/>
+                                <action selector="updateLocation:" destination="qT7-Hq-tz6" id="FWb-WB-nP6"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
-                        <outlet property="mapView" destination="lcj-ek-cdc" id="vrQ-Mc-687"/>
+                        <outlet property="mapView" destination="lcj-ek-cdc" id="ehi-so-cIy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tce-P2-O8E" userLabel="First Responder" sceneMemberID="firstResponder"/>

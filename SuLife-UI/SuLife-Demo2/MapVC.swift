@@ -27,8 +27,8 @@ class MapVC: UIViewController, CLLocationManagerDelegate {
         let authorizationCode = CLLocationManager.authorizationStatus()
         
         if authorizationCode == CLAuthorizationStatus.NotDetermined && coreLocationManger.respondsToSelector("requestAlwaysAuthorization") || coreLocationManger.respondsToSelector("requestWhenInUseAuthorization"){
-            if NSBundle.mainBundle().objectForInfoDictionaryKey("NSLocationWhenInUseUsageDescription") != nil {
-                coreLocationManger.requestWhenInUseAuthorization()
+            if NSBundle.mainBundle().objectForInfoDictionaryKey("NSLocationAlwaysUsageDescription") != nil {
+                coreLocationManger.requestAlwaysAuthorization()
                 getLocation()
             }else{
                 print("No descirption provided")
