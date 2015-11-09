@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
 
 class MapVC: UIViewController {
 
+    @IBOutlet weak var theMap: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
