@@ -12,7 +12,9 @@ class NewTaskVC: UIViewController {
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var detailTextField: UITextField!
-    @IBOutlet weak var timeTextField: UITextField!
+    @IBOutlet weak var taskTimePicker: UIDatePicker!
+    
+    var taskTime : NSString = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,43 +41,127 @@ class NewTaskVC: UIViewController {
     @IBAction func addTaskTapped(sender: UIButton) {
         
         // TODO SERVER
-        var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        // var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         
-        var todoList: NSMutableArray? = userDefaults.objectForKey("todoList") as? NSMutableArray
+        // var todoList: NSMutableArray? = userDefaults.objectForKey("todoList") as? NSMutableArray
         
         let taskTitle = titleTextField.text!
         let taskDetail = detailTextField.text!
-        let taskTime = timeTextField.text!
         
         
-        var dataSet:NSMutableDictionary = NSMutableDictionary()
-        dataSet.setObject(taskTitle, forKey: "taskTitle")
-        dataSet.setObject(taskDetail, forKey: "taskDetail")
-        dataSet.setObject(taskTime, forKey: "taskTime")
+        // var dataSet:NSMutableDictionary = NSMutableDictionary()
+        // dataSet.setObject(taskTitle, forKey: "taskTitle")
+        // dataSet.setObject(taskDetail, forKey: "taskDetail")
+        // dataSet.setObject(taskTime, forKey: "taskTime")
         
-        if (todoList != nil) {
-            // data already available, or is first to do
-            var newMutableList:NSMutableArray = NSMutableArray()
-            for dict:AnyObject in todoList! {
-                newMutableList.addObject(dict as! NSDictionary)
+        // Get date from input and convert format
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        taskTime = dateFormatter.stringFromDate(taskTimePicker.date)
+        
+        // Post to server
+        let post:NSString = "title=\(taskTitle)&detail=\(taskDetail)&time=\(taskTime)"
+        
+        NSLog("PostData: %@",post);
+        
+        let url:NSURL = NSURL(string: taskURL)!
+        
+        let postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+        
+        let postLength:NSString = String( postData.length )
+        
+        let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "POST"
+        request.HTTPBody = postData
+        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue(accountToken, forHTTPHeaderField: "x-access-token")
+        
+        var reponseError: NSError?
+        var response: NSURLResponse?
+        
+        var urlData: NSData?
+        do {
+            urlData = try NSURLConnection.sendSynchronousRequest(request, returningResponse:&response)
+        } catch let error as NSError {
+            reponseError = error
+            urlData = nil
+        }
+        
+        if ( urlData != nil ) {
+            let res = response as! NSHTTPURLResponse!;
+            
+            NSLog("Response code: %ld", res.statusCode);
+            
+            if (res.statusCode >= 200 && res.statusCode < 300)
+            {
+                let responseData:NSString  = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
+                
+                NSLog("Response ==> %@", responseData);
+                
+                var error: NSError?
+                
+                do {
+                    if let jsonResult = try NSJSONSerialization.JSONObjectWithData(urlData!, options: []) as? NSDictionary {
+                        
+                        let success:NSString = jsonResult.valueForKey("message") as! NSString
+                        
+                        if (success == "OK!") {
+                            NSLog("Add Task Successfully")
+                            
+                            //var eventToken = jsonResult.valueForKey("Event") as! NSString as String
+                            self.navigationController!.popToRootViewControllerAnimated(true)
+                            
+                        } else {
+                            let alertView:UIAlertView = UIAlertView()
+                            alertView.title = "Add New Task Failed!"
+                            alertView.message = "Please Try Again!"
+                            alertView.delegate = self
+                            alertView.addButtonWithTitle("OK")
+                            alertView.show()
+                            NSLog("1")
+                        }
+                        
+                    }
+                } catch {
+                    print(error)
+                }
+                
+                
+                
+                //[jsonData[@"success"] integerValue];
+                
+            } else {
+                let alertView:UIAlertView = UIAlertView()
+                alertView.title = "Add New Task Failed!"
+                alertView.message = "System Error!"
+                alertView.delegate = self
+                alertView.addButtonWithTitle("OK")
+                alertView.show()
+                NSLog("2")
             }
             
-            userDefaults.removeObjectForKey("todoList")
-            newMutableList.addObject(dataSet)
-            userDefaults.setObject(newMutableList, forKey: "todoList")
+        } else {
+            let alertView:UIAlertView = UIAlertView()
+            alertView.title = "Add New Task Failed!"
+            alertView.message = "Response Error!"
+            alertView.delegate = self
+            alertView.addButtonWithTitle("OK")
+            alertView.show()
         }
-        else
-        {
-            userDefaults.removeObjectForKey("todoList")
-            todoList = NSMutableArray()
-            todoList!.addObject(dataSet)
-            userDefaults.setObject(todoList, forKey: "todoList")
-        }
-        
-        // save
-        userDefaults.synchronize()
-        self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
+    
+    /* Close keyboard when clicking enter*/
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder();
+        return true;
+    }
+    
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        titleTextField.resignFirstResponder();
+        detailTextField.resignFirstResponder();
+    }
 
 }

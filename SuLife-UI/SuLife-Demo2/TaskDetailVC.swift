@@ -12,7 +12,9 @@ class TaskDetailVC: UIViewController {
 
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var detailTextField: UITextField!
-    @IBOutlet weak var timeTextField: UITextField!
+    @IBOutlet weak var taskTimePicker: UIDatePicker!
+    
+    var taskDetail : TaskModel?
     
     var task:NSDictionary = NSDictionary()
     
@@ -21,36 +23,89 @@ class TaskDetailVC: UIViewController {
         
         titleTextField.userInteractionEnabled = false
         detailTextField.userInteractionEnabled = false
-        timeTextField.userInteractionEnabled = false
+        taskTimePicker.userInteractionEnabled = false
         
-        titleTextField.text = task.objectForKey("taskTitel") as? String
-        detailTextField.text = task.objectForKey("taskDetail") as? String
-        timeTextField.text = task.objectForKey("taskTime") as? String
+        titleTextField.text = taskDetail?.title as? String
+        detailTextField.text = taskDetail?.detail as? String
+        taskTimePicker.date = (taskDetail?.taskTime)!
         
         // Do any additional setup after loading the view.
     }
     
     @IBAction func deleteItem(sender: AnyObject) {
         
-        var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        /* get data from server */
+        NSLog("id ==> %@", (taskDetail?.id)!);
+        let deleteurl = taskURL + "/" + ((taskDetail?.id)! as String)
+        let url:NSURL = NSURL(string: deleteurl)!
+        let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "delete"
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue(accountToken, forHTTPHeaderField: "x-access-token")
         
-        var itemListArray:NSMutableArray = userDefaults.objectForKey("itemList") as! NSMutableArray
+        var reponseError: NSError?
+        var response: NSURLResponse?
         
-        var mutableItemList:NSMutableArray = NSMutableArray()
-        
-        for dict:AnyObject in itemListArray{
-            mutableItemList.addObject(dict as! NSDictionary)
+        var urlData: NSData?
+        do {
+            urlData = try NSURLConnection.sendSynchronousRequest(request, returningResponse:&response)
+        } catch let error as NSError {
+            reponseError = error
+            urlData = nil
         }
         
-        mutableItemList.removeObject(task)
+        if ( urlData != nil ) {
+            let res = response as! NSHTTPURLResponse!;
+            
+            if(res == nil){
+                NSLog("No Response!");
+            }
+            
+            let responseData:NSString = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
+            
+            NSLog("Response ==> %@", responseData);
+            
+            var error: NSError?
+            
+            do {
+                if let jsonResult = try NSJSONSerialization.JSONObjectWithData(urlData!, options: []) as? NSDictionary {
+                    
+                    let success:NSString = jsonResult.valueForKey("message") as! NSString
+                    
+                    /*if (success != "OK! Events list followed") {
+                    NSLog("Get Event Failed")
+                    let myAlert = UIAlertController(title: "Access Failed!", message: "Please Log In Again! ", preferredStyle: UIAlertControllerStyle.Alert)
+                    
+                    myAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
+                    myAlert .dismissViewControllerAnimated(true, completion: nil)
+                    self.performSegueWithIdentifier("eventTableToLogin", sender: self)
+                    }))
+                    presentViewController(myAlert, animated: true, completion: nil)
+                    
+                    }*/
+                }
+            } catch {
+                print(error)
+            }
+            
+            
+        } else {
+            let alertView:UIAlertView = UIAlertView()
+            alertView.title = "urlData Equals to NULL!"
+            alertView.message = "Connection fail!"
+            if let error = reponseError {
+                alertView.message = (error.localizedDescription)
+            }
+            alertView.delegate = self
+            alertView.addButtonWithTitle("OK")
+            alertView.show()
+            
+        }
         
-        userDefaults.removeObjectForKey("itemList")
-        userDefaults.setObject(mutableItemList, forKey: "itemList")
-        userDefaults.synchronize()
-        
-        self.navigationController!.popToRootViewControllerAnimated(true)
         
     }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

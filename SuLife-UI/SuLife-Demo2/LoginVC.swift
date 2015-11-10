@@ -16,6 +16,9 @@ let eventURL = "https://damp-retreat-5682.herokuapp.com/event"
 let eventByDateURL = "https://damp-retreat-5682.herokuapp.com/eventd"
 let profileURL = "https://damp-retreat-5682.herokuapp.com/profile"
 
+let taskURL = "https://damp-retreat-5682.herokuapp.com/task"
+let taskByDateURL = "https://damp-retreat-5682.herokuapp.com/taskd"
+
 class LoginVC: UIViewController {
     
     //var loginToken:NSString = "no-token"

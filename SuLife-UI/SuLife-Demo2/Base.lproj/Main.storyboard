@@ -766,15 +766,16 @@
                                 <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S4J-TS-N3l" customClass="CVCalendarMenuView" customModule="SuLife_Demo2" customModuleProvider="target">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S4J-TS-N3l" customClass="CVCalendarMenuView" customModule="SuLife_Demo2" customModuleProvider="target">
                                 <rect key="frame" x="20" y="68" width="374" height="27"/>
                                 <connections>
                                     <outlet property="menuViewDelegate" destination="NHD-Sd-M7n" id="Rd5-yq-wi3"/>
                                 </connections>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5O-Mu-c63">
-                                <rect key="frame" x="347" y="3" width="47" height="50"/>
-                                <state key="normal" image="calendar1">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5O-Mu-c63">
+                                <rect key="frame" x="323" y="3" width="96" height="50"/>
+                                <state key="normal" title="Today">
+                                    <color key="titleColor" red="0.050980392156862744" green="0.38823529411764707" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -1199,11 +1200,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Time:" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="tuy-UE-ttt">
-                                <rect key="frame" x="58" y="352" width="300" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title:" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="qyv-YJ-FMo">
                                 <rect key="frame" x="56" y="96" width="300" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1235,6 +1231,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                             </textField>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="pJo-lF-7Pr" userLabel="EndTimePicker">
+                                <rect key="frame" x="-1" y="357" width="414" height="122"/>
+                                <date key="date" timeIntervalSinceReferenceDate="468659294.63916302">
+                                    <!--2015-11-08 07:08:14 +0000-->
+                                </date>
+                                <date key="maximumDate" timeIntervalSinceReferenceDate="1167562800">
+                                    <!--2037-12-31 11:00:00 +0000-->
+                                </date>
+                            </datePicker>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -1257,7 +1262,8 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="detailTextField" destination="Xmc-lB-4sy" id="3Il-K6-X8J"/>
-                        <outlet property="timeTextField" destination="tuy-UE-ttt" id="R4l-b9-UoU"/>
+                        <outlet property="taskTimePicker" destination="pJo-lF-7Pr" id="q0d-JX-DEf"/>
+                        <outlet property="timePicker" destination="pJo-lF-7Pr" id="zFa-mr-2EK"/>
                         <outlet property="titleTextField" destination="qyv-YJ-FMo" id="dKR-tL-Ozw"/>
                     </connections>
                 </viewController>
@@ -1299,6 +1305,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="TodoList" destination="qix-Di-5VC" id="oaN-iM-TOn"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yYz-3x-5PE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1364,14 +1373,15 @@
                                     <outlet property="delegate" destination="mfM-Xb-Zoa" id="40i-fD-zr1"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Time:" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="amq-ui-wnr">
-                                <rect key="frame" x="57" y="349" width="300" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
-                                <connections>
-                                    <outlet property="delegate" destination="mfM-Xb-Zoa" id="JDS-Af-QtM"/>
-                                </connections>
-                            </textField>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="hmt-Hr-Klz" userLabel="EndTimePicker">
+                                <rect key="frame" x="0.0" y="354" width="414" height="122"/>
+                                <date key="date" timeIntervalSinceReferenceDate="468659294.63916302">
+                                    <!--2015-11-08 07:08:14 +0000-->
+                                </date>
+                                <date key="maximumDate" timeIntervalSinceReferenceDate="1167562800">
+                                    <!--2037-12-31 11:00:00 +0000-->
+                                </date>
+                            </datePicker>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1380,7 +1390,8 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="detailTextField" destination="Mts-1t-MxT" id="dN6-jW-sVi"/>
-                        <outlet property="timeTextField" destination="amq-ui-wnr" id="MYe-qS-0Wm"/>
+                        <outlet property="taskTimePicker" destination="hmt-Hr-Klz" id="NTk-ha-Zzh"/>
+                        <outlet property="timePicker" destination="hmt-Hr-Klz" id="Hs5-zk-HZs"/>
                         <outlet property="titleTextField" destination="9vX-0D-Jt7" id="QGG-9V-2Tl"/>
                     </connections>
                 </viewController>
@@ -1423,7 +1434,7 @@
         <image name="task1" width="48" height="46"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="VDk-fS-4Nh"/>
         <segue reference="bbd-Mf-m0H"/>
-        <segue reference="qLI-c3-dFX"/>
     </inferredMetricsTieBreakers>
 </document>
