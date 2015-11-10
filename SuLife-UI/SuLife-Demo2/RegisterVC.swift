@@ -9,7 +9,7 @@
 import UIKit
 
 class RegisterVC: UIViewController {
-
+    
     @IBOutlet weak var userFisrtNameTextField: UITextField!
     @IBOutlet weak var userLastNameTextField: UITextField!
     @IBOutlet weak var userEmailTextField: UITextField!
@@ -18,10 +18,10 @@ class RegisterVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -52,16 +52,16 @@ class RegisterVC: UIViewController {
             // Display alert message and return
             displayAlertMessage("Fill Up Required Fields")
         }
-        
-        // Check password && repeat password
+            
+            // Check password && repeat password
         else if (userPassword != userRepeatPassword)
         {
             // Display alert message and return
             displayAlertMessage("Password Does Not Match")
         }
-        
-        // TODO: Store users data (send to server side)
-        
+            
+            // TODO: Store users data (send to server side)
+            
         else
         {
             do {
@@ -122,12 +122,6 @@ class RegisterVC: UIViewController {
                         {
                             NSLog("Sign Up SUCCESS");
                             
-                            let myAlert = UIAlertController(title: "Registration Successful", message: "Hi \(userFirstName)! Welcom do SuLife!", preferredStyle: UIAlertControllerStyle.Alert)
-                            
-                            let okAction = UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler: nil)
-                            myAlert.addAction(okAction)
-                            self.presentViewController(myAlert, animated:true, completion:nil)
-
                             //======================================
                             // Send firstName & lastName to database
                             //======================================
@@ -137,7 +131,18 @@ class RegisterVC: UIViewController {
                             //=======================================
                             // Auot login
                             //=======================================
+                            
                             autoLogin(userEmail, userPassword: userPassword)
+                            
+                            let myAlert = UIAlertController(title: "Registration Successful", message: "Hi \(userFirstName)!\n Welcom do SuLife!", preferredStyle: UIAlertControllerStyle.Alert)
+                            
+                            let okAction = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
+                                self.performSegueWithIdentifier("registerToMain", sender: self)
+                            })
+                            
+                            myAlert.addAction(okAction)
+                            self.presentViewController(myAlert, animated:true, completion:nil)
+                            
                         }
                         else
                         {
@@ -171,7 +176,7 @@ class RegisterVC: UIViewController {
                 else
                 {
                     let alertView:UIAlertView = UIAlertView()
-                    alertView.title = "Sign in Failed!"
+                    alertView.title = "Login Failed!"
                     alertView.message = "Connection Failure"
                     if let error = reponseError {
                         alertView.message = (error.localizedDescription)
@@ -192,7 +197,7 @@ class RegisterVC: UIViewController {
             }
         }
     }
-
+    
     func displayAlertMessage(userMessage:String)
     {
         var myAlert = UIAlertController(title: "Alert", message: userMessage, preferredStyle: UIAlertControllerStyle.Alert)
@@ -320,7 +325,6 @@ class RegisterVC: UIViewController {
                             prefs.setInteger(1, forKey: "isUserLoggedIn")
                             prefs.synchronize()
                             
-                            self.performSegueWithIdentifier("registerToMain", sender: self)
                         } else {
                             var error_msg:NSString
                             
@@ -330,7 +334,7 @@ class RegisterVC: UIViewController {
                                 error_msg = "Unknown Error"
                             }
                             let alertView:UIAlertView = UIAlertView()
-                            alertView.title = "Sign in Failed!"
+                            alertView.title = "Login Failed!"
                             alertView.message = error_msg as String
                             alertView.delegate = self
                             alertView.addButtonWithTitle("OK")
@@ -339,7 +343,7 @@ class RegisterVC: UIViewController {
                     }
                 } else {
                     let alertView:UIAlertView = UIAlertView()
-                    alertView.title = "Sign in Failed!"
+                    alertView.title = "Login Failed!"
                     alertView.message = "Please check your Email and Password!\nIf you haven't registered,\ntry register first!"
                     alertView.delegate = self
                     alertView.addButtonWithTitle("OK")
@@ -347,7 +351,7 @@ class RegisterVC: UIViewController {
                 }
             } else {
                 let alertView:UIAlertView = UIAlertView()
-                alertView.title = "Sign in Failed!"
+                alertView.title = "Login Failed!"
                 alertView.message = "Connection fail!"
                 if let error = reponseError {
                     alertView.message = (error.localizedDescription)
@@ -358,18 +362,18 @@ class RegisterVC: UIViewController {
             }
         } catch {
             let alertView:UIAlertView = UIAlertView()
-            alertView.title = "Sign in Failed!"
+            alertView.title = "Login Failed!"
             alertView.message = "Server Error"
             alertView.delegate = self
             alertView.addButtonWithTitle("OK")
             alertView.show()
         }
     }
-
+    
     @IBAction func iHaveAnAccountButtonTapped(sender: AnyObject)
     {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-
-
+    
+    
 }
