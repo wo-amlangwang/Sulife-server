@@ -26,7 +26,6 @@ class ProfileVC: UIViewController {
         userEmail.text = userInformation?.email as? String
 
         // Do any additional setup after loading the view.
-        NSLog("Profile : Profile : name = \(userInformation?.firstName)")
         NSLog("Profile : Profile : name = \(userInformation?.lastName)")
     }
 

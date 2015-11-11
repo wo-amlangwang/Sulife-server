@@ -23,7 +23,7 @@ class EditProfileVC: UIViewController {
         emailTextField.userInteractionEnabled = true
         
         firstNameTextField.text = userInformation?.firstName as? String
-        lastNameTextField.text = userInformation?.lastName as? String
+        lastNameTextField.text = userInformation!.lastName as? String
         emailTextField.text = userInformation?.email as? String
     }
 
@@ -33,10 +33,10 @@ class EditProfileVC: UIViewController {
     }
     
     @IBAction func saveButtonTapped(sender: UIButton) {
-        let firstname = firstNameTextField.text
-        let lastname = lastNameTextField.text
-        let email = emailTextField.text
-        let post:NSString = "fistname=\(firstname)&lastname=\(lastname)&email=\(email)"
+        let firstname = firstNameTextField.text! as NSString
+        let lastname = lastNameTextField.text! as NSString
+        let email = emailTextField.text! as NSString
+        let post:NSString = "firstname=\(firstname)&lastname=\(lastname)&email=\(email)"
         
         NSLog("PostData: %@",post);
         
@@ -76,7 +76,7 @@ class EditProfileVC: UIViewController {
             }
         }
         // return to profile
-        userInformation = UserModel(firstName: firstname! as NSString, lastName: lastname! as NSString, email: email! as NSString, id: accountToken)
+        userInformation = UserModel(firstName: firstname, lastName: lastname, email: email, id: accountToken)
         self.navigationController!.popToRootViewControllerAnimated(true)
         
     }

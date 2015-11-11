@@ -209,7 +209,8 @@ class RegisterVC: UIViewController {
     func sendUserPrfileToDB(token:NSString, firstname:String, lastname:String, userEmail: String)
     {
         do {
-            let post:NSString = "fistname=\(firstname)&lastname=\(lastname)&email=\(userEmail)"
+            // change
+            let post:NSString = "firstname=\(firstname)&lastname=\(lastname)&email=\(userEmail)"
             
             NSLog("PostData: %@",post);
             
