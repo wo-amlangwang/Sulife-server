@@ -7,10 +7,9 @@
 //
 
 import UIKit
-import Foundation
-import MessageUI
 
 var accountToken = ""
+var userInformation : UserModel?
 
 let registerURL = "https://damp-retreat-5682.herokuapp.com/register"
 let loginURL = "https://damp-retreat-5682.herokuapp.com/local/login"
@@ -25,7 +24,7 @@ class LoginVC: UIViewController {
     
     //var loginToken:NSString = "no-token"
     
-    @IBOutlet weak var userEmailTextField: UITextField!
+    @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var userPasswordTextField: UITextField!
     
     override func viewDidLoad() {
@@ -53,15 +52,15 @@ class LoginVC: UIViewController {
     @IBAction func loginButtonTapped(sender: AnyObject) {
         
         // TODO: from server
-        let userEmail = userEmailTextField.text!
+        let username = usernameTextField.text!
         let userPassword = userPasswordTextField.text!
         
         // fill in required fields
-        if ( userEmail.isEmpty )
+        if ( username.isEmpty )
         {
             let alertView:UIAlertView = UIAlertView()
-            alertView.title = "Log in Failed!"
-            alertView.message = "Please enter Email"
+            alertView.title = "Login Failed!"
+            alertView.message = "Please enter username"
             alertView.delegate = self
             alertView.addButtonWithTitle("OK")
             alertView.show()
@@ -69,7 +68,7 @@ class LoginVC: UIViewController {
         else if ( userPassword.isEmpty )
         {
             let alertView:UIAlertView = UIAlertView()
-            alertView.title = "Log in Failed!"
+            alertView.title = "Login Failed!"
             alertView.message = "Please enter Password"
             alertView.delegate = self
             alertView.addButtonWithTitle("OK")
@@ -77,7 +76,7 @@ class LoginVC: UIViewController {
         else
         {
             do {
-                let post:NSString = "email=\(userEmail)&password=\(userPassword)"
+                let post:NSString = "username=\(username)&password=\(userPassword)"
                 
                 NSLog("PostData: %@",post);
                 
@@ -123,16 +122,11 @@ class LoginVC: UIViewController {
                             
                             let jsonData:NSDictionary = try NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers ) as! NSDictionary
                             
-                            
                             let success:NSString = jsonData.valueForKey("message") as! NSString
-                            //let token:NSString = jsonData.valueForKey("x-access-token") as! NSString
-                            
-                            //[jsonData[@"success"] integerValue];
                             
                             NSLog("Success: %@", success);
                             accountToken = jsonData.valueForKey("Access_Token") as! NSString as String
                             NSLog("accountToken: %@", accountToken);
-                            //NSLog("Token: &@", token);
                             
                             //======================================
                             // login successful
@@ -142,12 +136,19 @@ class LoginVC: UIViewController {
                             {
                                 NSLog("Login SUCCESS");
                                 
+                                getUserInformation()
+                                
                                 let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-                                prefs.setObject(userEmail, forKey: "Email")
+                                prefs.setObject(username, forKey: "username")
                                 prefs.setInteger(1, forKey: "isUserLoggedIn")
                                 prefs.synchronize()
                                 
-                                //loginToken = token as NSString
+                                let startViewController = self.storyboard?.instantiateViewControllerWithIdentifier("startView") as! StartVC
+                                
+                                let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                                appDelegate.window?.rootViewController = startViewController
+                                appDelegate.window?.makeKeyAndVisible()
+
                                 
                                 self.dismissViewControllerAnimated(true, completion: nil)
                             } else {
@@ -169,7 +170,7 @@ class LoginVC: UIViewController {
                     } else {
                         let alertView:UIAlertView = UIAlertView()
                         alertView.title = "Sign in Failed!"
-                        alertView.message = "Please check your Email and Password!\nIf you haven't registered,\ntry register first!"
+                        alertView.message = "Please check your username and Password!\nIf you haven't registered,\ntry register first!"
                         alertView.delegate = self
                         alertView.addButtonWithTitle("OK")
                         alertView.show()
@@ -196,10 +197,65 @@ class LoginVC: UIViewController {
         }
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {   //delegate method
-        textField.resignFirstResponder()
-        return true
+    func getUserInformation () {
+        // user's information UserModel
+        
+        // let profileUrl = profileURL + "/" + accountToken! as String)
+        let profileUrl:NSURL = NSURL(string: profileURL)!
+        let request:NSMutableURLRequest = NSMutableURLRequest(URL: profileUrl)
+        request.HTTPMethod = "get"
+        request.setValue(accountToken, forHTTPHeaderField: "x-access-token")
+        
+        var reponseError: NSError?
+        var response: NSURLResponse?
+        
+        var urlData: NSData?
+        do {
+            urlData = try NSURLConnection.sendSynchronousRequest(request, returningResponse:&response)
+        } catch let error as NSError {
+            reponseError = error
+            urlData = nil
+        }
+        
+        if ( urlData != nil ) {
+            let res = response as! NSHTTPURLResponse!;
+            
+            if(res == nil){
+                NSLog("No Response!");
+            }
+            
+            let responseData:NSString = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
+            
+            NSLog("Response ==> %@", responseData);
+            
+            var error: NSError?
+            
+            do {
+                if let jsonResult = try NSJSONSerialization.JSONObjectWithData(urlData!, options: []) as? NSDictionary {
+                    
+                    let success: NSString = jsonResult.valueForKey("message") as! NSString
+                    
+                    if (success != "OK! Profile followed") {
+                        NSLog("Get Profile Failed")
+                        let myAlert = UIAlertController(title: "Access Failed!", message: "Please Log In Again! ", preferredStyle: UIAlertControllerStyle.Alert)
+                        
+                        myAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
+                            myAlert .dismissViewControllerAnimated(true, completion: nil)
+                            self.performSegueWithIdentifier("eventTableToLogin", sender: self)
+                        }))
+                        presentViewController(myAlert, animated: true, completion: nil)
+                        
+                    } else {
+                        userInformation?.firstName = jsonResult.valueForKey("firstname") as! NSString
+                        userInformation?.lastName = jsonResult.valueForKey("lastname") as! NSString
+                        userInformation?.email = jsonResult.valueForKey("email") as! NSString
+                        userInformation?.id = accountToken
+                    }
+                }
+            } catch {
+                print(error) 
+            }
+        }
     }
-    
 }
 

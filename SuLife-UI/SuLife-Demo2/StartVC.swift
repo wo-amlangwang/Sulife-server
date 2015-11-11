@@ -32,13 +32,10 @@ class StartVC: UIViewController {
     }
     */
     
-    override func viewDidAppear(animated: Bool) {
-        
-        let isUserLoggedIn = NSUserDefaults.standardUserDefaults().boolForKey("isUserLoggedIn")
-        
-        if (!isUserLoggedIn)
-        {
-            self.performSegueWithIdentifier("mainToLogin", sender: self)
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        if (segue.identifier == "loginView") {
+            print("Works")
         }
     }
     
@@ -53,10 +50,16 @@ class StartVC: UIViewController {
         myAlert.addAction(UIAlertAction(title: "Logout", style: .Default, handler: { (action: UIAlertAction!) in
             NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isUserLoggedIn")
             NSUserDefaults.standardUserDefaults().synchronize()
-            self.performSegueWithIdentifier("mainToLogin", sender: self)
+            userInformation = nil
+            // self.performSegueWithIdentifier("mainToLogin", sender: self)
         }))
         
-        presentViewController(myAlert, animated: true, completion: nil)
+        let loginViewController = self.storyboard?.instantiateViewControllerWithIdentifier("loginView") as! LoginVC
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.window?.rootViewController = loginViewController
+        appDelegate.window?.makeKeyAndVisible()
+        
     }
 
 }

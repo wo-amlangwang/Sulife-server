@@ -181,7 +181,7 @@ class EventTableVC: UITableViewController {
         return strDate
     }
     
-    /* Close newevent automatically after saving it */
+    // Close newevent automatically after saving it
     @IBAction func close(segue: UIStoryboardSegue) {
         NSLog("closed");
         tableView.reloadData();

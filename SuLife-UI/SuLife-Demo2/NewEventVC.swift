@@ -17,6 +17,9 @@ class NewEventVC: UIViewController {
     @IBOutlet weak var startTimePicker: UIDatePicker!
     @IBOutlet weak var endTimePicker: UIDatePicker!
     
+    var startDate : NSString = ""
+    var endDate : NSString = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -62,8 +65,8 @@ class NewEventVC: UIViewController {
         // Get date from input and convert format
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-        let startDate = dateFormatter.stringFromDate(startTimePicker.date)
-        let endDate = dateFormatter.stringFromDate(endTimePicker.date)
+        startDate = dateFormatter.stringFromDate(startTimePicker.date)
+        endDate = dateFormatter.stringFromDate(endTimePicker.date)
         
         // Post to server
         let post:NSString = "title=\(eventTitle)&detail=\(eventDetail)&starttime=\(startDate)&endtime=\(endDate)"
@@ -157,6 +160,7 @@ class NewEventVC: UIViewController {
             alertView.show()
         }
     }
+    
     
     /* Close keyboard when clicking enter*/
     func textFieldShouldReturn(textField: UITextField) -> Bool {

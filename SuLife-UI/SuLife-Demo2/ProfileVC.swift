@@ -10,8 +10,22 @@ import UIKit
 
 class ProfileVC: UIViewController {
 
+    @IBOutlet weak var userFirstName: UITextField!
+    @IBOutlet weak var userLastName: UITextField!
+    @IBOutlet weak var userEmail: UITextField!
+    
+    var userInformation : UserModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        userFirstName.userInteractionEnabled = false
+        userLastName.userInteractionEnabled = false
+        userEmail.userInteractionEnabled = false
+        
+        userFirstName.text = userInformation?.firstName as? String
+        userLastName.text = userInformation?.lastName as? String
+        userEmail.text = userInformation?.email as? String
 
         // Do any additional setup after loading the view.
     }
@@ -32,11 +46,14 @@ class ProfileVC: UIViewController {
         myAlert.addAction(UIAlertAction(title: "Logout", style: .Default, handler: { (action: UIAlertAction!) in
             NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isUserLoggedIn")
             NSUserDefaults.standardUserDefaults().synchronize()
+            self.userInformation = nil
             self.performSegueWithIdentifier("profileToLogin", sender: self)
         }))
         
         presentViewController(myAlert, animated: true, completion: nil)
     }
+    
+    
     
 
     /*

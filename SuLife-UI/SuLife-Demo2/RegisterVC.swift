@@ -12,6 +12,7 @@ class RegisterVC: UIViewController {
     
     @IBOutlet weak var userFisrtNameTextField: UITextField!
     @IBOutlet weak var userLastNameTextField: UITextField!
+    @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var userEmailTextField: UITextField!
     @IBOutlet weak var userPasswordTextField: UITextField!
     @IBOutlet weak var userRepeatPasswordTextField: UITextField!
@@ -42,12 +43,13 @@ class RegisterVC: UIViewController {
         
         let userFirstName = userFisrtNameTextField.text!
         let userLastName = userLastNameTextField.text!
+        let username = usernameTextField.text!
         let userEmail = userEmailTextField.text!
         let userPassword = userPasswordTextField.text!
         let userRepeatPassword = userRepeatPasswordTextField.text!
         
         // Check for empty fields
-        if (userFirstName.isEmpty || userLastName.isEmpty || userEmail.isEmpty || userPassword.isEmpty || userRepeatPassword.isEmpty)
+        if (userFirstName.isEmpty || userLastName.isEmpty || username.isEmpty || userEmail.isEmpty || userPassword.isEmpty || userRepeatPassword.isEmpty)
         {
             // Display alert message and return
             displayAlertMessage("Fill Up Required Fields")
@@ -66,7 +68,7 @@ class RegisterVC: UIViewController {
         {
             do {
                 
-                let post:NSString = "email=\(userEmail)&password=\(userPassword)"
+                let post:NSString = "username=\(username)&password=\(userPassword)"
                 
                 NSLog("PostData: %@",post);
                 
@@ -126,13 +128,16 @@ class RegisterVC: UIViewController {
                             // Send firstName & lastName to database
                             //======================================
                             
-                            sendUserPrfileToDB(accountToken, firstname: userLastName, lastname: userFirstName)
+                            sendUserPrfileToDB(accountToken, firstname: userLastName, lastname: userFirstName, userEmail: userEmail)
                             
                             //=======================================
                             // Auot login
                             //=======================================
                             
-                            autoLogin(userEmail, userPassword: userPassword)
+                            autoLogin(username, userPassword: userPassword)
+                            
+                            // set user's information
+                            setUserInformation(userFirstName, lastName : userLastName, email : userEmail, id : accountToken)
                             
                             let myAlert = UIAlertController(title: "Registration Successful", message: "Hi \(userFirstName)!\n Welcom do SuLife!", preferredStyle: UIAlertControllerStyle.Alert)
                             
@@ -211,10 +216,10 @@ class RegisterVC: UIViewController {
     // Send firstName & lastName to database
     //======================================
     
-    func sendUserPrfileToDB(token:NSString, firstname:String, lastname:String)
+    func sendUserPrfileToDB(token:NSString, firstname:String, lastname:String, userEmail: String)
     {
         do {
-            let post:NSString = "fistname=\(firstname)&lastname=\(lastname)"
+            let post:NSString = "fistname=\(firstname)&lastname=\(lastname)&email=\(userEmail)"
             
             NSLog("PostData: %@",post);
             
@@ -259,9 +264,9 @@ class RegisterVC: UIViewController {
     //==================================
     // Auto login
     //==================================
-    func autoLogin (userEmail: String, userPassword: String) {
+    func autoLogin (username: String, userPassword: String) {
         do {
-            let post:NSString = "email=\(userEmail)&password=\(userPassword)"
+            let post:NSString = "email=\(username)&password=\(userPassword)"
             
             NSLog("PostData: %@",post);
             
@@ -321,7 +326,7 @@ class RegisterVC: UIViewController {
                             // store information as globa
                             
                             let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-                            prefs.setObject(userEmail, forKey: "Email")
+                            prefs.setObject(username, forKey: "username")
                             prefs.setInteger(1, forKey: "isUserLoggedIn")
                             prefs.synchronize()
                             
@@ -344,7 +349,7 @@ class RegisterVC: UIViewController {
                 } else {
                     let alertView:UIAlertView = UIAlertView()
                     alertView.title = "Login Failed!"
-                    alertView.message = "Please check your Email and Password!\nIf you haven't registered,\ntry register first!"
+                    alertView.message = "Please check your Username and Password!\nIf you haven't registered,\ntry register first!"
                     alertView.delegate = self
                     alertView.addButtonWithTitle("OK")
                     alertView.show()
@@ -370,10 +375,10 @@ class RegisterVC: UIViewController {
         }
     }
     
-    @IBAction func iHaveAnAccountButtonTapped(sender: AnyObject)
-    {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    func setUserInformation(firstName : String, lastName : String, email : String, id : String) {
+        userInformation?.firstName = firstName
+        userInformation?.lastName = lastName
+        userInformation?.email = email
+        userInformation?.id = id
     }
-    
-    
 }
