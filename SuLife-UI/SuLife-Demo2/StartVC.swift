@@ -32,19 +32,24 @@ class StartVC: UIViewController {
     }
     */
     
-    override func viewDidAppear(animated: Bool) {
-        
-        let isUserLoggedIn = NSUserDefaults.standardUserDefaults().boolForKey("isUserLoggedIn")
-        
-        if (!isUserLoggedIn)
+    @IBAction func calendarButtonTapped(sender: UIButton) {
+        print(accountToken)
+        if (accountToken == "")
         {
-            self.performSegueWithIdentifier("mainToLogin", sender: self)
+            let myAlert = UIAlertController(title: "Access Failed!", message: "Please Log In Again! ", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            myAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
+                myAlert .dismissViewControllerAnimated(true, completion: nil)
+                self.performSegueWithIdentifier("startToLogin", sender: self)
+            }))
+            presentViewController(myAlert, animated: true, completion: nil)
+        } else {
+            self.performSegueWithIdentifier("startToMain", sender: self)
         }
     }
     
-    @IBAction func logoutButtonTapped(sender: AnyObject) {
-        
-        let myAlert = UIAlertController(title: "Log Out", message: "Are You Sure to Log Out ? ", preferredStyle: UIAlertControllerStyle.Alert)
+    @IBAction func logoutButtonTapped(sender: UIButton) {
+        let myAlert = UIAlertController(title: "Log Out", message: "Are You Sure to Log Out? ", preferredStyle: UIAlertControllerStyle.Alert)
         
         myAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
             myAlert .dismissViewControllerAnimated(true, completion: nil)
@@ -53,10 +58,21 @@ class StartVC: UIViewController {
         myAlert.addAction(UIAlertAction(title: "Logout", style: .Default, handler: { (action: UIAlertAction!) in
             NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isUserLoggedIn")
             NSUserDefaults.standardUserDefaults().synchronize()
-            self.performSegueWithIdentifier("mainToLogin", sender: self)
+            userInformation = nil
+            let loginViewController = self.storyboard?.instantiateViewControllerWithIdentifier("loginView") as! LoginVC
+            
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            appDelegate.window?.rootViewController = loginViewController
+            appDelegate.window?.makeKeyAndVisible()
         }))
         
         presentViewController(myAlert, animated: true, completion: nil)
+        // let loginViewController = self.storyboard?.instantiateViewControllerWithIdentifier("loginView") as! LoginVC
+        
+        // let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        // appDelegate.window?.rootViewController = loginViewController
+        // appDelegate.window?.makeKeyAndVisible()
     }
+    
 
 }

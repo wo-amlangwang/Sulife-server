@@ -9,6 +9,7 @@
 import UIKit
 
 var accountToken = ""
+var userInformation : UserModel?
 
 let registerURL = "https://damp-retreat-5682.herokuapp.com/register"
 let loginURL = "https://damp-retreat-5682.herokuapp.com/local/login"
@@ -16,11 +17,14 @@ let eventURL = "https://damp-retreat-5682.herokuapp.com/event"
 let eventByDateURL = "https://damp-retreat-5682.herokuapp.com/eventd"
 let profileURL = "https://damp-retreat-5682.herokuapp.com/profile"
 
+let taskURL = "https://damp-retreat-5682.herokuapp.com/task"
+let taskByDateURL = "https://damp-retreat-5682.herokuapp.com/taskd"
+
 class LoginVC: UIViewController {
     
     //var loginToken:NSString = "no-token"
     
-    @IBOutlet weak var userEmailTextField: UITextField!
+    @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var userPasswordTextField: UITextField!
     
     override func viewDidLoad() {
@@ -48,31 +52,29 @@ class LoginVC: UIViewController {
     @IBAction func loginButtonTapped(sender: AnyObject) {
         
         // TODO: from server
-        let userEmail = userEmailTextField.text!
+        let username = usernameTextField.text!
         let userPassword = userPasswordTextField.text!
         
         // fill in required fields
-        if ( userEmail.isEmpty )
+        if ( username.isEmpty )
         {
-            let alertView:UIAlertView = UIAlertView()
-            alertView.title = "Log in Failed!"
-            alertView.message = "Please enter Email"
-            alertView.delegate = self
-            alertView.addButtonWithTitle("OK")
-            alertView.show()
+            let myAlert = UIAlertController(title: "Login Failed!", message: "Please enter Username", preferredStyle: UIAlertControllerStyle.Alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+            myAlert.addAction(okAction)
+            self.presentViewController(myAlert, animated:true, completion:nil)
         }
         else if ( userPassword.isEmpty )
         {
-            let alertView:UIAlertView = UIAlertView()
-            alertView.title = "Log in Failed!"
-            alertView.message = "Please enter Password"
-            alertView.delegate = self
-            alertView.addButtonWithTitle("OK")
+            let myAlert = UIAlertController(title: "Login Failed!", message: "Please enter Password", preferredStyle: UIAlertControllerStyle.Alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+            myAlert.addAction(okAction)
+            self.presentViewController(myAlert, animated:true, completion:nil)
         }
         else
         {
             do {
-                let post:NSString = "email=\(userEmail)&password=\(userPassword)"
+                // Change
+                let post:NSString = "email=\(username)&password=\(userPassword)"
                 
                 NSLog("PostData: %@",post);
                 
@@ -89,13 +91,13 @@ class LoginVC: UIViewController {
                 request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
                 request.setValue("application/json", forHTTPHeaderField: "Accept")
                 
-                
                 var reponseError: NSError?
                 var response: NSURLResponse?
                 
                 var urlData: NSData?
                 do {
                     urlData = try NSURLConnection.sendSynchronousRequest(request, returningResponse:&response)
+                    // urlData = try NSURLSession.dataTaskWithRequest(request, completionHandler: ((NSData!, NSURLResponse!, NSError!) -> Void)?)
                 } catch let error as NSError {
                     reponseError = error
                     urlData = nil
@@ -117,17 +119,13 @@ class LoginVC: UIViewController {
                             //var error: NSError?
                             
                             let jsonData:NSDictionary = try NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers ) as! NSDictionary
-                            
+
                             
                             let success:NSString = jsonData.valueForKey("message") as! NSString
-                            //let token:NSString = jsonData.valueForKey("x-access-token") as! NSString
-                            
-                            //[jsonData[@"success"] integerValue];
                             
                             NSLog("Success: %@", success);
                             accountToken = jsonData.valueForKey("Access_Token") as! NSString as String
                             NSLog("accountToken: %@", accountToken);
-                            //NSLog("Token: &@", token);
                             
                             //======================================
                             // login successful
@@ -137,14 +135,25 @@ class LoginVC: UIViewController {
                             {
                                 NSLog("Login SUCCESS");
                                 
-                                let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-                                prefs.setObject(userEmail, forKey: "Email")
-                                prefs.setInteger(1, forKey: "isUserLoggedIn")
-                                prefs.synchronize()
+                                getUserInformation()
                                 
-                                //loginToken = token as NSString
+                                let isUserLoggedIn : Bool = NSUserDefaults.standardUserDefaults().boolForKey("isUserLoggedIn")
                                 
-                                self.dismissViewControllerAnimated(true, completion: nil)
+                                if (isUserLoggedIn)
+                                {
+                                    self.dismissViewControllerAnimated(true, completion: nil)
+                                }
+                                else {
+                                
+                                    let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+                                    prefs.setObject(username, forKey: "username")
+                                    prefs.setInteger(1, forKey: "isUserLoggedIn")
+                                    prefs.synchronize()
+                                
+                                
+                                self.performSegueWithIdentifier("loginToMain", sender: self)
+                                }
+                                
                             } else {
                                 var error_msg:NSString
                                 
@@ -153,47 +162,106 @@ class LoginVC: UIViewController {
                                 } else {
                                     error_msg = "Unknown Error"
                                 }
-                                let alertView:UIAlertView = UIAlertView()
-                                alertView.title = "Sign in Failed!"
-                                alertView.message = error_msg as String
-                                alertView.delegate = self
-                                alertView.addButtonWithTitle("OK")
-                                alertView.show()
+                                
+                                let myAlert = UIAlertController(title: "Sign in Failed!", message: error_msg as String, preferredStyle: UIAlertControllerStyle.Alert)
+                                let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                                myAlert.addAction(okAction)
+                                self.presentViewController(myAlert, animated:true, completion:nil)
                             }
                         }
                     } else {
-                        let alertView:UIAlertView = UIAlertView()
-                        alertView.title = "Sign in Failed!"
-                        alertView.message = "Please check your Email and Password!\nIf you haven't registered,\ntry register first!"
-                        alertView.delegate = self
-                        alertView.addButtonWithTitle("OK")
-                        alertView.show()
+                        let myAlert = UIAlertController(title: "Sign in Failed!", message: "Please check your username and Password!\nIf you haven't registered,\ntry register first!", preferredStyle: UIAlertControllerStyle.Alert)
+                        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                        myAlert.addAction(okAction)
+                        self.presentViewController(myAlert, animated:true, completion:nil)
                     }
                 } else {
-                    let alertView:UIAlertView = UIAlertView()
-                    alertView.title = "Sign in Failed!"
-                    alertView.message = "Connection fail!"
+                    let myAlert = UIAlertController(title: "Sign in Failed!", message: "Connection fail!", preferredStyle: UIAlertControllerStyle.Alert)
+                    
                     if let error = reponseError {
-                        alertView.message = (error.localizedDescription)
+                        myAlert.message = (error.localizedDescription)
                     }
-                    alertView.delegate = self
-                    alertView.addButtonWithTitle("OK")
-                    alertView.show()
+                    
+                    let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                    myAlert.addAction(okAction)
+                    self.presentViewController(myAlert, animated:true, completion:nil)
                 }
             } catch {
-                let alertView:UIAlertView = UIAlertView()
-                alertView.title = "Sign in Failed!"
-                alertView.message = "Server Error"
-                alertView.delegate = self
-                alertView.addButtonWithTitle("OK")
-                alertView.show()
+                let myAlert = UIAlertController(title: "Sign in Failed!", message: "Server Error", preferredStyle: UIAlertControllerStyle.Alert)
+                let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                myAlert.addAction(okAction)
+                self.presentViewController(myAlert, animated:true, completion:nil)
             }
         }
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {   //delegate method
-        textField.resignFirstResponder()
-        return true
+    func getUserInformation () {
+        // user's information UserModel
+        
+        print("----------------------------------------")
+        
+        // let profileUrl = profileURL + "/" + accountToken! as String)
+        let profileUrl:NSURL = NSURL(string: profileURL)!
+        let request:NSMutableURLRequest = NSMutableURLRequest(URL: profileUrl)
+        request.HTTPMethod = "get"
+        request.HTTPBody = nil
+        request.setValue(accountToken, forHTTPHeaderField: "x-access-token")
+        
+        var reponseError: NSError?
+        var response: NSURLResponse?
+        
+        var urlData: NSData?
+        do {
+            urlData = try NSURLConnection.sendSynchronousRequest(request, returningResponse:&response)
+        } catch let error as NSError {
+            reponseError = error
+            urlData = nil
+        }
+        
+        if ( urlData != nil ) {
+            let res = response as! NSHTTPURLResponse!;
+            
+            if(res == nil){
+                NSLog("No Response!");
+            }
+            
+            let responseData:NSString = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
+            
+            NSLog("Response ==> %@", responseData);
+            
+            // var error: NSError?
+            
+            do {
+                if let jsonResult = try NSJSONSerialization.JSONObjectWithData(urlData!, options: []) as? NSDictionary {
+                    
+                    let success: NSString = jsonResult.valueForKey("message") as! NSString
+                    
+                    if (success != "OK! Profile followed") {
+                        NSLog("Get Profile Failed")
+                        let myAlert = UIAlertController(title: "Access Failed!", message: "Please Log In Again! ", preferredStyle: UIAlertControllerStyle.Alert)
+                        
+                        myAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
+                            myAlert .dismissViewControllerAnimated(true, completion: nil)
+                            self.performSegueWithIdentifier("eventTableToLogin", sender: self)
+                        }))
+                        presentViewController(myAlert, animated: true, completion: nil)
+                        
+                    } else {
+                        let jsonInform = jsonResult.valueForKey("profile") as! NSDictionary
+                        let firstName = jsonInform.valueForKey("firstname") as! NSString
+                        let lastName = jsonInform.valueForKey("lastname") as! NSString
+                        let email = jsonInform.valueForKey("email") as! NSString
+                        let id = accountToken
+                        
+                        userInformation = UserModel(firstName: firstName, lastName: lastName, email: email, id: id)
+                        
+                        NSLog("SUCCESS : Profile : name = \(userInformation?.lastName)")
+                    }
+                }
+            } catch {
+                print(error) 
+            }
+        }
     }
 }
 

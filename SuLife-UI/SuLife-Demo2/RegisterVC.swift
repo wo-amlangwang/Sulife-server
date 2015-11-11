@@ -9,19 +9,20 @@
 import UIKit
 
 class RegisterVC: UIViewController {
-
+    
     @IBOutlet weak var userFisrtNameTextField: UITextField!
     @IBOutlet weak var userLastNameTextField: UITextField!
+    @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var userEmailTextField: UITextField!
     @IBOutlet weak var userPasswordTextField: UITextField!
     @IBOutlet weak var userRepeatPasswordTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -42,31 +43,32 @@ class RegisterVC: UIViewController {
         
         let userFirstName = userFisrtNameTextField.text!
         let userLastName = userLastNameTextField.text!
+        let username = usernameTextField.text!
         let userEmail = userEmailTextField.text!
         let userPassword = userPasswordTextField.text!
         let userRepeatPassword = userRepeatPasswordTextField.text!
         
         // Check for empty fields
-        if (userFirstName.isEmpty || userLastName.isEmpty || userEmail.isEmpty || userPassword.isEmpty || userRepeatPassword.isEmpty)
+        if (userFirstName.isEmpty || userLastName.isEmpty || username.isEmpty || userEmail.isEmpty || userPassword.isEmpty || userRepeatPassword.isEmpty)
         {
             // Display alert message and return
             displayAlertMessage("Fill Up Required Fields")
         }
-        
-        // Check password && repeat password
+            
+            // Check password && repeat password
         else if (userPassword != userRepeatPassword)
         {
             // Display alert message and return
             displayAlertMessage("Password Does Not Match")
         }
-        
-        // TODO: Store users data (send to server side)
-        
+            
+            // TODO: Store users data (send to server side)
+            
         else
         {
             do {
-                
-                let post:NSString = "email=\(userEmail)&password=\(userPassword)"
+                // Change
+                let post:NSString = "email=\(username)&password=\(userPassword)"
                 
                 NSLog("PostData: %@",post);
                 
@@ -122,22 +124,31 @@ class RegisterVC: UIViewController {
                         {
                             NSLog("Sign Up SUCCESS");
                             
-                            let myAlert = UIAlertController(title: "Registration Successful", message: "Hi \(userFirstName)! Welcom do SuLife!", preferredStyle: UIAlertControllerStyle.Alert)
-                            
-                            let okAction = UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler: nil)
-                            myAlert.addAction(okAction)
-                            self.presentViewController(myAlert, animated:true, completion:nil)
-
                             //======================================
                             // Send firstName & lastName to database
                             //======================================
                             
-                            sendUserPrfileToDB(accountToken, firstname: userLastName, lastname: userFirstName)
+                            sendUserPrfileToDB(accountToken, firstname: userLastName, lastname: userFirstName, userEmail: userEmail)
                             
                             //=======================================
                             // Auot login
                             //=======================================
-                            autoLogin(userEmail, userPassword: userPassword)
+                            
+                            autoLogin(username, userPassword: userPassword)
+                            
+                            // set user's information
+                            setUserInformation(userFirstName, lastName : userLastName, email : userEmail, id : accountToken)
+                            
+                            let myAlert = UIAlertController(title: "Registration Successful", message: "Hi \(userFirstName)!\n Welcom do SuLife!", preferredStyle: UIAlertControllerStyle.Alert)
+                            
+                            let okAction = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
+                                self.performSegueWithIdentifier("registerToMain", sender: self)
+                            })
+                            
+                            myAlert.addAction(okAction)
+                            self.presentViewController(myAlert, animated:true, completion:nil)
+                            
+                            
                         }
                         else
                         {
@@ -148,54 +159,43 @@ class RegisterVC: UIViewController {
                             } else {
                                 error_msg = "Unknown Error"
                             }
-                            let alertView:UIAlertView = UIAlertView()
-                            alertView.title = "Sign Up Failed!"
-                            alertView.message = error_msg as String
-                            alertView.delegate = self
-                            alertView.addButtonWithTitle("OK")
-                            alertView.show()
                             
+                            let myAlert = UIAlertController(title: "Sign Up Failed!", message: error_msg as String, preferredStyle: UIAlertControllerStyle.Alert)
+                            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                            myAlert.addAction(okAction)
+                            self.presentViewController(myAlert, animated:true, completion:nil)
                         }
                         
                     }
                     else
                     {
-                        let alertView:UIAlertView = UIAlertView()
-                        alertView.title = "Sign Up Failed!"
-                        alertView.message = "Email already exist! Try login!"
-                        alertView.delegate = self
-                        alertView.addButtonWithTitle("OK")
-                        alertView.show()
+                        let myAlert = UIAlertController(title: "Sign Up Failed!", message: "Email already exist! Try login!", preferredStyle: UIAlertControllerStyle.Alert)
+                        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                        myAlert.addAction(okAction)
+                        self.presentViewController(myAlert, animated:true, completion:nil)
                     }
                 }
                 else
                 {
-                    let alertView:UIAlertView = UIAlertView()
-                    alertView.title = "Sign in Failed!"
-                    alertView.message = "Connection Failure"
-                    if let error = reponseError {
-                        alertView.message = (error.localizedDescription)
-                    }
-                    alertView.delegate = self
-                    alertView.addButtonWithTitle("OK")
-                    alertView.show()
+                    let myAlert = UIAlertController(title: "Sign Up Failed!", message: "Connection Failed", preferredStyle: UIAlertControllerStyle.Alert)
+                    let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                    myAlert.addAction(okAction)
+                    self.presentViewController(myAlert, animated:true, completion:nil)
                 }
             }
             catch
             {
-                let alertView:UIAlertView = UIAlertView()
-                alertView.title = "Sign Up Failed!"
-                alertView.message = "Server Error!"
-                alertView.delegate = self
-                alertView.addButtonWithTitle("OK")
-                alertView.show()
+                let myAlert = UIAlertController(title: "Sign Up Failed!", message: "Server Error", preferredStyle: UIAlertControllerStyle.Alert)
+                let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                myAlert.addAction(okAction)
+                self.presentViewController(myAlert, animated:true, completion:nil)
             }
         }
     }
-
+    
     func displayAlertMessage(userMessage:String)
     {
-        var myAlert = UIAlertController(title: "Alert", message: userMessage, preferredStyle: UIAlertControllerStyle.Alert)
+        let myAlert = UIAlertController(title: "Alert", message: userMessage, preferredStyle: UIAlertControllerStyle.Alert)
         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
         myAlert.addAction(okAction)
         self.presentViewController(myAlert, animated:true, completion:nil)
@@ -206,10 +206,10 @@ class RegisterVC: UIViewController {
     // Send firstName & lastName to database
     //======================================
     
-    func sendUserPrfileToDB(token:NSString, firstname:String, lastname:String)
+    func sendUserPrfileToDB(token:NSString, firstname:String, lastname:String, userEmail: String)
     {
         do {
-            let post:NSString = "fistname=\(firstname)&lastname=\(lastname)"
+            let post:NSString = "fistname=\(firstname)&lastname=\(lastname)&email=\(userEmail)"
             
             NSLog("PostData: %@",post);
             
@@ -254,9 +254,9 @@ class RegisterVC: UIViewController {
     //==================================
     // Auto login
     //==================================
-    func autoLogin (userEmail: String, userPassword: String) {
+    func autoLogin (username: String, userPassword: String) {
         do {
-            let post:NSString = "email=\(userEmail)&password=\(userPassword)"
+            let post:NSString = "email=\(username)&password=\(userPassword)"
             
             NSLog("PostData: %@",post);
             
@@ -316,11 +316,10 @@ class RegisterVC: UIViewController {
                             // store information as globa
                             
                             let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-                            prefs.setObject(userEmail, forKey: "Email")
+                            prefs.setObject(username, forKey: "username")
                             prefs.setInteger(1, forKey: "isUserLoggedIn")
                             prefs.synchronize()
                             
-                            self.performSegueWithIdentifier("registerToMain", sender: self)
                         } else {
                             var error_msg:NSString
                             
@@ -329,47 +328,41 @@ class RegisterVC: UIViewController {
                             } else {
                                 error_msg = "Unknown Error"
                             }
-                            let alertView:UIAlertView = UIAlertView()
-                            alertView.title = "Sign in Failed!"
-                            alertView.message = error_msg as String
-                            alertView.delegate = self
-                            alertView.addButtonWithTitle("OK")
-                            alertView.show()
+                            let myAlert = UIAlertController(title: "Sign Up Failed!", message: error_msg as String, preferredStyle: UIAlertControllerStyle.Alert)
+                            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                            myAlert.addAction(okAction)
+                            self.presentViewController(myAlert, animated:true, completion:nil)
                         }
                     }
                 } else {
-                    let alertView:UIAlertView = UIAlertView()
-                    alertView.title = "Sign in Failed!"
-                    alertView.message = "Please check your Email and Password!\nIf you haven't registered,\ntry register first!"
-                    alertView.delegate = self
-                    alertView.addButtonWithTitle("OK")
-                    alertView.show()
+                    let myAlert = UIAlertController(title: "Login Failed!", message: "Please check your Username and Password!\nIf you haven't registered,\ntry register first!", preferredStyle: UIAlertControllerStyle.Alert)
+                    let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                    myAlert.addAction(okAction)
+                    self.presentViewController(myAlert, animated:true, completion:nil)
                 }
             } else {
-                let alertView:UIAlertView = UIAlertView()
-                alertView.title = "Sign in Failed!"
-                alertView.message = "Connection fail!"
+                let myAlert = UIAlertController(title: "Login Failed!", message: "Connection Failed", preferredStyle: UIAlertControllerStyle.Alert)
+                
                 if let error = reponseError {
-                    alertView.message = (error.localizedDescription)
+                    myAlert.message = (error.localizedDescription)
                 }
-                alertView.delegate = self
-                alertView.addButtonWithTitle("OK")
-                alertView.show()
+                
+                let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                myAlert.addAction(okAction)
+                self.presentViewController(myAlert, animated:true, completion:nil)
+                
             }
         } catch {
-            let alertView:UIAlertView = UIAlertView()
-            alertView.title = "Sign in Failed!"
-            alertView.message = "Server Error"
-            alertView.delegate = self
-            alertView.addButtonWithTitle("OK")
-            alertView.show()
+            let myAlert = UIAlertController(title: "Login Failed!", message: "Server Error", preferredStyle: UIAlertControllerStyle.Alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+            myAlert.addAction(okAction)
+            self.presentViewController(myAlert, animated:true, completion:nil)
         }
     }
-
-    @IBAction func iHaveAnAccountButtonTapped(sender: AnyObject)
-    {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    
+    func setUserInformation(firstName : String, lastName : String, email : String, id : NSString) {
+        userInformation = UserModel(firstName: firstName as NSString, lastName: lastName as NSString, email: email as
+            NSString, id: id)
+        print("Register : Profile : name = \(userInformation?.lastName)")
     }
-
-
 }
