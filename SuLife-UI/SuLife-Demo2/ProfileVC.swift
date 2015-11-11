@@ -46,6 +46,7 @@ class ProfileVC: UIViewController {
         myAlert.addAction(UIAlertAction(title: "Logout", style: .Default, handler: { (action: UIAlertAction!) in
             NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isUserLoggedIn")
             NSUserDefaults.standardUserDefaults().synchronize()
+            userInformation = nil
             self.performSegueWithIdentifier("profileToLogin", sender: self)
         }))
         

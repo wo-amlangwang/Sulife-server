@@ -593,6 +593,7 @@
                         <outlet property="emailTextField" destination="6b2-eb-ldn" id="s6B-ws-cHz"/>
                         <outlet property="firstNameTextField" destination="mGH-uI-JZL" id="1rb-Q4-TUX"/>
                         <outlet property="lastNameTextField" destination="6C5-Wl-UcT" id="UXe-qX-oFL"/>
+                        <segue destination="6EY-K0-0Xd" kind="show" identifier="editToProfile" id="POt-Sk-UZR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nZx-0p-wII" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -783,14 +784,18 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Profile" id="C1u-1E-2m0">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="edit" id="a3h-qZ-LfI"/>
+                        <barButtonItem key="rightBarButtonItem" image="write" style="plain" id="a3h-qZ-LfI">
+                            <inset key="imageInsets" minX="15" minY="10" maxX="0.0" maxY="5"/>
+                            <connections>
+                                <segue destination="8Hn-vB-S7F" kind="show" identifier="profileToEditProfile" id="dvW-Br-1Xc"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="userEmail" destination="A04-cu-WvG" id="Gci-PW-jcN"/>
                         <outlet property="userFirstName" destination="WdG-bF-o7N" id="GMw-kq-4g2"/>
                         <outlet property="userLastName" destination="xqd-lm-L2w" id="qCK-Hi-CBi"/>
-                        <segue destination="8Hn-vB-S7F" kind="show" id="vdN-5g-wRv"/>
                         <segue destination="IJa-U8-Q5u" kind="presentation" identifier="profileToLogin" id="bCD-Xk-LO4"/>
                     </connections>
                 </viewController>
@@ -1819,9 +1824,11 @@
         <image name="location" width="40" height="50"/>
         <image name="profile1" width="51" height="51"/>
         <image name="task1" width="48" height="46"/>
+        <image name="write" width="44" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="4Ge-6i-LSc"/>
-        <segue reference="U9Y-pk-OCG"/>
+        <segue reference="POt-Sk-UZR"/>
+        <segue reference="bCD-Xk-LO4"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -33,7 +33,50 @@ class EditProfileVC: UIViewController {
     }
     
     @IBAction func saveButtonTapped(sender: UIButton) {
+        let firstname = firstNameTextField.text
+        let lastname = lastNameTextField.text
+        let email = emailTextField.text
+        let post:NSString = "fistname=\(firstname)&lastname=\(lastname)&email=\(email)"
         
+        NSLog("PostData: %@",post);
+        
+        let url:NSURL = NSURL(string: profileURL)!
+        
+        let postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+        
+        let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "POST"
+        request.HTTPBody = postData
+        request.setValue(accountToken, forHTTPHeaderField: "x-access-token")
+        
+        
+        var reponseError: NSError?
+        var response: NSURLResponse?
+        
+        var urlData: NSData?
+        do {
+            urlData = try NSURLConnection.sendSynchronousRequest(request, returningResponse:&response)
+        } catch let error as NSError {
+            reponseError = error
+            urlData = nil
+        }
+        
+        if ( urlData != nil ) {
+            let res = response as! NSHTTPURLResponse!;
+            
+            NSLog("Response code: %ld", res.statusCode);
+            
+            if (res.statusCode >= 200 && res.statusCode < 300)
+            {
+                let responseData:NSString  = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
+                
+                NSLog("Response ==> %@", responseData);
+                
+                //var error: NSError?
+            }
+        }
+        // return to profile
+        userInformation = UserModel(firstName: firstname! as NSString, lastName: lastname! as NSString, email: email! as NSString, id: accountToken)
         self.navigationController!.popToRootViewControllerAnimated(true)
         
     }

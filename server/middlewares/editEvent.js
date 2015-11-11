@@ -4,19 +4,19 @@ module.exports = {
     Event.findOne({'_id' : req.params.eventid}, function(err, thisevent) {
       if(thisevent){
         if(req.userid === thisevent.userid){
-          if(!req.body.title === undefined){
+          if(req.body.title != undefined){
             thisevent.title = req.body.title;
           }
-          if(!req.body.detail === undefined){
+          if(req.body.detail != undefined){
             thisevent.detail = req.body.detail;
           }
-          if(!req.body.starttime === undefined){
+          if(req.body.starttime != undefined){
             thisevent.starttime = req.body.starttime;
           }
-          if(!req.body.endtime === undefined){
+          if(req.body.endtime != undefined){
             thisevent.endtime = req.body.endtime;
           }
-          if(!req.body.share === undefined){
+          if(req.body.share != undefined){
             thisevent.share = req.body.share;
           }
           thisevent.save(function(err) {
