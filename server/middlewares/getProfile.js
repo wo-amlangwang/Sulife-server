@@ -13,6 +13,7 @@ module.exports = {
           newProfile.userid = req.userid;
           newProfile.firstname = null;
           newProfile.lastname = null;
+          newProfile.email = null;
           newProfile.save(function(err,thisprofile) {
             req.reJson['message'] = 'OK! Profile followed';
             req.reJson['profile'] = thisprofile;
