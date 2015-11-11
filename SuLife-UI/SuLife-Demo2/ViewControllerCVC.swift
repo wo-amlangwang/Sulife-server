@@ -11,6 +11,7 @@ import UIKit
 // Global variable for selected date
 var dateSelected : CVDate?
 
+
 class ViewControllerCVC: UIViewController {
     // MARK: - Properties
     @IBOutlet weak var calendarView: CVCalendarView!

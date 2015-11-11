@@ -123,15 +123,11 @@ class NewEventVC: UIViewController {
                             self.navigationController!.popToRootViewControllerAnimated(true)
                             
                         } else {
-                            let alertView:UIAlertView = UIAlertView()
-                            alertView.title = "Add New Event Failed!"
-                            alertView.message = "Please Try Again!"
-                            alertView.delegate = self
-                            alertView.addButtonWithTitle("OK")
-                            alertView.show()
-                            NSLog("1")
+                            let myAlert = UIAlertController(title: "Add New Event Failed!", message: "Please Try Again!", preferredStyle: UIAlertControllerStyle.Alert)
+                            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                            myAlert.addAction(okAction)
+                            self.presentViewController(myAlert, animated:true, completion:nil)
                         }
-                        
                     }
                 } catch {
                     print(error)
@@ -142,22 +138,17 @@ class NewEventVC: UIViewController {
                 //[jsonData[@"success"] integerValue];
                 
             } else {
-                let alertView:UIAlertView = UIAlertView()
-                alertView.title = "Add New Event Failed!"
-                alertView.message = "System Error!"
-                alertView.delegate = self
-                alertView.addButtonWithTitle("OK")
-                alertView.show()
-                NSLog("2")
+                let myAlert = UIAlertController(title: "Add New Event Failed!", message: "System Error!", preferredStyle: UIAlertControllerStyle.Alert)
+                let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                myAlert.addAction(okAction)
+                self.presentViewController(myAlert, animated:true, completion:nil)
             }
             
         } else {
-            let alertView:UIAlertView = UIAlertView()
-            alertView.title = "Add New Event Failed!"
-            alertView.message = "Response Error!"
-            alertView.delegate = self
-            alertView.addButtonWithTitle("OK")
-            alertView.show()
+            let myAlert = UIAlertController(title: "Add New Event Failed!", message: "Response Error!", preferredStyle: UIAlertControllerStyle.Alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+            myAlert.addAction(okAction)
+            self.presentViewController(myAlert, animated:true, completion:nil)
         }
     }
     

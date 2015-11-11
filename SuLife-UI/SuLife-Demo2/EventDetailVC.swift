@@ -88,6 +88,19 @@ class EventDetailVC: UIViewController {
                         presentViewController(myAlert, animated: true, completion: nil)
                         
                     }*/
+                    
+                    let myAlert = UIAlertController(title: "Delete Event", message: "Are You Sure to Delete This Event? ", preferredStyle: UIAlertControllerStyle.Alert)
+                    
+                    myAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
+                        myAlert .dismissViewControllerAnimated(true, completion: nil)
+                    }))
+                    
+                    myAlert.addAction(UIAlertAction(title: "Delete", style: .Default, handler: { (action: UIAlertAction!) in
+                        self.navigationController!.popToRootViewControllerAnimated(true)
+                    }))
+                    
+                    presentViewController(myAlert, animated: true, completion: nil)
+                    
                 }
             } catch {
                 print(error)
@@ -95,19 +108,16 @@ class EventDetailVC: UIViewController {
             
             
         } else {
-            let alertView:UIAlertView = UIAlertView()
-            alertView.title = "urlData Equals to NULL!"
-            alertView.message = "Connection fail!"
-            if let error = reponseError {
-                alertView.message = (error.localizedDescription)
-            }
-            alertView.delegate = self
-            alertView.addButtonWithTitle("OK")
-            alertView.show()
+            let myAlert = UIAlertController(title: "Connection failed!", message: "urlData Equals to NULL!", preferredStyle: UIAlertControllerStyle.Alert)
             
+            if let error = reponseError {
+                myAlert.message = (error.localizedDescription)
+            }
+            
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+            myAlert.addAction(okAction)
+            self.presentViewController(myAlert, animated:true, completion:nil)
         }
-        
-        
     }
     
     

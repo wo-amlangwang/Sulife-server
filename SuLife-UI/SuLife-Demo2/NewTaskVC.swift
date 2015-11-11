@@ -114,13 +114,10 @@ class NewTaskVC: UIViewController {
                             self.navigationController!.popToRootViewControllerAnimated(true)
                             
                         } else {
-                            let alertView:UIAlertView = UIAlertView()
-                            alertView.title = "Add New Task Failed!"
-                            alertView.message = "Please Try Again!"
-                            alertView.delegate = self
-                            alertView.addButtonWithTitle("OK")
-                            alertView.show()
-                            NSLog("1")
+                            let myAlert = UIAlertController(title: "Add New Task Failed!", message: "Please Try Again!", preferredStyle: UIAlertControllerStyle.Alert)
+                            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                            myAlert.addAction(okAction)
+                            self.presentViewController(myAlert, animated:true, completion:nil)
                         }
                         
                     }
@@ -133,22 +130,17 @@ class NewTaskVC: UIViewController {
                 //[jsonData[@"success"] integerValue];
                 
             } else {
-                let alertView:UIAlertView = UIAlertView()
-                alertView.title = "Add New Task Failed!"
-                alertView.message = "System Error!"
-                alertView.delegate = self
-                alertView.addButtonWithTitle("OK")
-                alertView.show()
-                NSLog("2")
+                let myAlert = UIAlertController(title: "Add New Task Failed!", message: "System Error!", preferredStyle: UIAlertControllerStyle.Alert)
+                let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                myAlert.addAction(okAction)
+                self.presentViewController(myAlert, animated:true, completion:nil)
             }
             
         } else {
-            let alertView:UIAlertView = UIAlertView()
-            alertView.title = "Add New Task Failed!"
-            alertView.message = "Response Error!"
-            alertView.delegate = self
-            alertView.addButtonWithTitle("OK")
-            alertView.show()
+            let myAlert = UIAlertController(title: "Add New Task Failed!", message: "Response Error!", preferredStyle: UIAlertControllerStyle.Alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+            myAlert.addAction(okAction)
+            self.presentViewController(myAlert, animated:true, completion:nil)
         }
     }
     

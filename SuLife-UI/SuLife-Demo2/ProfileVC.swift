@@ -28,6 +28,7 @@ class ProfileVC: UIViewController {
         userEmail.text = userInformation?.email as? String
 
         // Do any additional setup after loading the view.
+        print(userInformation?.firstName)
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,7 +47,6 @@ class ProfileVC: UIViewController {
         myAlert.addAction(UIAlertAction(title: "Logout", style: .Default, handler: { (action: UIAlertAction!) in
             NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isUserLoggedIn")
             NSUserDefaults.standardUserDefaults().synchronize()
-            self.userInformation = nil
             self.performSegueWithIdentifier("profileToLogin", sender: self)
         }))
         

@@ -58,25 +58,23 @@ class LoginVC: UIViewController {
         // fill in required fields
         if ( username.isEmpty )
         {
-            let alertView:UIAlertView = UIAlertView()
-            alertView.title = "Login Failed!"
-            alertView.message = "Please enter username"
-            alertView.delegate = self
-            alertView.addButtonWithTitle("OK")
-            alertView.show()
+            let myAlert = UIAlertController(title: "Login Failed!", message: "Please enter Username", preferredStyle: UIAlertControllerStyle.Alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+            myAlert.addAction(okAction)
+            self.presentViewController(myAlert, animated:true, completion:nil)
         }
         else if ( userPassword.isEmpty )
         {
-            let alertView:UIAlertView = UIAlertView()
-            alertView.title = "Login Failed!"
-            alertView.message = "Please enter Password"
-            alertView.delegate = self
-            alertView.addButtonWithTitle("OK")
+            let myAlert = UIAlertController(title: "Login Failed!", message: "Please enter Password", preferredStyle: UIAlertControllerStyle.Alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+            myAlert.addAction(okAction)
+            self.presentViewController(myAlert, animated:true, completion:nil)
         }
         else
         {
             do {
-                let post:NSString = "username=\(username)&password=\(userPassword)"
+                // Change
+                let post:NSString = "email=\(username)&password=\(userPassword)"
                 
                 NSLog("PostData: %@",post);
                 
@@ -93,13 +91,13 @@ class LoginVC: UIViewController {
                 request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
                 request.setValue("application/json", forHTTPHeaderField: "Accept")
                 
-                
                 var reponseError: NSError?
                 var response: NSURLResponse?
                 
                 var urlData: NSData?
                 do {
                     urlData = try NSURLConnection.sendSynchronousRequest(request, returningResponse:&response)
+                    // urlData = try NSURLSession.dataTaskWithRequest(request, completionHandler: ((NSData!, NSURLResponse!, NSError!) -> Void)?)
                 } catch let error as NSError {
                     reponseError = error
                     urlData = nil
@@ -121,6 +119,7 @@ class LoginVC: UIViewController {
                             //var error: NSError?
                             
                             let jsonData:NSDictionary = try NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers ) as! NSDictionary
+
                             
                             let success:NSString = jsonData.valueForKey("message") as! NSString
                             
@@ -138,19 +137,23 @@ class LoginVC: UIViewController {
                                 
                                 getUserInformation()
                                 
-                                let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-                                prefs.setObject(username, forKey: "username")
-                                prefs.setInteger(1, forKey: "isUserLoggedIn")
-                                prefs.synchronize()
+                                let isUserLoggedIn : Bool = NSUserDefaults.standardUserDefaults().boolForKey("isUserLoggedIn")
                                 
-                                let startViewController = self.storyboard?.instantiateViewControllerWithIdentifier("startView") as! StartVC
+                                if (isUserLoggedIn)
+                                {
+                                    self.dismissViewControllerAnimated(true, completion: nil)
+                                }
+                                else {
                                 
-                                let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-                                appDelegate.window?.rootViewController = startViewController
-                                appDelegate.window?.makeKeyAndVisible()
-
+                                    let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+                                    prefs.setObject(username, forKey: "username")
+                                    prefs.setInteger(1, forKey: "isUserLoggedIn")
+                                    prefs.synchronize()
                                 
-                                self.dismissViewControllerAnimated(true, completion: nil)
+                                
+                                self.performSegueWithIdentifier("loginToMain", sender: self)
+                                }
+                                
                             } else {
                                 var error_msg:NSString
                                 
@@ -159,46 +162,43 @@ class LoginVC: UIViewController {
                                 } else {
                                     error_msg = "Unknown Error"
                                 }
-                                let alertView:UIAlertView = UIAlertView()
-                                alertView.title = "Sign in Failed!"
-                                alertView.message = error_msg as String
-                                alertView.delegate = self
-                                alertView.addButtonWithTitle("OK")
-                                alertView.show()
+                                
+                                let myAlert = UIAlertController(title: "Sign in Failed!", message: error_msg as String, preferredStyle: UIAlertControllerStyle.Alert)
+                                let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                                myAlert.addAction(okAction)
+                                self.presentViewController(myAlert, animated:true, completion:nil)
                             }
                         }
                     } else {
-                        let alertView:UIAlertView = UIAlertView()
-                        alertView.title = "Sign in Failed!"
-                        alertView.message = "Please check your username and Password!\nIf you haven't registered,\ntry register first!"
-                        alertView.delegate = self
-                        alertView.addButtonWithTitle("OK")
-                        alertView.show()
+                        let myAlert = UIAlertController(title: "Sign in Failed!", message: "Please check your username and Password!\nIf you haven't registered,\ntry register first!", preferredStyle: UIAlertControllerStyle.Alert)
+                        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                        myAlert.addAction(okAction)
+                        self.presentViewController(myAlert, animated:true, completion:nil)
                     }
                 } else {
-                    let alertView:UIAlertView = UIAlertView()
-                    alertView.title = "Sign in Failed!"
-                    alertView.message = "Connection fail!"
+                    let myAlert = UIAlertController(title: "Sign in Failed!", message: "Connection fail!", preferredStyle: UIAlertControllerStyle.Alert)
+                    
                     if let error = reponseError {
-                        alertView.message = (error.localizedDescription)
+                        myAlert.message = (error.localizedDescription)
                     }
-                    alertView.delegate = self
-                    alertView.addButtonWithTitle("OK")
-                    alertView.show()
+                    
+                    let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                    myAlert.addAction(okAction)
+                    self.presentViewController(myAlert, animated:true, completion:nil)
                 }
             } catch {
-                let alertView:UIAlertView = UIAlertView()
-                alertView.title = "Sign in Failed!"
-                alertView.message = "Server Error"
-                alertView.delegate = self
-                alertView.addButtonWithTitle("OK")
-                alertView.show()
+                let myAlert = UIAlertController(title: "Sign in Failed!", message: "Server Error", preferredStyle: UIAlertControllerStyle.Alert)
+                let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                myAlert.addAction(okAction)
+                self.presentViewController(myAlert, animated:true, completion:nil)
             }
         }
     }
     
     func getUserInformation () {
         // user's information UserModel
+        
+        print("----------------------------------------")
         
         // let profileUrl = profileURL + "/" + accountToken! as String)
         let profileUrl:NSURL = NSURL(string: profileURL)!
@@ -228,7 +228,7 @@ class LoginVC: UIViewController {
             
             NSLog("Response ==> %@", responseData);
             
-            var error: NSError?
+            // var error: NSError?
             
             do {
                 if let jsonResult = try NSJSONSerialization.JSONObjectWithData(urlData!, options: []) as? NSDictionary {

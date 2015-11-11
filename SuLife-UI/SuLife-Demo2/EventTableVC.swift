@@ -18,6 +18,9 @@ class EventTableVC: UITableViewController {
     
     // reload data in table
     override func viewDidAppear(animated: Bool) {
+        
+        print(userInformation?.lastName)
+        
         /* get selected date */
         var date : NSDate = dateSelected != nil ? (dateSelected?.convertedDate())! : NSDate()
         
@@ -89,16 +92,15 @@ class EventTableVC: UITableViewController {
             }
             
         } else {
-            let alertView:UIAlertView = UIAlertView()
-            alertView.title = "urlData Equals to NULL!"
-            alertView.message = "Connection fail!"
+            let myAlert = UIAlertController(title: "Connection failed!", message: "urlData Equals to NULL!", preferredStyle: UIAlertControllerStyle.Alert)
+            
             if let error = reponseError {
-                alertView.message = (error.localizedDescription)
+                myAlert.message = (error.localizedDescription)
             }
-            alertView.delegate = self
-            alertView.addButtonWithTitle("OK")
-            alertView.show()
-
+            
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+            myAlert.addAction(okAction)
+            self.presentViewController(myAlert, animated:true, completion:nil)
         }
         
         self.tableView.reloadData()
@@ -135,7 +137,7 @@ class EventTableVC: UITableViewController {
         
         // Configure the cell...
 
-        var event = resArray[indexPath.row] as NSDictionary
+        let event = resArray[indexPath.row] as NSDictionary
         
         cell.textLabel?.text = event.valueForKey("title") as? String;
         

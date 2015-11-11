@@ -84,6 +84,18 @@ class TaskDetailVC: UIViewController {
                     presentViewController(myAlert, animated: true, completion: nil)
                     
                     }*/
+                    let myAlert = UIAlertController(title: "Delete Task", message: "Are You Sure to Delete This Task? ", preferredStyle: UIAlertControllerStyle.Alert)
+                    
+                    myAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
+                        myAlert .dismissViewControllerAnimated(true, completion: nil)
+                    }))
+                    
+                    myAlert.addAction(UIAlertAction(title: "Delete", style: .Default, handler: { (action: UIAlertAction!) in
+                        self.navigationController!.popToRootViewControllerAnimated(true)
+                    }))
+                    
+                    presentViewController(myAlert, animated: true, completion: nil)
+                    
                 }
             } catch {
                 print(error)
@@ -91,16 +103,13 @@ class TaskDetailVC: UIViewController {
             
             
         } else {
-            let alertView:UIAlertView = UIAlertView()
-            alertView.title = "urlData Equals to NULL!"
-            alertView.message = "Connection fail!"
+            let myAlert = UIAlertController(title: "Connection failed!", message: "urlData Equals to NULL!", preferredStyle: UIAlertControllerStyle.Alert)
             if let error = reponseError {
-                alertView.message = (error.localizedDescription)
+                myAlert.message = (error.localizedDescription)
             }
-            alertView.delegate = self
-            alertView.addButtonWithTitle("OK")
-            alertView.show()
-            
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+            myAlert.addAction(okAction)
+            self.presentViewController(myAlert, animated:true, completion:nil)
         }
         
         

@@ -21,11 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let mainStoryBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         
-        var isUserLoggedIn : Bool = NSUserDefaults.standardUserDefaults().boolForKey("isUserLoggedIn")
+        let isUserLoggedIn : Bool = NSUserDefaults.standardUserDefaults().boolForKey("isUserLoggedIn")
         
         if (!isUserLoggedIn)
         {
-            var loginViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("loginView") as! LoginVC
+            let loginViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("loginView") as! LoginVC
             
             window?.rootViewController = loginViewController
             window?.makeKeyAndVisible()
@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         else
         {
-            var protectedPage = mainStoryBoard.instantiateViewControllerWithIdentifier("startView") as! StartVC
+            let protectedPage = mainStoryBoard.instantiateViewControllerWithIdentifier("startView") as! StartVC
             
             window?.rootViewController = protectedPage
             window?.makeKeyAndVisible()

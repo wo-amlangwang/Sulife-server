@@ -39,9 +39,8 @@ class StartVC: UIViewController {
         }
     }
     
-    @IBAction func logoutButtonTapped(sender: AnyObject) {
-        
-        let myAlert = UIAlertController(title: "Log Out", message: "Are You Sure to Log Out ? ", preferredStyle: UIAlertControllerStyle.Alert)
+    @IBAction func logoutButtonTapped(sender: UIButton) {
+        let myAlert = UIAlertController(title: "Log Out", message: "Are You Sure to Log Out? ", preferredStyle: UIAlertControllerStyle.Alert)
         
         myAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
             myAlert .dismissViewControllerAnimated(true, completion: nil)
@@ -51,15 +50,20 @@ class StartVC: UIViewController {
             NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isUserLoggedIn")
             NSUserDefaults.standardUserDefaults().synchronize()
             userInformation = nil
-            // self.performSegueWithIdentifier("mainToLogin", sender: self)
+            let loginViewController = self.storyboard?.instantiateViewControllerWithIdentifier("loginView") as! LoginVC
+            
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            appDelegate.window?.rootViewController = loginViewController
+            appDelegate.window?.makeKeyAndVisible()
         }))
         
-        let loginViewController = self.storyboard?.instantiateViewControllerWithIdentifier("loginView") as! LoginVC
+        presentViewController(myAlert, animated: true, completion: nil)
+        // let loginViewController = self.storyboard?.instantiateViewControllerWithIdentifier("loginView") as! LoginVC
         
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.window?.rootViewController = loginViewController
-        appDelegate.window?.makeKeyAndVisible()
-        
+        // let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        // appDelegate.window?.rootViewController = loginViewController
+        // appDelegate.window?.makeKeyAndVisible()
     }
+    
 
 }

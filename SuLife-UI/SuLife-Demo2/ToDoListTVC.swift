@@ -19,7 +19,7 @@ class ToDoListTVC: UITableViewController {
     // reload data in table
     override func viewDidAppear(animated: Bool) {
         /* get selected date */
-        var date : NSDate = dateSelected != nil ? (dateSelected?.convertedDate())! : NSDate()
+        let date : NSDate = dateSelected != nil ? (dateSelected?.convertedDate())! : NSDate()
         
         /* parse date to proper format */
         let sd = stringFromDate(date).componentsSeparatedByString(" ")
@@ -88,16 +88,13 @@ class ToDoListTVC: UITableViewController {
             }
             
         } else {
-            let alertView:UIAlertView = UIAlertView()
-            alertView.title = "urlData Equals to NULL!"
-            alertView.message = "Connection fail!"
+            let myAlert = UIAlertController(title: "Connection failed!", message: "urlData Equals to NULL!", preferredStyle: UIAlertControllerStyle.Alert)
             if let error = reponseError {
-                alertView.message = (error.localizedDescription)
+                myAlert.message = (error.localizedDescription)
             }
-            alertView.delegate = self
-            alertView.addButtonWithTitle("OK")
-            alertView.show()
-            
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+            myAlert.addAction(okAction)
+            self.presentViewController(myAlert, animated:true, completion:nil)
         }
         
         self.tableView.reloadData()
@@ -134,7 +131,7 @@ class ToDoListTVC: UITableViewController {
         
         // Configure the cell...
         
-        var task = resArray[indexPath.row] as NSDictionary
+        let task = resArray[indexPath.row] as NSDictionary
         
         cell.textLabel?.text = task.valueForKey("title") as? String;
         

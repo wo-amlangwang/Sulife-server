@@ -67,8 +67,8 @@ class RegisterVC: UIViewController {
         else
         {
             do {
-                
-                let post:NSString = "username=\(username)&password=\(userPassword)"
+                // Change
+                let post:NSString = "email=\(username)&password=\(userPassword)"
                 
                 NSLog("PostData: %@",post);
                 
@@ -158,54 +158,43 @@ class RegisterVC: UIViewController {
                             } else {
                                 error_msg = "Unknown Error"
                             }
-                            let alertView:UIAlertView = UIAlertView()
-                            alertView.title = "Sign Up Failed!"
-                            alertView.message = error_msg as String
-                            alertView.delegate = self
-                            alertView.addButtonWithTitle("OK")
-                            alertView.show()
                             
+                            let myAlert = UIAlertController(title: "Sign Up Failed!", message: error_msg as String, preferredStyle: UIAlertControllerStyle.Alert)
+                            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                            myAlert.addAction(okAction)
+                            self.presentViewController(myAlert, animated:true, completion:nil)
                         }
                         
                     }
                     else
                     {
-                        let alertView:UIAlertView = UIAlertView()
-                        alertView.title = "Sign Up Failed!"
-                        alertView.message = "Email already exist! Try login!"
-                        alertView.delegate = self
-                        alertView.addButtonWithTitle("OK")
-                        alertView.show()
+                        let myAlert = UIAlertController(title: "Sign Up Failed!", message: "Email already exist! Try login!", preferredStyle: UIAlertControllerStyle.Alert)
+                        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                        myAlert.addAction(okAction)
+                        self.presentViewController(myAlert, animated:true, completion:nil)
                     }
                 }
                 else
                 {
-                    let alertView:UIAlertView = UIAlertView()
-                    alertView.title = "Login Failed!"
-                    alertView.message = "Connection Failure"
-                    if let error = reponseError {
-                        alertView.message = (error.localizedDescription)
-                    }
-                    alertView.delegate = self
-                    alertView.addButtonWithTitle("OK")
-                    alertView.show()
+                    let myAlert = UIAlertController(title: "Sign Up Failed!", message: "Connection Failed", preferredStyle: UIAlertControllerStyle.Alert)
+                    let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                    myAlert.addAction(okAction)
+                    self.presentViewController(myAlert, animated:true, completion:nil)
                 }
             }
             catch
             {
-                let alertView:UIAlertView = UIAlertView()
-                alertView.title = "Sign Up Failed!"
-                alertView.message = "Server Error!"
-                alertView.delegate = self
-                alertView.addButtonWithTitle("OK")
-                alertView.show()
+                let myAlert = UIAlertController(title: "Sign Up Failed!", message: "Server Error", preferredStyle: UIAlertControllerStyle.Alert)
+                let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                myAlert.addAction(okAction)
+                self.presentViewController(myAlert, animated:true, completion:nil)
             }
         }
     }
     
     func displayAlertMessage(userMessage:String)
     {
-        var myAlert = UIAlertController(title: "Alert", message: userMessage, preferredStyle: UIAlertControllerStyle.Alert)
+        let myAlert = UIAlertController(title: "Alert", message: userMessage, preferredStyle: UIAlertControllerStyle.Alert)
         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
         myAlert.addAction(okAction)
         self.presentViewController(myAlert, animated:true, completion:nil)
@@ -338,40 +327,35 @@ class RegisterVC: UIViewController {
                             } else {
                                 error_msg = "Unknown Error"
                             }
-                            let alertView:UIAlertView = UIAlertView()
-                            alertView.title = "Login Failed!"
-                            alertView.message = error_msg as String
-                            alertView.delegate = self
-                            alertView.addButtonWithTitle("OK")
-                            alertView.show()
+                            let myAlert = UIAlertController(title: "Sign Up Failed!", message: error_msg as String, preferredStyle: UIAlertControllerStyle.Alert)
+                            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                            myAlert.addAction(okAction)
+                            self.presentViewController(myAlert, animated:true, completion:nil)
                         }
                     }
                 } else {
-                    let alertView:UIAlertView = UIAlertView()
-                    alertView.title = "Login Failed!"
-                    alertView.message = "Please check your Username and Password!\nIf you haven't registered,\ntry register first!"
-                    alertView.delegate = self
-                    alertView.addButtonWithTitle("OK")
-                    alertView.show()
+                    let myAlert = UIAlertController(title: "Login Failed!", message: "Please check your Username and Password!\nIf you haven't registered,\ntry register first!", preferredStyle: UIAlertControllerStyle.Alert)
+                    let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                    myAlert.addAction(okAction)
+                    self.presentViewController(myAlert, animated:true, completion:nil)
                 }
             } else {
-                let alertView:UIAlertView = UIAlertView()
-                alertView.title = "Login Failed!"
-                alertView.message = "Connection fail!"
+                let myAlert = UIAlertController(title: "Login Failed!", message: "Connection Failed", preferredStyle: UIAlertControllerStyle.Alert)
+                
                 if let error = reponseError {
-                    alertView.message = (error.localizedDescription)
+                    myAlert.message = (error.localizedDescription)
                 }
-                alertView.delegate = self
-                alertView.addButtonWithTitle("OK")
-                alertView.show()
+                
+                let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                myAlert.addAction(okAction)
+                self.presentViewController(myAlert, animated:true, completion:nil)
+                
             }
         } catch {
-            let alertView:UIAlertView = UIAlertView()
-            alertView.title = "Login Failed!"
-            alertView.message = "Server Error"
-            alertView.delegate = self
-            alertView.addButtonWithTitle("OK")
-            alertView.show()
+            let myAlert = UIAlertController(title: "Login Failed!", message: "Server Error", preferredStyle: UIAlertControllerStyle.Alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+            myAlert.addAction(okAction)
+            self.presentViewController(myAlert, animated:true, completion:nil)
         }
     }
     
