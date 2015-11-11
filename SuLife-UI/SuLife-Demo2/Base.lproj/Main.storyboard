@@ -587,7 +587,7 @@
         <!--Profile-->
         <scene sceneID="tWN-Uv-Zwn">
             <objects>
-                <viewController title="Profile" extendedLayoutIncludesOpaqueBars="YES" id="6EY-K0-0Xd" customClass="ProfileVC" customModule="SuLife_Demo2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="profileView" title="Profile" extendedLayoutIncludesOpaqueBars="YES" id="6EY-K0-0Xd" customClass="ProfileVC" customModule="SuLife_Demo2" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uoR-5Q-qLy"/>
                         <viewControllerLayoutGuide type="bottom" id="aqv-Ij-wf0"/>
@@ -603,7 +603,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile1" translatesAutoresizingMaskIntoConstraints="NO" id="NKt-HX-7yI">
-                                            <rect key="frame" x="162" y="122" width="90" height="80"/>
+                                            <rect key="frame" x="162" y="107" width="90" height="80"/>
                                         </imageView>
                                     </subviews>
                                 </view>
@@ -1177,7 +1177,8 @@
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title:" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ICp-LL-mIG">
                                 <rect key="frame" x="57" y="43" width="300" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="UeK-KD-yrp" id="CTr-AG-vSb"/>
@@ -1280,7 +1281,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="1Gy-JQ-l53" kind="show" identifier="showDetail" id="oEe-2u-qBY"/>
+                                    <segue destination="1Gy-JQ-l53" kind="show" identifier="showEventDetail" id="oEe-2u-qBY"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1545,7 +1546,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="Oxq-NK-Rqd" kind="show" identifier="showDetail" id="5oU-wj-Tr2"/>
+                                    <segue destination="Oxq-NK-Rqd" kind="show" identifier="showTaskDetail" id="5oU-wj-Tr2"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1792,6 +1793,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="tsq-NJ-VdF"/>
-        <segue reference="U9Y-pk-OCG"/>
+        <segue reference="bCD-Xk-LO4"/>
     </inferredMetricsTieBreakers>
 </document>
