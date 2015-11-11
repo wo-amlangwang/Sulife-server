@@ -147,7 +147,7 @@ class EventTableVC: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue?, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
-        if (segue?.identifier == "showDetail") {
+        if (segue?.identifier == "showEventDetail") {
             let vc = segue?.destinationViewController as! EventDetailVC
             let indexPath = tableView.indexPathForSelectedRow
             if let index = indexPath {

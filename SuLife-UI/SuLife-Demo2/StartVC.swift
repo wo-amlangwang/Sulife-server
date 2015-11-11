@@ -32,10 +32,19 @@ class StartVC: UIViewController {
     }
     */
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
-    {
-        if (segue.identifier == "loginView") {
-            print("Works")
+    @IBAction func calendarButtonTapped(sender: UIButton) {
+        print(accountToken)
+        if (accountToken == "")
+        {
+            let myAlert = UIAlertController(title: "Access Failed!", message: "Please Log In Again! ", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            myAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
+                myAlert .dismissViewControllerAnimated(true, completion: nil)
+                self.performSegueWithIdentifier("startToLogin", sender: self)
+            }))
+            presentViewController(myAlert, animated: true, completion: nil)
+        } else {
+            self.performSegueWithIdentifier("startToMain", sender: self)
         }
     }
     

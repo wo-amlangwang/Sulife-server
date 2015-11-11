@@ -204,6 +204,7 @@ class LoginVC: UIViewController {
         let profileUrl:NSURL = NSURL(string: profileURL)!
         let request:NSMutableURLRequest = NSMutableURLRequest(URL: profileUrl)
         request.HTTPMethod = "get"
+        request.HTTPBody = nil
         request.setValue(accountToken, forHTTPHeaderField: "x-access-token")
         
         var reponseError: NSError?
@@ -246,10 +247,15 @@ class LoginVC: UIViewController {
                         presentViewController(myAlert, animated: true, completion: nil)
                         
                     } else {
-                        userInformation?.firstName = jsonResult.valueForKey("firstname") as! NSString
-                        userInformation?.lastName = jsonResult.valueForKey("lastname") as! NSString
-                        userInformation?.email = jsonResult.valueForKey("email") as! NSString
-                        userInformation?.id = accountToken
+                        let jsonInform = jsonResult.valueForKey("profile") as! NSDictionary
+                        let firstName = ""/*jsonResult[1]!.valueForKey("firstname") as! NSString*/
+                        let lastName = jsonInform.valueForKey("lastname") as! NSString
+                        let email = ""/*jsonResult[1]!.valueForKey("email") as! NSString*/
+                        let id = accountToken
+                        
+                        userInformation = UserModel(firstName: firstName, lastName: lastName, email: email, id: id)
+                        
+                        NSLog("SUCCESS : Profile : name = \(userInformation?.lastName)")
                     }
                 }
             } catch {

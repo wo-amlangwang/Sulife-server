@@ -14,8 +14,6 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var userLastName: UITextField!
     @IBOutlet weak var userEmail: UITextField!
     
-    var userInformation : UserModel?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,7 +26,7 @@ class ProfileVC: UIViewController {
         userEmail.text = userInformation?.email as? String
 
         // Do any additional setup after loading the view.
-        print(userInformation?.firstName)
+        NSLog("Profile : Profile : name = \(userInformation?.lastName)")
     }
 
     override func didReceiveMemoryWarning() {

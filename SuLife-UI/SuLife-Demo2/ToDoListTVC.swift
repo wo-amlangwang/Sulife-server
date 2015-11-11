@@ -141,7 +141,7 @@ class ToDoListTVC: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue?, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
-        if (segue?.identifier == "showDetail") {
+        if (segue?.identifier == "showTaskDetail") {
             let vc = segue?.destinationViewController as! TaskDetailVC
             let indexPath = tableView.indexPathForSelectedRow
             if let index = indexPath {

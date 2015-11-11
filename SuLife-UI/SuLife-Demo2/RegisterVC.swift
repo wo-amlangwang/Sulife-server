@@ -148,6 +148,7 @@ class RegisterVC: UIViewController {
                             myAlert.addAction(okAction)
                             self.presentViewController(myAlert, animated:true, completion:nil)
                             
+                            
                         }
                         else
                         {
@@ -359,10 +360,9 @@ class RegisterVC: UIViewController {
         }
     }
     
-    func setUserInformation(firstName : String, lastName : String, email : String, id : String) {
-        userInformation?.firstName = firstName
-        userInformation?.lastName = lastName
-        userInformation?.email = email
-        userInformation?.id = id
+    func setUserInformation(firstName : String, lastName : String, email : String, id : NSString) {
+        userInformation = UserModel(firstName: firstName as NSString, lastName: lastName as NSString, email: email as
+            NSString, id: id)
+        print("Register : Profile : name = \(userInformation?.lastName)")
     }
 }
