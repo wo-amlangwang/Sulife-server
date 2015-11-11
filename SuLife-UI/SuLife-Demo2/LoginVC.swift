@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Foundation
+import MessageUI
 
 var accountToken = ""
 
@@ -198,5 +200,6 @@ class LoginVC: UIViewController {
         textField.resignFirstResponder()
         return true
     }
+    
 }
 

@@ -24,6 +24,7 @@
 		2557238A1BED453200A57F58 /* EventTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255723891BED453200A57F58 /* EventTableVC.swift */; };
 		2557238C1BED454C00A57F58 /* ToDoListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2557238B1BED454C00A57F58 /* ToDoListTVC.swift */; };
 		258C98481BF2AF0400693A60 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258C98471BF2AF0400693A60 /* TaskModel.swift */; };
+		258C984A1BF2BE6200693A60 /* ForgetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258C98491BF2BE6200693A60 /* ForgetPasswordVC.swift */; };
 		25EDC7EC1BED6E930061C5B2 /* CVCalendarContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EDC7D11BED6E930061C5B2 /* CVCalendarContentViewController.swift */; };
 		25EDC7ED1BED6E930061C5B2 /* CVCalendarMonthContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EDC7D21BED6E930061C5B2 /* CVCalendarMonthContentViewController.swift */; };
 		25EDC7EE1BED6E930061C5B2 /* CVCalendarWeekContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EDC7D31BED6E930061C5B2 /* CVCalendarWeekContentViewController.swift */; };
@@ -101,6 +102,7 @@
 		255723891BED453200A57F58 /* EventTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableVC.swift; sourceTree = "<group>"; };
 		2557238B1BED454C00A57F58 /* ToDoListTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoListTVC.swift; sourceTree = "<group>"; };
 		258C98471BF2AF0400693A60 /* TaskModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
+		258C98491BF2BE6200693A60 /* ForgetPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgetPasswordVC.swift; sourceTree = "<group>"; };
 		25EDC7D11BED6E930061C5B2 /* CVCalendarContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarContentViewController.swift; sourceTree = "<group>"; };
 		25EDC7D21BED6E930061C5B2 /* CVCalendarMonthContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarMonthContentViewController.swift; sourceTree = "<group>"; };
 		25EDC7D31BED6E930061C5B2 /* CVCalendarWeekContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarWeekContentViewController.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				2557237B1BED304000A57F58 /* LoginVC.swift */,
 				2557237F1BED32F300A57F58 /* RegisterVC.swift */,
 				255723811BED41EA00A57F58 /* ProfileVC.swift */,
+				258C98491BF2BE6200693A60 /* ForgetPasswordVC.swift */,
 			);
 			path = "SuLife-Demo2";
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 				25EDC7F91BED6E930061C5B2 /* CVCalendarManager.swift in Sources */,
 				25EDC7FC1BED6E930061C5B2 /* CVCalendarViewDelegate.swift in Sources */,
 				25EDC8041BED6E930061C5B2 /* CVCalendarWeekday.swift in Sources */,
+				258C984A1BF2BE6200693A60 /* ForgetPasswordVC.swift in Sources */,
 				25EDC8141BED83BF0061C5B2 /* NewTaskVC.swift in Sources */,
 				2557230F1BED079400A57F58 /* AppDelegate.swift in Sources */,
 				255723871BED420A00A57F58 /* ContactVC.swift in Sources */,
