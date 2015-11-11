@@ -12,7 +12,7 @@ module.exports = function(passport) {
     });
   });
   passport.use('local-login', new LocalStrategy({
-    usernameField : 'email',
+    usernameField : 'username',
     passwordField : 'password'
   },
   function(email,password,done) {
