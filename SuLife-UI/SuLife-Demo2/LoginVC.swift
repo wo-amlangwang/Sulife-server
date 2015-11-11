@@ -250,7 +250,7 @@ class LoginVC: UIViewController {
                         let jsonInform = jsonResult.valueForKey("profile") as! NSDictionary
                         let firstName = jsonInform.valueForKey("firstname") as! NSString
                         let lastName = jsonInform.valueForKey("lastname") as! NSString
-                        let email = ""/*jsonResult[1]!.valueForKey("email") as! NSString*/
+                        let email = jsonInform.valueForKey("email") as! NSString
                         let id = accountToken
                         
                         userInformation = UserModel(firstName: firstName, lastName: lastName, email: email, id: id)
