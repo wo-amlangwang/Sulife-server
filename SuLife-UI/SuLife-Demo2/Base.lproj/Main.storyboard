@@ -932,7 +932,7 @@
         <!--Search Contacts-->
         <scene sceneID="xMX-Ph-g2l">
             <objects>
-                <tableViewController id="EiB-Mr-r1n" sceneMemberID="viewController">
+                <tableViewController id="EiB-Mr-r1n" customClass="NewContactTVC" customModule="SuLife_Demo2" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="jbU-Cp-lGn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1713,7 +1713,7 @@
         <!--Search Groups-->
         <scene sceneID="k71-Qr-pNr">
             <objects>
-                <tableViewController id="9Kk-W6-Z8F" sceneMemberID="viewController">
+                <tableViewController id="9Kk-W6-Z8F" customClass="NewGroupTVC" customModule="SuLife_Demo2" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="2Vc-41-fAd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
