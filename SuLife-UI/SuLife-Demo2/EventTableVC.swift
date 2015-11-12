@@ -165,11 +165,13 @@ class EventTableVC: UITableViewController, UISearchBarDelegate {
             let range = tmp.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
             return range.location != NSNotFound
         })
-        if (searchResults.count == 0){
+        /*if (searchResults.count == 0){
+            print("Match Search count = \(searchResults.count)")
             searchActive = false;
         } else {
             searchActive = true;
-        }
+        }*/
+        searchActive = true;
         self.tableView.reloadData()
     }
     
