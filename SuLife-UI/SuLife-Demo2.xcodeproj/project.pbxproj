@@ -195,6 +195,7 @@
 		2557230D1BED079400A57F58 /* SuLife-Demo2 */ = {
 			isa = PBXGroup;
 			children = (
+				25AE4AD91BF51B3C00ACDD2B /* support file */,
 				2557230E1BED079400A57F58 /* AppDelegate.swift */,
 				255723101BED079400A57F58 /* ViewController.swift */,
 				2557233C1BED08FC00A57F58 /* Images.xcassets */,
@@ -241,6 +242,13 @@
 				258C984E1BF2ED3C00693A60 /* EditProfileVC.swift */,
 			);
 			name = User;
+			sourceTree = "<group>";
+		};
+		25AE4AD91BF51B3C00ACDD2B /* support file */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "support file";
 			sourceTree = "<group>";
 		};
 		25EDC7D01BED6E6C0061C5B2 /* CVCalendar */ = {

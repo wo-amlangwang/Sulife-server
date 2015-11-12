@@ -11,7 +11,7 @@ import UIKit
 class EventDetailVC: UIViewController {
     
     @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var detailTextField: UITextField!
+    @IBOutlet weak var detailTextField: UITextView!
     @IBOutlet weak var startTime: UILabel!
     @IBOutlet weak var endTime: UILabel!
 
@@ -35,6 +35,7 @@ class EventDetailVC: UIViewController {
         // Do any additional setup after loading the view.
         
     }
+    
     
     @IBAction func deleteItem(sender: AnyObject) {
         /* get data from server */

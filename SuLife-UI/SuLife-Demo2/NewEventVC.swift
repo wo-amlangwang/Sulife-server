@@ -14,21 +14,39 @@ class NewEventVC: UIViewController {
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var detailTextField: UITextField!
+    
+    @IBOutlet weak var startTime: UILabel!
+    @IBOutlet weak var endTime: UILabel!
+    
     @IBOutlet weak var startTimePicker: UIDatePicker!
     @IBOutlet weak var endTimePicker: UIDatePicker!
     
     var startDate : NSString = ""
     var endDate : NSString = ""
     
+    // var startDate = NSDate()
+    // var endDate = NSDate()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        startTimePicker.addTarget(self, action: Selector("datePickerValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+        endTimePicker.addTarget(self, action: Selector("datePickerValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+        
         // Do any additional setup after loading the view.
+        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func datePickerValueChanged (datePicker: UIDatePicker) {
+        
+        startTime.text = NSDateFormatter.localizedStringFromDate(startTimePicker.date, dateStyle: NSDateFormatterStyle.FullStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+
+        endTime.text = NSDateFormatter.localizedStringFromDate(endTimePicker.date, dateStyle: NSDateFormatterStyle.FullStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
     }
     
     
@@ -41,6 +59,15 @@ class NewEventVC: UIViewController {
     // Pass the selected object to the new view controller.
     }
     */
+    
+    /*@IBAction func startTimeSelectionTapped(sender: UIButton) {
+        startTime.text = NSDateFormatter.localizedStringFromDate(startTimePicker.date, dateStyle: NSDateFormatterStyle.FullStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+    }
+    
+    
+    @IBAction func endTimeSelectionTapped(sender: UIButton) {
+        endTime.text = NSDateFormatter.localizedStringFromDate(endTimePicker.date, dateStyle: NSDateFormatterStyle.FullStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+    }*/
     
     @IBAction func addEventTapped(sender: UIButton) {
         
