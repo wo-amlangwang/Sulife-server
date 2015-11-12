@@ -28,7 +28,7 @@ class LoginVC: UIViewController {
     @IBOutlet weak var userPasswordTextField: UITextField!
     
     @IBOutlet weak var myActivityIndicator: UIActivityIndicatorView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

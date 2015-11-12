@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RegisterVC: UIViewController {
+class RegisterVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var userFisrtNameTextField: UITextField!
     @IBOutlet weak var userLastNameTextField: UITextField!
@@ -17,6 +17,7 @@ class RegisterVC: UIViewController {
     @IBOutlet weak var userPasswordTextField: UITextField!
     @IBOutlet weak var userRepeatPasswordTextField: UITextField!
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var myActivityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
@@ -28,6 +29,25 @@ class RegisterVC: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if (textField == userEmailTextField) {
+            scrollView.setContentOffset(CGPointMake(0, 250), animated: true)
+        } else if (textField == userPasswordTextField) {
+            scrollView.setContentOffset(CGPointMake(0, 250), animated: true)
+        } else if (textField == userRepeatPasswordTextField) {
+            scrollView.setContentOffset(CGPointMake(0, 250), animated: true)
+        }
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        scrollView.setContentOffset(CGPointMake(0, 0), animated: true)
     }
     
     
@@ -52,6 +72,7 @@ class RegisterVC: UIViewController {
         let userPassword = userPasswordTextField.text!
         let userRepeatPassword = userRepeatPasswordTextField.text!
         
+        
         // Check for empty fields
         if (userFirstName.isEmpty || userLastName.isEmpty || username.isEmpty || userEmail.isEmpty || userPassword.isEmpty || userRepeatPassword.isEmpty)
         {
@@ -71,6 +92,7 @@ class RegisterVC: UIViewController {
         else
         {
             do {
+                
                 // Change
                 let post:NSString = "email=\(username)&password=\(userPassword)"
                 

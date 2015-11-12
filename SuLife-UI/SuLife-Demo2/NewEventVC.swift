@@ -11,7 +11,7 @@ import UIKit
 
 
 class NewEventVC: UIViewController {
-
+    
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var detailTextField: UITextField!
     @IBOutlet weak var startTimePicker: UIDatePicker!
@@ -22,38 +22,38 @@ class NewEventVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
     
     @IBAction func addEventTapped(sender: UIButton) {
         
         // TODO SERVER
-       // var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        // var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         
-       // var eventList: NSMutableArray? = userDefaults.objectForKey("eventList") as? NSMutableArray
+        // var eventList: NSMutableArray? = userDefaults.objectForKey("eventList") as? NSMutableArray
         
         // Get title and detail from input
         let eventTitle = titleTextField.text!
         let eventDetail = detailTextField.text!
         
-
+        
         //var dataSet:NSMutableDictionary = NSMutableDictionary()
         //dataSet.setObject(eventTitle, forKey: "eventTitle")
         //dataSet.setObject(eventDetail, forKey: "eventDetail")
@@ -61,7 +61,7 @@ class NewEventVC: UIViewController {
         //dataSet.setObject(eventEnd, forKey: "eventEndTime")
         
         //let post:NSString = "title=\(eventTitle)&detail=\(eventDetail)&starttime=\(eventStart)&endtime=\(eventEnd)"
-
+        
         // Get date from input and convert format
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
