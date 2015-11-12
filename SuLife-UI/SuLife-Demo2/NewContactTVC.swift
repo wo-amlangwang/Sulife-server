@@ -126,10 +126,4 @@ class NewContactTVC: UITableViewController , UISearchBarDelegate {
         myAlert.addAction(okAction);
         self.presentViewController(myAlert, animated: true, completion: nil)
     }
-    
-    @IBAction func cancelButtonTapped(sender: AnyObject) {
-        mySearchBar.text = ""
-        mySearchBar.resignFirstResponder()
-    }
-
 }
