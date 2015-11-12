@@ -27,6 +27,8 @@ class LoginVC: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var userPasswordTextField: UITextField!
     
+    @IBOutlet weak var myActivityIndicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -50,6 +52,8 @@ class LoginVC: UIViewController {
     */
     
     @IBAction func loginButtonTapped(sender: AnyObject) {
+        
+        myActivityIndicator.startAnimating()
         
         // TODO: from server
         let username = usernameTextField.text!
@@ -95,6 +99,11 @@ class LoginVC: UIViewController {
                 var response: NSURLResponse?
                 
                 var urlData: NSData?
+                
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.myActivityIndicator.stopAnimating()
+                })
+                
                 do {
                     urlData = try NSURLConnection.sendSynchronousRequest(request, returningResponse:&response)
                     // urlData = try NSURLSession.dataTaskWithRequest(request, completionHandler: ((NSData!, NSURLResponse!, NSError!) -> Void)?)

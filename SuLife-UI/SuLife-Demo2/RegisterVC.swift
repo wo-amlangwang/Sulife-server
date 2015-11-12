@@ -17,6 +17,8 @@ class RegisterVC: UIViewController {
     @IBOutlet weak var userPasswordTextField: UITextField!
     @IBOutlet weak var userRepeatPasswordTextField: UITextField!
     
+    @IBOutlet weak var myActivityIndicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,6 +42,8 @@ class RegisterVC: UIViewController {
     */
     
     @IBAction func registerButtonTapped(sender: UIButton) {
+        
+        myActivityIndicator.startAnimating()
         
         let userFirstName = userFisrtNameTextField.text!
         let userLastName = userLastNameTextField.text!
@@ -89,6 +93,11 @@ class RegisterVC: UIViewController {
                 var response: NSURLResponse?
                 
                 var urlData: NSData?
+                
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.myActivityIndicator.stopAnimating()
+                })
+                
                 do {
                     urlData = try NSURLConnection.sendSynchronousRequest(request, returningResponse:&response)
                 } catch let error as NSError {

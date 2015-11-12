@@ -166,7 +166,6 @@ class EventTableVC: UITableViewController {
                 vc.eventDetail = EventModel(title: title!, detail: detail!, startTime: dateFromString(startTime), endTime: dateFromString(endTime), id: id!, share: share!)
             }
         }
-        
     }
     
     func dateFromString (str : String) -> NSDate {

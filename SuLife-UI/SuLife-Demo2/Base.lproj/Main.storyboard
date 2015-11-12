@@ -193,6 +193,9 @@
                                 <color key="textColor" red="0.2146859217" green="0.2146859217" blue="0.2146859217" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="gMk-G6-5fl">
+                                <rect key="frame" x="197" y="490" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <variation key="default">
@@ -206,6 +209,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="myActivityIndicator" destination="gMk-G6-5fl" id="Qtx-to-aIB"/>
                         <outlet property="userPasswordTextField" destination="u5D-PZ-I5I" id="kol-uh-RmF"/>
                         <outlet property="usernameTextField" destination="XcN-ye-zwa" id="xz5-Sc-BDR"/>
                         <segue destination="09O-H2-0Y4" kind="presentation" identifier="loginToMain" id="xn4-e2-J1Y"/>
@@ -403,12 +407,16 @@
                                     <outlet property="delegate" destination="j07-MG-iBe" id="II9-aA-yMD"/>
                                 </connections>
                             </textField>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="z4S-mh-qfZ">
+                                <rect key="frame" x="197" y="584" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Register" id="fuK-xj-ckb"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="myActivityIndicator" destination="z4S-mh-qfZ" id="T8z-Mt-Ht9"/>
                         <outlet property="userEmailTextField" destination="Lbb-7N-jfY" id="N8a-Pk-MBo"/>
                         <outlet property="userFisrtNameTextField" destination="7wX-45-7D8" id="NuU-YS-MAo"/>
                         <outlet property="userLastNameTextField" destination="ghM-0m-fA9" id="bpd-Yf-Jvu"/>
@@ -1311,6 +1319,16 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YO9-hJ-oX3" id="SoU-t6-mQI">
                                     <rect key="frame" x="0.0" y="0.0" width="381" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="0c9-zd-v6P">
+                                            <rect key="frame" x="190" y="15" width="20" height="20"/>
+                                        </activityIndicatorView>
+                                    </subviews>
+                                    <variation key="default">
+                                        <mask key="subviews">
+                                            <exclude reference="0c9-zd-v6P"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                                 <connections>
                                     <segue destination="1Gy-JQ-l53" kind="show" identifier="showEventDetail" id="oEe-2u-qBY"/>
@@ -1827,8 +1845,8 @@
         <image name="write" width="44" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="4Ge-6i-LSc"/>
+        <segue reference="oH1-Tb-0B6"/>
+        <segue reference="xn4-e2-J1Y"/>
         <segue reference="POt-Sk-UZR"/>
-        <segue reference="NAW-tf-GZ0"/>
     </inferredMetricsTieBreakers>
 </document>
