@@ -1032,6 +1032,13 @@
                                     <segue destination="KzT-7b-ej1" kind="show" id="C93-Qz-4G1"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cML-ev-shn">
+                                <rect key="frame" x="156" y="365" width="103" height="41"/>
+                                <state key="normal" title="Test"/>
+                                <connections>
+                                    <segue destination="xPo-7T-1gR" kind="show" id="KNZ-Bx-nyd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1044,6 +1051,43 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AmH-hb-Aa3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2038" y="2168"/>
+        </scene>
+        <!--Add ContactVC Test-->
+        <scene sceneID="Y6c-mG-sza">
+            <objects>
+                <viewController id="xPo-7T-1gR" customClass="AddContactVC_Test" customModule="SuLife_Demo2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vTn-w5-l9f"/>
+                        <viewControllerLayoutGuide type="bottom" id="zLx-A3-phC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9f2-Nj-z5u">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAv-S6-Ly0">
+                                <rect key="frame" x="192" y="197" width="30" height="30"/>
+                                <state key="normal" title="Add"/>
+                                <connections>
+                                    <action selector="addButtonTapped:" destination="xPo-7T-1gR" eventType="touchUpInside" id="tr0-YV-0nc"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User ID:" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="myJ-cs-LJb">
+                                <rect key="frame" x="58" y="94" width="299" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="contactID" destination="myJ-cs-LJb" id="pw0-Yf-ZTq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ieW-F2-sSE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1073" y="2621"/>
         </scene>
         <!--Calendar Appearance Delegate-->
         <scene sceneID="07v-SL-R38">
