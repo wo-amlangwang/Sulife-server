@@ -525,7 +525,7 @@
                         <viewControllerLayoutGuide type="bottom" id="KUi-7c-k9k"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tay-fb-VoU">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Fisrt Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="200" translatesAutoresizingMaskIntoConstraints="NO" id="hYW-al-qje">
@@ -805,7 +805,7 @@
             <objects>
                 <tableViewController title="Groups" id="k4G-7H-0PV" customClass="GroupVC" customModule="SuLife_Demo2" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="3Gi-6D-InX">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" id="Vds-CD-1Gb">
@@ -857,7 +857,7 @@
             <objects>
                 <tableViewController id="aZG-eY-zWP" customClass="ContactVC" customModule="SuLife_Demo2" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="PLG-7S-JXd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" id="Fq9-33-R8B">
@@ -931,7 +931,7 @@
             <objects>
                 <tableViewController id="EiB-Mr-r1n" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="jbU-Cp-lGn">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" id="Djx-X4-Bw4">
@@ -985,7 +985,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Jwj-NC-ZEm"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gJc-TO-xDj">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l9o-FK-Y13">
@@ -1116,8 +1116,8 @@
                                     <action selector="toMonthView:" destination="NHD-Sd-M7n" eventType="touchUpInside" id="QGJ-Ds-aUb"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iPE-xY-Uq5">
-                                <rect key="frame" x="208" y="440" width="30" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iPE-xY-Uq5">
+                                <rect key="frame" x="211" y="440" width="30" height="30"/>
                                 <state key="normal" title="&gt;">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1125,8 +1125,8 @@
                                     <action selector="loadNext:" destination="NHD-Sd-M7n" eventType="touchUpInside" id="27N-Kf-BEM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mei-hH-o7y">
-                                <rect key="frame" x="164" y="440" width="30" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mei-hH-o7y">
+                                <rect key="frame" x="173" y="440" width="30" height="30"/>
                                 <state key="normal" title="&lt;">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1138,7 +1138,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="iPE-xY-Uq5" firstAttribute="top" secondItem="Xz8-Lr-4Dw" secondAttribute="bottom" constant="8" id="2NH-RV-Kiw"/>
-                            <constraint firstItem="iPE-xY-Uq5" firstAttribute="trailing" secondItem="Xz8-Lr-4Dw" secondAttribute="trailing" id="2rr-Qn-SgR"/>
+                            <constraint firstItem="iPE-xY-Uq5" firstAttribute="trailing" secondItem="Xz8-Lr-4Dw" secondAttribute="trailing" constant="33" id="2rr-Qn-SgR"/>
                             <constraint firstItem="oWE-ub-qxN" firstAttribute="leading" secondItem="UHa-LP-FYd" secondAttribute="leading" id="42y-Zs-bXU"/>
                             <constraint firstItem="Mei-hH-o7y" firstAttribute="top" secondItem="Xz8-Lr-4Dw" secondAttribute="bottom" constant="8" id="68R-2A-Cdc"/>
                             <constraint firstItem="Mei-hH-o7y" firstAttribute="top" secondItem="UHa-LP-FYd" secondAttribute="bottom" constant="37" id="EcR-pc-6Ah"/>
@@ -1158,7 +1158,7 @@
                             <constraint firstItem="iPE-xY-Uq5" firstAttribute="top" secondItem="UHa-LP-FYd" secondAttribute="bottom" constant="37" id="py3-QT-lYa"/>
                             <constraint firstItem="UHa-LP-FYd" firstAttribute="trailing" secondItem="S4J-TS-N3l" secondAttribute="trailing" id="r7I-xc-CBd"/>
                             <constraint firstItem="jt1-H4-olq" firstAttribute="top" secondItem="E7C-Yo-9W3" secondAttribute="bottom" constant="8" symbolic="YES" id="th8-xT-VWa"/>
-                            <constraint firstItem="Mei-hH-o7y" firstAttribute="leading" secondItem="Xz8-Lr-4Dw" secondAttribute="leading" id="vH4-UE-cdB"/>
+                            <constraint firstItem="Mei-hH-o7y" firstAttribute="leading" secondItem="Xz8-Lr-4Dw" secondAttribute="leading" constant="-35" id="vH4-UE-cdB"/>
                             <constraint firstItem="C5O-Mu-c63" firstAttribute="trailing" secondItem="S4J-TS-N3l" secondAttribute="trailing" id="vVn-Gx-1Ai"/>
                             <constraint firstAttribute="centerX" secondItem="Xz8-Lr-4Dw" secondAttribute="centerX" constant="-0.5" id="xFe-Fd-fei"/>
                             <constraint firstItem="l5w-wf-8wt" firstAttribute="top" secondItem="E7C-Yo-9W3" secondAttribute="bottom" constant="5" id="ymt-Se-Gt4"/>
@@ -1725,7 +1725,7 @@
             <objects>
                 <tableViewController id="9Kk-W6-Z8F" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="2Vc-41-fAd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" id="pQi-Cu-13Z">
@@ -1775,7 +1775,7 @@
             <objects>
                 <tableViewController id="KzT-7b-ej1" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Yqn-Fe-XIc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" id="aaB-zy-ccg">
@@ -1837,7 +1837,7 @@
         <image name="write" width="44" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="POt-Sk-UZR"/>
+        <segue reference="gNS-lP-qNY"/>
         <segue reference="Tfw-9k-9Ek"/>
         <segue reference="yYA-t4-mMW"/>
     </inferredMetricsTieBreakers>
