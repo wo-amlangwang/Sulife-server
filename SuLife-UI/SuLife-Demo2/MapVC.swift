@@ -11,7 +11,7 @@ import MapKit
 
 class MapVC: UIViewController, CLLocationManagerDelegate {
     
-    var coreLocationManger = CLLocationManager()
+    var coreLocationManager = CLLocationManager()
     
     var locationManager:LocationManager!
     
@@ -20,15 +20,15 @@ class MapVC: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        coreLocationManger.delegate = self
+        coreLocationManager.delegate = self
         
         locationManager = LocationManager.sharedInstance
         
         let authorizationCode = CLLocationManager.authorizationStatus()
         
-        if authorizationCode == CLAuthorizationStatus.NotDetermined && coreLocationManger.respondsToSelector("requestAlwaysAuthorization") || coreLocationManger.respondsToSelector("requestWhenInUseAuthorization"){
+        if authorizationCode == CLAuthorizationStatus.NotDetermined && coreLocationManager.respondsToSelector("requestAlwaysAuthorization") || coreLocationManager.respondsToSelector("requestWhenInUseAuthorization"){
             if NSBundle.mainBundle().objectForInfoDictionaryKey("NSLocationAlwaysUsageDescription") != nil {
-                coreLocationManger.requestAlwaysAuthorization()
+                coreLocationManager.requestAlwaysAuthorization()
                 getLocation()
             }else{
                 print("No descirption provided")
