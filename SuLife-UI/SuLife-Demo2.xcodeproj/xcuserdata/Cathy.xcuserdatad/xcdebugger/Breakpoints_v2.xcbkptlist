@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SuLife-Demo2/EventDetailVC.swift"
+            timestampString = "468967144.20033"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "169"
+            endingLineNumber = "169">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../../../../../var/folders/v4/tt4bxtcj40n8kzn0g6_8db480000gn/T/XcodeMergeSession-d9885729655cf214e1cbe55a8c53676628b4c5cd/MergeDocument-EventDetailVC.swift"
+            timestampString = "468966640.118104"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SuLife-Demo2/TaskDetailVC.swift"
+            timestampString = "469094707.02634"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "saveChanges(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SuLife_Demo2.TaskDetailVC.deleteItem (SuLife_Demo2.TaskDetailVC)(Swift.AnyObject) -&gt; ()"
+                  moduleName = "SuLife-Demo2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Cathy/Documents/Fall%2015/cs307/Sulife/SuLife-UI/SuLife-Demo2/TaskDetailVC.swift"
+                  timestampString = "469094707.033745"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
+                  offsetFromSymbolStart = "2248">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SuLife_Demo2.TaskDetailVC.deleteItem (SuLife_Demo2.TaskDetailVC)(Swift.AnyObject) -&gt; ()"
+                  moduleName = "SuLife-Demo2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Cathy/Documents/Fall%2015/cs307/Sulife/SuLife-UI/SuLife-Demo2/TaskDetailVC.swift"
+                  timestampString = "469094707.03654"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
+                  offsetFromSymbolStart = "6881">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
