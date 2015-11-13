@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="IJa-U8-Q5u">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="IJa-U8-Q5u">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -818,10 +818,10 @@
                         </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="groupCell" id="mTI-zb-LyY">
-                                <rect key="frame" x="0.0" y="93.5" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="94" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mTI-zb-LyY" id="yiF-OG-9KM">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -870,10 +870,10 @@
                         </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="contactsCell" id="2J0-0g-wSB">
-                                <rect key="frame" x="0.0" y="93.5" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="94" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2J0-0g-wSB" id="gnD-1Z-MXJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -1380,10 +1380,10 @@
                         </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" id="YO9-hJ-oX3">
-                                <rect key="frame" x="0.0" y="93.5" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="94" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YO9-hJ-oX3" id="SoU-t6-mQI">
-                                    <rect key="frame" x="0.0" y="0.0" width="381" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="381" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -1702,10 +1702,10 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="taskCell" id="9qR-K0-OqS">
-                                <rect key="frame" x="0.0" y="49.5" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="50" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9qR-K0-OqS" id="OJv-4f-mKf">
-                                    <rect key="frame" x="0.0" y="0.0" width="381" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="381" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -1850,10 +1850,10 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="notificationCell" id="aYh-mg-Js6">
-                                <rect key="frame" x="0.0" y="49.5" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="50" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aYh-mg-Js6" id="EyY-Z5-rqg">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -1988,6 +1988,7 @@
                     </view>
                     <connections>
                         <outlet property="acceptButton" destination="ODg-Zo-CEt" id="Cbl-id-hue"/>
+                        <outlet property="actionDetector" destination="FBn-Sr-Ev7" id="XUZ-yt-Igc"/>
                         <outlet property="rejectButton" destination="1oL-Ci-hNE" id="CvP-8l-uVd"/>
                         <outlet property="senderEmailTextView" destination="sTm-aY-mnB" id="iw9-3m-Qf7"/>
                         <outlet property="senderTextView" destination="JhY-Fq-ImW" id="Hnv-ov-Hv3"/>
@@ -2015,10 +2016,10 @@
                         </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="createGroupCell" id="l6a-J7-9Y2">
-                                <rect key="frame" x="0.0" y="93.5" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="94" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="l6a-J7-9Y2" id="STA-MC-WNj">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
