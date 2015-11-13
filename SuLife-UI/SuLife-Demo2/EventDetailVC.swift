@@ -126,7 +126,26 @@ class EventDetailVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func EditEventTapped(sender: UIBarButtonItem) {
+        
+        
+    }
     
+    override func prepareForSegue(segue: UIStoryboardSegue?, sender: AnyObject?) {
+        // Get the new view controller using [segue destinationViewController].
+        // Pass the selected object to the new view controller.
+        if (segue?.identifier == "eventToEditEvent") {
+            let viewController = segue?.destinationViewController as! EditEventVC
+            let id = eventDetail!.id
+            let title = eventDetail!.title
+            let detail = eventDetail!.detail
+            let startTime = eventDetail!.startTime
+            let endTime = eventDetail!.endTime
+            let share = eventDetail!.share
+            viewController.eventDetail = EventModel(title: title, detail: detail, startTime: startTime, endTime: endTime, id: id, share: share)
+        }
+    }
+
     /*
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation

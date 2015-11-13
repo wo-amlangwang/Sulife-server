@@ -23,7 +23,7 @@ class EditProfileVC: UIViewController {
         emailTextField.userInteractionEnabled = true
         
         firstNameTextField.text = userInformation?.firstName as? String
-        lastNameTextField.text = userInformation!.lastName as? String
+        lastNameTextField.text = userInformation?.lastName as? String
         emailTextField.text = userInformation?.email as? String
     }
 
@@ -36,49 +36,58 @@ class EditProfileVC: UIViewController {
         let firstname = firstNameTextField.text! as NSString
         let lastname = lastNameTextField.text! as NSString
         let email = emailTextField.text! as NSString
-        let post:NSString = "firstname=\(firstname)&lastname=\(lastname)&email=\(email)"
         
-        NSLog("PostData: %@",post);
-        
-        let url:NSURL = NSURL(string: profileURL)!
-        
-        let postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
-        
-        let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
-        request.HTTPMethod = "POST"
-        request.HTTPBody = postData
-        request.setValue(accountToken, forHTTPHeaderField: "x-access-token")
-        
-        
-        var reponseError: NSError?
-        var response: NSURLResponse?
-        
-        var urlData: NSData?
-        do {
-            urlData = try NSURLConnection.sendSynchronousRequest(request, returningResponse:&response)
-        } catch let error as NSError {
-            reponseError = error
-            urlData = nil
-        }
-        
-        if ( urlData != nil ) {
-            let res = response as! NSHTTPURLResponse!;
+        if (firstname.isEqualToString(userInformation!.firstName as String) && lastname.isEqualToString(userInformation!.lastName as String) && email.isEqualToString(userInformation!.email as String)) {
+            let myAlert = UIAlertController(title: "Save Failed!", message: "Nothing Changeed!", preferredStyle: UIAlertControllerStyle.Alert)
             
-            NSLog("Response code: %ld", res.statusCode);
+            myAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
+                myAlert .dismissViewControllerAnimated(true, completion: nil)
+            }))
+            presentViewController(myAlert, animated: true, completion: nil)
+        } else {
+            let post:NSString = "firstname=\(firstname)&lastname=\(lastname)&email=\(email)"
             
-            if (res.statusCode >= 200 && res.statusCode < 300)
-            {
-                let responseData:NSString  = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
-                
-                NSLog("Response ==> %@", responseData);
-                
-                //var error: NSError?
+            NSLog("PostData: %@",post);
+            
+            let url:NSURL = NSURL(string: profileURL)!
+            
+            let postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+            
+            let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
+            request.HTTPMethod = "POST"
+            request.HTTPBody = postData
+            request.setValue(accountToken, forHTTPHeaderField: "x-access-token")
+            
+            
+            var reponseError: NSError?
+            var response: NSURLResponse?
+            
+            var urlData: NSData?
+            do {
+                urlData = try NSURLConnection.sendSynchronousRequest(request, returningResponse:&response)
+            } catch let error as NSError {
+                reponseError = error
+                urlData = nil
             }
+            
+            if ( urlData != nil ) {
+                let res = response as! NSHTTPURLResponse!;
+                
+                NSLog("Response code: %ld", res.statusCode);
+                
+                if (res.statusCode >= 200 && res.statusCode < 300)
+                {
+                    let responseData:NSString  = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
+                    
+                    NSLog("Response ==> %@", responseData);
+                    
+                    //var error: NSError?
+                }
+            }
+            // return to profile
+            userInformation = UserModel(firstName: firstname, lastName: lastname, email: email, id: accountToken)
+            self.navigationController!.popToRootViewControllerAnimated(true)
         }
-        // return to profile
-        userInformation = UserModel(firstName: firstname, lastName: lastname, email: email, id: accountToken)
-        self.navigationController!.popToRootViewControllerAnimated(true)
-        
     }
     
     /*

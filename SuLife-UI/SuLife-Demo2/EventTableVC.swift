@@ -193,7 +193,7 @@ class EventTableVC: UITableViewController, UISearchBarDelegate {
             cell.textLabel?.text = searchResults[indexPath.row]
         } else {
             event = resArray[indexPath.row] as NSDictionary
-            cell.textLabel?.text = event.valueForKey("title") as? String;
+            cell.textLabel?.text = event.valueForKey("title") as? String
         }
         print("Cell Title: \(cell.textLabel?.text)")
         return cell
@@ -208,18 +208,18 @@ class EventTableVC: UITableViewController, UISearchBarDelegate {
             let indexPath = tableView.indexPathForSelectedRow
             if let index = indexPath {
                 let event : NSDictionary = resArray[index.row]
-                let id = event.valueForKey("_id") as? NSString
-                let title = event.valueForKey("title") as? NSString
-                let detail = event.valueForKey("detail") as? NSString
+                let id = event.valueForKey("_id") as! NSString
+                let title = event.valueForKey("title") as! NSString
+                let detail = event.valueForKey("detail") as! NSString
                 let st = event.valueForKey("starttime") as! NSString
                 let et = event.valueForKey("endtime") as! NSString
-                let share = event.valueForKey("share") as? Bool
+                let share = event.valueForKey("share") as! Bool
                 let startTime = st.substringToIndex(st.rangeOfString(".").location - 3).stringByReplacingOccurrencesOfString("T", withString: " ")
                 let endTime = et.substringToIndex(et.rangeOfString(".").location - 3).stringByReplacingOccurrencesOfString("T", withString: " ")
-                NSLog("detail ==> %@", detail!);
+                NSLog("detail ==> %@", detail);
                 NSLog("st ==> %@", st);
                 NSLog("et ==> %@", et);
-                vc.eventDetail = EventModel(title: title!, detail: detail!, startTime: dateFromString(startTime), endTime: dateFromString(endTime), id: id!, share: share!)
+                vc.eventDetail = EventModel(title: title, detail: detail, startTime: dateFromString(startTime), endTime: dateFromString(endTime), id: id, share: share)
             }
         }
     }

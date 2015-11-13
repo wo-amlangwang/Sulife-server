@@ -20,6 +20,16 @@ let profileURL = "https://damp-retreat-5682.herokuapp.com/profile"
 let taskURL = "https://damp-retreat-5682.herokuapp.com/task"
 let taskByDateURL = "https://damp-retreat-5682.herokuapp.com/taskd"
 
+let getContactsURL = "https://damp-retreat-5682.herokuapp.com/getFriends"
+
+let NotificationURL = "https://damp-retreat-5682.herokuapp.com/getMail"
+let GetUserIDURL = "https://damp-retreat-5682.herokuapp.com/findUser"
+let AcceptFriendIDURL = "https://damp-retreat-5682.herokuapp.com/acceptFriendRequest"
+let RejectFriendIDURL = "https://damp-retreat-5682.herokuapp.com/rejectFriendRequest"
+
+let addFriendURL = "https://damp-retreat-5682.herokuapp.com/friendRequest"
+let getUserInformation = "https://damp-retreat-5682.herokuapp.com/getUserInformation"
+
 class LoginVC: UIViewController {
     
     //var loginToken:NSString = "no-token"
@@ -206,9 +216,6 @@ class LoginVC: UIViewController {
     
     func getUserInformation () {
         // user's information UserModel
-        
-        print("----------------------------------------")
-        
         // let profileUrl = profileURL + "/" + accountToken! as String)
         let profileUrl:NSURL = NSURL(string: profileURL)!
         let request:NSMutableURLRequest = NSMutableURLRequest(URL: profileUrl)

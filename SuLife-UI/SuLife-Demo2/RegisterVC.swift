@@ -17,7 +17,7 @@ class RegisterVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var userPasswordTextField: UITextField!
     @IBOutlet weak var userRepeatPasswordTextField: UITextField!
     
-    @IBOutlet weak var scrollView: UIScrollView!
+    // @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var myActivityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
@@ -36,7 +36,7 @@ class RegisterVC: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    func textFieldDidBeginEditing(textField: UITextField) {
+    /*func textFieldDidBeginEditing(textField: UITextField) {
         if (textField == userEmailTextField) {
             scrollView.setContentOffset(CGPointMake(0, 250), animated: true)
         } else if (textField == userPasswordTextField) {
@@ -48,7 +48,7 @@ class RegisterVC: UIViewController, UITextFieldDelegate {
     
     func textFieldDidEndEditing(textField: UITextField) {
         scrollView.setContentOffset(CGPointMake(0, 0), animated: true)
-    }
+    }*/
     
     
     /*

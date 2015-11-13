@@ -13,8 +13,8 @@ import UIKit
 class NewEventVC: UIViewController {
     
     @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var detailTextField: UITextField!
-    
+    @IBOutlet weak var detailTextField: UITextView!
+
     @IBOutlet weak var startTime: UILabel!
     @IBOutlet weak var endTime: UILabel!
     
@@ -34,6 +34,10 @@ class NewEventVC: UIViewController {
         endTimePicker.addTarget(self, action: Selector("datePickerValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
         
         // Do any additional setup after loading the view.
+        
+        startTime.text = NSDateFormatter.localizedStringFromDate(startTimePicker.date, dateStyle: NSDateFormatterStyle.FullStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+        
+        endTime.text = NSDateFormatter.localizedStringFromDate(endTimePicker.date, dateStyle: NSDateFormatterStyle.FullStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
         
     }
     
@@ -79,15 +83,6 @@ class NewEventVC: UIViewController {
         // Get title and detail from input
         let eventTitle = titleTextField.text!
         let eventDetail = detailTextField.text!
-        
-        
-        //var dataSet:NSMutableDictionary = NSMutableDictionary()
-        //dataSet.setObject(eventTitle, forKey: "eventTitle")
-        //dataSet.setObject(eventDetail, forKey: "eventDetail")
-        //dataSet.setObject(eventStart, forKey: "eventStartTime")
-        //dataSet.setObject(eventEnd, forKey: "eventEndTime")
-        
-        //let post:NSString = "title=\(eventTitle)&detail=\(eventDetail)&starttime=\(eventStart)&endtime=\(eventEnd)"
         
         // Get date from input and convert format
         let dateFormatter = NSDateFormatter()
@@ -159,11 +154,6 @@ class NewEventVC: UIViewController {
                 } catch {
                     print(error)
                 }
-                
-                
-                
-                //[jsonData[@"success"] integerValue];
-                
             } else {
                 let myAlert = UIAlertController(title: "Add New Event Failed!", message: "System Error!", preferredStyle: UIAlertControllerStyle.Alert)
                 let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
