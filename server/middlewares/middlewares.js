@@ -18,6 +18,13 @@ var thisfindUser = require('./findUser.js').findUser;
 var getEventByDate = require('./getAllEvent.js').getEventByDate;
 var getUserInformation = require('./getUserInformation.js').getUserInformation;
 
+var deleteTask = require('./deleteTask.js').deleteTask;
+var editTask = require('./editTask.js').editTask;
+var getAllTask = require('./getAllTask.js').getAllTask;
+var getTask = require('./getTask.js').getTask;
+var postTask = require('./postTask.js').postTask;
+var finishTask = require('./finishTask.js').finishTask;
+
 module.exports = {
   verifyToken : function(req,res,next) {
     if(req.headers['x-access-token'] === undefined){
@@ -50,5 +57,11 @@ module.exports = {
   getFriends : thisgetFriends,
   findUser : thisfindUser,
   getEventByDate : getEventByDate,
-  getUserInformation : getUserInformation
+  getUserInformation : getUserInformation,
+  deleteTask : deleteTask,
+  editTask : editTask,
+  finishTask : finishTask,
+  getAllTask : getAllTask,
+  getTask : getTask,
+  postTask : postTask
 }
