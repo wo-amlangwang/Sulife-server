@@ -40,19 +40,8 @@ class NewTaskVC: UIViewController {
     
     @IBAction func addTaskTapped(sender: UIButton) {
         
-        // TODO SERVER
-        // var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        
-        // var todoList: NSMutableArray? = userDefaults.objectForKey("todoList") as? NSMutableArray
-        
         let taskTitle = titleTextField.text!
         let taskDetail = detailTextField.text!
-        
-        
-        // var dataSet:NSMutableDictionary = NSMutableDictionary()
-        // dataSet.setObject(taskTitle, forKey: "taskTitle")
-        // dataSet.setObject(taskDetail, forKey: "taskDetail")
-        // dataSet.setObject(taskTime, forKey: "taskTime")
         
         // Get date from input and convert format
         let dateFormatter = NSDateFormatter()

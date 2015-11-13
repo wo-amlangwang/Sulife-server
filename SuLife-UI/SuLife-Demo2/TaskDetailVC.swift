@@ -21,10 +21,6 @@ class TaskDetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        titleTextField.userInteractionEnabled = false
-        detailTextField.userInteractionEnabled = false
-        taskTimePicker.userInteractionEnabled = false
-        
         titleTextField.text = taskDetail?.title as? String
         detailTextField.text = taskDetail?.detail as? String
         taskTimePicker.date = (taskDetail?.taskTime)!
