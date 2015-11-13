@@ -1617,6 +1617,17 @@
                                     <!--2037-12-31 11:00:00 +0000-->
                                 </date>
                             </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W8y-nh-mae">
+                                <rect key="frame" x="107" y="503" width="200" height="30"/>
+                                <color key="backgroundColor" red="0.29803921570000003" green="0.50196078430000002" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveChanges:" destination="Oxq-NK-Rqd" eventType="touchUpInside" id="ixP-iN-tAD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -1629,8 +1640,7 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Task Detail" id="rTg-17-AmK">
-                        <barButtonItem key="rightBarButtonItem" image="delete" id="Wcz-Oj-mmh">
-                            <inset key="imageInsets" minX="15" minY="10" maxX="0.0" maxY="10"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="Wcz-Oj-mmh">
                             <connections>
                                 <action selector="deleteItem:" destination="Oxq-NK-Rqd" id="hlE-1a-qGW"/>
                             </connections>
@@ -1639,6 +1649,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="detailTextField" destination="Xmc-lB-4sy" id="3Il-K6-X8J"/>
+                        <outlet property="saveChanges" destination="W8y-nh-mae" id="guO-fU-92m"/>
                         <outlet property="taskTimePicker" destination="pJo-lF-7Pr" id="q0d-JX-DEf"/>
                         <outlet property="timePicker" destination="pJo-lF-7Pr" id="zFa-mr-2EK"/>
                         <outlet property="titleTextField" destination="qyv-YJ-FMo" id="dKR-tL-Ozw"/>

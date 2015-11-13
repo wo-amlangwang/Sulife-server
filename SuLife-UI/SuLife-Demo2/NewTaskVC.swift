@@ -49,7 +49,7 @@ class NewTaskVC: UIViewController {
         taskTime = dateFormatter.stringFromDate(taskTimePicker.date)
         
         // Post to server
-        let post:NSString = "title=\(taskTitle)&detail=\(taskDetail)&time=\(taskTime)"
+        let post:NSString = "title=\(taskTitle)&detail=\(taskDetail)&establishTime=\(taskTime)"
         
         NSLog("PostData: %@",post);
         

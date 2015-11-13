@@ -26,7 +26,7 @@ class ToDoListTVC: UITableViewController {
         let taskTime = sd[0] + " 00:01"
         
         /* get data from server */
-        let post:NSString = "title=&detail=&time=\(taskTime)"
+        let post:NSString = "title=&detail=&establishTime=\(taskTime)"
         NSLog("PostData: %@",post);
         let postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
         let postLength:NSString = String( postData.length )
