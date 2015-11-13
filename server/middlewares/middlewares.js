@@ -16,6 +16,7 @@ var thisbuildFriendRelationship = require('./buildFriendRelationship.js').buildF
 var thisgetFriends = require('./getFriends.js').getFriends;
 var thisfindUser = require('./findUser.js').findUser;
 var getEventByDate = require('./getAllEvent.js').getEventByDate;
+var getUserInformation = require('./getUserInformation.js').getUserInformation;
 
 module.exports = {
   verifyToken : function(req,res,next) {
@@ -48,5 +49,6 @@ module.exports = {
   buildFriendRelationship : thisbuildFriendRelationship,
   getFriends : thisgetFriends,
   findUser : thisfindUser,
-  getEventByDate : getEventByDate
+  getEventByDate : getEventByDate,
+  getUserInformation : getUserInformation
 }

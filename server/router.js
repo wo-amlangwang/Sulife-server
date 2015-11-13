@@ -55,4 +55,5 @@ module.exports = function(app,passport){
   app.post('/rejectFriendRequest' , middlewares.verifyToken , middlewares.rejectFriendRequest);
   app.get('/getFriends' ,  middlewares.verifyToken , middlewares.getFriends);
   app.post('/findUser' , middlewares.verifyToken , middlewares.findUser);
+  app.get('/getUserInformation/:userid' , middlewares.verifyToken ,middlewares.getUserInformation);
 }
