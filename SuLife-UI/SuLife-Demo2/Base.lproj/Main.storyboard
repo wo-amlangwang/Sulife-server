@@ -1676,7 +1676,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="Oxq-NK-Rqd" kind="show" identifier="showTaskDetail" id="5oU-wj-Tr2"/>
+                                    <segue destination="Oxq-NK-Rqd" kind="push" id="zlm-gi-OUU"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
