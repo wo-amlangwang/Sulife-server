@@ -1675,14 +1675,25 @@
                         <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="irW-AT-4WA">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="9vY-4e-uCH" id="k9x-7t-mjE"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" id="9qR-K0-OqS">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="72" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9qR-K0-OqS" id="OJv-4f-mKf">
                                     <rect key="frame" x="0.0" y="0.0" width="381" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="Cell">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                                 <connections>
                                     <segue destination="Oxq-NK-Rqd" kind="show" identifier="showTaskDetail" id="1kZ-GJ-a7g"/>
                                 </connections>
@@ -1703,9 +1714,19 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="TodoList" destination="qix-Di-5VC" id="oaN-iM-TOn"/>
+                        <outlet property="searchDisplayController" destination="4xw-Ij-R5X" id="NaH-N0-Rbb"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yYz-3x-5PE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="4xw-Ij-R5X">
+                    <connections>
+                        <outlet property="delegate" destination="9vY-4e-uCH" id="c1z-kd-AUH"/>
+                        <outlet property="searchBar" destination="irW-AT-4WA" id="Jgj-un-aj0"/>
+                        <outlet property="searchContentsController" destination="9vY-4e-uCH" id="Gfb-jW-3Id"/>
+                        <outlet property="searchResultsDataSource" destination="9vY-4e-uCH" id="XNn-Lo-E3G"/>
+                        <outlet property="searchResultsDelegate" destination="9vY-4e-uCH" id="26G-aG-zq8"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="527" y="-6"/>
         </scene>

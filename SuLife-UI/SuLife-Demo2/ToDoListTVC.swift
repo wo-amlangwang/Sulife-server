@@ -8,16 +8,18 @@
 
 import UIKit
 
-class ToDoListTVC: UITableViewController {
+class ToDoListTVC: UITableViewController, UISearchDisplayDelegate {
 
     // MARK: Properties
     
     @IBOutlet var TodoList: UITableView!
     
     var resArray : [NSDictionary] = []
-    
+    var searchArray : [NSString] = []
+
     // reload data in table
     override func viewDidAppear(animated: Bool) {
+        
         /* get selected date */
         let date : NSDate = dateSelected != nil ? (dateSelected?.convertedDate())! : NSDate()
         
@@ -100,6 +102,22 @@ class ToDoListTVC: UITableViewController {
         self.tableView.reloadData()
     }
     
+    public func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchString searchString: String?) -> Bool {
+        var eventString : [String] = []
+        for event in resArray {
+            eventString.append(event.valueForKey("title") as! String)
+        }
+        
+        searchArray = eventString.filter({ (text) -> Bool in
+            let tmp: NSString = text
+            let range = tmp.rangeOfString(searchString!, options: NSStringCompareOptions.CaseInsensitiveSearch)
+            return range.location != NSNotFound
+        })
+        
+        self.tableView.reloadData()
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -123,19 +141,33 @@ class ToDoListTVC: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // return number of tasks
-        return resArray.count
+        if tableView == searchDisplayController?.searchResultsTableView {
+            return searchArray.count
+        }
+        else {
+            return resArray.count
+        }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("Cell") as UITableViewCell?
+        
+        if !(cell != nil) {
+            cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "Cell")
+        }
+
         
         // Configure the cell...
         
-        let task = resArray[indexPath.row] as NSDictionary
+        if tableView == searchDisplayController?.searchResultsTableView {
+            let task = searchArray[indexPath.row] as NSString
+            cell?.textLabel?.text = task as? String;
+        } else {
+            let task = resArray[indexPath.row] as NSDictionary
+            cell?.textLabel?.text = task.valueForKey("title") as? String;
+        }
         
-        cell.textLabel?.text = task.valueForKey("title") as? String;
-        
-        return cell
+        return cell!
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue?, sender: AnyObject?) {
@@ -158,7 +190,6 @@ class ToDoListTVC: UITableViewController {
                 vc.taskDetail = TaskModel(title: title!, detail: detail!, time: dateFromString(taskTime), id: id!, share: share!)
             }
         }
-        
     }
     
     func dateFromString (str : String) -> NSDate {
