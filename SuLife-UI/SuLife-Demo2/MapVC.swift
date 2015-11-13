@@ -11,7 +11,7 @@ import MapKit
 
 class MapVC: UIViewController, CLLocationManagerDelegate {
     
-    var coreLocationManger = CLLocationManager()
+    var coreLocationManager = CLLocationManager()
     
     var locationManager:LocationManager!
     
@@ -20,15 +20,15 @@ class MapVC: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        coreLocationManger.delegate = self
+        coreLocationManager.delegate = self
         
         locationManager = LocationManager.sharedInstance
         
         let authorizationCode = CLLocationManager.authorizationStatus()
         
-        if authorizationCode == CLAuthorizationStatus.NotDetermined && coreLocationManger.respondsToSelector("requestAlwaysAuthorization") || coreLocationManger.respondsToSelector("requestWhenInUseAuthorization"){
+        if authorizationCode == CLAuthorizationStatus.NotDetermined && coreLocationManager.respondsToSelector("requestAlwaysAuthorization") || coreLocationManager.respondsToSelector("requestWhenInUseAuthorization"){
             if NSBundle.mainBundle().objectForInfoDictionaryKey("NSLocationAlwaysUsageDescription") != nil {
-                coreLocationManger.requestAlwaysAuthorization()
+                coreLocationManager.requestAlwaysAuthorization()
                 getLocation()
             }else{
                 print("No descirption provided")
@@ -37,6 +37,48 @@ class MapVC: UIViewController, CLLocationManagerDelegate {
             print("INNN")
             getLocation()
         }
+        
+        // Lawson pin
+        var latitude1:CLLocationDegrees = 40.4277951
+        var longitude1:CLLocationDegrees = -86.9169992
+        
+        var lawsonLocation1:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude1, longitude1)
+        
+        var lawsonAnnotation1 = MKPointAnnotation()
+        
+        lawsonAnnotation1.coordinate = lawsonLocation1
+        
+        lawsonAnnotation1.title = "CS252--Lawson, Department of Computer Science"
+        lawsonAnnotation1.subtitle = "coding lab5 server"
+        self.mapView.addAnnotation(lawsonAnnotation1)
+        
+        // walmart pin
+        var latitude2:CLLocationDegrees = 40.4571468
+        var longitude2:CLLocationDegrees = -86.9324773
+        
+        var lawsonLocation2:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude2, longitude2)
+        
+        var lawsonAnnotation2 = MKPointAnnotation()
+        
+        lawsonAnnotation2.coordinate = lawsonLocation2
+        
+        lawsonAnnotation2.title = "Shopping--Walmart"
+        lawsonAnnotation2.subtitle = "shopping test"
+        self.mapView.addAnnotation(lawsonAnnotation2)
+        
+        // football pin
+        var latitude3:CLLocationDegrees = 40.4344906
+        var longitude3:CLLocationDegrees = -86.9184001
+        
+        var lawsonLocation3:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude3, longitude3)
+        
+        var lawsonAnnotation3 = MKPointAnnotation()
+        
+        lawsonAnnotation3.coordinate = lawsonLocation3
+        
+        lawsonAnnotation3.title = "Football Game--Ross-Ade Stadium"
+        lawsonAnnotation3.subtitle = "football test"
+        self.mapView.addAnnotation(lawsonAnnotation3)
         
         
     }

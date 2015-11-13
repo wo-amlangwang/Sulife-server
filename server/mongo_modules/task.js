@@ -5,6 +5,7 @@ var taskSchema = mongoose.Schema({
   title : String,
   detail : String,
   establishTime : { type : Date, default: Date.now },
+  finished : Boolean,
 });
 
 module.exports = mongoose.model('Task', taskSchema);

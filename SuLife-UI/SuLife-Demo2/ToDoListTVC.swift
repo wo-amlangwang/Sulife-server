@@ -174,11 +174,6 @@ class ToDoListTVC: UITableViewController {
         return strDate
     }
     
-    // Close newtask automatically after saving it
-    @IBAction func close(segue: UIStoryboardSegue) {
-        NSLog("closed");
-        tableView.reloadData();
-    }
     
 
 

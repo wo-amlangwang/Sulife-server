@@ -35,7 +35,7 @@ class ForgetPasswordVC: UIViewController {
     
     func displayAlertMessage(userMessage:String)
     {
-        var myAlert = UIAlertController(title: "Forget Password!", message: userMessage, preferredStyle: UIAlertControllerStyle.Alert)
+        let myAlert = UIAlertController(title: "Forget Password!", message: userMessage, preferredStyle: UIAlertControllerStyle.Alert)
         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
         myAlert.addAction(okAction)
         self.presentViewController(myAlert, animated:true, completion:nil)

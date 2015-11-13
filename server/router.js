@@ -55,4 +55,10 @@ module.exports = function(app,passport){
   app.post('/rejectFriendRequest' , middlewares.verifyToken , middlewares.rejectFriendRequest);
   app.get('/getFriends' ,  middlewares.verifyToken , middlewares.getFriends);
   app.post('/findUser' , middlewares.verifyToken , middlewares.findUser);
+  app.get('/getUserInformation/:userid' , middlewares.verifyToken ,middlewares.getUserInformation);
+  app.delete('/task/:taskid',middlewares.verifyToken, middlewares.deleteTask);
+  app.post('/task/:taskid' , middlewares.verifyToken, middlewares.editTask);
+  app.get('/task', middlewares.verifyToken, middlewares.getAllTask);
+  app.get('/task/:taskid', middlewares.verifyToken, middlewares.getTask);
+  app.post('/task',middlewares.verifyToken,middlewares.postTask);
 }

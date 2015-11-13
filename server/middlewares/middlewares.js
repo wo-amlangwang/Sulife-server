@@ -16,6 +16,14 @@ var thisbuildFriendRelationship = require('./buildFriendRelationship.js').buildF
 var thisgetFriends = require('./getFriends.js').getFriends;
 var thisfindUser = require('./findUser.js').findUser;
 var getEventByDate = require('./getAllEvent.js').getEventByDate;
+var getUserInformation = require('./getUserInformation.js').getUserInformation;
+
+var deleteTask = require('./deleteTask.js').deleteTask;
+var editTask = require('./editTask.js').editTask;
+var getAllTask = require('./getAllTask.js').getAllTask;
+var getTask = require('./getTask.js').getTask;
+var postTask = require('./postTask.js').postTask;
+var finishTask = require('./finishTask.js').finishTask;
 
 module.exports = {
   verifyToken : function(req,res,next) {
@@ -48,5 +56,12 @@ module.exports = {
   buildFriendRelationship : thisbuildFriendRelationship,
   getFriends : thisgetFriends,
   findUser : thisfindUser,
-  getEventByDate : getEventByDate
+  getEventByDate : getEventByDate,
+  getUserInformation : getUserInformation,
+  deleteTask : deleteTask,
+  editTask : editTask,
+  finishTask : finishTask,
+  getAllTask : getAllTask,
+  getTask : getTask,
+  postTask : postTask
 }

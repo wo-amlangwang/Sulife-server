@@ -8,21 +8,23 @@
 
 import UIKit
 
-class EventTableVC: UITableViewController {
+class EventTableVC: UITableViewController, UISearchBarDelegate {
     
     // MARK: Properties
     
-    @IBOutlet var EventList: UITableView!
-
+    @IBOutlet weak var EventList: UITableView!
+    @IBOutlet weak var mySearchBar: UISearchBar!
+    
     var resArray : [NSDictionary] = []
+    // Sine
+    var searchResults : [String] = []
+    var searchActive : Bool = false
     
     // reload data in table
     override func viewDidAppear(animated: Bool) {
         
-        print(userInformation?.lastName)
-        
         /* get selected date */
-        var date : NSDate = dateSelected != nil ? (dateSelected?.convertedDate())! : NSDate()
+        let date : NSDate = dateSelected != nil ? (dateSelected?.convertedDate())! : NSDate()
         
         /* parse date to proper format */
         let sd = stringFromDate(date).componentsSeparatedByString(" ")
@@ -34,7 +36,7 @@ class EventTableVC: UITableViewController {
         NSLog("PostData: %@",post);
         let postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
         let postLength:NSString = String( postData.length )
-
+        
         let url:NSURL = NSURL(string: eventByDateURL)!
         let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "post"
@@ -63,7 +65,7 @@ class EventTableVC: UITableViewController {
             }
             
             let responseData:NSString = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
-
+            
             NSLog("Response ==> %@", responseData);
             
             var error: NSError?
@@ -105,6 +107,7 @@ class EventTableVC: UITableViewController {
         
         self.tableView.reloadData()
     }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -114,6 +117,9 @@ class EventTableVC: UITableViewController {
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        EventList.delegate = self
+        EventList.dataSource = self
+        EventList.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -127,22 +133,72 @@ class EventTableVC: UITableViewController {
         return 1
     }
     
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        searchActive = true;
+    }
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchActive = false;
+        mySearchBar.text = ""
+        mySearchBar.resignFirstResponder()
+        self.tableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    // Sine:
+    
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        print("SearchText: \(searchText)")
+        
+        var eventString : [String] = []
+        for event in resArray {
+            eventString.append(event.valueForKey("title") as! String)
+        }
+        
+        searchResults = eventString.filter({ (text) -> Bool in
+            let tmp: NSString = text
+            let range = tmp.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
+            return range.location != NSNotFound
+        })
+
+        searchActive = true;
+        self.tableView.reloadData()
+    }
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // return number of events
+        print("search activate: \(searchActive)")
+        if(searchActive) {
+            print("Search count = \(searchResults.count)")
+            return searchResults.count
+        }
         return resArray.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
         
+        var event : NSDictionary
+        print("search activate: \(searchActive)")
         // Configure the cell...
-
-        let event = resArray[indexPath.row] as NSDictionary
-        
-        cell.textLabel?.text = event.valueForKey("title") as? String;
-        
+        if(searchActive){
+            cell.textLabel?.text = searchResults[indexPath.row]
+        } else {
+            event = resArray[indexPath.row] as NSDictionary
+            cell.textLabel?.text = event.valueForKey("title") as? String;
+        }
+        print("Cell Title: \(cell.textLabel?.text)")
         return cell
     }
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue?, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
@@ -166,7 +222,6 @@ class EventTableVC: UITableViewController {
                 vc.eventDetail = EventModel(title: title!, detail: detail!, startTime: dateFromString(startTime), endTime: dateFromString(endTime), id: id!, share: share!)
             }
         }
-        
     }
     
     func dateFromString (str : String) -> NSDate {
@@ -182,13 +237,6 @@ class EventTableVC: UITableViewController {
         let strDate = dateFormatter.stringFromDate(date)
         return strDate
     }
-    
-    // Close newevent automatically after saving it
-    @IBAction func close(segue: UIStoryboardSegue) {
-        NSLog("closed");
-        tableView.reloadData();
-    }
-    
 }
 
 // Local Data

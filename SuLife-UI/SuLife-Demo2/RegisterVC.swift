@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RegisterVC: UIViewController {
+class RegisterVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var userFisrtNameTextField: UITextField!
     @IBOutlet weak var userLastNameTextField: UITextField!
@@ -16,6 +16,9 @@ class RegisterVC: UIViewController {
     @IBOutlet weak var userEmailTextField: UITextField!
     @IBOutlet weak var userPasswordTextField: UITextField!
     @IBOutlet weak var userRepeatPasswordTextField: UITextField!
+    
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var myActivityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +29,25 @@ class RegisterVC: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if (textField == userEmailTextField) {
+            scrollView.setContentOffset(CGPointMake(0, 250), animated: true)
+        } else if (textField == userPasswordTextField) {
+            scrollView.setContentOffset(CGPointMake(0, 250), animated: true)
+        } else if (textField == userRepeatPasswordTextField) {
+            scrollView.setContentOffset(CGPointMake(0, 250), animated: true)
+        }
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        scrollView.setContentOffset(CGPointMake(0, 0), animated: true)
     }
     
     
@@ -41,12 +63,15 @@ class RegisterVC: UIViewController {
     
     @IBAction func registerButtonTapped(sender: UIButton) {
         
+        myActivityIndicator.startAnimating()
+        
         let userFirstName = userFisrtNameTextField.text!
         let userLastName = userLastNameTextField.text!
         let username = usernameTextField.text!
         let userEmail = userEmailTextField.text!
         let userPassword = userPasswordTextField.text!
         let userRepeatPassword = userRepeatPasswordTextField.text!
+        
         
         // Check for empty fields
         if (userFirstName.isEmpty || userLastName.isEmpty || username.isEmpty || userEmail.isEmpty || userPassword.isEmpty || userRepeatPassword.isEmpty)
@@ -67,6 +92,7 @@ class RegisterVC: UIViewController {
         else
         {
             do {
+                
                 // Change
                 let post:NSString = "email=\(username)&password=\(userPassword)"
                 
@@ -89,6 +115,11 @@ class RegisterVC: UIViewController {
                 var response: NSURLResponse?
                 
                 var urlData: NSData?
+                
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.myActivityIndicator.stopAnimating()
+                })
+                
                 do {
                     urlData = try NSURLConnection.sendSynchronousRequest(request, returningResponse:&response)
                 } catch let error as NSError {
