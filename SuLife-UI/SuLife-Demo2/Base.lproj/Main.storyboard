@@ -1600,14 +1600,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" borderStyle="roundedRect" placeholder="Detail:" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Xmc-lB-4sy">
-                                <rect key="frame" x="58" y="163" width="300" height="150"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="HJg-ka-QfX"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
-                            </textField>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="pJo-lF-7Pr" userLabel="EndTimePicker">
                                 <rect key="frame" x="-1" y="357" width="414" height="122"/>
                                 <date key="date" timeIntervalSinceReferenceDate="468659294.63916302">
@@ -1618,7 +1610,7 @@
                                 </date>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W8y-nh-mae">
-                                <rect key="frame" x="107" y="503" width="200" height="30"/>
+                                <rect key="frame" x="107" y="515" width="200" height="30"/>
                                 <color key="backgroundColor" red="0.29803921570000003" green="0.50196078430000002" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Save">
@@ -1628,8 +1620,25 @@
                                     <action selector="saveChanges:" destination="Oxq-NK-Rqd" eventType="touchUpInside" id="ixP-iN-tAD"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" borderStyle="roundedRect" placeholder="Detail:" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="MMD-fa-aCH">
+                                <rect key="frame" x="56" y="161" width="300" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="ThF-Vc-2jy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="mfM-Xb-Zoa" id="fR5-Rj-LB3"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="MMD-fa-aCH" firstAttribute="leading" secondItem="qbr-OB-oR8" secondAttribute="leadingMargin" constant="36" id="B05-04-W9c"/>
+                            <constraint firstItem="MMD-fa-aCH" firstAttribute="top" secondItem="UE4-jo-AFK" secondAttribute="bottom" constant="161" id="DhI-lM-axg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="MMD-fa-aCH" secondAttribute="trailing" constant="38" id="erh-a0-MTC"/>
+                            <constraint firstItem="e1u-xN-3jw" firstAttribute="top" secondItem="MMD-fa-aCH" secondAttribute="bottom" constant="312" id="kKr-IG-rhx"/>
+                        </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="2pT-li-JOo"/>
@@ -1648,10 +1657,9 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
-                        <outlet property="detailTextField" destination="Xmc-lB-4sy" id="3Il-K6-X8J"/>
+                        <outlet property="detailTextField" destination="MMD-fa-aCH" id="5rB-yg-w6o"/>
                         <outlet property="saveChanges" destination="W8y-nh-mae" id="guO-fU-92m"/>
                         <outlet property="taskTimePicker" destination="pJo-lF-7Pr" id="q0d-JX-DEf"/>
-                        <outlet property="timePicker" destination="pJo-lF-7Pr" id="zFa-mr-2EK"/>
                         <outlet property="titleTextField" destination="qyv-YJ-FMo" id="dKR-tL-Ozw"/>
                     </connections>
                 </viewController>
@@ -1676,7 +1684,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="Oxq-NK-Rqd" kind="push" id="zlm-gi-OUU"/>
+                                    <segue destination="Oxq-NK-Rqd" kind="show" identifier="showTaskDetail" id="1kZ-GJ-a7g"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

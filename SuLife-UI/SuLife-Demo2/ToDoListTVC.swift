@@ -80,7 +80,7 @@ class ToDoListTVC: UITableViewController {
                         presentViewController(myAlert, animated: true, completion: nil)
                         
                     } else {
-                        resArray = jsonResult.valueForKey("tasks") as! [NSDictionary]
+                        resArray = jsonResult.valueForKey("Tasks") as! [NSDictionary]
                     }
                 }
             } catch {
@@ -141,6 +141,7 @@ class ToDoListTVC: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue?, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
+        NSLog("tt ==> %@", "in");
         if (segue?.identifier == "showTaskDetail") {
             let vc = segue?.destinationViewController as! TaskDetailVC
             let indexPath = tableView.indexPathForSelectedRow
@@ -150,7 +151,7 @@ class ToDoListTVC: UITableViewController {
                 let title = task.valueForKey("title") as? NSString
                 let detail = task.valueForKey("detail") as? NSString
                 let tt = task.valueForKey("establishTime") as! NSString
-                let share = task.valueForKey("finish") as? Bool
+                let share = task.valueForKey("finished") as? Bool
                 let taskTime = tt.substringToIndex(tt.rangeOfString(".").location - 3).stringByReplacingOccurrencesOfString("T", withString: " ")
                 NSLog("detail ==> %@", detail!);
                 NSLog("tt ==> %@", tt);
