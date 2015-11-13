@@ -6,6 +6,7 @@ module.exports = {
     newTask.userid = req.userid;
     newTask.title = req.body.title;
     newTask.detail = req.body.detail;
+    newTask.establishTime = req.body.establishTime;
     newTask.finished = false;
     newTask.save(function(err) {
       if(err){

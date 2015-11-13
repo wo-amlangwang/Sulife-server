@@ -61,4 +61,5 @@ module.exports = function(app,passport){
   app.get('/task', middlewares.verifyToken, middlewares.getAllTask);
   app.get('/task/:taskid', middlewares.verifyToken, middlewares.getTask);
   app.post('/task',middlewares.verifyToken,middlewares.postTask);
+  app.post('/taskd' , middlewares.verifyToken, middlewares.getTaskByDate);
 }

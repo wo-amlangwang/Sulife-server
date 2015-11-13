@@ -24,6 +24,7 @@ var getAllTask = require('./getAllTask.js').getAllTask;
 var getTask = require('./getTask.js').getTask;
 var postTask = require('./postTask.js').postTask;
 var finishTask = require('./finishTask.js').finishTask;
+var getTaskByDate = require('./getAllTask.js').getTaskByDate;
 
 module.exports = {
   verifyToken : function(req,res,next) {
@@ -63,5 +64,6 @@ module.exports = {
   finishTask : finishTask,
   getAllTask : getAllTask,
   getTask : getTask,
-  postTask : postTask
+  postTask : postTask,
+  getTaskByDate : getTaskByDate
 }

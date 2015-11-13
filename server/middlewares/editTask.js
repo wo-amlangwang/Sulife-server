@@ -11,6 +11,9 @@ module.exports = {
           if(req.body.detail != undefined){
             thistask.detail = req.body.detail;
           }
+          if(req.body.establishTime != undefined){
+            thistask.establishTime  = req.body.establishTime;
+          }
           thistask.save(function(err) {
             if(err){
               req.reJson['message'] = 'something wrong when put into database';

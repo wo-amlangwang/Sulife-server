@@ -14,5 +14,25 @@ module.exports = {
         res.status(200).send(req.reJson);
       }
     });
+  },
+  getTaskByDate : function(req,res,next) {
+    var day = new Date(req.body.establishTime)
+    var today = day.setHours(0)
+    var tomorrow = day.setHours(24)
+    Task.find({'userid' : req.userid ,
+                  'establishTime' : {
+                    $gte: today,
+                    $lt: tomorrow}})
+      .exec(function(err,tasks) {
+        if(err){
+          req.reJson['message'] = 'something wrong when get data from database';
+          req.reJson['err'] = err;
+          res.status(500).send(req.reJson);
+        }else {
+          req.reJson['message'] = 'OK! Task list followed';
+          req.reJson['Tasks'] = tasks;
+          res.status(200).send(req.reJson);
+        }
+    });
   }
 }
