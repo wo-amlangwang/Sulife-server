@@ -15,44 +15,33 @@ class NewTaskVC: UIViewController {
     @IBOutlet weak var taskTimePicker: UIDatePicker!
     
     var taskTime : NSString = ""
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
     
     @IBAction func addTaskTapped(sender: UIButton) {
         
-        // TODO SERVER
-        // var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        
-        // var todoList: NSMutableArray? = userDefaults.objectForKey("todoList") as? NSMutableArray
-        
         let taskTitle = titleTextField.text!
         let taskDetail = detailTextField.text!
-        
-        
-        // var dataSet:NSMutableDictionary = NSMutableDictionary()
-        // dataSet.setObject(taskTitle, forKey: "taskTitle")
-        // dataSet.setObject(taskDetail, forKey: "taskDetail")
-        // dataSet.setObject(taskTime, forKey: "taskTime")
         
         // Get date from input and convert format
         let dateFormatter = NSDateFormatter()
@@ -60,7 +49,7 @@ class NewTaskVC: UIViewController {
         taskTime = dateFormatter.stringFromDate(taskTimePicker.date)
         
         // Post to server
-        let post:NSString = "title=\(taskTitle)&detail=\(taskDetail)&time=\(taskTime)"
+        let post:NSString = "title=\(taskTitle)&detail=\(taskDetail)&establishTime=\(taskTime)"
         
         NSLog("PostData: %@",post);
         
@@ -155,5 +144,6 @@ class NewTaskVC: UIViewController {
         titleTextField.resignFirstResponder();
         detailTextField.resignFirstResponder();
     }
-
+    
 }
+

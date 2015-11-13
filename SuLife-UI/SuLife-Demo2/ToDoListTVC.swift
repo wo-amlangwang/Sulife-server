@@ -15,18 +15,20 @@ class ToDoListTVC: UITableViewController {
     @IBOutlet var TodoList: UITableView!
     
     var resArray : [NSDictionary] = []
+    var searchArray : [NSString] = []
     
     // reload data in table
     override func viewDidAppear(animated: Bool) {
+        
         /* get selected date */
         let date : NSDate = dateSelected != nil ? (dateSelected?.convertedDate())! : NSDate()
         
         /* parse date to proper format */
         let sd = stringFromDate(date).componentsSeparatedByString(" ")
-        let taskTime = sd[0] + " 00:01"
+        let taskTime = sd[0] + " 00:00"
         
         /* get data from server */
-        let post:NSString = "title=&detail=&time=\(taskTime)"
+        let post:NSString = "title=&detail=&establishTime=\(taskTime)"
         NSLog("PostData: %@",post);
         let postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
         let postLength:NSString = String( postData.length )
@@ -80,7 +82,7 @@ class ToDoListTVC: UITableViewController {
                         presentViewController(myAlert, animated: true, completion: nil)
                         
                     } else {
-                        resArray = jsonResult.valueForKey("tasks") as! [NSDictionary]
+                        resArray = jsonResult.valueForKey("Tasks") as! [NSDictionary]
                     }
                 }
             } catch {
@@ -98,6 +100,22 @@ class ToDoListTVC: UITableViewController {
         }
         
         self.tableView.reloadData()
+    }
+    
+    public func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchString searchString: String?) -> Bool {
+        var eventString : [String] = []
+        for event in resArray {
+            eventString.append(event.valueForKey("title") as! String)
+        }
+        
+        searchArray = eventString.filter({ (text) -> Bool in
+            let tmp: NSString = text
+            let range = tmp.rangeOfString(searchString!, options: NSStringCompareOptions.CaseInsensitiveSearch)
+            return range.location != NSNotFound
+        })
+        
+        self.tableView.reloadData()
+        return true
     }
     
     override func viewDidLoad() {
@@ -123,24 +141,39 @@ class ToDoListTVC: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // return number of tasks
-        return resArray.count
+        if tableView == searchDisplayController?.searchResultsTableView {
+            return searchArray.count
+        }
+        else {
+            return resArray.count
+        }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("Cell") as UITableViewCell?
+        
+        if !(cell != nil) {
+            cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "Cell")
+        }
+        
         
         // Configure the cell...
         
-        let task = resArray[indexPath.row] as NSDictionary
+        if tableView == searchDisplayController?.searchResultsTableView {
+            let task = searchArray[indexPath.row] as NSString
+            cell?.textLabel?.text = task as? String;
+        } else {
+            let task = resArray[indexPath.row] as NSDictionary
+            cell?.textLabel?.text = task.valueForKey("title") as? String;
+        }
         
-        cell.textLabel?.text = task.valueForKey("title") as? String;
-        
-        return cell
+        return cell!
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue?, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
+        NSLog("tt ==> %@", "in");
         if (segue?.identifier == "showTaskDetail") {
             let vc = segue?.destinationViewController as! TaskDetailVC
             let indexPath = tableView.indexPathForSelectedRow
@@ -149,15 +182,14 @@ class ToDoListTVC: UITableViewController {
                 let id = task.valueForKey("_id") as? NSString
                 let title = task.valueForKey("title") as? NSString
                 let detail = task.valueForKey("detail") as? NSString
-                let tt = task.valueForKey("tasktime") as! NSString
-                let share = task.valueForKey("share") as? Bool
+                let tt = task.valueForKey("establishTime") as! NSString
+                let share = task.valueForKey("finished") as? Bool
                 let taskTime = tt.substringToIndex(tt.rangeOfString(".").location - 3).stringByReplacingOccurrencesOfString("T", withString: " ")
                 NSLog("detail ==> %@", detail!);
                 NSLog("tt ==> %@", tt);
                 vc.taskDetail = TaskModel(title: title!, detail: detail!, time: dateFromString(taskTime), id: id!, share: share!)
             }
         }
-        
     }
     
     func dateFromString (str : String) -> NSDate {
@@ -174,62 +206,4 @@ class ToDoListTVC: UITableViewController {
         return strDate
     }
     
-    
-
-
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
