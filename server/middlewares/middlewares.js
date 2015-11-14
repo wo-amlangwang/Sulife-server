@@ -25,6 +25,7 @@ var getTask = require('./getTask.js').getTask;
 var postTask = require('./postTask.js').postTask;
 var finishTask = require('./finishTask.js').finishTask;
 var getTaskByDate = require('./getAllTask.js').getTaskByDate;
+var deleteFriend = require('./deleteFriend.js').deleteFriend;
 
 module.exports = {
   verifyToken : function(req,res,next) {
@@ -65,5 +66,6 @@ module.exports = {
   getAllTask : getAllTask,
   getTask : getTask,
   postTask : postTask,
-  getTaskByDate : getTaskByDate
+  getTaskByDate : getTaskByDate,
+  deleteFriend : deleteFriend
 }
