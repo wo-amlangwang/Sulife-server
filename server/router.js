@@ -63,4 +63,5 @@ module.exports = function(app,passport){
   app.post('/task',middlewares.verifyToken,middlewares.postTask);
   app.post('/taskd' , middlewares.verifyToken, middlewares.getTaskByDate);
   app.delete('/deleteFriend/:targetid' , middlewares.verifyToken , middlewares.deleteFriend);
+  app.post('/resetPassword' , middlewares.resetPassword);
 }
