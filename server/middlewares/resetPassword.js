@@ -5,10 +5,11 @@ var sendEmail = require('./support/emailSystem/sendEmail.js').sendEmail;
 
 module.exports = {
   resetPassword : function(req,res,next) {
-    var userid = req.body.userid;
-    User.findOne({'_id' : userid},function(err,thisuser) {
+    req.reJson = {};
+    var username = req.body.username;
+    User.findOne({'local.email' : username},function(err,thisuser) {
       if(thisuser){
-        Profile.findOne({'userid' : userid} , function(err, thisprofile) {
+        Profile.findOne({'userid' : thisuser.id} , function(err, thisprofile) {
           if(thisprofile.email == undefined || thisprofile.email == null){
             req.reJson = {'message' : 'no email for this user'};
             res.status(503).send(req.reJson);
