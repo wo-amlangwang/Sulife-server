@@ -37,6 +37,11 @@ method: delete<br />
 request body: NULL<br />
 detail: this url is used to delete event with token and eventid
 
+/eventd
+method: post<br />
+request body: starttime(required),endtime(required)<br />
+detail: get event in a scope of time
+
 /profile
 
 method: get<br />
@@ -46,20 +51,6 @@ detail: get profile with token
 method: post<br />
 request body: firstname, lastname<br />
 detail: edit profile with token
-
-
-
-
-
-
-
-
-
-
-
-don't use this part!!!
-
-
 
 /friendRequest
 
@@ -90,3 +81,39 @@ detail: reject friend request with token
 method: get<br />
 request body: null<br />
 detail: get friend list (relationship list) with token
+
+/findUser
+
+method: post<br />
+request body: email<br />
+detail: find user by user name
+
+/getUserInformation/:userid
+
+method: post<br />
+request body: email<br />
+detail: get token's user
+
+/task
+
+method: get<br />
+require body: null<br />
+detail: get all the task from database
+
+method: post<br />
+require body: title(required),detail(required)<br />
+detail post new task
+
+/task/:taskid
+
+method: get<br />
+require body: null<br />
+detail: get task with taskid
+
+method: post<br />
+require body: title(required),detail(required),finished<br />
+detail: edit a task with taskid
+
+method: delete<br />
+require body: null<br />
+detail: remove a task with taskid
