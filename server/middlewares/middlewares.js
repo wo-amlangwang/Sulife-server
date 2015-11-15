@@ -28,6 +28,7 @@ var getTaskByDate = require('./getAllTask.js').getTaskByDate;
 var deleteFriend = require('./deleteFriend.js').deleteFriend;
 
 var resetPassword = require('./resetPassword.js').resetPassword;
+var changePassword = require('./changePassword.js').changePassword;
 
 module.exports = {
   verifyToken : function(req,res,next) {
@@ -70,5 +71,6 @@ module.exports = {
   postTask : postTask,
   getTaskByDate : getTaskByDate,
   deleteFriend : deleteFriend,
-  resetPassword : resetPassword
+  resetPassword : resetPassword,
+  changePassword : changePassword
 }

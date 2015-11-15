@@ -27,7 +27,7 @@ module.exports = {
                 req.reJson['message'] = 'OK!';
                 res.status(200).send(req.reJson);
               }
-            })
+            });
           }
         })
       }else {
