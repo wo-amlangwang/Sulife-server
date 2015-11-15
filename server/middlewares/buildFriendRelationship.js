@@ -22,7 +22,7 @@ module.exports = {
             res.status(500).send(req.reJson);
           }else {
             req.reJson['message'] = 'OK!';
-            mail.save();
+            req.mail.save();
             res.status(200).send(req.reJson);
           }
         });
