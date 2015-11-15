@@ -9,7 +9,7 @@ var transporter = nodemailer.createTransport({
 module.exports ={
   sendEmail : function(message,target) {
     var mailOptions = {
-      from: 'SulifeSuppoert <Sulife@dontReply.com>', // sender address
+      from: 'SulifeSupport <Sulife@dontReply.com>', // sender address
       to: target, // list of receivers
       subject: message.subject, // Subject line
       text: message.text, // plaintext body

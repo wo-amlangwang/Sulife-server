@@ -23,7 +23,7 @@ module.exports = {
                 res.status(500).send(req.reJson);
               }else {
                 sendEmail({'subject' : 'Password Reset',
-                           'text' : 'Hi,\n  Thank you for using Sulife! you new password is ' + newpassword}, thisprofile.email);
+                           'text' : 'Hi,\n  Thank you for using Sulife! your new password is ' + newpassword}, thisprofile.email);
                 req.reJson['message'] = 'OK!';
                 res.status(200).send(req.reJson);
               }
