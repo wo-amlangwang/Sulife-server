@@ -2,7 +2,8 @@ var mongoose = require('mongoose');
 
 
 var groupSchema = mongoose.Schema({
-  userid : [String]
+  name : String,
+  founder : String
 });
 
-module.exports = mongoose.model('Friendlist', friendlistSchema);
+module.exports = mongoose.model('Group', groupSchema);

@@ -32,6 +32,9 @@ var changePassword = require('./changePassword.js').changePassword;
 
 var postLocation = require('./postLocation.js').postLocation;
 
+var createGroup = require('./createGroup.js').createGroup;
+var joinGroup = require('./joinGroup.js').joinGroup;
+
 module.exports = {
   verifyToken : function(req,res,next) {
     if(req.headers['x-access-token'] === undefined){
@@ -75,5 +78,7 @@ module.exports = {
   deleteFriend : deleteFriend,
   resetPassword : resetPassword,
   changePassword : changePassword,
-  postLocation : postLocation
+  postLocation : postLocation,
+  createGroup : createGroup,
+  joinGroup : joinGroup
 }

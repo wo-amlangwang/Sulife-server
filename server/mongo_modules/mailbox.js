@@ -14,8 +14,5 @@ module.exports = mongoose.model('Mailbox', mailboxSchema);
 
 /*
 100 : Friend request
-200 : Accept friend request
-300 : Reject friend request
-400 : Join group reminder
-500 : Removed from group reminder
+400 : New group event
 */

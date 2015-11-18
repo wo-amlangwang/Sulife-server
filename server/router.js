@@ -66,4 +66,6 @@ module.exports = function(app,passport){
   app.post('/resetPassword' , middlewares.resetPassword);
   app.post('/changePassword' , middlewares.verifyToken , middlewares.changePassword);
   app.post('/location',middlewares.verifyToken,middlewares.postLocation);
+  app.post('/createGroup',middlewares.verifyToken, middlewares.createGroup);
+  app.post('/joinGroup', middlewares.verifyToken, middlewares.joinGroup);
 }
