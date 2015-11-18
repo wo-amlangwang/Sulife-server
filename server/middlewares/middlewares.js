@@ -30,6 +30,8 @@ var deleteFriend = require('./deleteFriend.js').deleteFriend;
 var resetPassword = require('./resetPassword.js').resetPassword;
 var changePassword = require('./changePassword.js').changePassword;
 
+var postLocation = require('./postLocation.js').postLocation;
+
 module.exports = {
   verifyToken : function(req,res,next) {
     if(req.headers['x-access-token'] === undefined){
@@ -72,5 +74,6 @@ module.exports = {
   getTaskByDate : getTaskByDate,
   deleteFriend : deleteFriend,
   resetPassword : resetPassword,
-  changePassword : changePassword
+  changePassword : changePassword,
+  postLocation : postLocation
 }
