@@ -3,7 +3,7 @@ var Grouplist = require('../mongo_modules/grouplist.js');
 
 module.exports = {
   joinGroup : function(req,res,next){
-    Group.findOne({'founder' : req.userid},function(err,thisgroup) {
+    Group.findOne({'_id' : req.body.groupid},function(err,thisgroup) {
       if(err){
 
       }else {

@@ -13,7 +13,6 @@ module.exports = {
         res.status(500).send(req.reJson);
       }else {
         relationship.remove();
-        req.
         friendlist.findOne({'userid1' : friendUserid,
                             'userid2' : myUserid})
         .exec(function(err,relationship) {

@@ -14,7 +14,7 @@ module.exports = {
             req.reJson = {'message' : 'no email for this user'};
             res.status(503).send(req.reJson);
           }else {
-            var newpassword = randomstring.generate(12);
+            var newpassword = randomstring.generate(6);
             thisuser.local.password = thisuser.generateHash(newpassword);
             thisuser.save(function(err) {
               if(err){
