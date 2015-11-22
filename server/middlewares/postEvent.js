@@ -8,6 +8,9 @@ module.exports = {
     newEvent.starttime = req.body.starttime;
     newEvent.endtime = req.body.endtime;
     newEvent.share = req.body.share;
+    newEvent.location.coordinates.push(req.body.lng);
+    newEvent.location.coordinates.push(req.body.lat);
+    newEvent.locationName = req.body.locationName;
     newEvent.save(function(err,thisevent) {
       if(err){
         req.reJson['message'] = 'something wrong when put into database';

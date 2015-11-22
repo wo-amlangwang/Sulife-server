@@ -19,6 +19,15 @@ module.exports = {
           if(req.body.share != undefined){
             thisevent.share = req.body.share;
           }
+          if(req.body.locationName != undefined){
+            thisevent.locationName = req.body.locationName;
+          }
+          if(req.body.lng != undefined && req.body.lat != undefined){
+            thisevent.location.coordinates.pop();
+            thisevent.location.coordinates.pop();
+            thisevent.location.coordinates.push(req.body.lng);
+            thisevent.location.coordinates.push(req.body.lat);
+          }
           thisevent.save(function(err) {
             if(err){
               req.reJson['message'] = 'something wrong when put into database';

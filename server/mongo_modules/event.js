@@ -6,7 +6,15 @@ var eventSchema = mongoose.Schema({
   detail : String,
   starttime : { type : Date, default: Date.now },
   endtime : { type : Date, default: Date.now },
-  share : Boolean
+  share : Boolean,
+  locationName : String,
+  location : {
+    type: {
+      type: String,
+      default: 'Point'
+    },
+    coordinates: [Number]
+  }
 });
 
 module.exports = mongoose.model('Event', eventSchema);
