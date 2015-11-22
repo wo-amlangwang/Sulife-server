@@ -25,11 +25,13 @@ class NewEventVC: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var switchButton: UISwitch!
     
+    @IBOutlet weak var location: UITextField!
+    
     var startDate : NSString = ""
     var endDate : NSString = ""
     
     var shareOrNot = false
-    
+    var locationvc : LocationChooseVC?
     // var startDate = NSDate()
     // var endDate = NSDate()
     
@@ -188,5 +190,11 @@ class NewEventVC: UIViewController, UIScrollViewDelegate {
         } else {
             shareOrNot = false
         }
+    }
+    
+    @IBAction func close(segue: UIStoryboardSegue) {
+        NSLog("closed");
+        location.text = locationvc?.newCoord?.longitude.description
+        print(locationvc?.newCoord?.longitude.description)
     }
 }
