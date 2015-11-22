@@ -43,6 +43,7 @@ module.exports = function(app,passport){
   });
   app.post('/event' , middlewares.verifyToken , middlewares.postEvent);
   app.get('/event' , middlewares.verifyToken , middlewares.getAllEvent);
+  app.get('/eventf' , middlewares.verifyToken , middlewares.getFriendEvent);
   app.post('/eventd' , middlewares.verifyToken, middlewares.getEventByDate);
   app.delete('/event/:eventid' , middlewares.verifyToken , middlewares.checkEventid , middlewares.deleteEvent);
   app.get('/event/:eventid' , middlewares.verifyToken , middlewares.checkEventid ,middlewares.getEvent);

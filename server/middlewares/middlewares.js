@@ -4,6 +4,7 @@ var thisdeleteEvent = require('./deleteEvent.js').deleteEvent;
 var thisgetEvent = require('./getEvent.js').getEvent;
 var thiseditEvent = require('./editEvent.js').editEvent;
 var thisgetAllEvent = require('./getAllEvent.js').getAllEvent;
+var thisgetFriendEvent = require('./getFriendEvent.js').getFriendEvent;
 var thischeckmailbox = require('./checkmailbox.js').checkmailbox;
 var thisgetProfile = require('./getProfile.js').getProfile;
 var thiseditProfile = require('./editProfile.js').editProfile;
@@ -55,6 +56,7 @@ module.exports = {
   getEvent : thisgetEvent,
   editEvent : thiseditEvent,
   getAllEvent : thisgetAllEvent,
+  getFriendEvent : thisgetFriendEvent,
   checkmailbox : thischeckmailbox,
   getProfile : thisgetProfile,
   editProfile : thiseditProfile,
