@@ -7,7 +7,7 @@ module.exports = {
     newEvent.detail = req.body.detail;
     newEvent.starttime = req.body.starttime;
     newEvent.endtime = req.body.endtime;
-    newEvent.share = true; //TODO will implement more detail later.
+    newEvent.share = req.body.share;
     newEvent.save(function(err) {
       if(err){
         req.reJson['message'] = 'something wrong when put into database';

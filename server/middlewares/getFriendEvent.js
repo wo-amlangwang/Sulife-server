@@ -1,7 +1,8 @@
 var Event = require('../mongo_modules/event.js');
 module.exports = {
   getFriendEvent : function(req,res,next) {
-    Event.find({'userid' : req.body.userid}).sort({'starttime' : -1})
+    Event.find({'userid' : req.body.userid,
+                'share' : true }).sort({'starttime' : -1})
     .exec(function(err, events) {
       if(err){
         req.reJson['message'] = 'something wrong when get data from database';
