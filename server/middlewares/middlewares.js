@@ -32,6 +32,7 @@ var resetPassword = require('./resetPassword.js').resetPassword;
 var changePassword = require('./changePassword.js').changePassword;
 
 var postLocation = require('./postLocation.js').postLocation;
+var getLocation = require('./getLocation.js').getLocation;
 
 var createGroup = require('./createGroup.js').createGroup;
 var joinGroup = require('./joinGroup.js').joinGroup;
@@ -82,5 +83,6 @@ module.exports = {
   changePassword : changePassword,
   postLocation : postLocation,
   createGroup : createGroup,
-  joinGroup : joinGroup
+  joinGroup : joinGroup,
+  getLocation : getLocation
 }

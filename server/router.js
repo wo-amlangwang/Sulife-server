@@ -66,6 +66,7 @@ module.exports = function(app,passport){
   app.delete('/deleteFriend/:targetid' , middlewares.verifyToken , middlewares.deleteFriend);
   app.post('/resetPassword' , middlewares.resetPassword);
   app.post('/changePassword' , middlewares.verifyToken , middlewares.changePassword);
+  app.get('/location/:EventOrTaskid', middlewares.verifyToken , middlewares.getLocation);
   app.post('/location',middlewares.verifyToken,middlewares.postLocation);
   app.post('/createGroup',middlewares.verifyToken, middlewares.createGroup);
   app.post('/joinGroup', middlewares.verifyToken, middlewares.joinGroup);
