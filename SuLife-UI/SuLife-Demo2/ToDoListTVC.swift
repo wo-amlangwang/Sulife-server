@@ -203,9 +203,11 @@ class ToDoListTVC: UITableViewController {
             //self.navigationItem.rightBarButtonItem!.enabled = true
             NSLog("%@",self.undoList)
             
-            let cell = tableView.dequeueReusableCellWithIdentifier("taskCell", forIndexPath: indexPath) as UITableViewCell
-
-            cell.backgroundColor = UIColor.greenColor()
+            //let cell = tableView.dequeueReusableCellWithIdentifier("taskCell", forIndexPath: indexPath) as UITableViewCell
+            
+            //if ((cell.valueForKey("title") as! String) == (self.undoList[indexPath.row].valueForKey("title") as! String)) {
+                //cell.backgroundColor = UIColor.greenColor()
+            //}
         }
         
         markDoneAction.backgroundColor = UIColor.greenColor()
@@ -221,7 +223,20 @@ class ToDoListTVC: UITableViewController {
             let vc = segue?.destinationViewController as! TaskDetailVC
             let indexPath = tableView.indexPathForSelectedRow
             if let index = indexPath {
-                let task : NSDictionary = undoList[index.row]
+                
+                var task : NSDictionary!
+                if (searchActive) {
+                    let searchStr = searchResults[index.row]
+                    for e in undoList {
+                        if ((e.valueForKey("title") as! NSString) == searchStr) {
+                            task = e
+                            break;
+                        }
+                    }
+                } else {
+                    task = undoList[index.row]
+                }
+                
                 let id = task.valueForKey("_id") as! NSString
                 let title = task.valueForKey("title") as! NSString
                 let detail = task.valueForKey("detail") as! NSString

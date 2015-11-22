@@ -14,7 +14,9 @@ class TaskDetailVC: UIViewController {
     @IBOutlet weak var detailTextField: UITextView!
     @IBOutlet weak var timeLable: UILabel!
     
-    var taskDetail : TaskModel?
+    @IBOutlet weak var undoButton: UIButton!
+    
+    var taskDetail : TaskModel!
     
     var task:NSDictionary = NSDictionary()
     
@@ -24,10 +26,14 @@ class TaskDetailVC: UIViewController {
         titleTextField.userInteractionEnabled = false
         detailTextField.userInteractionEnabled = false
         
-        titleTextField.text = taskDetail?.title as? String
-        detailTextField.text = taskDetail?.detail as? String
+        titleTextField.text = taskDetail.title as String
+        detailTextField.text = taskDetail.detail as String
         
-         timeLable.text = NSDateFormatter.localizedStringFromDate((taskDetail?.taskTime)!, dateStyle: NSDateFormatterStyle.FullStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+        timeLable.text = NSDateFormatter.localizedStringFromDate((taskDetail!.taskTime), dateStyle: NSDateFormatterStyle.FullStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+        
+        if (taskDetail?.finish == false) {
+            undoButton.hidden = true
+        }
     }
     
     @IBAction func deleteItem(sender: AnyObject) {
@@ -120,5 +126,88 @@ class TaskDetailVC: UIViewController {
         }
     }
     
+    @IBAction func undoMarkTapped(sender: UIButton) {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        
+        let title = taskDetail!.title
+        let detail = taskDetail!.detail
+        let taskTime = dateFormatter.stringFromDate(taskDetail!.taskTime)
+        let finished = false
+        
+        let post:NSString = "title=\(title)&detail=\(detail)&establishTime=\(taskTime)&finished=\(finished)"
+        
+        NSLog("PostData: %@",post);
+        
+        let edittaskURL = taskURL + "/" + (taskDetail!.id as String)
+        let url:NSURL = NSURL(string: edittaskURL)!
+        
+        let postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+        
+        let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "POST"
+        request.HTTPBody = postData
+        request.setValue(accountToken, forHTTPHeaderField: "x-access-token")
+        
+        var reponseError: NSError?
+        var response: NSURLResponse?
+        
+        var urlData: NSData?
+        do {
+            urlData = try NSURLConnection.sendSynchronousRequest(request, returningResponse:&response)
+        } catch let error as NSError {
+            reponseError = error
+            urlData = nil
+        }
+        
+        if ( urlData != nil ) {
+            let res = response as! NSHTTPURLResponse!;
+            
+            NSLog("Response code: %ld", res.statusCode);
+            
+            if (res.statusCode >= 200 && res.statusCode < 300)
+            {
+                let responseData:NSString  = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
+                
+                NSLog("Response ==> %@", responseData);
+                var error: NSError?
+                
+                do {
+                    if let jsonResult = try NSJSONSerialization.JSONObjectWithData(urlData!, options: []) as? NSDictionary {
+                        
+                        let success:NSString = jsonResult.valueForKey("message") as! NSString
+                        
+                        
+                        // Ok ????????
+                        if (success != "OK!") {
+                            NSLog("Mark Task Failed")
+                            let myAlert = UIAlertController(title: "Access Failed!", message: "Please Log In Again! ", preferredStyle: UIAlertControllerStyle.Alert)
+                            
+                            myAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
+                                myAlert .dismissViewControllerAnimated(true, completion: nil)
+                            }))
+                            presentViewController(myAlert, animated: true, completion: nil)
+                            
+                        } else {
+                            self.navigationController?.popViewControllerAnimated(true)
+                        }
+                    }
+                } catch {
+                    print(error)
+                }
+            } else {
+                let myAlert = UIAlertController(title: "Edit task Failed!", message: "System Error!", preferredStyle: UIAlertControllerStyle.Alert)
+                let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                myAlert.addAction(okAction)
+                self.presentViewController(myAlert, animated:true, completion:nil)
+            }
+            
+        } else {
+            let myAlert = UIAlertController(title: "Edit task Failed!", message: "Response Error!", preferredStyle: UIAlertControllerStyle.Alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+            myAlert.addAction(okAction)
+            self.presentViewController(myAlert, animated:true, completion:nil)
+        }
+    }
 }
 

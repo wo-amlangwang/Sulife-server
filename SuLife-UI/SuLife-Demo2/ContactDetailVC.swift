@@ -105,4 +105,18 @@ class ContactDetailVC: UIViewController {
             self.presentViewController(myAlert, animated:true, completion:nil)
         }
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue?, sender: AnyObject?) {
+        // Get the new view controller using [segue destinationViewController].
+        // Pass the selected object to the new view controller.
+        if (segue?.identifier == "showSharedEvents") {
+            let vc = segue?.destinationViewController as! SharedEventsTVC
+                
+            let firstname = contactDetail!.firstName
+            let lastname = contactDetail!.lastName
+            let email = contactDetail!.email
+            let userid = contactDetail!.id
+            vc.contactDetail = ContactsModel(firstName: firstname, lastName: lastname, email: email, id: userid)
+        }
+    }
 }

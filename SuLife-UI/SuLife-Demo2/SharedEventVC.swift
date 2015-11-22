@@ -1,104 +1,46 @@
 //
-//  NewEventVC.swift
-//  SuLife
+//  SharedEventVC.swift
+//  SuLife-Demo2
 //
-//  Created by Sine Feng on 10/16/15.
+//  Created by Sine Feng on 11/21/15.
 //  Copyright © 2015 Sine Feng. All rights reserved.
 //
 
 import UIKit
 
+class SharedEventVC: UIViewController {
 
-
-class NewEventVC: UIViewController, UIScrollViewDelegate {
-    
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var titleTextField: UITextView!
     @IBOutlet weak var detailTextField: UITextView!
-    @IBOutlet weak var locationTextField: UITextField!
-
-    @IBOutlet weak var startTime: UILabel!
-    @IBOutlet weak var endTime: UILabel!
+    @IBOutlet weak var startTime: UITextView!
+    @IBOutlet weak var endTime: UITextView!
     
-    @IBOutlet weak var startTimePicker: UIDatePicker!
-    @IBOutlet weak var endTimePicker: UIDatePicker!
     
-    @IBOutlet weak var switchButton: UISwitch!
+    var eventDetail : EventModel?
     
-    var startDate : NSString = ""
-    var endDate : NSString = ""
-    
-    var shareOrNot = false
-    
-    // var startDate = NSDate()
-    // var endDate = NSDate()
+    var event:NSDictionary = NSDictionary()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        startTimePicker.addTarget(self, action: Selector("datePickerValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
-        endTimePicker.addTarget(self, action: Selector("datePickerValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+        
+        titleTextField.userInteractionEnabled = false
+        detailTextField.userInteractionEnabled = false
+        startTime.userInteractionEnabled = false
+        endTime.userInteractionEnabled = false
+        
+        
+        titleTextField.text = eventDetail?.title as? String
+        detailTextField.text = eventDetail?.detail as? String
+        
+        startTime.text = NSDateFormatter.localizedStringFromDate((eventDetail?.startTime)!, dateStyle: NSDateFormatterStyle.FullStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+        endTime.text = NSDateFormatter.localizedStringFromDate((eventDetail?.endTime)!, dateStyle: NSDateFormatterStyle.FullStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
         
         // Do any additional setup after loading the view.
         
-        startTime.text = NSDateFormatter.localizedStringFromDate(startTimePicker.date, dateStyle: NSDateFormatterStyle.FullStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
-        
-        endTime.text = NSDateFormatter.localizedStringFromDate(endTimePicker.date, dateStyle: NSDateFormatterStyle.FullStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
-        
-        switchButton.setOn(false, animated: false)
-        
-        // Tab The blank place, close keyboard
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
-        view.addGestureRecognizer(tap)
-        
-    }
-    
-    func DismissKeyboard () {
-        view.endEditing(true)
     }
     
     
-    // Mark : Text field
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        if textField == self.titleTextField {
-            self.detailTextField.becomeFirstResponder()
-        } else if textField == self.detailTextField {
-            self.locationTextField.becomeFirstResponder()
-        } else if textField == self.locationTextField {
-            textField.resignFirstResponder()
-        }
-        
-        return true
-    }
-    
-    func textFieldDidBeginEditing(textField: UITextField) {
-        if (textField == locationTextField) {
-            scrollView.setContentOffset(CGPoint(x: 0,y: 120), animated: true)
-        }
-    }
-    
-    func textFieldDidEndEditing(textField: UITextField) {
-        scrollView.setContentOffset(CGPoint(x: 0,y: 0), animated: true)
-    }
-    
-     // Mark : Text field END
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func datePickerValueChanged (datePicker: UIDatePicker) {
-        
-        startTime.text = NSDateFormatter.localizedStringFromDate(startTimePicker.date, dateStyle: NSDateFormatterStyle.FullStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
-
-        endTime.text = NSDateFormatter.localizedStringFromDate(endTimePicker.date, dateStyle: NSDateFormatterStyle.FullStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
-    }
-    
-    
-    @IBAction func addEventTapped(sender: UIButton) {
-        
-        // TODO SERVER
-        
+    @IBAction func joinEventTapped(sender: UIButton) {
         // Get title and detail from input
         let eventTitle = titleTextField.text!
         let eventDetail = detailTextField.text!
@@ -106,11 +48,11 @@ class NewEventVC: UIViewController, UIScrollViewDelegate {
         // Get date from input and convert format
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-        startDate = dateFormatter.stringFromDate(startTimePicker.date)
-        endDate = dateFormatter.stringFromDate(endTimePicker.date)
+        let startDate = dateFormatter.stringFromDate(self.eventDetail!.startTime)
+        let endDate = dateFormatter.stringFromDate(self.eventDetail!.endTime)
         
         // Post to server
-        let post:NSString = "title=\(eventTitle)&detail=\(eventDetail)&starttime=\(startDate)&endtime=\(endDate)&share=\(shareOrNot)"
+        let post:NSString = "title=\(eventTitle)&detail=\(eventDetail)&starttime=\(startDate)&endtime=\(endDate)&share=\(true)"
         
         NSLog("PostData: %@",post);
         
@@ -155,7 +97,11 @@ class NewEventVC: UIViewController, UIScrollViewDelegate {
                             NSLog("Add Event Successfully")
                             
                             //var eventToken = jsonResult.valueForKey("Event") as! NSString as String
-                            self.navigationController!.popToRootViewControllerAnimated(true)
+                            let myAlert = UIAlertController(title: "Add New Event Successfully!", message: "This event is in your event list!", preferredStyle: UIAlertControllerStyle.Alert)
+                            myAlert.addAction(UIAlertAction(title: "Logout", style: .Default, handler: { (action: UIAlertAction!) in
+                                self.navigationController?.popViewControllerAnimated(true)
+                            }))
+                            self.presentViewController(myAlert, animated:true, completion:nil)
                             
                         } else {
                             let myAlert = UIAlertController(title: "Add New Event Failed!", message: "Please Try Again!", preferredStyle: UIAlertControllerStyle.Alert)
@@ -180,13 +126,12 @@ class NewEventVC: UIViewController, UIScrollViewDelegate {
             myAlert.addAction(okAction)
             self.presentViewController(myAlert, animated:true, completion:nil)
         }
+        
     }
     
-    @IBAction func shareEvent(sender: UISwitch) {
-        if sender.on {
-            shareOrNot = true
-        } else {
-            shareOrNot = false
-        }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
+    
 }

@@ -1,40 +1,48 @@
 //
-//  ToDoListTVC.swift
+//  SharedEventsTVC.swift
 //  SuLife-Demo2
 //
-//  Created by Sine Feng on 11/6/15.
+//  Created by Sine Feng on 11/21/15.
 //  Copyright © 2015 Sine Feng. All rights reserved.
 //
 
 import UIKit
 
-class DoneListVC: UITableViewController {
-    
+class SharedEventsTVC: UITableViewController {
+
     // MARK: Properties
     
-    @IBOutlet var TodoList: UITableView!
+    @IBOutlet weak var EventList: UITableView!
     @IBOutlet weak var mySearchBar: UISearchBar!
     
     var resArray : [NSDictionary] = []
-    var finishedList : [NSDictionary] = []
+    var sharedResArray : [NSDictionary] = []
     var searchResults : [String] = []
     var searchActive : Bool = false
     
+    var contactDetail : ContactsModel?
+    
     // reload data in table
     override func viewDidAppear(animated: Bool) {
+        
+        resArray = []
+        sharedResArray = []
         
         /* get selected date */
         let date : NSDate = dateSelected != nil ? (dateSelected?.convertedDate())! : NSDate()
         
         /* parse date to proper format */
         let sd = stringFromDate(date).componentsSeparatedByString(" ")
-        let taskTime = sd[0] + " 00:01"
+        let sdTime = sd[0] + " 00:01"
+        let edTime = sd[0] + " 23:59"
+        
+        let contactID = contactDetail!.id
         
         /* get data from server */
-        let post:NSString = "title=&detail=&establishTime=\(taskTime)"
+        let post:NSString = "title=&detail=&starttime=&endtime=&userid=\(contactID)"
         NSLog("PostData: %@",post);
         let postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
-        let url:NSURL = NSURL(string: taskByDateURL)!
+        let url:NSURL = NSURL(string: getFriendEvents)!
         let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "post"
         request.HTTPBody = postData
@@ -69,20 +77,13 @@ class DoneListVC: UITableViewController {
                     
                     let success:NSString = jsonResult.valueForKey("message") as! NSString
                     
-                    if (success != "OK! Task list followed") {
-                        NSLog("Get Task Failed")
-                        let myAlert = UIAlertController(title: "Access Failed!", message: "Please Log In Again! ", preferredStyle: UIAlertControllerStyle.Alert)
-                        
-                        myAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
-                            myAlert .dismissViewControllerAnimated(true, completion: nil)
-                        }))
-                        presentViewController(myAlert, animated: true, completion: nil)
-                        
+                    if (success != "OK! Events list followed") {
+                        NSLog("Get Event Failed")
                     } else {
-                        resArray = jsonResult.valueForKey("Tasks") as! [NSDictionary]
-                        for task in resArray {
-                            if ((task.objectForKey("finished") as! Bool) == true) {
-                                finishedList.append(task)
+                        resArray = jsonResult.valueForKey("Events") as! [NSDictionary]
+                        for event in resArray {
+                            if ((event.valueForKey("share") as! Bool) == true) {
+                                sharedResArray.append(event)
                             }
                         }
                     }
@@ -93,9 +94,11 @@ class DoneListVC: UITableViewController {
             
         } else {
             let myAlert = UIAlertController(title: "Connection failed!", message: "urlData Equals to NULL!", preferredStyle: UIAlertControllerStyle.Alert)
+            
             if let error = reponseError {
                 myAlert.message = (error.localizedDescription)
             }
+            
             let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
             myAlert.addAction(okAction)
             self.presentViewController(myAlert, animated:true, completion:nil)
@@ -104,12 +107,14 @@ class DoneListVC: UITableViewController {
         self.tableView.reloadData()
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        //tableView.registerClass(ItemTableViewCell.self, forCellReuseIdentifier: "Cell")
         
-        TodoList.delegate = self
-        TodoList.dataSource = self
-        TodoList.delegate = self
+        EventList.delegate = self
+        EventList.dataSource = self
+        EventList.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -145,12 +150,12 @@ class DoneListVC: UITableViewController {
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         print("SearchText: \(searchText)")
         
-        var taskString : [String] = []
-        for task in finishedList {
-            taskString.append(task.valueForKey("title") as! String)
+        var eventString : [String] = []
+        for event in sharedResArray {
+            eventString.append(event.valueForKey("title") as! String)
         }
         
-        searchResults = taskString.filter({ (text) -> Bool in
+        searchResults = eventString.filter({ (text) -> Bool in
             let tmp: NSString = text
             let range = tmp.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
             return range.location != NSNotFound
@@ -161,66 +166,68 @@ class DoneListVC: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // return number of tasks
+        // return number of events
         print("search activate: \(searchActive)")
         if(searchActive) {
             print("Search count = \(searchResults.count)")
             return searchResults.count
         }
-        return finishedList.count
+        return sharedResArray.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("doneTaskCell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
         
-        var task : NSDictionary
+        var event : NSDictionary
         print("search activate: \(searchActive)")
         // Configure the cell...
         if(searchActive){
             cell.textLabel?.text = searchResults[indexPath.row]
         } else {
-            task = finishedList[indexPath.row] as NSDictionary
-            cell.textLabel?.text = task.valueForKey("title") as? String
+            event = sharedResArray[indexPath.row] as NSDictionary
+            cell.textLabel?.text = event.valueForKey("title") as? String
         }
         print("Cell Title: \(cell.textLabel?.text)")
         return cell
     }
     
+    
     override func prepareForSegue(segue: UIStoryboardSegue?, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
-        if (segue?.identifier == "donelstToDetail") {
-            let vc = segue?.destinationViewController as! TaskDetailVC
+        if (segue?.identifier == "sharedEventsToDetail") {
+            let vc = segue?.destinationViewController as! SharedEventVC
             let indexPath = tableView.indexPathForSelectedRow
+            NSLog("THE INDEX NUMBER IS: %d", indexPath!.row)
             if let index = indexPath {
-                
-                var task : NSDictionary!
+                var event : NSDictionary!
                 if (searchActive) {
                     let searchStr = searchResults[index.row]
-                    for e in finishedList {
-                        if ((e.valueForKey("title") as! NSString) == searchStr) {
-                            task = e
+                    for e in sharedResArray {
+                        if (e.valueForKey("title") as? NSString == searchStr) {
+                            event = e
                             break;
                         }
                     }
                 } else {
-                    task = finishedList[index.row]
+                    event = sharedResArray[index.row]
                 }
-        
-                let id = task.valueForKey("_id") as! NSString
-                let title = task.valueForKey("title") as! NSString
-                let detail = task.valueForKey("detail") as! NSString
-                let tt = task.valueForKey("establishTime") as! NSString
-                let finish = task.objectForKey("finished") as! Bool
-                let taskTime = tt.substringToIndex(tt.rangeOfString(".").location - 3).stringByReplacingOccurrencesOfString("T", withString: " ")
+                let id = event.valueForKey("_id") as! NSString
+                let title = event.valueForKey("title") as! NSString
+                let detail = event.valueForKey("detail") as! NSString
+                let st = event.valueForKey("starttime") as! NSString
+                let et = event.valueForKey("endtime") as! NSString
+                let share = event.valueForKey("share") as! Bool
+                let startTime = st.substringToIndex(st.rangeOfString(".").location - 3).stringByReplacingOccurrencesOfString("T", withString: " ")
+                let endTime = et.substringToIndex(et.rangeOfString(".").location - 3).stringByReplacingOccurrencesOfString("T", withString: " ")
                 NSLog("detail ==> %@", detail);
-                NSLog("tt ==> %@", tt);
-                vc.taskDetail = TaskModel(title: title, detail: detail, time: dateFromString(taskTime), finish: finish, id: id)
-                finishedList = []
+                NSLog("st ==> %@", st);
+                NSLog("et ==> %@", et);
+                vc.eventDetail = EventModel(title: title, detail: detail, startTime: dateFromString(startTime), endTime: dateFromString(endTime), id: id, share: share)
             }
         }
-        
     }
+    
     
     func dateFromString (str : String) -> NSDate {
         let dateFormatter = NSDateFormatter()
@@ -235,5 +242,5 @@ class DoneListVC: UITableViewController {
         let strDate = dateFormatter.stringFromDate(date)
         return strDate
     }
-    
+
 }

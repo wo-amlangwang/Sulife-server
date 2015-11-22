@@ -30,6 +30,7 @@ let RejectFriendIDURL = "https://damp-retreat-5682.herokuapp.com/rejectFriendReq
 
 let addFriendURL = "https://damp-retreat-5682.herokuapp.com/friendRequest"
 let getUserInformation = "https://damp-retreat-5682.herokuapp.com/getUserInformation"
+let getFriendEvents = "https://damp-retreat-5682.herokuapp.com/eventf"
 
 let forgetPasswordURL = "https://damp-retreat-5682.herokuapp.com/resetPassword"
 let changePasswordURL = "https://damp-retreat-5682.herokuapp.com/changePassword"

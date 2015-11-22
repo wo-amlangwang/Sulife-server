@@ -21,23 +21,30 @@ class EditEventVC: UIViewController {
     @IBOutlet weak var startTime: UILabel!
     @IBOutlet weak var endTime: UILabel!
     
+    @IBOutlet weak var switchButton: UISwitch!
+    
     var startDate : NSString = ""
     var endDate : NSString = ""
+    var shareOrNot : Bool = false
     
-    var eventDetail : EventModel?
+    var eventDetail : EventModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        titleTextField.text = eventDetail!.title as String
-        detailTextField.text = eventDetail!.detail as String
+        titleTextField.text = eventDetail.title as String
+        detailTextField.text = eventDetail.detail as String
         startTimePicker.addTarget(self, action: Selector("datePickerValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
         endTimePicker.addTarget(self, action: Selector("datePickerValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
         
         startTime.text = NSDateFormatter.localizedStringFromDate((eventDetail!.startTime), dateStyle: NSDateFormatterStyle.FullStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
         
         endTime.text = NSDateFormatter.localizedStringFromDate((eventDetail!.endTime), dateStyle: NSDateFormatterStyle.FullStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+        
+        if (eventDetail.share == false) {
+            switchButton.setOn(false, animated: false)
+        }
         
         // Tab The blank place, close keyboard
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
@@ -98,7 +105,7 @@ class EditEventVC: UIViewController {
         endDate = dateFormatter.stringFromDate(endTimePicker.date)
         
         // Post to server
-        let post:NSString = "title=\(title)&detail=\(detail)&starttime=\(startDate)&endtime=\(endDate)"
+        let post:NSString = "title=\(title)&detail=\(detail)&starttime=\(startDate)&endtime=\(endDate)&share=\(shareOrNot)"
         
         NSLog("PostData: %@",post);
         
@@ -157,6 +164,16 @@ class EditEventVC: UIViewController {
             let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
             myAlert.addAction(okAction)
             self.presentViewController(myAlert, animated:true, completion:nil)
+        }
+    }
+    
+    // TODO!!!!!!!!!
+    
+    @IBAction func shareEvent(sender: UISwitch) {
+        if sender.on {
+            shareOrNot = true
+        } else {
+            shareOrNot = false
         }
     }
 }

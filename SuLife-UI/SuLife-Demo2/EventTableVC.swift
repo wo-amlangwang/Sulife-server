@@ -69,9 +69,12 @@ class EventTableVC: UITableViewController, UISearchBarDelegate {
                     
                     let success:NSString = jsonResult.valueForKey("message") as! NSString
                     
+                    // TODO : Change message if needed
                     if (success != "OK! Events list followed") {
-                        NSLog("Get Event Failed")
+                        NSLog("Get Shared Event Failed")
                     } else {
+                        
+                        // TODO : Change key if needed
                         resArray = jsonResult.valueForKey("Events") as! [NSDictionary]
                     }
                 }
@@ -135,8 +138,6 @@ class EventTableVC: UITableViewController, UISearchBarDelegate {
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        print("SearchText: \(searchText)")
-        
         var eventString : [String] = []
         for event in resArray {
             eventString.append(event.valueForKey("title") as! String)
@@ -154,9 +155,7 @@ class EventTableVC: UITableViewController, UISearchBarDelegate {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // return number of events
-        print("search activate: \(searchActive)")
         if(searchActive) {
-            print("Search count = \(searchResults.count)")
             return searchResults.count
         }
         return resArray.count
@@ -166,7 +165,6 @@ class EventTableVC: UITableViewController, UISearchBarDelegate {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
         
         var event : NSDictionary
-        print("search activate: \(searchActive)")
         // Configure the cell...
         if(searchActive){
             cell.textLabel?.text = searchResults[indexPath.row]
@@ -174,7 +172,6 @@ class EventTableVC: UITableViewController, UISearchBarDelegate {
             event = resArray[indexPath.row] as NSDictionary
             cell.textLabel?.text = event.valueForKey("title") as? String
         }
-        print("Cell Title: \(cell.textLabel?.text)")
         return cell
     }
     
@@ -186,7 +183,18 @@ class EventTableVC: UITableViewController, UISearchBarDelegate {
             let vc = segue?.destinationViewController as! EventDetailVC
             let indexPath = tableView.indexPathForSelectedRow
             if let index = indexPath {
-                let event : NSDictionary = resArray[index.row]
+                var event : NSDictionary!
+                if (searchActive) {
+                    let searchStr = searchResults[index.row]
+                    for e in resArray {
+                        if (e.valueForKey("title") as? NSString == searchStr) {
+                            event = e
+                            break;
+                        }
+                    }
+                } else {
+                    event = resArray[index.row]
+                }
                 let id = event.valueForKey("_id") as! NSString
                 let title = event.valueForKey("title") as! NSString
                 let detail = event.valueForKey("detail") as! NSString
@@ -202,6 +210,7 @@ class EventTableVC: UITableViewController, UISearchBarDelegate {
             }
         }
     }
+
     
     func dateFromString (str : String) -> NSDate {
         let dateFormatter = NSDateFormatter()

@@ -192,7 +192,20 @@ class ContactVC: UITableViewController, UISearchBarDelegate {
             let vc = segue?.destinationViewController as! ContactDetailVC
             let indexPath = tableView.indexPathForSelectedRow
             if let index = indexPath {
-                let contact : NSDictionary = contacts[index.row]
+                
+                var contact : NSDictionary!
+                if (searchActive) {
+                    let searchStr = searchResults[index.row]
+                    for e in contacts {
+                        if ((e.valueForKey("title") as! NSString) == searchStr) {
+                            contact = e
+                            break;
+                        }
+                    }
+                } else {
+                    contact = contacts[index.row]
+                }
+
                 let firstname = contact.valueForKey("firstname") as! NSString
                 let lastname = contact.valueForKey("lastname") as! NSString
                 let email = contact.valueForKey("email") as! NSString

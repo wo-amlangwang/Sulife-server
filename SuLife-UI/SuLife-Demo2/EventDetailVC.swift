@@ -15,8 +15,9 @@ class EventDetailVC: UIViewController {
     @IBOutlet weak var startTime: UITextView!
     @IBOutlet weak var endTime: UITextView!
 
+    @IBOutlet weak var shared: UILabel!
     
-    var eventDetail : EventModel?
+    var eventDetail : EventModel!
     
     var event:NSDictionary = NSDictionary()
     
@@ -29,11 +30,16 @@ class EventDetailVC: UIViewController {
         endTime.userInteractionEnabled = false
         
         
-        titleTextField.text = eventDetail?.title as? String
-        detailTextField.text = eventDetail?.detail as? String
+        titleTextField.text = eventDetail.title as String
+        detailTextField.text = eventDetail.detail as String
+        if (eventDetail.share == true) {
+            shared.text = "Yes"
+        } else if (eventDetail.share == false) {
+            shared.text = "No"
+        }
         
-        startTime.text = NSDateFormatter.localizedStringFromDate((eventDetail?.startTime)!, dateStyle: NSDateFormatterStyle.FullStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
-        endTime.text = NSDateFormatter.localizedStringFromDate((eventDetail?.endTime)!, dateStyle: NSDateFormatterStyle.FullStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+        startTime.text = NSDateFormatter.localizedStringFromDate((eventDetail.startTime), dateStyle: NSDateFormatterStyle.FullStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+        endTime.text = NSDateFormatter.localizedStringFromDate((eventDetail.endTime), dateStyle: NSDateFormatterStyle.FullStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
         
         // Do any additional setup after loading the view.
         
