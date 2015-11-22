@@ -17,6 +17,7 @@ module.exports = {
           location.location.coordinates.pop();
           location.location.coordinates.push(req.body.lng);
           location.location.coordinates.push(req.body.lat);
+          location.locationName = req.body.locationName;
           location.save(function (err) {
             if(err){
 
@@ -31,6 +32,7 @@ module.exports = {
           newlocation.EventOrTaskid = req.body.eventOrTaskid;
           newlocation.location.coordinates.push(req.body.lng);
           newlocation.location.coordinates.push(req.body.lat);
+          newlocation.locationName = req.body.locationName;
           newlocation.save(function(err) {
             if(err){
 

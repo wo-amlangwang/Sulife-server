@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var LocationSchema = mongoose.Schema({
   userid : String,
   EventOrTaskid : String,
+  locationName : String,
   location : {
     type: {
       type: String,
