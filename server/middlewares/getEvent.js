@@ -17,9 +17,8 @@ module.exports = {
             res.status(403).send(req.reJson);
           }
         }else {
-          req.reJson['message'] = 'OK! Event followed';
-          req.reJson['event'] = thisevent;
-          res.status(200).send(req.reJson);
+          req.reJson['message'] = 'No such event';
+          res.status(404).send(req.reJson);
         }
       }
     });
