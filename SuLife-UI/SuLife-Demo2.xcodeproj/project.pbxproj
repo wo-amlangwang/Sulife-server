@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		250365ED1BFA4E8600A93155 /* ContactsActionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250365EC1BFA4E8600A93155 /* ContactsActionVC.swift */; };
+		250CC82D1BFB749F00C37A20 /* DoneListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250CC82C1BFB749F00C37A20 /* DoneListVC.swift */; };
 		252C899F1BF5DAE60044F1A4 /* NotificationTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252C899E1BF5DAE60044F1A4 /* NotificationTVC.swift */; };
 		252C89A11BF5E28B0044F1A4 /* NotificationDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252C89A01BF5E28B0044F1A4 /* NotificationDetailVC.swift */; };
 		252C89A31BF5E61C0044F1A4 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252C89A21BF5E61C0044F1A4 /* NotificationModel.swift */; };
@@ -35,6 +37,8 @@
 		25AE4ADD1BF5525700ACDD2B /* ContactsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AE4ADC1BF5525700ACDD2B /* ContactsModel.swift */; };
 		25AE4ADF1BF5535F00ACDD2B /* ContactDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AE4ADE1BF5535F00ACDD2B /* ContactDetailVC.swift */; };
 		25AE4AE11BF5866E00ACDD2B /* AddContactVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AE4AE01BF5866E00ACDD2B /* AddContactVC.swift */; };
+		25E2B57F1BF694DE00ECD39F /* EditTaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E2B57E1BF694DE00ECD39F /* EditTaskVC.swift */; };
+		25E317AE1BFFF709009D265E /* ChangePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E317AD1BFFF709009D265E /* ChangePasswordVC.swift */; };
 		25EDC7EC1BED6E930061C5B2 /* CVCalendarContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EDC7D11BED6E930061C5B2 /* CVCalendarContentViewController.swift */; };
 		25EDC7ED1BED6E930061C5B2 /* CVCalendarMonthContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EDC7D21BED6E930061C5B2 /* CVCalendarMonthContentViewController.swift */; };
 		25EDC7EE1BED6E930061C5B2 /* CVCalendarWeekContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EDC7D31BED6E930061C5B2 /* CVCalendarWeekContentViewController.swift */; };
@@ -89,6 +93,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		250365EC1BFA4E8600A93155 /* ContactsActionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsActionVC.swift; sourceTree = "<group>"; };
+		250CC82C1BFB749F00C37A20 /* DoneListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoneListVC.swift; sourceTree = "<group>"; };
 		252C899E1BF5DAE60044F1A4 /* NotificationTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationTVC.swift; sourceTree = "<group>"; };
 		252C89A01BF5E28B0044F1A4 /* NotificationDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationDetailVC.swift; sourceTree = "<group>"; };
 		252C89A21BF5E61C0044F1A4 /* NotificationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
@@ -123,6 +129,8 @@
 		25AE4ADC1BF5525700ACDD2B /* ContactsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsModel.swift; sourceTree = "<group>"; };
 		25AE4ADE1BF5535F00ACDD2B /* ContactDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactDetailVC.swift; sourceTree = "<group>"; };
 		25AE4AE01BF5866E00ACDD2B /* AddContactVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddContactVC.swift; sourceTree = "<group>"; };
+		25E2B57E1BF694DE00ECD39F /* EditTaskVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTaskVC.swift; sourceTree = "<group>"; };
+		25E317AD1BFFF709009D265E /* ChangePasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordVC.swift; sourceTree = "<group>"; };
 		25EDC7D11BED6E930061C5B2 /* CVCalendarContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarContentViewController.swift; sourceTree = "<group>"; };
 		25EDC7D21BED6E930061C5B2 /* CVCalendarMonthContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarMonthContentViewController.swift; sourceTree = "<group>"; };
 		25EDC7D31BED6E930061C5B2 /* CVCalendarWeekContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarWeekContentViewController.swift; sourceTree = "<group>"; };
@@ -207,13 +215,13 @@
 		2557230D1BED079400A57F58 /* SuLife-Demo2 */ = {
 			isa = PBXGroup;
 			children = (
-				25AE4AD91BF51B3C00ACDD2B /* support file */,
 				2557230E1BED079400A57F58 /* AppDelegate.swift */,
 				255723101BED079400A57F58 /* ViewController.swift */,
 				2557233C1BED08FC00A57F58 /* Images.xcassets */,
 				255723121BED079400A57F58 /* Main.storyboard */,
 				2557233E1BED10EB00A57F58 /* LaunchScreen.xib */,
 				2557231A1BED079500A57F58 /* Info.plist */,
+				25AE4AD91BF51B3C00ACDD2B /* support file */,
 				258C984B1BF2C6A400693A60 /* User */,
 				25EDC80C1BED74F20061C5B2 /* Map */,
 				25EDC80B1BED74860061C5B2 /* Contacts */,
@@ -255,6 +263,7 @@
 				252C899E1BF5DAE60044F1A4 /* NotificationTVC.swift */,
 				252C89A01BF5E28B0044F1A4 /* NotificationDetailVC.swift */,
 				252C89A21BF5E61C0044F1A4 /* NotificationModel.swift */,
+				25E317AD1BFFF709009D265E /* ChangePasswordVC.swift */,
 			);
 			name = User;
 			sourceTree = "<group>";
@@ -262,6 +271,7 @@
 		25AE4AD91BF51B3C00ACDD2B /* support file */ = {
 			isa = PBXGroup;
 			children = (
+				250365EC1BFA4E8600A93155 /* ContactsActionVC.swift */,
 			);
 			name = "support file";
 			sourceTree = "<group>";
@@ -308,6 +318,8 @@
 				2557238B1BED454C00A57F58 /* ToDoListTVC.swift */,
 				25EDC8151BED83DB0061C5B2 /* TaskDetailVC.swift */,
 				258C98471BF2AF0400693A60 /* TaskModel.swift */,
+				25E2B57E1BF694DE00ECD39F /* EditTaskVC.swift */,
+				250CC82C1BFB749F00C37A20 /* DoneListVC.swift */,
 			);
 			name = ToDoList;
 			sourceTree = "<group>";
@@ -484,6 +496,7 @@
 				25EDC8051BED6E930061C5B2 /* CVCalendarViewPresentationMode.swift in Sources */,
 				25EDC7FA1BED6E930061C5B2 /* CVDate.swift in Sources */,
 				2557237C1BED304000A57F58 /* LoginVC.swift in Sources */,
+				250365ED1BFA4E8600A93155 /* ContactsActionVC.swift in Sources */,
 				25EDC7ED1BED6E930061C5B2 /* CVCalendarMonthContentViewController.swift in Sources */,
 				25EDC7F61BED6E930061C5B2 /* CVCalendarTouchController.swift in Sources */,
 				25EDC7EC1BED6E930061C5B2 /* CVCalendarContentViewController.swift in Sources */,
@@ -497,6 +510,7 @@
 				25EDC7FB1BED6E930061C5B2 /* CVSet.swift in Sources */,
 				25AE4AD81BF4FB3A00ACDD2B /* NewGroupTVC.swift in Sources */,
 				25EDC8021BED6E930061C5B2 /* CVSelectionType.swift in Sources */,
+				25E317AE1BFFF709009D265E /* ChangePasswordVC.swift in Sources */,
 				25EDC7F51BED6E930061C5B2 /* CVCalendarViewAnimator.swift in Sources */,
 				25EDC7FE1BED6E930061C5B2 /* CVCalendarViewAnimatorDelegate.swift in Sources */,
 				25EDC8161BED83DB0061C5B2 /* TaskDetailVC.swift in Sources */,
@@ -509,6 +523,7 @@
 				25EDC7F01BED6E930061C5B2 /* CVCalendarMenuView.swift in Sources */,
 				25EDC8001BED6E930061C5B2 /* CVRange.swift in Sources */,
 				25EDC8111BED76360061C5B2 /* NewEventVC.swift in Sources */,
+				25E2B57F1BF694DE00ECD39F /* EditTaskVC.swift in Sources */,
 				258C98481BF2AF0400693A60 /* TaskModel.swift in Sources */,
 				255723881BED420A00A57F58 /* GroupVC.swift in Sources */,
 				2557237E1BED309E00A57F58 /* StartVC.swift in Sources */,
@@ -532,6 +547,7 @@
 				25AE4ADF1BF5535F00ACDD2B /* ContactDetailVC.swift in Sources */,
 				258C984A1BF2BE6200693A60 /* ForgetPasswordVC.swift in Sources */,
 				25EDC8141BED83BF0061C5B2 /* NewTaskVC.swift in Sources */,
+				250CC82D1BFB749F00C37A20 /* DoneListVC.swift in Sources */,
 				2557230F1BED079400A57F58 /* AppDelegate.swift in Sources */,
 				255723871BED420A00A57F58 /* ContactVC.swift in Sources */,
 				25EDC7FF1BED6E930061C5B2 /* CVCalendarViewAppearanceDelegate.swift in Sources */,

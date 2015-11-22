@@ -15,15 +15,15 @@ class NotificationModel: NSObject {
     var email : NSString
     var requestOwnerID : NSString
     var relationshipID : NSString
-    var isFriend : NSNumber
+    // var isFriend : Bool
     
-    init (firstName : NSString, lastName : NSString, email : NSString, requestOwnerID : NSString, relationshipID : NSString, isFriend : NSNumber) {
+    init (firstName : NSString, lastName : NSString, email : NSString, requestOwnerID : NSString, relationshipID : NSString) {
         self.firstName = firstName
         self.lastName = lastName
         self.email = email
         self.requestOwnerID = requestOwnerID
         self.relationshipID = relationshipID
-        self.isFriend = isFriend
+        // self.isFriend = isFriend
     }
 
 }

@@ -17,16 +17,16 @@ class ContactVC: UITableViewController, UISearchBarDelegate {
     var contacts : [NSDictionary] = []
     
     var searchResults : [String] = []
-    var searchActive = false
+    var searchActive : Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        
+        contactsInit = []
+        contacts = []
         
         let url:NSURL = NSURL(string: getContactsURL)!
         let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
@@ -136,7 +136,8 @@ class ContactVC: UITableViewController, UISearchBarDelegate {
         
         var contactString : [String] = []
         for contact in contacts {
-            contactString.append(contact.valueForKey("TODO") as! String)
+            let fullname = (contact.valueForKey("firstname") as? String)! + " " + (contact.valueForKey("lastname") as? String)!
+            contactString.append(fullname)
         }
         
         searchResults = contactString.filter({ (text) -> Bool in
@@ -145,7 +146,11 @@ class ContactVC: UITableViewController, UISearchBarDelegate {
             return range.location != NSNotFound
         })
         
-        searchActive = true;
+        if (contactString.count == 0) {
+            searchActive = false
+        } else {
+            searchActive = true
+        }
         self.tableView.reloadData()
     }
     
@@ -170,12 +175,10 @@ class ContactVC: UITableViewController, UISearchBarDelegate {
         if(searchActive){
             cell.textLabel?.text = searchResults[indexPath.row]
         } else {
-            if (contacts.count != 0) {
-                contact = contacts[indexPath.row] as NSDictionary
-                let fullname = (contact.valueForKey("firstname") as? String)! + " " + (contact.valueForKey("lastname") as? String)!
-                cell.textLabel?.text = fullname
-                print(fullname)
-            }
+            contact = contacts[indexPath.row] as NSDictionary
+            let fullname = (contact.valueForKey("firstname") as? String)! + " " + (contact.valueForKey("lastname") as? String)!
+            cell.textLabel?.text = fullname
+            print(fullname)
         }
         print("Cell Title: \(cell.textLabel?.text)")
         return cell

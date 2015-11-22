@@ -10,8 +10,10 @@ import UIKit
 
 class EditEventVC: UIViewController {
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var detailTextField: UITextView!
+    @IBOutlet weak var locationTextField: UITextField!
     
     @IBOutlet weak var startTimePicker: UIDatePicker!
     @IBOutlet weak var endTimePicker: UIDatePicker!
@@ -36,8 +38,42 @@ class EditEventVC: UIViewController {
         startTime.text = NSDateFormatter.localizedStringFromDate((eventDetail!.startTime), dateStyle: NSDateFormatterStyle.FullStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
         
         endTime.text = NSDateFormatter.localizedStringFromDate((eventDetail!.endTime), dateStyle: NSDateFormatterStyle.FullStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+        
+        // Tab The blank place, close keyboard
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
+        view.addGestureRecognizer(tap)
+        
     }
-
+    
+    func DismissKeyboard () {
+        view.endEditing(true)
+    }
+    
+    
+    // Mark : Text field
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField == self.titleTextField {
+            self.detailTextField.becomeFirstResponder()
+        } else if textField == self.detailTextField {
+            self.locationTextField.becomeFirstResponder()
+        } else if textField == self.locationTextField {
+            textField.resignFirstResponder()
+        }
+        
+        return true
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if (textField == locationTextField) {
+            scrollView.setContentOffset(CGPoint(x: 0,y: 120), animated: true)
+        }
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        scrollView.setContentOffset(CGPoint(x: 0,y: 0), animated: true)
+    }
+    
+    // Mark : Text field END
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -122,17 +158,5 @@ class EditEventVC: UIViewController {
             myAlert.addAction(okAction)
             self.presentViewController(myAlert, animated:true, completion:nil)
         }
-    }
-    
-    
-    /* Close keyboard when clicking enter*/
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder();
-        return true;
-    }
-    
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        titleTextField.resignFirstResponder();
-        detailTextField.resignFirstResponder();
     }
 }

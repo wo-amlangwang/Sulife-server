@@ -10,6 +10,8 @@ import UIKit
 
 class EditProfileVC: UIViewController {
 
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -25,8 +27,40 @@ class EditProfileVC: UIViewController {
         firstNameTextField.text = userInformation?.firstName as? String
         lastNameTextField.text = userInformation?.lastName as? String
         emailTextField.text = userInformation?.email as? String
+        // Tab The blank place, close keyboard
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
+        view.addGestureRecognizer(tap)
     }
+    
+    func DismissKeyboard () {
+        view.endEditing(true)
+    }
+    
+    // Mark : Text field
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField == self.firstNameTextField {
+            self.lastNameTextField.becomeFirstResponder()
+        } else if textField == self.lastNameTextField {
+            self.emailTextField.becomeFirstResponder()
+        } else if textField == self.emailTextField {
+            textField.resignFirstResponder()
+        }
 
+        return true
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if (textField == emailTextField) {
+            scrollView.setContentOffset(CGPoint(x: 0,y: 20), animated: true)
+        }
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        scrollView.setContentOffset(CGPoint(x: 0,y: 0), animated: true)
+    }
+    // Mark : Text field END
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -86,18 +120,7 @@ class EditProfileVC: UIViewController {
             }
             // return to profile
             userInformation = UserModel(firstName: firstname, lastName: lastname, email: email, id: accountToken)
-            self.navigationController!.popToRootViewControllerAnimated(true)
+            self.navigationController!.popViewControllerAnimated(true)
         }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

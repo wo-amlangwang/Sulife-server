@@ -17,9 +17,20 @@ class NotificationTVC: UITableViewController {
     var senders : [NSDictionary] = []
     var mailids : [NSString] = []
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        notificationList.delegate = self
+        notificationList.dataSource = self
+        notificationList.delegate = self
+    }
+
+    override func viewDidAppear(animated: Bool) {
         
+        senders = []
+        mailids = []
+        resArrayNotification = []
+
         /* get data from server */
         let url:NSURL = NSURL(string: NotificationURL)!
         let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
@@ -59,19 +70,29 @@ class NotificationTVC: UITableViewController {
                     } else {
                         resArrayNotification = jsonResult.objectForKey("Mails") as! [NSDictionary]
                         for notification in resArrayNotification {
-                            let relationshipID = (notification.valueForKey("_id") as? NSString)!
-                            let senderID = (notification.valueForKey("sender") as? NSString)!
-                            
-                            NSLog("the fucking sender is: %@", senderID);
-                            NSLog("the fucking mailid is: %@", relationshipID);
-                            
-                            let sender = getContactsProfileInformation(senderID)
-                            
-                            NSLog("Sender: %@", sender)
-                            
-                            senders.append(sender)
-                            mailids.append(relationshipID)
+                            if ((notification.valueForKey("issuedetail") as? NSString) == "friend request") {
+                                let solved : Bool = (notification.objectForKey("solved") as! Bool)
+                                NSLog("solved is: %@", solved)
+                                if ( solved == true ) {
+                                    continue
+                                }
+                                
+                                let relationshipID = (notification.valueForKey("_id") as? NSString)!
+                                let senderID = (notification.valueForKey("sender") as? NSString)!
+                                
+                                NSLog("the fucking sender is: %@", senderID);
+                                NSLog("the fucking mailid is: %@", relationshipID);
+                                
+                                let sender : NSDictionary = getContactsProfileInformation(senderID)
+                                
+                                NSLog("Sender: %@", sender)
+                                
+                                senders.append(sender)
+                                mailids.append(relationshipID)
+                            }
                         }
+                        // sort the tasks
+                        
                     }
                 }
             } catch {
@@ -89,7 +110,9 @@ class NotificationTVC: UITableViewController {
             myAlert.addAction(okAction)
             self.presentViewController(myAlert, animated:true, completion:nil)
         }
+        
         self.tableView.reloadData()
+        NSLog("ReLoad.............................")
     }
 
     override func didReceiveMemoryWarning() {
@@ -114,12 +137,9 @@ class NotificationTVC: UITableViewController {
 
         // Configure the cell...
         var sender : NSDictionary
-        if (senders.count != 0) {
-            sender = senders[indexPath.row] as NSDictionary
-            let fullname = (sender.valueForKey("firstname") as? String)! + " " + (sender.valueForKey("lastname") as? String)!
-            cell.textLabel?.text = fullname
-            print(fullname)
-        }
+        sender = senders[indexPath.row] as NSDictionary
+        let fullname = (sender.valueForKey("firstname") as? String)! + " " + (sender.valueForKey("lastname") as? String)!
+        cell.textLabel?.text = fullname
         print("Cell Title: \(cell.textLabel?.text)")
         return cell
     }
@@ -133,22 +153,14 @@ class NotificationTVC: UITableViewController {
             if let index = indexPath {
                 let sender : NSDictionary = senders[index.row]
                 let relationshipID : NSString = mailids[index.row]
-                NSLog("Mailid To Model => %@", relationshipID)
+                // let isFriend : Bool = solveds[index.row]
                 
                 let firstname = sender.valueForKey("firstname") as! NSString
-                NSLog("firstname To Model => %@", firstname)
-                
                 let lastname = sender.valueForKey("lastname") as! NSString
-                NSLog("lastname To Model => %@", lastname)
                 let email = sender.valueForKey("email") as! NSString
-                NSLog("email To Model => %@", email)
                 let requestOwnerID = sender.valueForKey("userid") as! NSString
-                NSLog("requestOwnerID To Model => %@", requestOwnerID)
-                let isFriend = sender.valueForKey("__v") as! NSNumber
-                
-                vc.senderDetail = NotificationModel(firstName: firstname, lastName: lastname, email: email, requestOwnerID: requestOwnerID, relationshipID: relationshipID, isFriend : isFriend)
-                NSLog("firstname To Model => %@", (vc.senderDetail?.firstName)!)
-                
+
+                vc.senderDetail = NotificationModel(firstName: firstname, lastName: lastname, email: email, requestOwnerID: requestOwnerID, relationshipID: relationshipID)
             }
         }
         print("Oh My God!")

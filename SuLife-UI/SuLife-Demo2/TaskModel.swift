@@ -12,14 +12,14 @@ class TaskModel: NSObject {
     var title : NSString
     var detail : NSString
     var taskTime : NSDate
+    var finish : Bool
     var id : NSString
-    var share : Bool
     
-    init (title : NSString, detail : NSString, time : NSDate, id : NSString, share : Bool) {
+    init (title : NSString, detail : NSString, time : NSDate, finish : Bool, id : NSString) {
         self.title = title
         self.detail = detail
         self.taskTime = time
+        self.finish = finish
         self.id = id
-        self.share = share
     }
 }

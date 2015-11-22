@@ -10,10 +10,10 @@ import UIKit
 
 class EventDetailVC: UIViewController {
     
-    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var titleTextField: UITextView!
     @IBOutlet weak var detailTextField: UITextView!
-    @IBOutlet weak var startTime: UILabel!
-    @IBOutlet weak var endTime: UILabel!
+    @IBOutlet weak var startTime: UITextView!
+    @IBOutlet weak var endTime: UITextView!
 
     
     var eventDetail : EventModel?
@@ -25,6 +25,9 @@ class EventDetailVC: UIViewController {
         
         titleTextField.userInteractionEnabled = false
         detailTextField.userInteractionEnabled = false
+        startTime.userInteractionEnabled = false
+        endTime.userInteractionEnabled = false
+        
         
         titleTextField.text = eventDetail?.title as? String
         detailTextField.text = eventDetail?.detail as? String
@@ -44,8 +47,6 @@ class EventDetailVC: UIViewController {
         let url:NSURL = NSURL(string: deleteurl)!
         let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "delete"
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.setValue(accountToken, forHTTPHeaderField: "x-access-token")
         
         var reponseError: NSError?
@@ -76,18 +77,6 @@ class EventDetailVC: UIViewController {
                 if let jsonResult = try NSJSONSerialization.JSONObjectWithData(urlData!, options: []) as? NSDictionary {
                     
                     let success:NSString = jsonResult.valueForKey("message") as! NSString
-                    
-                    /*if (success != "OK! Events list followed") {
-                        NSLog("Get Event Failed")
-                        let myAlert = UIAlertController(title: "Access Failed!", message: "Please Log In Again! ", preferredStyle: UIAlertControllerStyle.Alert)
-                        
-                        myAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
-                            myAlert .dismissViewControllerAnimated(true, completion: nil)
-                            self.performSegueWithIdentifier("eventTableToLogin", sender: self)
-                        }))
-                        presentViewController(myAlert, animated: true, completion: nil)
-                        
-                    }*/
                     
                     let myAlert = UIAlertController(title: "Delete Event", message: "Are You Sure to Delete This Event? ", preferredStyle: UIAlertControllerStyle.Alert)
                     
@@ -126,10 +115,6 @@ class EventDetailVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func EditEventTapped(sender: UIBarButtonItem) {
-        
-        
-    }
     
     override func prepareForSegue(segue: UIStoryboardSegue?, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
@@ -145,14 +130,5 @@ class EventDetailVC: UIViewController {
             viewController.eventDetail = EventModel(title: title, detail: detail, startTime: startTime, endTime: endTime, id: id, share: share)
         }
     }
-
-    /*
-    // MARK: - Navigation
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
     
 }

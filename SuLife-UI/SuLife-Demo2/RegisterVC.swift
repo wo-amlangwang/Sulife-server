@@ -10,6 +10,8 @@ import UIKit
 
 class RegisterVC: UIViewController, UITextFieldDelegate {
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     @IBOutlet weak var userFisrtNameTextField: UITextField!
     @IBOutlet weak var userLastNameTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
@@ -17,49 +19,58 @@ class RegisterVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var userPasswordTextField: UITextField!
     @IBOutlet weak var userRepeatPasswordTextField: UITextField!
     
-    // @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var myActivityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        // Tab The blank place, close keyboard
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
+        view.addGestureRecognizer(tap)
+    }
+    
+    func DismissKeyboard () {
+        view.endEditing(true)
+    }
+    
+    // Mark : Text Filed position
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField == self.userFisrtNameTextField {
+            self.userLastNameTextField.becomeFirstResponder()
+        } else if textField == self.userLastNameTextField {
+            self.usernameTextField.becomeFirstResponder()
+        } else if textField == self.usernameTextField {
+            self.userEmailTextField.becomeFirstResponder()
+        } else if textField == self.userEmailTextField {
+            self.userPasswordTextField.becomeFirstResponder()
+        } else if textField == self.userPasswordTextField {
+            self.userRepeatPasswordTextField.becomeFirstResponder()
+        } else if textField == self.userRepeatPasswordTextField {
+            textField.resignFirstResponder()
+        }
+        return true
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if (textField == usernameTextField) {
+            scrollView.setContentOffset(CGPoint(x: 0,y: 20), animated: true)
+        } else if (textField == userEmailTextField) {
+            scrollView.setContentOffset(CGPoint(x: 0,y: 100), animated: true)
+        } else if (textField == userPasswordTextField) {
+            scrollView.setContentOffset(CGPoint(x: 0,y: 180), animated: true)
+        } else if (textField == userRepeatPasswordTextField) {
+            scrollView.setContentOffset(CGPoint(x: 0,y: 260), animated: true)
+        }
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        scrollView.setContentOffset(CGPoint(x: 0,y: 120), animated: true)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    /*func textFieldDidBeginEditing(textField: UITextField) {
-        if (textField == userEmailTextField) {
-            scrollView.setContentOffset(CGPointMake(0, 250), animated: true)
-        } else if (textField == userPasswordTextField) {
-            scrollView.setContentOffset(CGPointMake(0, 250), animated: true)
-        } else if (textField == userRepeatPasswordTextField) {
-            scrollView.setContentOffset(CGPointMake(0, 250), animated: true)
-        }
-    }
-    
-    func textFieldDidEndEditing(textField: UITextField) {
-        scrollView.setContentOffset(CGPointMake(0, 0), animated: true)
-    }*/
-    
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
     
     @IBAction func registerButtonTapped(sender: UIButton) {
         
@@ -99,16 +110,10 @@ class RegisterVC: UIViewController, UITextFieldDelegate {
                 NSLog("PostData: %@",post);
                 
                 let url:NSURL = NSURL(string: registerURL)!
-                
                 let postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
-                
-                let postLength:NSString = String( postData.length )
-                
                 let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
                 request.HTTPMethod = "POST"
                 request.HTTPBody = postData
-                request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
-                
                 
                 
                 var reponseError: NSError?
@@ -116,16 +121,14 @@ class RegisterVC: UIViewController, UITextFieldDelegate {
                 
                 var urlData: NSData?
                 
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.myActivityIndicator.stopAnimating()
-                })
-                
                 do {
                     urlData = try NSURLConnection.sendSynchronousRequest(request, returningResponse:&response)
                 } catch let error as NSError {
                     reponseError = error
                     urlData = nil
                 }
+                
+                myActivityIndicator.stopAnimating()
                 
                 if ( urlData != nil ) {
                     let res = response as! NSHTTPURLResponse!;
@@ -293,17 +296,10 @@ class RegisterVC: UIViewController, UITextFieldDelegate {
             NSLog("PostData: %@",post);
             
             let url:NSURL = NSURL(string:"https://damp-retreat-5682.herokuapp.com/local/login")!
-            
             let postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
-            
-            let postLength:NSString = String( postData.length )
-            
             let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
             request.HTTPMethod = "POST"
             request.HTTPBody = postData
-            request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
-            request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-            request.setValue("application/json", forHTTPHeaderField: "Accept")
             
             
             var reponseError: NSError?

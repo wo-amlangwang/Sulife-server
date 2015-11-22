@@ -21,6 +21,7 @@ let taskURL = "https://damp-retreat-5682.herokuapp.com/task"
 let taskByDateURL = "https://damp-retreat-5682.herokuapp.com/taskd"
 
 let getContactsURL = "https://damp-retreat-5682.herokuapp.com/getFriends"
+let deleteContactURL = "https://damp-retreat-5682.herokuapp.com/deleteFriend"
 
 let NotificationURL = "https://damp-retreat-5682.herokuapp.com/getMail"
 let GetUserIDURL = "https://damp-retreat-5682.herokuapp.com/findUser"
@@ -30,19 +31,27 @@ let RejectFriendIDURL = "https://damp-retreat-5682.herokuapp.com/rejectFriendReq
 let addFriendURL = "https://damp-retreat-5682.herokuapp.com/friendRequest"
 let getUserInformation = "https://damp-retreat-5682.herokuapp.com/getUserInformation"
 
-class LoginVC: UIViewController {
+let forgetPasswordURL = "https://damp-retreat-5682.herokuapp.com/resetPassword"
+let changePasswordURL = "https://damp-retreat-5682.herokuapp.com/changePassword"
+
+class LoginVC: UIViewController, UITextFieldDelegate {
     
     //var loginToken:NSString = "no-token"
     
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var userPasswordTextField: UITextField!
     
+    @IBOutlet var scrollView: UIScrollView!
     @IBOutlet weak var myActivityIndicator: UIActivityIndicatorView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        // Tab The blank place, close keyboard
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
+        view.addGestureRecognizer(tap)
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,16 +59,30 @@ class LoginVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Mark : Text field
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField == self.usernameTextField {
+            self.userPasswordTextField.becomeFirstResponder()
+        } else if textField == self.userPasswordTextField {
+            textField.resignFirstResponder()
+        }
+        return true
     }
-    */
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if (textField == userPasswordTextField) {
+            scrollView.setContentOffset(CGPoint(x: 0,y: 20), animated: true)
+        }
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        scrollView.setContentOffset(CGPoint(x: 0,y: 0), animated: true)
+    }
+    
+    func DismissKeyboard () {
+        view.endEditing(true)
+    }
+    // Mark : Text Field End
     
     @IBAction func loginButtonTapped(sender: AnyObject) {
         
@@ -110,10 +133,6 @@ class LoginVC: UIViewController {
                 
                 var urlData: NSData?
                 
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.myActivityIndicator.stopAnimating()
-                })
-                
                 do {
                     urlData = try NSURLConnection.sendSynchronousRequest(request, returningResponse:&response)
                     // urlData = try NSURLSession.dataTaskWithRequest(request, completionHandler: ((NSData!, NSURLResponse!, NSError!) -> Void)?)
@@ -121,6 +140,8 @@ class LoginVC: UIViewController {
                     reponseError = error
                     urlData = nil
                 }
+                
+                myActivityIndicator.stopAnimating()
                 
                 if ( urlData != nil )
                 {
@@ -267,7 +288,7 @@ class LoginVC: UIViewController {
                         let firstName = jsonInform.valueForKey("firstname") as! NSString
                         let lastName = jsonInform.valueForKey("lastname") as! NSString
                         let email = jsonInform.valueForKey("email") as! NSString
-                        let id = accountToken
+                        let id = jsonInform.valueForKey("userid") as! NSString
                         
                         userInformation = UserModel(firstName: firstName, lastName: lastName, email: email, id: id)
                         

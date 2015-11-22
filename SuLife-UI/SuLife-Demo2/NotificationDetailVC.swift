@@ -15,15 +15,17 @@ class NotificationDetailVC: UIViewController {
     @IBOutlet weak var acceptButton: UIButton!
     @IBOutlet weak var rejectButton: UIButton!
     
+    var contactsInit : [NSDictionary] = []
+    
     // TODO sender username
     
     var senderDetail : NotificationModel!
+    var contactVC : ContactVC!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        print("00000000000")
         NSLog("firstname in detail = %@", senderDetail.firstName)
         
         senderTextView.userInteractionEnabled = false
@@ -39,6 +41,20 @@ class NotificationDetailVC: UIViewController {
     }
     
     @IBAction func acceptButtonTapped(sender: UIButton) {
+        
+        if ( isFriend(senderDetail.requestOwnerID) == true ) {
+            let myAlert = UIAlertController(title: "Action Failed!", message: "Is Your Firend Already!", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action: UIAlertAction!) in
+                self.navigationController?.popViewControllerAnimated(true)
+            })
+            myAlert.addAction(okAction)
+            self.presentViewController(myAlert, animated:true, completion:nil)
+            acceptButton.userInteractionEnabled = false
+            rejectButton.userInteractionEnabled = false
+            rejectCancel()
+            return
+        }
         
         let relationshipID = senderDetail!.relationshipID
         
@@ -86,11 +102,6 @@ class NotificationDetailVC: UIViewController {
                         
                         if (success == "OK!") {
                             NSLog("Accept Request Successfully")
-                            acceptButton.userInteractionEnabled = false
-                            rejectButton.userInteractionEnabled = false
-                            //actionDetector.text = "Action Completed!"
-                            senderDetail?.isFriend = 1
-                            
                             self.navigationController!.popViewControllerAnimated(true)
                         } else {
                             let myAlert = UIAlertController(title: "Accept Request Failed!", message: "Please Try Again!", preferredStyle: UIAlertControllerStyle.Alert)
@@ -119,6 +130,12 @@ class NotificationDetailVC: UIViewController {
     }
     
     @IBAction func rejectButtonTapped(sender: UIButton) {
+        
+        rejectCancel()
+    }
+    
+    // prevent duplication
+    func rejectCancel () {
         
         let relationshipID = senderDetail!.relationshipID
         let post:NSString = "mailid=\(relationshipID)"
@@ -165,12 +182,6 @@ class NotificationDetailVC: UIViewController {
                         
                         if (success == "OK!") {
                             NSLog("Reject Request Successfully")
-                            
-                            acceptButton.userInteractionEnabled = false
-                            rejectButton.userInteractionEnabled = false
-                            //actionDetector.text = "Action Completed!"
-                            
-                            //var eventToken = jsonResult.valueForKey("Event") as! NSString as String
                             self.navigationController!.popViewControllerAnimated(true)
                             
                         } else {
@@ -195,5 +206,79 @@ class NotificationDetailVC: UIViewController {
             myAlert.addAction(okAction)
             self.presentViewController(myAlert, animated:true, completion:nil)
         }
+        
     }
+    
+    func isFriend (currentContactID : NSString) -> Bool {
+        let url:NSURL = NSURL(string: getContactsURL)!
+        let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
+        
+        request.HTTPMethod = "get";
+        
+        let postString = "";
+        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding);
+        request.setValue(accountToken, forHTTPHeaderField: "x-access-token")
+        
+        var reponseError: NSError?
+        var response: NSURLResponse?
+        
+        var urlData: NSData?
+        
+        do {
+            urlData = try NSURLConnection.sendSynchronousRequest(request, returningResponse:&response)
+        } catch let error as NSError {
+            reponseError = error
+            urlData = nil
+        }
+        
+        if ( urlData != nil ) {
+            let res = response as! NSHTTPURLResponse!;
+            
+            if(res == nil){
+                NSLog("No Response!");
+            }
+            
+            let responseData:NSString = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
+            
+            NSLog("Response ==> %@", responseData);
+            
+            var error: NSError?
+            
+            do {
+                if let jsonResult = try NSJSONSerialization.JSONObjectWithData(urlData!, options: []) as? NSDictionary {
+                    
+                    let success:NSString = jsonResult.valueForKey("message") as! NSString
+                    
+                    if (success != "OK! relationships followed") {
+                        NSLog("Get Contacts Failed")
+                    } else {
+                        contactsInit = jsonResult.valueForKey("relationships") as! [NSDictionary]
+                        
+                        for contact in contactsInit {
+                            let contactID = contact.valueForKey("userid2") as! NSString
+                            if (currentContactID == contactID) {
+                                return true
+                            }
+                        }
+                    }
+                }
+            } catch {
+                print(error)
+            }
+            
+        } else {
+            let myAlert = UIAlertController(title: "Connection failed!", message: "urlData Equals to NULL!", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            if let error = reponseError {
+                myAlert.message = (error.localizedDescription)
+            }
+            
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+            myAlert.addAction(okAction)
+            self.presentViewController(myAlert, animated:true, completion:nil)
+        }
+        
+        return false
+    }
+
 }

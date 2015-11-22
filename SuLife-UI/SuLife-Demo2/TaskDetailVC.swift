@@ -9,11 +9,10 @@
 import UIKit
 
 class TaskDetailVC: UIViewController {
-
+    
     @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var detailTextField: UITextField!
-    @IBOutlet weak var taskTimePicker: UIDatePicker!
-    @IBOutlet weak var saveChanges: UIBarButtonItem!
+    @IBOutlet weak var detailTextField: UITextView!
+    @IBOutlet weak var timeLable: UILabel!
     
     var taskDetail : TaskModel?
     
@@ -22,116 +21,22 @@ class TaskDetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        titleTextField.userInteractionEnabled = false
+        detailTextField.userInteractionEnabled = false
+        
         titleTextField.text = taskDetail?.title as? String
         detailTextField.text = taskDetail?.detail as? String
-        taskTimePicker.date = (taskDetail?.taskTime)!
         
-    }
-    
-    @IBAction func saveChanges(sender: AnyObject) {
-        
-        
-        // Get title and detail from input
-        let taskTitle = titleTextField.text!
-        let detail = detailTextField.text!
-        
-        // Get date from input and convert format
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-        let endDate = dateFormatter.stringFromDate(taskTimePicker.date)
-        
-        // Post to server
-        let post:NSString = "title=\(taskTitle)&detail=\(detail)&establishTime=\(endDate)"
-        
-        NSLog("PostData: %@", post);
-        
-        let urlWithId = taskURL + "/" + ((taskDetail?.id)! as String)
-        
-        let url:NSURL = NSURL(string: urlWithId)!
-        
-        NSLog("PostUrl: %@", urlWithId);
-        let postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
-        let postLength:NSString = String( postData.length )
-        let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
-        request.HTTPMethod = "POST"
-        request.HTTPBody = postData
-        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        request.setValue(accountToken, forHTTPHeaderField: "x-access-token")
-        
-        var reponseError: NSError?
-        var response: NSURLResponse?
-        var urlData: NSData?
-        
-        do {
-            urlData = try NSURLConnection.sendSynchronousRequest(request, returningResponse:&response)
-        } catch let error as NSError {
-            reponseError = error
-            urlData = nil
-        }
-        
-        if ( urlData != nil ) {
-            let res = response as! NSHTTPURLResponse!;
-            
-            NSLog("Response code: %ld", res.statusCode);
-            if (res.statusCode >= 200 && res.statusCode < 300)
-            {
-                let responseData:NSString  = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
-                NSLog("Response ==> %@", responseData);
-                var error: NSError?
-                
-                do {
-                    if let jsonResult = try NSJSONSerialization.JSONObjectWithData(urlData!, options: []) as? NSDictionary {
-                        
-                        let success:NSString = jsonResult.valueForKey("message") as! NSString
-                        
-                        if (success == "OK!") {
-                            NSLog("Edit Event Successfully")
-                            self.navigationController!.popToRootViewControllerAnimated(true)
-                        } else {
-                            let alertView:UIAlertView = UIAlertView()
-                            alertView.title = "Edit Event Failed!"
-                            alertView.message = "Please Try Again!"
-                            alertView.delegate = self
-                            alertView.addButtonWithTitle("OK")
-                            alertView.show()
-                        }
-                    }
-                } catch {
-                    print(error)
-                }
-                
-            } else {
-                let alertView:UIAlertView = UIAlertView()
-                alertView.title = "Edit Event Failed!"
-                alertView.message = "System Error!"
-                alertView.delegate = self
-                alertView.addButtonWithTitle("OK")
-                alertView.show()
-            }
-            
-        } else {
-            let alertView:UIAlertView = UIAlertView()
-            alertView.title = "Edit Event Failed!"
-            alertView.message = "Response Error!"
-            alertView.delegate = self
-            alertView.addButtonWithTitle("OK")
-            alertView.show()
-        }
-        
+         timeLable.text = NSDateFormatter.localizedStringFromDate((taskDetail?.taskTime)!, dateStyle: NSDateFormatterStyle.FullStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
     }
     
     @IBAction func deleteItem(sender: AnyObject) {
-        
         /* get data from server */
         NSLog("id ==> %@", (taskDetail?.id)!);
         let deleteurl = taskURL + "/" + ((taskDetail?.id)! as String)
         let url:NSURL = NSURL(string: deleteurl)!
         let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "delete"
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.setValue(accountToken, forHTTPHeaderField: "x-access-token")
         
         var reponseError: NSError?
@@ -163,18 +68,7 @@ class TaskDetailVC: UIViewController {
                     
                     let success:NSString = jsonResult.valueForKey("message") as! NSString
                     
-                    /*if (success != "OK! Events list followed") {
-                    NSLog("Get Event Failed")
-                    let myAlert = UIAlertController(title: "Access Failed!", message: "Please Log In Again! ", preferredStyle: UIAlertControllerStyle.Alert)
-                    
-                    myAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
-                    myAlert .dismissViewControllerAnimated(true, completion: nil)
-                    self.performSegueWithIdentifier("eventTableToLogin", sender: self)
-                    }))
-                    presentViewController(myAlert, animated: true, completion: nil)
-                    
-                    }*/
-                    let myAlert = UIAlertController(title: "Delete Task", message: "Are You Sure to Delete This Task? ", preferredStyle: UIAlertControllerStyle.Alert)
+                    let myAlert = UIAlertController(title: "Delete task", message: "Are You Sure to Delete This task? ", preferredStyle: UIAlertControllerStyle.Alert)
                     
                     myAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
                         myAlert .dismissViewControllerAnimated(true, completion: nil)
@@ -194,32 +88,37 @@ class TaskDetailVC: UIViewController {
             
         } else {
             let myAlert = UIAlertController(title: "Connection failed!", message: "urlData Equals to NULL!", preferredStyle: UIAlertControllerStyle.Alert)
+            
             if let error = reponseError {
                 myAlert.message = (error.localizedDescription)
             }
+            
             let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
             myAlert.addAction(okAction)
             self.presentViewController(myAlert, animated:true, completion:nil)
         }
-        
-        
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
     
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
+    override func prepareForSegue(segue: UIStoryboardSegue?, sender: AnyObject?) {
+        // Get the new view controller using [segue destinationViewController].
+        // Pass the selected object to the new view controller.
+        if (segue?.identifier == "taskToEdittask") {
+            let viewController = segue?.destinationViewController as! EditTaskVC
+            let id = taskDetail!.id
+            let title = taskDetail!.title
+            let detail = taskDetail!.detail
+            let taskTime = taskDetail!.taskTime
+            let finish = taskDetail!.finish
+            viewController.taskDetail = TaskModel(title: title, detail: detail, time: taskTime, finish: finish, id: id)
+        }
     }
-    */
     
 }
 

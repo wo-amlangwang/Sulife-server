@@ -11,7 +11,10 @@ import UIKit
 class NewTaskVC: UIViewController {
     
     @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var detailTextField: UITextField!
+    @IBOutlet weak var detailTextField: UITextView!
+    
+    @IBOutlet weak var timeLable: UILabel!
+    
     @IBOutlet weak var taskTimePicker: UIDatePicker!
     
     var taskTime : NSString = ""
@@ -20,6 +23,10 @@ class NewTaskVC: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        
+        taskTimePicker.addTarget(self, action: Selector("datePickerValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+        
+        timeLable.text = NSDateFormatter.localizedStringFromDate(taskTimePicker.date, dateStyle: NSDateFormatterStyle.FullStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
     }
     
     override func didReceiveMemoryWarning() {
@@ -27,16 +34,11 @@ class NewTaskVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
+    func datePickerValueChanged (datePicker: UIDatePicker) {
+        
+        timeLable.text = NSDateFormatter.localizedStringFromDate(taskTimePicker.date, dateStyle: NSDateFormatterStyle.FullStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+
     }
-    */
     
     @IBAction func addTaskTapped(sender: UIButton) {
         
@@ -56,15 +58,9 @@ class NewTaskVC: UIViewController {
         let url:NSURL = NSURL(string: taskURL)!
         
         let postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
-        
-        let postLength:NSString = String( postData.length )
-        
         let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "POST"
         request.HTTPBody = postData
-        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.setValue(accountToken, forHTTPHeaderField: "x-access-token")
         
         var reponseError: NSError?
@@ -113,11 +109,6 @@ class NewTaskVC: UIViewController {
                 } catch {
                     print(error)
                 }
-                
-                
-                
-                //[jsonData[@"success"] integerValue];
-                
             } else {
                 let myAlert = UIAlertController(title: "Add New Task Failed!", message: "System Error!", preferredStyle: UIAlertControllerStyle.Alert)
                 let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)

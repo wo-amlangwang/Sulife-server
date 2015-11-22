@@ -16,7 +16,6 @@ class EventTableVC: UITableViewController, UISearchBarDelegate {
     @IBOutlet weak var mySearchBar: UISearchBar!
     
     var resArray : [NSDictionary] = []
-    // Sine
     var searchResults : [String] = []
     var searchActive : Bool = false
     
@@ -35,15 +34,10 @@ class EventTableVC: UITableViewController, UISearchBarDelegate {
         let post:NSString = "title=&detail=&starttime=\(sdTime)&endtime=\(edTime)"
         NSLog("PostData: %@",post);
         let postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
-        let postLength:NSString = String( postData.length )
-        
         let url:NSURL = NSURL(string: eventByDateURL)!
         let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "post"
         request.HTTPBody = postData
-        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.setValue(accountToken, forHTTPHeaderField: "x-access-token")
         
         var reponseError: NSError?
@@ -77,14 +71,6 @@ class EventTableVC: UITableViewController, UISearchBarDelegate {
                     
                     if (success != "OK! Events list followed") {
                         NSLog("Get Event Failed")
-                        let myAlert = UIAlertController(title: "Access Failed!", message: "Please Log In Again! ", preferredStyle: UIAlertControllerStyle.Alert)
-                        
-                        myAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
-                            myAlert .dismissViewControllerAnimated(true, completion: nil)
-                            self.performSegueWithIdentifier("eventTableToLogin", sender: self)
-                        }))
-                        presentViewController(myAlert, animated: true, completion: nil)
-                        
                     } else {
                         resArray = jsonResult.valueForKey("Events") as! [NSDictionary]
                     }
@@ -111,12 +97,8 @@ class EventTableVC: UITableViewController, UISearchBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        //tableView.registerClass(ItemTableViewCell.self, forCellReuseIdentifier: "Cell")
+    
         EventList.delegate = self
         EventList.dataSource = self
         EventList.delegate = self
@@ -151,9 +133,6 @@ class EventTableVC: UITableViewController, UISearchBarDelegate {
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         searchActive = false;
     }
-    
-    // Sine:
-    
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         print("SearchText: \(searchText)")
@@ -238,16 +217,3 @@ class EventTableVC: UITableViewController, UISearchBarDelegate {
         return strDate
     }
 }
-
-// Local Data
-// var events:NSMutableArray = NSMutableArray()
-/*
-var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-
-var eventFromDefaults:NSMutableArray? = userDefaults.objectForKey("eventList") as? NSMutableArray
-
-if ((eventFromDefaults) != nil) {
-events = eventFromDefaults!
-}
-*/
-// var event:NSDictionary = events.objectAtIndex(indexPath.row) as! NSDictionary

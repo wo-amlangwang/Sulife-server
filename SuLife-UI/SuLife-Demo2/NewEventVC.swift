@@ -10,10 +10,12 @@ import UIKit
 
 
 
-class NewEventVC: UIViewController {
+class NewEventVC: UIViewController, UIScrollViewDelegate {
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var detailTextField: UITextView!
+    @IBOutlet weak var locationTextField: UITextField!
 
     @IBOutlet weak var startTime: UILabel!
     @IBOutlet weak var endTime: UILabel!
@@ -29,7 +31,6 @@ class NewEventVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         startTimePicker.addTarget(self, action: Selector("datePickerValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
         endTimePicker.addTarget(self, action: Selector("datePickerValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
         
@@ -39,7 +40,41 @@ class NewEventVC: UIViewController {
         
         endTime.text = NSDateFormatter.localizedStringFromDate(endTimePicker.date, dateStyle: NSDateFormatterStyle.FullStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
         
+        // Tab The blank place, close keyboard
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
+        view.addGestureRecognizer(tap)
+        
     }
+    
+    func DismissKeyboard () {
+        view.endEditing(true)
+    }
+    
+    
+    // Mark : Text field
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField == self.titleTextField {
+            self.detailTextField.becomeFirstResponder()
+        } else if textField == self.detailTextField {
+            self.locationTextField.becomeFirstResponder()
+        } else if textField == self.locationTextField {
+            textField.resignFirstResponder()
+        }
+        
+        return true
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if (textField == locationTextField) {
+            scrollView.setContentOffset(CGPoint(x: 0,y: 120), animated: true)
+        }
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        scrollView.setContentOffset(CGPoint(x: 0,y: 0), animated: true)
+    }
+    
+     // Mark : Text field END
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -54,31 +89,9 @@ class NewEventVC: UIViewController {
     }
     
     
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
-    
-    /*@IBAction func startTimeSelectionTapped(sender: UIButton) {
-        startTime.text = NSDateFormatter.localizedStringFromDate(startTimePicker.date, dateStyle: NSDateFormatterStyle.FullStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
-    }
-    
-    
-    @IBAction func endTimeSelectionTapped(sender: UIButton) {
-        endTime.text = NSDateFormatter.localizedStringFromDate(endTimePicker.date, dateStyle: NSDateFormatterStyle.FullStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
-    }*/
-    
     @IBAction func addEventTapped(sender: UIButton) {
         
         // TODO SERVER
-        // var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        
-        // var eventList: NSMutableArray? = userDefaults.objectForKey("eventList") as? NSMutableArray
         
         // Get title and detail from input
         let eventTitle = titleTextField.text!
@@ -98,15 +111,9 @@ class NewEventVC: UIViewController {
         let url:NSURL = NSURL(string: eventURL)!
         
         let postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
-        
-        let postLength:NSString = String( postData.length )
-        
         let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "POST"
         request.HTTPBody = postData
-        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.setValue(accountToken, forHTTPHeaderField: "x-access-token")
         
         var reponseError: NSError?
@@ -167,17 +174,5 @@ class NewEventVC: UIViewController {
             myAlert.addAction(okAction)
             self.presentViewController(myAlert, animated:true, completion:nil)
         }
-    }
-    
-    
-    /* Close keyboard when clicking enter*/
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder();
-        return true;
-    }
-    
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        titleTextField.resignFirstResponder();
-        detailTextField.resignFirstResponder();
     }
 }

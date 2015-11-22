@@ -9,24 +9,27 @@
 import UIKit
 
 class ProfileVC: UIViewController {
-
-    @IBOutlet weak var userFirstName: UITextField!
-    @IBOutlet weak var userLastName: UITextField!
-    @IBOutlet weak var userEmail: UITextField!
+    
+    @IBOutlet weak var fullNameLable: UILabel!
+    @IBOutlet weak var emailLable: UILabel!
+    @IBOutlet weak var headImage: UIImageView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
         
-        userFirstName.userInteractionEnabled = false
-        userLastName.userInteractionEnabled = false
-        userEmail.userInteractionEnabled = false
+        headImage.layer.masksToBounds = true
+        headImage.layer.cornerRadius = (headImage.frame.width)/2
         
-        userFirstName.text = userInformation?.firstName as? String
-        userLastName.text = userInformation?.lastName as? String
-        userEmail.text = userInformation?.email as? String
+        
+        // TODO: firstname lastname problem
+        fullNameLable.text = (userInformation!.lastName as String) + " " + (userInformation!.firstName as String)
+        emailLable.text = userInformation!.email as String
 
         // Do any additional setup after loading the view.
-        NSLog("Profile : Profile : name = \(userInformation?.lastName)")
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,8 +37,7 @@ class ProfileVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    @IBAction func logoutButtonTapped(sender: UIBarButtonItem) {
+    @IBAction func logoutButtonTapped(sender: AnyObject) {
         let myAlert = UIAlertController(title: "Log Out", message: "Are You Sure to Log Out ? ", preferredStyle: UIAlertControllerStyle.Alert)
         
         myAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
@@ -51,21 +53,4 @@ class ProfileVC: UIViewController {
         
         presentViewController(myAlert, animated: true, completion: nil)
     }
-    
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    
-    
-
 }

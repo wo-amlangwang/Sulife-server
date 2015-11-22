@@ -13,6 +13,8 @@ class AddContactVC: UIViewController {
     // CONTACT ID
     @IBOutlet weak var ContactID: UITextField!
     
+    var contactsInit : [NSDictionary] = []
+    
     var myuserReturn = NSDictionary()
     var fuckingUserID:NSString = "";
     override func viewDidLoad() {
@@ -30,21 +32,22 @@ class AddContactVC: UIViewController {
     {
         // TODO:
         let userEmail = ContactID.text!
+        if (userEmail.isEmpty) {
+            let myAlert = UIAlertController(title: "Send Request Failed!", message: "Please enter the username!", preferredStyle: UIAlertControllerStyle.Alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+            myAlert.addAction(okAction)
+            self.presentViewController(myAlert, animated:true, completion:nil)
+        }
+        
         let post:NSString = "email=\(userEmail)"
         NSLog("PostData: %@",post);
         
         let url:NSURL = NSURL(string: GetUserIDURL)!
         
         let postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
-        
-        let postLength:NSString = String( postData.length )
-        
         let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "POST"
         request.HTTPBody = postData
-        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.setValue(accountToken, forHTTPHeaderField: "x-access-token")
         
         var reponseError: NSError?
@@ -79,13 +82,31 @@ class AddContactVC: UIViewController {
                         let nullDetector: AnyObject = NSNull()
                         if let UserSB:NSDictionary = jsonResult.objectForKey("user") as? NSDictionary {
                             //let UserSB:NSDictionary = jsonResult.objectForKey("user") as! NSDictionary
-                            fuckingUserID=( UserSB.valueForKey("_id") as? NSString)!
+                            fuckingUserID = ( UserSB.valueForKey("_id") as? NSString)!
                             NSLog("the fucking userid is: %@", fuckingUserID);
                             if (success == "OK! User followed") {
                                 NSLog("Friend foud Successfully")
                                 
-                                //  NSLog(taker as String)
-                                //var eventToken = jsonResult.valueForKey("Event") as! NSString as String
+                                
+                                if ( fuckingUserID == userInformation!.id ) {
+                                    let myAlert = UIAlertController(title: "Send Request Failed!", message: "Don not add yourself!", preferredStyle: UIAlertControllerStyle.Alert)
+                                    
+                                    let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                                    myAlert.addAction(okAction)
+                                    self.presentViewController(myAlert, animated:true, completion:nil)
+                                    return
+                                }
+                                
+                                
+                                // Mark: Check if is friend
+                                if ( isFriend(fuckingUserID) == true ) {
+                                    let myAlert = UIAlertController(title: "Send Request Failed!", message: "Is Your Firend Already!", preferredStyle: UIAlertControllerStyle.Alert)
+                                    
+                                    let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                                    myAlert.addAction(okAction)
+                                    self.presentViewController(myAlert, animated:true, completion:nil)
+                                    return
+                                }
                                 
                                 let post:NSString = "taker=\(fuckingUserID)"
                                 
@@ -135,12 +156,10 @@ class AddContactVC: UIViewController {
                                                     
                                                     let myAlert = UIAlertController(title: "Friend Request Sended!", message: "Please wait for the reply! ", preferredStyle: UIAlertControllerStyle.Alert)
                                                     
-                                                    myAlert.addAction(UIAlertAction(title: "Delete", style: .Default, handler: { (action: UIAlertAction!) in
-                                                        self.navigationController!.popToRootViewControllerAnimated(true)
+                                                    myAlert.addAction(UIAlertAction(title: "Done", style: .Default, handler: { (action: UIAlertAction!) in
+                                                        self.navigationController?.popViewControllerAnimated(true)
                                                     }))
                                                     presentViewController(myAlert, animated: true, completion: nil)
-                                                    
-                                                    
                                                 }
                                             }
                                         } catch {
@@ -167,11 +186,6 @@ class AddContactVC: UIViewController {
                 } catch {
                     print(error)
                 }
-                
-                
-                
-                //[jsonData[@"success"] integerValue];
-                
             } else {
                 let myAlert = UIAlertController(title: "Add New Event Failed!---002", message: "System Error!---002", preferredStyle: UIAlertControllerStyle.Alert)
                 let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
@@ -189,15 +203,6 @@ class AddContactVC: UIViewController {
         NSLog("the userid is: ",fuckingUserID)
     }
     
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder();
         return true;
@@ -205,6 +210,78 @@ class AddContactVC: UIViewController {
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         ContactID.resignFirstResponder();
-        
     }
+    
+    func isFriend (currentContactID : NSString) -> Bool {
+        let url:NSURL = NSURL(string: getContactsURL)!
+        let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
+        
+        request.HTTPMethod = "get";
+        
+        let postString = "";
+        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding);
+        request.setValue(accountToken, forHTTPHeaderField: "x-access-token")
+        
+        var reponseError: NSError?
+        var response: NSURLResponse?
+        
+        var urlData: NSData?
+        
+        do {
+            urlData = try NSURLConnection.sendSynchronousRequest(request, returningResponse:&response)
+        } catch let error as NSError {
+            reponseError = error
+            urlData = nil
+        }
+        
+        if ( urlData != nil ) {
+            let res = response as! NSHTTPURLResponse!;
+            
+            if(res == nil){
+                NSLog("No Response!");
+            }
+            
+            let responseData:NSString = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
+            
+            NSLog("Response ==> %@", responseData);
+            
+            var error: NSError?
+            
+            do {
+                if let jsonResult = try NSJSONSerialization.JSONObjectWithData(urlData!, options: []) as? NSDictionary {
+                    
+                    let success:NSString = jsonResult.valueForKey("message") as! NSString
+                    
+                    if (success != "OK! relationships followed") {
+                        NSLog("Get Contacts Failed")
+                    } else {
+                        contactsInit = jsonResult.valueForKey("relationships") as! [NSDictionary]
+                        
+                        for contact in contactsInit {
+                            let contactID = contact.valueForKey("userid2") as! NSString
+                            if (currentContactID == contactID) {
+                                return true
+                            }
+                        }
+                    }
+                }
+            } catch {
+                print(error)
+            }
+            
+        } else {
+            let myAlert = UIAlertController(title: "Connection failed!", message: "urlData Equals to NULL!", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            if let error = reponseError {
+                myAlert.message = (error.localizedDescription)
+            }
+            
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+            myAlert.addAction(okAction)
+            self.presentViewController(myAlert, animated:true, completion:nil)
+        }
+        
+        return false
+    }
+
 }

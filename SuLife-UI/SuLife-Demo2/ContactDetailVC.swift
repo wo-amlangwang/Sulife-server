@@ -38,23 +38,71 @@ class ContactDetailVC: UIViewController {
     }
     
     @IBAction func deleteContactTapped(sender: UIButton) {
-        // SERVER Not yet implement
-        let myAlert = UIAlertController(title: "Action Failed", message: "Feature not yet implemented? ", preferredStyle: UIAlertControllerStyle.Alert)
         
-        myAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
-            myAlert .dismissViewControllerAnimated(true, completion: nil)
-        }))
-        presentViewController(myAlert, animated: true, completion: nil)
+        /* get data from server */
+        let deleteurl = deleteContactURL + "/" + ((contactDetail?.id)! as String)
+        let url:NSURL = NSURL(string: deleteurl)!
+        let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "delete"
+        request.setValue(accountToken, forHTTPHeaderField: "x-access-token")
+        
+        var reponseError: NSError?
+        var response: NSURLResponse?
+        
+        var urlData: NSData?
+        do {
+            urlData = try NSURLConnection.sendSynchronousRequest(request, returningResponse:&response)
+        } catch let error as NSError {
+            reponseError = error
+            urlData = nil
+        }
+        
+        if ( urlData != nil ) {
+            let res = response as! NSHTTPURLResponse!;
+            
+            if(res == nil){
+                NSLog("No Response!");
+            }
+            
+            let responseData:NSString = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
+            
+            NSLog("Response ==> %@", responseData);
+            
+            var error: NSError?
+            
+            do {
+                if let jsonResult = try NSJSONSerialization.JSONObjectWithData(urlData!, options: []) as? NSDictionary {
+                    
+                    let success:NSString = jsonResult.valueForKey("message") as! NSString
+                    
+                    let myAlert = UIAlertController(title: "Delete Contact", message: "Are You Sure to Delete This Contact? ", preferredStyle: UIAlertControllerStyle.Alert)
+                    
+                    myAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
+                        myAlert .dismissViewControllerAnimated(true, completion: nil)
+                    }))
+                    
+                    myAlert.addAction(UIAlertAction(title: "Delete", style: .Default, handler: { (action: UIAlertAction!) in
+                        self.navigationController!.popViewControllerAnimated(true)
+                    }))
+                    
+                    presentViewController(myAlert, animated: true, completion: nil)
+                    
+                }
+            } catch {
+                print(error)
+            }
+            
+            
+        } else {
+            let myAlert = UIAlertController(title: "Connection failed!", message: "urlData Equals to NULL!", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            if let error = reponseError {
+                myAlert.message = (error.localizedDescription)
+            }
+            
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+            myAlert.addAction(okAction)
+            self.presentViewController(myAlert, animated:true, completion:nil)
+        }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
