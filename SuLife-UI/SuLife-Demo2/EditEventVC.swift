@@ -220,10 +220,11 @@ class EditEventVC: UIViewController {
     @IBAction func unwindToParent(segue: UIStoryboardSegue) {
         if let childVC = segue.sourceViewController as? SearchMapVC {
             // update this VC (parent) using newly created data from child
-            if (!childVC.placeNameForEvent!.isEmpty && childVC.coordinateForEvent != nil) {
+            if ((childVC.placeNameForEvent != nil) && (childVC.coordinateForEvent != nil)) {
                 self.locationTextField.text = childVC.placeNameForEvent
                 self.coordinateForEvent = childVC.coordinateForEvent!
-                
+            } else {
+                self.locationTextField.text = "Please Get Coordinates of Map"
             }
         }
     }

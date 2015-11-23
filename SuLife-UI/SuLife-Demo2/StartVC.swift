@@ -28,7 +28,8 @@ class StartVC: UIViewController {
             let myAlert = UIAlertController(title: "Access Failed!", message: "Please Log In Again! ", preferredStyle: UIAlertControllerStyle.Alert)
             
             myAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
-                myAlert .dismissViewControllerAnimated(true, completion: nil)
+                NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isUserLoggedIn")
+                NSUserDefaults.standardUserDefaults().synchronize()
                 self.performSegueWithIdentifier("startToLogin", sender: self)
             }))
             presentViewController(myAlert, animated: true, completion: nil)

@@ -19,7 +19,7 @@ class RegisterVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var userPasswordTextField: UITextField!
     @IBOutlet weak var userRepeatPasswordTextField: UITextField!
     
-    @IBOutlet weak var myActivityIndicator: UIActivityIndicatorView!
+    var myActivityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,8 +72,15 @@ class RegisterVC: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    func activityIndicator(){
+        myActivityIndicator = UIActivityIndicatorView(frame: CGRectMake(0, 0, 40, 40))
+        myActivityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        myActivityIndicator.center = self.view.center
+        self.view.addSubview(myActivityIndicator)
+    }
+    
     @IBAction func registerButtonTapped(sender: UIButton) {
-        
+        activityIndicator()
         myActivityIndicator.startAnimating()
         
         let userFirstName = userFisrtNameTextField.text!
@@ -127,8 +134,6 @@ class RegisterVC: UIViewController, UITextFieldDelegate {
                     reponseError = error
                     urlData = nil
                 }
-                
-                myActivityIndicator.stopAnimating()
                 
                 if ( urlData != nil ) {
                     let res = response as! NSHTTPURLResponse!;
@@ -392,5 +397,9 @@ class RegisterVC: UIViewController, UITextFieldDelegate {
         userInformation = UserModel(firstName: firstName as NSString, lastName: lastName as NSString, email: email as
             NSString, id: id)
         print("Register : Profile : name = \(userInformation?.lastName)")
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        self.myActivityIndicator.stopAnimating()
     }
 }

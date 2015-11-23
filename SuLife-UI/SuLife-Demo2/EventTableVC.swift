@@ -19,8 +19,25 @@ class EventTableVC: UITableViewController, UISearchBarDelegate {
     var searchResults : [String] = []
     var searchActive : Bool = false
     
+    // MARK : activity indicator
+    
+    var myActivityIndicator: UIActivityIndicatorView!
+    
+    func activityIndicator(){
+        myActivityIndicator = UIActivityIndicatorView(frame: CGRectMake(0, 0, 40, 40))
+        myActivityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        myActivityIndicator.center = self.view.center
+        self.view.addSubview(myActivityIndicator)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        myActivityIndicator.stopAnimating()
+    }
+    
     // reload data in table
     override func viewWillAppear(animated: Bool) {
+        
+        myActivityIndicator.startAnimating()
         
         /* get selected date */
         let date : NSDate = dateSelected != nil ? (dateSelected?.convertedDate())! : NSDate()

@@ -43,7 +43,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var userPasswordTextField: UITextField!
     
     @IBOutlet var scrollView: UIScrollView!
-    @IBOutlet weak var myActivityIndicator: UIActivityIndicatorView!
+    var myActivityIndicator: UIActivityIndicatorView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +58,14 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func activityIndicator(){
+        self.myActivityIndicator = UIActivityIndicatorView(frame: CGRectMake(100, 100, 100, 100))
+        self.myActivityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        self.myActivityIndicator.center = self.view.center
+        self.view.addSubview(myActivityIndicator)
+        print("fuck......................")
     }
     
     // Mark : Text field
@@ -86,9 +94,9 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     // Mark : Text Field End
     
     @IBAction func loginButtonTapped(sender: AnyObject) {
-        
-        myActivityIndicator.startAnimating()
-        
+        self.activityIndicator()
+        self.myActivityIndicator.startAnimating()
+        //self.myActivityIndicator.backgroundColor = UIColor.blackColor()
         // TODO: from server
         let username = usernameTextField.text!
         let userPassword = userPasswordTextField.text!
@@ -141,8 +149,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                     reponseError = error
                     urlData = nil
                 }
-                
-                myActivityIndicator.stopAnimating()
                 
                 if ( urlData != nil )
                 {
@@ -300,6 +306,10 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                 print(error) 
             }
         }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        self.myActivityIndicator.stopAnimating()
     }
 }
 
