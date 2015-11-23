@@ -44,7 +44,8 @@ class MapVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         mapView.setRegion(coordinateRegion, animated: true)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
+        
         // TODO : event location
         /* get selected date */
         

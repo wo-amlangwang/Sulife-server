@@ -16,26 +16,30 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var contactsButton: UIButton!
     @IBOutlet weak var logoutButton: UIButton!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        //headImage.layer.masksToBounds = true
-        //headImage.layer.cornerRadius = (headImage.frame.width)/2
+        
+        headImage.layer.masksToBounds = true
+        headImage.layer.cornerRadius = self.view.frame.width / 8.5
+        
         fullNameLable.text = (userInformation!.firstName as String) + " " + (userInformation!.lastName as String)
         emailLable.text = userInformation!.email as String
         self.extendedLayoutIncludesOpaqueBars = true
         self.tabBarController!.tabBar.hidden = true
     }
     
+    override func viewDidAppear(animated: Bool) {
+        
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-        headImage.layer.masksToBounds = true
-        headImage.layer.cornerRadius = (headImage.frame.width)/2
     }
     
     @IBAction func logoutButtonTapped(sender: AnyObject) {

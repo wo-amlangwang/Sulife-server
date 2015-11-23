@@ -192,7 +192,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                                     prefs.synchronize()
                                 
                                 
-                                self.performSegueWithIdentifier("loginToMain", sender: self)
+                                self.performSegueWithIdentifier("loginToStart", sender: self)
                                 }
                                 
                             } else {

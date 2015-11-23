@@ -48,11 +48,7 @@ class StartVC: UIViewController {
             NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isUserLoggedIn")
             NSUserDefaults.standardUserDefaults().synchronize()
             userInformation = nil
-            let loginViewController = self.storyboard?.instantiateViewControllerWithIdentifier("loginView") as! LoginVC
-            
-            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-            appDelegate.window?.rootViewController = loginViewController
-            appDelegate.window?.makeKeyAndVisible()
+            self.performSegueWithIdentifier("startToLogin", sender: self)
         }))
         
         presentViewController(myAlert, animated: true, completion: nil)

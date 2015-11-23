@@ -16,7 +16,6 @@ class SharedEventsTVC: UITableViewController {
     @IBOutlet weak var mySearchBar: UISearchBar!
     
     var resArray : [NSDictionary] = []
-    var sharedResArray : [NSDictionary] = []
     var searchResults : [String] = []
     var searchActive : Bool = false
     
@@ -24,22 +23,11 @@ class SharedEventsTVC: UITableViewController {
     
     // reload data in table
     override func viewDidAppear(animated: Bool) {
-        
-        resArray = []
-        sharedResArray = []
-        
-        /* get selected date */
-        let date : NSDate = dateSelected != nil ? (dateSelected?.convertedDate())! : NSDate()
-        
-        /* parse date to proper format */
-        let sd = stringFromDate(date).componentsSeparatedByString(" ")
-        let sdTime = sd[0] + " 00:01"
-        let edTime = sd[0] + " 23:59"
-        
+
         let contactID = contactDetail!.id
         
         /* get data from server */
-        let post:NSString = "title=&detail=&locationName=&lng=&lat=&starttime=\(sdTime)&endtime=\(edTime)"
+        let post:NSString = "userid=\(contactID)"
         NSLog("PostData: %@",post);
         let postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
         let url:NSURL = NSURL(string: getFriendEvents)!
@@ -81,11 +69,6 @@ class SharedEventsTVC: UITableViewController {
                         NSLog("Get Event Failed")
                     } else {
                         resArray = jsonResult.valueForKey("Events") as! [NSDictionary]
-                        for event in resArray {
-                            if ((event.valueForKey("share") as! Bool) == true) {
-                                sharedResArray.append(event)
-                            }
-                        }
                     }
                 }
             } catch {
@@ -151,7 +134,7 @@ class SharedEventsTVC: UITableViewController {
         print("SearchText: \(searchText)")
         
         var eventString : [String] = []
-        for event in sharedResArray {
+        for event in resArray {
             eventString.append(event.valueForKey("title") as! String)
         }
         
@@ -172,7 +155,7 @@ class SharedEventsTVC: UITableViewController {
             print("Search count = \(searchResults.count)")
             return searchResults.count
         }
-        return sharedResArray.count
+        return resArray.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -184,7 +167,7 @@ class SharedEventsTVC: UITableViewController {
         if(searchActive){
             cell.textLabel?.text = searchResults[indexPath.row]
         } else {
-            event = sharedResArray[indexPath.row] as NSDictionary
+            event = resArray[indexPath.row] as NSDictionary
             cell.textLabel?.text = event.valueForKey("title") as? String
         }
         print("Cell Title: \(cell.textLabel?.text)")
@@ -203,14 +186,14 @@ class SharedEventsTVC: UITableViewController {
                 var event : NSDictionary!
                 if (searchActive) {
                     let searchStr = searchResults[index.row]
-                    for e in sharedResArray {
+                    for e in resArray {
                         if (e.valueForKey("title") as? NSString == searchStr) {
                             event = e
                             break;
                         }
                     }
                 } else {
-                    event = sharedResArray[index.row]
+                    event = resArray[index.row]
                 }
                 let id = event.valueForKey("_id") as! NSString
                 let title = event.valueForKey("title") as! NSString

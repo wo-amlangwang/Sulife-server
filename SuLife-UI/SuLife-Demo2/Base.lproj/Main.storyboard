@@ -107,7 +107,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zmg-jt-LgG" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1444" y="-904"/>
+            <point key="canvasLocation" x="-1419" y="-904"/>
         </scene>
         <!--LoginView-->
         <scene sceneID="9o6-7M-Jo6">
@@ -241,7 +241,7 @@
                         <outlet property="scrollView" destination="tTO-LG-6o7" id="BBd-Nf-eti"/>
                         <outlet property="userPasswordTextField" destination="u5D-PZ-I5I" id="kol-uh-RmF"/>
                         <outlet property="usernameTextField" destination="XcN-ye-zwa" id="xz5-Sc-BDR"/>
-                        <segue destination="2hU-wj-Zwd" kind="presentation" modalTransitionStyle="flipHorizontal" id="vsN-IX-CdS"/>
+                        <segue destination="Idj-Rj-tcw" kind="presentation" identifier="loginToStart" modalTransitionStyle="flipHorizontal" id="TBX-Mz-g1T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xEw-As-IhI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -407,7 +407,7 @@
                                                     <constraint firstAttribute="height" constant="30" id="vSZ-O6-kaY"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="j07-MG-iBe" id="II9-aA-yMD"/>
                                                 </connections>
@@ -3648,9 +3648,9 @@
     <inferredMetricsTieBreakers>
         <segue reference="gNS-lP-qNY"/>
         <segue reference="chX-aW-Pzr"/>
+        <segue reference="bCD-Xk-LO4"/>
         <segue reference="UY7-0D-aF6"/>
         <segue reference="Nza-Dj-OZA"/>
         <segue reference="5oU-wj-Tr2"/>
-        <segue reference="bCD-Xk-LO4"/>
     </inferredMetricsTieBreakers>
 </document>
