@@ -162,7 +162,7 @@ class RegisterVC: UIViewController, UITextFieldDelegate {
                             // Send firstName & lastName to database
                             //======================================
                             
-                            sendUserPrfileToDB(accountToken, firstname: userLastName, lastname: userFirstName, userEmail: userEmail)
+                            sendUserPrfileToDB(accountToken, firstname: userFirstName, lastname: userLastName, userEmail: userEmail)
                             
                             //=======================================
                             // Auot login
