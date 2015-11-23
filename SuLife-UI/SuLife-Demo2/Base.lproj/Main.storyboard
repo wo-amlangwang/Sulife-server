@@ -10,7 +10,7 @@
         <!--startView-->
         <scene sceneID="dak-ia-GLf">
             <objects>
-                <viewController storyboardIdentifier="startView" title="startView" id="Idj-Rj-tcw" customClass="StartVC" customModule="SuLife_Demo2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="startView" title="startView" id="Idj-Rj-tcw" customClass="StartVC" customModule="SuLife" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7br-PK-NCc"/>
                         <viewControllerLayoutGuide type="bottom" id="a2J-dU-OSp"/>
@@ -112,7 +112,7 @@
         <!--LoginView-->
         <scene sceneID="9o6-7M-Jo6">
             <objects>
-                <viewController storyboardIdentifier="loginView" title="LoginView" id="IJa-U8-Q5u" customClass="LoginVC" customModule="SuLife_Demo2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginView" title="LoginView" id="IJa-U8-Q5u" customClass="LoginVC" customModule="SuLife" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="t9C-z8-lYA"/>
                         <viewControllerLayoutGuide type="bottom" id="er3-0P-1hQ"/>
@@ -251,7 +251,7 @@
         <!--Forget PasswordVC-->
         <scene sceneID="kcz-i4-7JF">
             <objects>
-                <viewController id="gZm-3y-EcJ" customClass="ForgetPasswordVC" customModule="SuLife_Demo2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="gZm-3y-EcJ" customClass="ForgetPasswordVC" customModule="SuLife" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TCO-gh-XTi"/>
                         <viewControllerLayoutGuide type="bottom" id="w1p-Tb-u97"/>
@@ -337,7 +337,7 @@
         <!--RegisterView-->
         <scene sceneID="8zE-Lb-Gil">
             <objects>
-                <viewController title="RegisterView" id="j07-MG-iBe" customClass="RegisterVC" customModule="SuLife_Demo2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="RegisterView" id="j07-MG-iBe" customClass="RegisterVC" customModule="SuLife" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ww5-hb-egD"/>
                         <viewControllerLayoutGuide type="bottom" id="RIR-ln-n8k"/>
@@ -643,7 +643,7 @@
         <!--Map-->
         <scene sceneID="fND-5c-fmA">
             <objects>
-                <viewController title="Map" id="qT7-Hq-tz6" customClass="MapVC" customModule="SuLife_Demo2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Map" id="qT7-Hq-tz6" customClass="MapVC" customModule="SuLife" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KVC-rV-8Lj"/>
                         <viewControllerLayoutGuide type="bottom" id="l8n-OJ-bv8"/>
@@ -685,7 +685,7 @@
         <!--Edit Profile-->
         <scene sceneID="X4j-sG-UHV">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="8Hn-vB-S7F" customClass="EditProfileVC" customModule="SuLife_Demo2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="8Hn-vB-S7F" customClass="EditProfileVC" customModule="SuLife" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="URS-DN-yyU"/>
                         <viewControllerLayoutGuide type="bottom" id="KUi-7c-k9k"/>
@@ -833,7 +833,7 @@
         <!--Profile-->
         <scene sceneID="tWN-Uv-Zwn">
             <objects>
-                <viewController storyboardIdentifier="profileView" title="Profile" extendedLayoutIncludesOpaqueBars="YES" hidesBottomBarWhenPushed="YES" id="6EY-K0-0Xd" customClass="ProfileVC" customModule="SuLife_Demo2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="profileView" title="Profile" extendedLayoutIncludesOpaqueBars="YES" hidesBottomBarWhenPushed="YES" id="6EY-K0-0Xd" customClass="ProfileVC" customModule="SuLife" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uoR-5Q-qLy"/>
                         <viewControllerLayoutGuide type="bottom" id="aqv-Ij-wf0"/>
@@ -857,7 +857,7 @@
                                     <constraint firstAttribute="width" secondItem="v25-61-zn4" secondAttribute="height" multiplier="1:1" id="W8J-pv-r5H"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Myn-vE-x2A">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Myn-vE-x2A">
                                 <rect key="frame" x="207" y="696" width="207" height="40"/>
                                 <color key="backgroundColor" red="1" green="0.19554125" blue="0.31685973670000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -877,7 +877,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rlw-yf-94Y">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rlw-yf-94Y">
                                 <rect key="frame" x="0.0" y="696" width="207" height="40"/>
                                 <color key="backgroundColor" red="0.19899436870000001" green="0.6515940657" blue="0.19533037" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -965,6 +965,7 @@
                             <constraint firstItem="Ac5-G0-SHE" firstAttribute="width" secondItem="eg8-lz-Ua9" secondAttribute="width" id="yxh-aB-Szf"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Profile" id="C1u-1E-2m0">
                         <barButtonItem key="rightBarButtonItem" image="write" style="plain" id="a3h-qZ-LfI">
@@ -974,11 +975,14 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="contactsButton" destination="rlw-yf-94Y" id="DJC-0P-En3"/>
                         <outlet property="emailLable" destination="Ppj-ex-z84" id="SOm-nV-oOD"/>
                         <outlet property="fullNameLable" destination="GTR-ls-Y6d" id="BGY-QE-RPg"/>
                         <outlet property="headImage" destination="v25-61-zn4" id="eE8-3f-3Ov"/>
+                        <outlet property="logoutButton" destination="Myn-vE-x2A" id="S5s-nR-kaj"/>
                         <segue destination="IJa-U8-Q5u" kind="presentation" identifier="profileToLogin" id="bCD-Xk-LO4"/>
                     </connections>
                 </viewController>
@@ -989,7 +993,7 @@
         <!--Groups-->
         <scene sceneID="yLZ-T7-lGE">
             <objects>
-                <tableViewController title="Groups" id="k4G-7H-0PV" customClass="GroupVC" customModule="SuLife_Demo2" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Groups" hidesBottomBarWhenPushed="YES" id="k4G-7H-0PV" customClass="GroupVC" customModule="SuLife" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="3Gi-6D-InX">
                         <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1039,7 +1043,7 @@
         <!--contacts-->
         <scene sceneID="ioT-tG-Bkr">
             <objects>
-                <tableViewController id="aZG-eY-zWP" customClass="ContactVC" customModule="SuLife_Demo2" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="aZG-eY-zWP" customClass="ContactVC" customModule="SuLife" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="PLG-7S-JXd">
                         <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1126,7 +1130,7 @@
         <!--ContactDetail-->
         <scene sceneID="AxO-cN-mQv">
             <objects>
-                <viewController title="ContactDetail" hidesBottomBarWhenPushed="YES" id="ppM-TA-GV4" customClass="ContactDetailVC" customModule="SuLife_Demo2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="ContactDetail" hidesBottomBarWhenPushed="YES" id="ppM-TA-GV4" customClass="ContactDetailVC" customModule="SuLife" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4bV-NV-Xmb"/>
                         <viewControllerLayoutGuide type="bottom" id="msk-2Y-Thc"/>
@@ -1256,7 +1260,7 @@
         <!--Change PasswordVC-->
         <scene sceneID="ovK-yu-4Dz">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="8Pk-DX-2ru" customClass="ChangePasswordVC" customModule="SuLife_Demo2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="8Pk-DX-2ru" customClass="ChangePasswordVC" customModule="SuLife" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4Ty-9i-llh"/>
                         <viewControllerLayoutGuide type="bottom" id="zpF-F5-VkE"/>
@@ -1389,7 +1393,7 @@
         <!--Actions-->
         <scene sceneID="JZg-YP-y0E">
             <objects>
-                <viewController storyboardIdentifier="ActionView" id="FzE-Gx-vPI" customClass="ContactsActionVC" customModule="SuLife_Demo2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ActionView" id="FzE-Gx-vPI" customClass="ContactsActionVC" customModule="SuLife" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="at3-dO-QEs"/>
                         <viewControllerLayoutGuide type="bottom" id="Jwj-NC-ZEm"/>
@@ -1486,7 +1490,7 @@
         <!--Calendar Appearance Delegate-->
         <scene sceneID="07v-SL-R38">
             <objects>
-                <viewController id="NHD-Sd-M7n" customClass="ViewControllerCVC" customModule="SuLife_Demo2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="NHD-Sd-M7n" customClass="ViewControllerCVC" customModule="SuLife" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="E7C-Yo-9W3"/>
                         <viewControllerLayoutGuide type="bottom" id="7C7-G4-SU4"/>
@@ -1501,13 +1505,13 @@
                                 <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S4J-TS-N3l" customClass="CVCalendarMenuView" customModule="SuLife_Demo2" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S4J-TS-N3l" customClass="CVCalendarMenuView" customModule="SuLife" customModuleProvider="target">
                                 <rect key="frame" x="20" y="68" width="374" height="27"/>
                                 <connections>
                                     <outlet property="menuViewDelegate" destination="NHD-Sd-M7n" id="Rd5-yq-wi3"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UHa-LP-FYd" customClass="CVCalendarView" customModule="SuLife_Demo2" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UHa-LP-FYd" customClass="CVCalendarView" customModule="SuLife" customModuleProvider="target">
                                 <rect key="frame" x="20" y="103" width="374" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="Yum-EX-Myy">
@@ -1561,16 +1565,6 @@
                                     <action selector="loadPrevious:" destination="NHD-Sd-M7n" eventType="touchUpInside" id="lpP-0B-kyj"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5O-Mu-c63">
-                                <rect key="frame" x="345" y="28" width="49" height="34"/>
-                                <state key="normal" title="Today">
-                                    <color key="titleColor" red="0.050980392156862744" green="0.38823529411764707" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="todayMonthView" destination="NHD-Sd-M7n" eventType="touchUpInside" id="DM6-Zt-jmp"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -1580,7 +1574,7 @@
                             <constraint firstItem="Mei-hH-o7y" firstAttribute="top" secondItem="UHa-LP-FYd" secondAttribute="bottom" constant="20" id="EcR-pc-6Ah"/>
                             <constraint firstItem="S4J-TS-N3l" firstAttribute="trailing" secondItem="8Hk-5D-TMM" secondAttribute="trailingMargin" id="Fzc-BI-lD1"/>
                             <constraint firstItem="l5w-wf-8wt" firstAttribute="leading" secondItem="419-0H-xbv" secondAttribute="trailing" constant="13" id="GId-mu-qWu"/>
-                            <constraint firstItem="C5O-Mu-c63" firstAttribute="top" secondItem="E7C-Yo-9W3" secondAttribute="bottom" constant="28" id="JcY-FL-TRO"/>
+                            <constraint firstItem="S4J-TS-N3l" firstAttribute="top" secondItem="419-0H-xbv" secondAttribute="bottom" constant="8" symbolic="YES" id="LIC-oF-FRE"/>
                             <constraint firstItem="UHa-LP-FYd" firstAttribute="top" secondItem="8Hk-5D-TMM" secondAttribute="top" constant="103" id="Qpd-nn-yyJ"/>
                             <constraint firstItem="jt1-H4-olq" firstAttribute="centerX" secondItem="S4J-TS-N3l" secondAttribute="centerX" id="RbM-Cd-9UK"/>
                             <constraint firstItem="419-0H-xbv" firstAttribute="top" secondItem="E7C-Yo-9W3" secondAttribute="bottom" constant="30" id="UpB-sV-e7H"/>
@@ -1592,11 +1586,9 @@
                             <constraint firstItem="UHa-LP-FYd" firstAttribute="trailing" secondItem="S4J-TS-N3l" secondAttribute="trailing" id="r7I-xc-CBd"/>
                             <constraint firstItem="jt1-H4-olq" firstAttribute="top" secondItem="E7C-Yo-9W3" secondAttribute="bottom" constant="8" symbolic="YES" id="th8-xT-VWa"/>
                             <constraint firstItem="Mei-hH-o7y" firstAttribute="leading" secondItem="Xz8-Lr-4Dw" secondAttribute="leading" constant="-35" id="vH4-UE-cdB"/>
-                            <constraint firstItem="C5O-Mu-c63" firstAttribute="trailing" secondItem="S4J-TS-N3l" secondAttribute="trailing" id="vVn-Gx-1Ai"/>
                             <constraint firstAttribute="centerX" secondItem="Xz8-Lr-4Dw" secondAttribute="centerX" constant="-0.5" id="xFe-Fd-fei"/>
                             <constraint firstItem="l5w-wf-8wt" firstAttribute="top" secondItem="E7C-Yo-9W3" secondAttribute="bottom" constant="30" id="ymt-Se-Gt4"/>
                             <constraint firstItem="UHa-LP-FYd" firstAttribute="top" secondItem="S4J-TS-N3l" secondAttribute="bottom" constant="8" symbolic="YES" id="zFW-y3-77L"/>
-                            <constraint firstItem="S4J-TS-N3l" firstAttribute="top" secondItem="C5O-Mu-c63" secondAttribute="bottom" constant="6" id="ztm-cJ-iWg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Calendar" id="iuG-Q2-oi1">
@@ -1606,8 +1598,18 @@
                                 <segue destination="6EY-K0-0Xd" kind="show" identifier="calendarToProfile" id="gNS-lP-qNY"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="list1" id="2gu-sp-wcb">
-                            <inset key="imageInsets" minX="15" minY="10" maxX="0.0" maxY="10"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="lvd-EL-r5d">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="C5O-Mu-c63">
+                                <rect key="frame" x="345" y="5" width="49" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Today">
+                                    <color key="titleColor" red="0.050980392156862744" green="0.38823529411764707" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="todayMonthView" destination="NHD-Sd-M7n" eventType="touchUpInside" id="DM6-Zt-jmp"/>
+                                </connections>
+                            </button>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
@@ -1624,7 +1626,7 @@
         <!--Event Detail-->
         <scene sceneID="KYU-Bb-suJ">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="1Gy-JQ-l53" customClass="EventDetailVC" customModule="SuLife_Demo2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="1Gy-JQ-l53" customClass="EventDetailVC" customModule="SuLife" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dNa-WH-KfL"/>
                         <viewControllerLayoutGuide type="bottom" id="ash-Dp-E88"/>
@@ -1824,7 +1826,7 @@
         <!--Events List-->
         <scene sceneID="mId-VO-tOw">
             <objects>
-                <tableViewController storyboardIdentifier="eventsView" id="EMq-Ng-Jhd" customClass="EventTableVC" customModule="SuLife_Demo2" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="eventsView" id="EMq-Ng-Jhd" customClass="EventTableVC" customModule="SuLife" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="0ra-Md-2Mv">
                         <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1889,7 +1891,7 @@
         <!--New Event-->
         <scene sceneID="swU-GM-hvB">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="UeK-KD-yrp" customClass="NewEventVC" customModule="SuLife_Demo2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="UeK-KD-yrp" customClass="NewEventVC" customModule="SuLife" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mKN-hp-JvZ"/>
                         <viewControllerLayoutGuide type="bottom" id="T7D-8e-DkP"/>
@@ -2123,7 +2125,7 @@
         <!--Search MapVC-->
         <scene sceneID="tZj-y5-rZy">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" hidesBottomBarWhenPushed="YES" id="pnD-fb-Rp2" customClass="SearchMapVC" customModule="SuLife_Demo2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" hidesBottomBarWhenPushed="YES" id="pnD-fb-Rp2" customClass="SearchMapVC" customModule="SuLife" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kh0-e7-ttJ"/>
                         <viewControllerLayoutGuide type="bottom" id="Xai-oE-C67"/>
@@ -2214,7 +2216,7 @@
         <!--Task Detail-->
         <scene sceneID="KEh-5P-9fv">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="Oxq-NK-Rqd" customClass="TaskDetailVC" customModule="SuLife_Demo2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="Oxq-NK-Rqd" customClass="TaskDetailVC" customModule="SuLife" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UE4-jo-AFK"/>
                         <viewControllerLayoutGuide type="bottom" id="e1u-xN-3jw"/>
@@ -2369,7 +2371,7 @@
         <!--To Do List-->
         <scene sceneID="iV5-65-95j">
             <objects>
-                <tableViewController storyboardIdentifier="todoListView" id="9vY-4e-uCH" customClass="ToDoListTVC" customModule="SuLife_Demo2" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="todoListView" id="9vY-4e-uCH" customClass="ToDoListTVC" customModule="SuLife" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="qix-Di-5VC">
                         <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2437,7 +2439,7 @@
         <!--New Task-->
         <scene sceneID="c7y-sv-VsH">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="mfM-Xb-Zoa" customClass="NewTaskVC" customModule="SuLife_Demo2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="mfM-Xb-Zoa" customClass="NewTaskVC" customModule="SuLife" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DjB-bt-IJT"/>
                         <viewControllerLayoutGuide type="bottom" id="tDT-a6-2sH"/>
@@ -2600,7 +2602,7 @@
         <!--NotificationTVC-->
         <scene sceneID="lXF-KX-6TW">
             <objects>
-                <tableViewController hidesBottomBarWhenPushed="YES" id="PhD-ak-wNM" customClass="NotificationTVC" customModule="SuLife_Demo2" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController hidesBottomBarWhenPushed="YES" id="PhD-ak-wNM" customClass="NotificationTVC" customModule="SuLife" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="AZ2-1V-3Sg">
                         <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2634,7 +2636,7 @@
         <!--Notification DetailVC-->
         <scene sceneID="vyn-7H-HSC">
             <objects>
-                <viewController restorationIdentifier="Notification Detail" hidesBottomBarWhenPushed="YES" id="LIb-jm-2X0" customClass="NotificationDetailVC" customModule="SuLife_Demo2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="Notification Detail" hidesBottomBarWhenPushed="YES" id="LIb-jm-2X0" customClass="NotificationDetailVC" customModule="SuLife" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9bK-fg-p9a"/>
                         <viewControllerLayoutGuide type="bottom" id="xkS-80-51B"/>
@@ -2860,7 +2862,7 @@
         <!--Add ContactVC-->
         <scene sceneID="t3g-Bz-bu5">
             <objects>
-                <viewController id="aD4-XS-V2r" customClass="AddContactVC" customModule="SuLife_Demo2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="aD4-XS-V2r" customClass="AddContactVC" customModule="SuLife" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6r0-gS-agM"/>
                         <viewControllerLayoutGuide type="bottom" id="8uN-aZ-VbR"/>
@@ -2937,7 +2939,7 @@
         <!--Edit Task-->
         <scene sceneID="bMN-2u-aNz">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="CyE-44-eKN" customClass="EditTaskVC" customModule="SuLife_Demo2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="CyE-44-eKN" customClass="EditTaskVC" customModule="SuLife" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fip-f8-cdT"/>
                         <viewControllerLayoutGuide type="bottom" id="j6q-p4-cDE"/>
@@ -3081,7 +3083,7 @@
         <!--Done List-->
         <scene sceneID="SMy-zj-xBK">
             <objects>
-                <tableViewController storyboardIdentifier="DoneList" id="w9j-zy-rzC" customClass="DoneListVC" customModule="SuLife_Demo2" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="DoneList" id="w9j-zy-rzC" customClass="DoneListVC" customModule="SuLife" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="9c7-qb-NNn">
                         <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3135,7 +3137,7 @@
         <!--Edit Event-->
         <scene sceneID="eiY-Wd-RRA">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="Dxe-gU-alO" customClass="EditEventVC" customModule="SuLife_Demo2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="Dxe-gU-alO" customClass="EditEventVC" customModule="SuLife" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kkO-Sj-Lpk"/>
                         <viewControllerLayoutGuide type="bottom" id="PBI-dc-EvC"/>
@@ -3370,7 +3372,7 @@
         <!--Event Detail-->
         <scene sceneID="0tP-GP-Owk">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="Nmm-JA-otf" customClass="SharedEventVC" customModule="SuLife_Demo2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="Nmm-JA-otf" customClass="SharedEventVC" customModule="SuLife" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YiN-ib-LTF"/>
                         <viewControllerLayoutGuide type="bottom" id="qhR-aw-pOK"/>
@@ -3547,7 +3549,7 @@
         <!--Shared Events List-->
         <scene sceneID="dfp-EX-uZ8">
             <objects>
-                <tableViewController storyboardIdentifier="sharedEventsView" hidesBottomBarWhenPushed="YES" id="BaN-oD-Mjq" customClass="SharedEventsTVC" customModule="SuLife_Demo2" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="sharedEventsView" hidesBottomBarWhenPushed="YES" id="BaN-oD-Mjq" customClass="SharedEventsTVC" customModule="SuLife" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="8Pw-RJ-Kqd">
                         <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3636,7 +3638,6 @@
         <image name="dial" width="30" height="26"/>
         <image name="friends" width="30" height="26"/>
         <image name="head" width="168" height="168"/>
-        <image name="list1" width="49" height="49"/>
         <image name="location" width="24" height="30"/>
         <image name="profile1" width="51" height="51"/>
         <image name="refresh" width="30" height="30"/>
@@ -3645,11 +3646,11 @@
         <image name="write" width="44" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="gNS-lP-qNY"/>
         <segue reference="chX-aW-Pzr"/>
-        <segue reference="Nza-Dj-OZA"/>
         <segue reference="UY7-0D-aF6"/>
+        <segue reference="Nza-Dj-OZA"/>
         <segue reference="5oU-wj-Tr2"/>
-        <segue reference="POt-Sk-UZR"/>
-        <segue reference="peH-9I-WWY"/>
+        <segue reference="bCD-Xk-LO4"/>
     </inferredMetricsTieBreakers>
 </document>

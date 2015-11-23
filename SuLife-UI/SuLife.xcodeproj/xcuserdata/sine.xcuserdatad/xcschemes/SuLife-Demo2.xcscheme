@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2557230A1BED079400A57F58"
-               BuildableName = "SuLife-Demo2.app"
-               BlueprintName = "SuLife-Demo2"
-               ReferencedContainer = "container:SuLife-Demo2.xcodeproj">
+               BuildableName = "SuLife.app"
+               BlueprintName = "SuLife"
+               ReferencedContainer = "container:SuLife.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2557231E1BED079500A57F58"
-               BuildableName = "SuLife-Demo2Tests.xctest"
-               BlueprintName = "SuLife-Demo2Tests"
-               ReferencedContainer = "container:SuLife-Demo2.xcodeproj">
+               BuildableName = "SuLife.xctest"
+               BlueprintName = "SuLifeTests"
+               ReferencedContainer = "container:SuLife.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "255723291BED079500A57F58"
-               BuildableName = "SuLife-Demo2UITests.xctest"
-               BlueprintName = "SuLife-Demo2UITests"
-               ReferencedContainer = "container:SuLife-Demo2.xcodeproj">
+               BuildableName = "SuLife.xctest"
+               BlueprintName = "SuLifeUITests"
+               ReferencedContainer = "container:SuLife.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2557230A1BED079400A57F58"
-            BuildableName = "SuLife-Demo2.app"
-            BlueprintName = "SuLife-Demo2"
-            ReferencedContainer = "container:SuLife-Demo2.xcodeproj">
+            BuildableName = "SuLife.app"
+            BlueprintName = "SuLife"
+            ReferencedContainer = "container:SuLife.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2557230A1BED079400A57F58"
-            BuildableName = "SuLife-Demo2.app"
-            BlueprintName = "SuLife-Demo2"
-            ReferencedContainer = "container:SuLife-Demo2.xcodeproj">
+            BuildableName = "SuLife.app"
+            BlueprintName = "SuLife"
+            ReferencedContainer = "container:SuLife.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -95,9 +95,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2557230A1BED079400A57F58"
-            BuildableName = "SuLife-Demo2.app"
-            BlueprintName = "SuLife-Demo2"
-            ReferencedContainer = "container:SuLife-Demo2.xcodeproj">
+            BuildableName = "SuLife.app"
+            BlueprintName = "SuLife"
+            ReferencedContainer = "container:SuLife.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

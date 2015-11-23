@@ -13,28 +13,29 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var fullNameLable: UILabel!
     @IBOutlet weak var emailLable: UILabel!
     @IBOutlet weak var headImage: UIImageView!
+    @IBOutlet weak var contactsButton: UIButton!
+    @IBOutlet weak var logoutButton: UIButton!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    override func viewDidAppear(animated: Bool) {
-        
-        headImage.layer.masksToBounds = true
-        headImage.layer.cornerRadius = (headImage.frame.width)/2
-        
-        
-        // TODO: firstname lastname problem
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        //headImage.layer.masksToBounds = true
+        //headImage.layer.cornerRadius = (headImage.frame.width)/2
         fullNameLable.text = (userInformation!.firstName as String) + " " + (userInformation!.lastName as String)
         emailLable.text = userInformation!.email as String
-
-        // Do any additional setup after loading the view.
+        self.extendedLayoutIncludesOpaqueBars = true
+        self.tabBarController!.tabBar.hidden = true
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+        headImage.layer.masksToBounds = true
+        headImage.layer.cornerRadius = (headImage.frame.width)/2
     }
     
     @IBAction func logoutButtonTapped(sender: AnyObject) {

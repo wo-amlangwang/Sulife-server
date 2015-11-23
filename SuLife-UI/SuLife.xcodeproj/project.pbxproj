@@ -105,15 +105,15 @@
 		252C89A61BF667230044F1A4 /* EditEventVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditEventVC.swift; sourceTree = "<group>"; };
 		255635B21C01EE8F002D2BA5 /* SearchMapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchMapVC.swift; sourceTree = "<group>"; };
 		255635B41C020219002D2BA5 /* MyAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAnnotation.swift; sourceTree = "<group>"; };
-		2557230B1BED079400A57F58 /* SuLife-Demo2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SuLife-Demo2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2557230B1BED079400A57F58 /* SuLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2557230E1BED079400A57F58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		255723101BED079400A57F58 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		255723131BED079400A57F58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2557231A1BED079500A57F58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2557231F1BED079500A57F58 /* SuLife-Demo2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SuLife-Demo2Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2557231F1BED079500A57F58 /* SuLife.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SuLife.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		255723231BED079500A57F58 /* SuLife_Demo2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuLife_Demo2Tests.swift; sourceTree = "<group>"; };
 		255723251BED079500A57F58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2557232A1BED079500A57F58 /* SuLife-Demo2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SuLife-Demo2UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2557232A1BED079500A57F58 /* SuLife.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SuLife.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2557232E1BED079500A57F58 /* SuLife_Demo2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuLife_Demo2UITests.swift; sourceTree = "<group>"; };
 		255723301BED079500A57F58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2557233C1BED08FC00A57F58 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -213,9 +213,9 @@
 		2557230C1BED079400A57F58 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2557230B1BED079400A57F58 /* SuLife-Demo2.app */,
-				2557231F1BED079500A57F58 /* SuLife-Demo2Tests.xctest */,
-				2557232A1BED079500A57F58 /* SuLife-Demo2UITests.xctest */,
+				2557230B1BED079400A57F58 /* SuLife.app */,
+				2557231F1BED079500A57F58 /* SuLife.xctest */,
+				2557232A1BED079500A57F58 /* SuLife.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -373,9 +373,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2557230A1BED079400A57F58 /* SuLife-Demo2 */ = {
+		2557230A1BED079400A57F58 /* SuLife */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 255723331BED079500A57F58 /* Build configuration list for PBXNativeTarget "SuLife-Demo2" */;
+			buildConfigurationList = 255723331BED079500A57F58 /* Build configuration list for PBXNativeTarget "SuLife" */;
 			buildPhases = (
 				255723071BED079400A57F58 /* Sources */,
 				255723081BED079400A57F58 /* Frameworks */,
@@ -385,14 +385,14 @@
 			);
 			dependencies = (
 			);
-			name = "SuLife-Demo2";
+			name = SuLife;
 			productName = "SuLife-Demo2";
-			productReference = 2557230B1BED079400A57F58 /* SuLife-Demo2.app */;
+			productReference = 2557230B1BED079400A57F58 /* SuLife.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2557231E1BED079500A57F58 /* SuLife-Demo2Tests */ = {
+		2557231E1BED079500A57F58 /* SuLifeTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 255723361BED079500A57F58 /* Build configuration list for PBXNativeTarget "SuLife-Demo2Tests" */;
+			buildConfigurationList = 255723361BED079500A57F58 /* Build configuration list for PBXNativeTarget "SuLifeTests" */;
 			buildPhases = (
 				2557231B1BED079500A57F58 /* Sources */,
 				2557231C1BED079500A57F58 /* Frameworks */,
@@ -403,14 +403,14 @@
 			dependencies = (
 				255723211BED079500A57F58 /* PBXTargetDependency */,
 			);
-			name = "SuLife-Demo2Tests";
+			name = SuLifeTests;
 			productName = "SuLife-Demo2Tests";
-			productReference = 2557231F1BED079500A57F58 /* SuLife-Demo2Tests.xctest */;
+			productReference = 2557231F1BED079500A57F58 /* SuLife.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		255723291BED079500A57F58 /* SuLife-Demo2UITests */ = {
+		255723291BED079500A57F58 /* SuLifeUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 255723391BED079500A57F58 /* Build configuration list for PBXNativeTarget "SuLife-Demo2UITests" */;
+			buildConfigurationList = 255723391BED079500A57F58 /* Build configuration list for PBXNativeTarget "SuLifeUITests" */;
 			buildPhases = (
 				255723261BED079500A57F58 /* Sources */,
 				255723271BED079500A57F58 /* Frameworks */,
@@ -421,9 +421,9 @@
 			dependencies = (
 				2557232C1BED079500A57F58 /* PBXTargetDependency */,
 			);
-			name = "SuLife-Demo2UITests";
+			name = SuLifeUITests;
 			productName = "SuLife-Demo2UITests";
-			productReference = 2557232A1BED079500A57F58 /* SuLife-Demo2UITests.xctest */;
+			productReference = 2557232A1BED079500A57F58 /* SuLife.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -452,7 +452,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 255723061BED079400A57F58 /* Build configuration list for PBXProject "SuLife-Demo2" */;
+			buildConfigurationList = 255723061BED079400A57F58 /* Build configuration list for PBXProject "SuLife" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -465,9 +465,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2557230A1BED079400A57F58 /* SuLife-Demo2 */,
-				2557231E1BED079500A57F58 /* SuLife-Demo2Tests */,
-				255723291BED079500A57F58 /* SuLife-Demo2UITests */,
+				2557230A1BED079400A57F58 /* SuLife */,
+				2557231E1BED079500A57F58 /* SuLifeTests */,
+				255723291BED079500A57F58 /* SuLifeUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -593,12 +593,12 @@
 /* Begin PBXTargetDependency section */
 		255723211BED079500A57F58 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2557230A1BED079400A57F58 /* SuLife-Demo2 */;
+			target = 2557230A1BED079400A57F58 /* SuLife */;
 			targetProxy = 255723201BED079500A57F58 /* PBXContainerItemProxy */;
 		};
 		2557232C1BED079500A57F58 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2557230A1BED079400A57F58 /* SuLife-Demo2 */;
+			target = 2557230A1BED079400A57F58 /* SuLife */;
 			targetProxy = 2557232B1BED079500A57F58 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -704,7 +704,7 @@
 				INFOPLIST_FILE = "SuLife-Demo2/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Sine.SuLife-Demo2";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SuLife;
 			};
 			name = Debug;
 		};
@@ -716,7 +716,7 @@
 				INFOPLIST_FILE = "SuLife-Demo2/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Sine.SuLife-Demo2";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SuLife;
 			};
 			name = Release;
 		};
@@ -727,8 +727,8 @@
 				INFOPLIST_FILE = "SuLife-Demo2Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Sine.SuLife-Demo2Tests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SuLife-Demo2.app/SuLife-Demo2";
+				PRODUCT_NAME = SuLife;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SuLife.app/SuLife";
 			};
 			name = Debug;
 		};
@@ -739,8 +739,8 @@
 				INFOPLIST_FILE = "SuLife-Demo2Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Sine.SuLife-Demo2Tests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SuLife-Demo2.app/SuLife-Demo2";
+				PRODUCT_NAME = SuLife;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SuLife.app/SuLife";
 			};
 			name = Release;
 		};
@@ -750,7 +750,7 @@
 				INFOPLIST_FILE = "SuLife-Demo2UITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Sine.SuLife-Demo2UITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SuLife;
 				TEST_TARGET_NAME = "SuLife-Demo2";
 				USES_XCTRUNNER = YES;
 			};
@@ -762,7 +762,7 @@
 				INFOPLIST_FILE = "SuLife-Demo2UITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Sine.SuLife-Demo2UITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SuLife;
 				TEST_TARGET_NAME = "SuLife-Demo2";
 				USES_XCTRUNNER = YES;
 			};
@@ -771,7 +771,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		255723061BED079400A57F58 /* Build configuration list for PBXProject "SuLife-Demo2" */ = {
+		255723061BED079400A57F58 /* Build configuration list for PBXProject "SuLife" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				255723311BED079500A57F58 /* Debug */,
@@ -780,7 +780,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		255723331BED079500A57F58 /* Build configuration list for PBXNativeTarget "SuLife-Demo2" */ = {
+		255723331BED079500A57F58 /* Build configuration list for PBXNativeTarget "SuLife" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				255723341BED079500A57F58 /* Debug */,
@@ -789,7 +789,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		255723361BED079500A57F58 /* Build configuration list for PBXNativeTarget "SuLife-Demo2Tests" */ = {
+		255723361BED079500A57F58 /* Build configuration list for PBXNativeTarget "SuLifeTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				255723371BED079500A57F58 /* Debug */,
@@ -798,7 +798,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		255723391BED079500A57F58 /* Build configuration list for PBXNativeTarget "SuLife-Demo2UITests" */ = {
+		255723391BED079500A57F58 /* Build configuration list for PBXNativeTarget "SuLifeUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2557233A1BED079500A57F58 /* Debug */,
