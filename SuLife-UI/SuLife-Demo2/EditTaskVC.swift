@@ -16,6 +16,7 @@ class EditTaskVC: UIViewController {
     @IBOutlet weak var taskTimePicker: UIDatePicker!
     
     @IBOutlet weak var timeLable: UILabel!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     var taskTime : NSString = ""
     
@@ -32,7 +33,52 @@ class EditTaskVC: UIViewController {
         
         timeLable.text = NSDateFormatter.localizedStringFromDate((taskDetail!.taskTime), dateStyle: NSDateFormatterStyle.FullStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
 
+        // Tab The blank place, close keyboard
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
+        view.addGestureRecognizer(tap)
     }
+    
+    func DismissKeyboard () {
+        view.endEditing(true)
+    }
+    
+    
+    // Mark : Text field
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField == self.titleTextField {
+            self.detailTextField.becomeFirstResponder()
+        }
+        return true
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if (textField == detailTextField) {
+            scrollView.setContentOffset(CGPoint(x: 0,y: 20), animated: true)
+        }
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        scrollView.setContentOffset(CGPoint(x: 0,y: 0), animated: true)
+    }
+    // Mark : Text field END
+    
+    // MARK : Ask if save before back
+    
+    /*override func viewDidDisappear(animated: Bool) {
+        if self.isMovingToParentViewController() {
+            let myAlert = UIAlertController(title: "Alert", message: "Leave without saving?", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            myAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
+                myAlert .dismissViewControllerAnimated(true, completion: nil)
+            }))
+            
+            myAlert.addAction(UIAlertAction(title: "Save", style: .Default, handler: { (action: UIAlertAction!) in
+                self.saveAction()
+            }))
+            
+            presentViewController(myAlert, animated: true, completion: nil)
+        }
+    }*/
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -45,14 +91,27 @@ class EditTaskVC: UIViewController {
     }
 
     @IBAction func saveButtonTapped(sender: UIButton) {
+        saveAction()
+    }
+    
+    func saveAction () {
         let title = titleTextField.text!
         let detail = detailTextField.text!
+        
+        if (title.isEmpty || detail.isEmpty) {
+            let myAlert = UIAlertController(title: "Edit Task Failed!", message: "All fields required!", preferredStyle: UIAlertControllerStyle.Alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+            myAlert.addAction(okAction)
+            self.presentViewController(myAlert, animated:true, completion:nil)
+            return
+        }
+
         
         // Get date from input and convert format
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
         taskTime = dateFormatter.stringFromDate(taskTimePicker.date)
-
+        
         // Post to server
         let post:NSString = "title=\(title)&detail=\(detail)&establishTime=\(taskTime)"
         
@@ -114,13 +173,6 @@ class EditTaskVC: UIViewController {
             myAlert.addAction(okAction)
             self.presentViewController(myAlert, animated:true, completion:nil)
         }
-    }
-    
-    
-    /* Close keyboard when clicking enter*/
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder();
-        return true;
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {

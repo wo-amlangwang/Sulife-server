@@ -14,6 +14,7 @@ class SharedEventVC: UIViewController {
     @IBOutlet weak var detailTextField: UITextView!
     @IBOutlet weak var startTime: UITextView!
     @IBOutlet weak var endTime: UITextView!
+    @IBOutlet weak var location: UITextView!
     
     
     var eventDetail : EventModel?
@@ -27,10 +28,12 @@ class SharedEventVC: UIViewController {
         detailTextField.userInteractionEnabled = false
         startTime.userInteractionEnabled = false
         endTime.userInteractionEnabled = false
+        location.userInteractionEnabled = false
         
         
         titleTextField.text = eventDetail?.title as? String
         detailTextField.text = eventDetail?.detail as? String
+        location.text = eventDetail?.locationName as? String
         
         startTime.text = NSDateFormatter.localizedStringFromDate((eventDetail?.startTime)!, dateStyle: NSDateFormatterStyle.FullStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
         endTime.text = NSDateFormatter.localizedStringFromDate((eventDetail?.endTime)!, dateStyle: NSDateFormatterStyle.FullStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
@@ -44,6 +47,10 @@ class SharedEventVC: UIViewController {
         // Get title and detail from input
         let eventTitle = titleTextField.text!
         let eventDetail = detailTextField.text!
+        let eventLocation = location.text!
+        let lng = self.eventDetail!.lng as NSNumber
+        let lat = self.eventDetail!.lat as NSNumber
+        let shareOrNot = true
         
         // Get date from input and convert format
         let dateFormatter = NSDateFormatter()
@@ -52,7 +59,7 @@ class SharedEventVC: UIViewController {
         let endDate = dateFormatter.stringFromDate(self.eventDetail!.endTime)
         
         // Post to server
-        let post:NSString = "title=\(eventTitle)&detail=\(eventDetail)&starttime=\(startDate)&endtime=\(endDate)&share=\(true)"
+        let post:NSString = "title=\(eventTitle)&detail=\(eventDetail)&starttime=\(startDate)&endtime=\(endDate)&share=\(shareOrNot)&locationName=\(eventLocation)&lng=\(lng)&lat=\(lat)"
         
         NSLog("PostData: %@",post);
         
@@ -98,7 +105,7 @@ class SharedEventVC: UIViewController {
                             
                             //var eventToken = jsonResult.valueForKey("Event") as! NSString as String
                             let myAlert = UIAlertController(title: "Add New Event Successfully!", message: "This event is in your event list!", preferredStyle: UIAlertControllerStyle.Alert)
-                            myAlert.addAction(UIAlertAction(title: "Logout", style: .Default, handler: { (action: UIAlertAction!) in
+                            myAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
                                 self.navigationController?.popViewControllerAnimated(true)
                             }))
                             self.presentViewController(myAlert, animated:true, completion:nil)

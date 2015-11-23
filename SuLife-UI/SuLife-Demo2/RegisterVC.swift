@@ -64,7 +64,7 @@ class RegisterVC: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
-        scrollView.setContentOffset(CGPoint(x: 0,y: 120), animated: true)
+        scrollView.setContentOffset(CGPoint(x: 0,y: 0), animated: true)
     }
     
     override func didReceiveMemoryWarning() {

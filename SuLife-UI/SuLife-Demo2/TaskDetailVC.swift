@@ -10,7 +10,7 @@ import UIKit
 
 class TaskDetailVC: UIViewController {
     
-    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var titleTextField: UITextView!
     @IBOutlet weak var detailTextField: UITextView!
     @IBOutlet weak var timeLable: UILabel!
     
@@ -37,72 +37,75 @@ class TaskDetailVC: UIViewController {
     }
     
     @IBAction func deleteItem(sender: AnyObject) {
-        /* get data from server */
-        NSLog("id ==> %@", (taskDetail?.id)!);
-        let deleteurl = taskURL + "/" + ((taskDetail?.id)! as String)
-        let url:NSURL = NSURL(string: deleteurl)!
-        let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
-        request.HTTPMethod = "delete"
-        request.setValue(accountToken, forHTTPHeaderField: "x-access-token")
         
-        var reponseError: NSError?
-        var response: NSURLResponse?
+        let myAlert = UIAlertController(title: "Delete task", message: "Are You Sure to Delete This task? ", preferredStyle: UIAlertControllerStyle.Alert)
         
-        var urlData: NSData?
-        do {
-            urlData = try NSURLConnection.sendSynchronousRequest(request, returningResponse:&response)
-        } catch let error as NSError {
-            reponseError = error
-            urlData = nil
-        }
+        myAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
+            myAlert .dismissViewControllerAnimated(true, completion: nil)
+        }))
         
-        if ( urlData != nil ) {
-            let res = response as! NSHTTPURLResponse!;
+        myAlert.addAction(UIAlertAction(title: "Delete", style: .Default, handler: { (action: UIAlertAction!) in
             
-            if(res == nil){
-                NSLog("No Response!");
-            }
+            /* get data from server */
+            NSLog("id ==> %@", (self.taskDetail?.id)!);
+            let deleteurl = taskURL + "/" + ((self.taskDetail?.id)! as String)
+            let url:NSURL = NSURL(string: deleteurl)!
+            let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
+            request.HTTPMethod = "delete"
+            request.setValue(accountToken, forHTTPHeaderField: "x-access-token")
             
-            let responseData:NSString = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
+            var reponseError: NSError?
+            var response: NSURLResponse?
             
-            NSLog("Response ==> %@", responseData);
-            
-            var error: NSError?
-            
+            var urlData: NSData?
             do {
-                if let jsonResult = try NSJSONSerialization.JSONObjectWithData(urlData!, options: []) as? NSDictionary {
-                    
-                    let success:NSString = jsonResult.valueForKey("message") as! NSString
-                    
-                    let myAlert = UIAlertController(title: "Delete task", message: "Are You Sure to Delete This task? ", preferredStyle: UIAlertControllerStyle.Alert)
-                    
-                    myAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
-                        myAlert .dismissViewControllerAnimated(true, completion: nil)
-                    }))
-                    
-                    myAlert.addAction(UIAlertAction(title: "Delete", style: .Default, handler: { (action: UIAlertAction!) in
-                        self.navigationController!.popToRootViewControllerAnimated(true)
-                    }))
-                    
-                    presentViewController(myAlert, animated: true, completion: nil)
-                    
+                urlData = try NSURLConnection.sendSynchronousRequest(request, returningResponse:&response)
+            } catch let error as NSError {
+                reponseError = error
+                urlData = nil
+            }
+            
+            if ( urlData != nil ) {
+                let res = response as! NSHTTPURLResponse!;
+                
+                if(res == nil){
+                    NSLog("No Response!");
                 }
-            } catch {
-                print(error)
+                
+                let responseData:NSString = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
+                
+                NSLog("Response ==> %@", responseData);
+                
+                var error: NSError?
+                
+                do {
+                    if let jsonResult = try NSJSONSerialization.JSONObjectWithData(urlData!, options: []) as? NSDictionary {
+                        
+                        let success:NSString = jsonResult.valueForKey("message") as! NSString
+                        if (success == "OK!") {
+                            
+                            self.navigationController!.popToRootViewControllerAnimated(true)
+                        }
+                        
+                    }
+                } catch {
+                    print(error)
+                }
+            } else {
+                let myAlert = UIAlertController(title: "Connection failed!", message: "urlData Equals to NULL!", preferredStyle: UIAlertControllerStyle.Alert)
+                
+                if let error = reponseError {
+                    myAlert.message = (error.localizedDescription)
+                }
+                
+                let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                myAlert.addAction(okAction)
+                self.presentViewController(myAlert, animated:true, completion:nil)
             }
-            
-            
-        } else {
-            let myAlert = UIAlertController(title: "Connection failed!", message: "urlData Equals to NULL!", preferredStyle: UIAlertControllerStyle.Alert)
-            
-            if let error = reponseError {
-                myAlert.message = (error.localizedDescription)
-            }
-            
-            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
-            myAlert.addAction(okAction)
-            self.presentViewController(myAlert, animated:true, completion:nil)
-        }
+
+        }))
+        
+        presentViewController(myAlert, animated: true, completion: nil)
     }
     
     

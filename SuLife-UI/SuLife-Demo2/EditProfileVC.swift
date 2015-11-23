@@ -27,6 +27,7 @@ class EditProfileVC: UIViewController {
         firstNameTextField.text = userInformation?.firstName as? String
         lastNameTextField.text = userInformation?.lastName as? String
         emailTextField.text = userInformation?.email as? String
+        
         // Tab The blank place, close keyboard
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
         view.addGestureRecognizer(tap)
@@ -45,13 +46,12 @@ class EditProfileVC: UIViewController {
         } else if textField == self.emailTextField {
             textField.resignFirstResponder()
         }
-
         return true
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
         if (textField == emailTextField) {
-            scrollView.setContentOffset(CGPoint(x: 0,y: 20), animated: true)
+            scrollView.setContentOffset(CGPoint(x: 0,y: 100), animated: true)
         }
     }
     
@@ -60,6 +60,24 @@ class EditProfileVC: UIViewController {
     }
     // Mark : Text field END
     
+    /*// MARK : Ask if save before back
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        print(".......1 .......")
+        if (self.isMovingFromParentViewController()) {
+            let myAlert = UIAlertController(title: "Alert", message: "Leave without saving?", preferredStyle: UIAlertControllerStyle.Alert)
+            print(".......2.......")
+            myAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
+                myAlert .dismissViewControllerAnimated(true, completion: nil)
+            }))
+            
+            myAlert.addAction(UIAlertAction(title: "Save", style: .Default, handler: { (action: UIAlertAction!) in
+                self.saveAction()
+            }))
+            presentViewController(myAlert, animated: true, completion: nil)
+        }
+    }*/
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -67,12 +85,16 @@ class EditProfileVC: UIViewController {
     }
     
     @IBAction func saveButtonTapped(sender: UIButton) {
+        saveAction()
+    }
+    
+    func saveAction () {
         let firstname = firstNameTextField.text! as NSString
         let lastname = lastNameTextField.text! as NSString
         let email = emailTextField.text! as NSString
         
         if (firstname.isEqualToString(userInformation!.firstName as String) && lastname.isEqualToString(userInformation!.lastName as String) && email.isEqualToString(userInformation!.email as String)) {
-            let myAlert = UIAlertController(title: "Save Failed!", message: "Nothing Changeed!", preferredStyle: UIAlertControllerStyle.Alert)
+            let myAlert = UIAlertController(title: "Save Failed!", message: "Nothing Changed!", preferredStyle: UIAlertControllerStyle.Alert)
             
             myAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
                 myAlert .dismissViewControllerAnimated(true, completion: nil)

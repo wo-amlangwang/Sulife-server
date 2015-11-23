@@ -14,11 +14,60 @@ class ChangePasswordVC: UIViewController {
     @IBOutlet weak var oldPasswordTextField: UITextField!
     @IBOutlet weak var repeatNewPasswordTextField: UITextField!
     
+    @IBOutlet weak var scrollView: UIScrollView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Tab The blank place, close keyboard
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
+        view.addGestureRecognizer(tap)
     }
+    
+    func DismissKeyboard () {
+        view.endEditing(true)
+    }
+    
+    
+    // Mark : Text field
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField == self.oldPasswordTextField {
+            self.newPasswordTextField.becomeFirstResponder()
+        } else if textField == self.newPasswordTextField {
+            self.repeatNewPasswordTextField.becomeFirstResponder()
+        } else if textField == self.repeatNewPasswordTextField {
+            textField.resignFirstResponder()
+        }
+        return true
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if (textField == repeatNewPasswordTextField) {
+            scrollView.setContentOffset(CGPoint(x: 0,y: 20), animated: true)
+        }
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        scrollView.setContentOffset(CGPoint(x: 0,y: 0), animated: true)
+    }
+    // Mark : Text field END
+    
+    // MARK : Ask if save before back
+    
+    /*override func viewDidDisappear(animated: Bool) {
+        if self.isMovingToParentViewController() {
+            let myAlert = UIAlertController(title: "Alert", message: "Leave without saving?", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            myAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
+                myAlert .dismissViewControllerAnimated(true, completion: nil)
+            }))
+            
+            myAlert.addAction(UIAlertAction(title: "Save", style: .Default, handler: { (action: UIAlertAction!) in
+                self.saveAction()
+            }))
+            
+            presentViewController(myAlert, animated: true, completion: nil)
+        }
+    }*/
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -27,7 +76,10 @@ class ChangePasswordVC: UIViewController {
     
 
     @IBAction func resetPasswordTapped(sender: AnyObject) {
-        
+        saveAction()
+    }
+    
+    func saveAction() {
         let oldPassword = oldPasswordTextField.text!
         let newPassword = newPasswordTextField.text!
         let repeatNewPassword = repeatNewPasswordTextField.text!
@@ -87,7 +139,7 @@ class ChangePasswordVC: UIViewController {
                             NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isUserLoggedIn")
                             NSUserDefaults.standardUserDefaults().synchronize()
                             userInformation = nil
-                        self.performSegueWithIdentifier("changePasswordToLogin", sender: self)
+                            self.performSegueWithIdentifier("changePasswordToLogin", sender: self)
                         }))
                         presentViewController(myAlert, animated: true, completion: nil)
                         
@@ -112,7 +164,5 @@ class ChangePasswordVC: UIViewController {
             myAlert.addAction(okAction)
             self.presentViewController(myAlert, animated:true, completion:nil)
         }
-        
     }
-
 }

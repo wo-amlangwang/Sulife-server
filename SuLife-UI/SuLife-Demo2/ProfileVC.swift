@@ -26,7 +26,7 @@ class ProfileVC: UIViewController {
         
         
         // TODO: firstname lastname problem
-        fullNameLable.text = (userInformation!.lastName as String) + " " + (userInformation!.firstName as String)
+        fullNameLable.text = (userInformation!.firstName as String) + " " + (userInformation!.lastName as String)
         emailLable.text = userInformation!.email as String
 
         // Do any additional setup after loading the view.

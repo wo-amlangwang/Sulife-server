@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 
 
@@ -25,13 +26,14 @@ class NewEventVC: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var switchButton: UISwitch!
     
-    @IBOutlet weak var location: UITextField!
-    
     var startDate : NSString = ""
     var endDate : NSString = ""
+    var coordinateForEvent = CLLocationCoordinate2D()
     
     var shareOrNot = false
-    var locationvc : LocationChooseVC?
+    
+    var locationDetail : LocationModel?
+    
     // var startDate = NSDate()
     // var endDate = NSDate()
     
@@ -82,7 +84,25 @@ class NewEventVC: UIViewController, UIScrollViewDelegate {
         scrollView.setContentOffset(CGPoint(x: 0,y: 0), animated: true)
     }
     
-     // Mark : Text field END
+    // Mark : Text field END
+    
+    // MARK : Ask if save before back
+    
+    /*override func viewDidDisappear(animated: Bool) {
+        if self.isMovingToParentViewController() {
+            let myAlert = UIAlertController(title: "Alert", message: "Leave without saving?", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            myAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
+                myAlert .dismissViewControllerAnimated(true, completion: nil)
+            }))
+            
+            myAlert.addAction(UIAlertAction(title: "Add", style: .Default, handler: { (action: UIAlertAction!) in
+                self.addAction()
+            }))
+            
+            presentViewController(myAlert, animated: true, completion: nil)
+        }
+    }*/
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -98,12 +118,27 @@ class NewEventVC: UIViewController, UIScrollViewDelegate {
     
     
     @IBAction func addEventTapped(sender: UIButton) {
-        
+        addAction()
+    }
+    
+    func addAction () {
         // TODO SERVER
         
         // Get title and detail from input
         let eventTitle = titleTextField.text!
         let eventDetail = detailTextField.text!
+        let eventLocation = locationTextField.text!
+        let lng = coordinateForEvent.longitude as NSNumber
+        let lat = coordinateForEvent.latitude as NSNumber
+        
+        if (eventTitle.isEmpty || eventDetail.isEmpty || eventLocation.isEmpty || lng == 0 || lat == 0) {
+            let myAlert = UIAlertController(title: "Add Event Failed!", message: "All fields required!", preferredStyle: UIAlertControllerStyle.Alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+            myAlert.addAction(okAction)
+            self.presentViewController(myAlert, animated:true, completion:nil)
+            return
+        }
+
         
         // Get date from input and convert format
         let dateFormatter = NSDateFormatter()
@@ -112,7 +147,7 @@ class NewEventVC: UIViewController, UIScrollViewDelegate {
         endDate = dateFormatter.stringFromDate(endTimePicker.date)
         
         // Post to server
-        let post:NSString = "title=\(eventTitle)&detail=\(eventDetail)&starttime=\(startDate)&endtime=\(endDate)&share=\(shareOrNot)"
+        let post:NSString = "title=\(eventTitle)&detail=\(eventDetail)&starttime=\(startDate)&endtime=\(endDate)&share=\(shareOrNot)&locationName=\(eventLocation)&lng=\(lng)&lat=\(lat)"
         
         NSLog("PostData: %@",post);
         
@@ -192,9 +227,16 @@ class NewEventVC: UIViewController, UIScrollViewDelegate {
         }
     }
     
-    @IBAction func close(segue: UIStoryboardSegue) {
-        NSLog("closed");
-        location.text = locationvc?.newCoord?.longitude.description
-        print(locationvc?.newCoord?.longitude.description)
+    // MARK : pass information to new Event
+    
+    @IBAction func unwindToParent(segue: UIStoryboardSegue) {
+        if let childVC = segue.sourceViewController as? SearchMapVC {
+            print(".....................")
+            // update this VC (parent) using newly created data from child
+            if (!childVC.placeNameForEvent!.isEmpty && childVC.coordinateForEvent != nil) {
+                self.locationTextField.text = childVC.placeNameForEvent
+                self.coordinateForEvent = childVC.coordinateForEvent!
+            }
+        }
     }
 }

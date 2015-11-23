@@ -39,7 +39,7 @@ class SharedEventsTVC: UITableViewController {
         let contactID = contactDetail!.id
         
         /* get data from server */
-        let post:NSString = "title=&detail=&starttime=&endtime=&userid=\(contactID)"
+        let post:NSString = "title=&detail=&locationName=&lng=&lat=&starttime=\(sdTime)&endtime=\(edTime)"
         NSLog("PostData: %@",post);
         let postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
         let url:NSURL = NSURL(string: getFriendEvents)!
@@ -218,13 +218,15 @@ class SharedEventsTVC: UITableViewController {
                 let st = event.valueForKey("starttime") as! NSString
                 let et = event.valueForKey("endtime") as! NSString
                 let share = event.valueForKey("share") as! Bool
+                let locationName = event.valueForKey("locationName") as! NSString
+                let lng = event.valueForKey("location")!.valueForKey("coordinates")![0] as! NSNumber
+                let lat = event.valueForKey("location")!.valueForKey("coordinates")![1] as! NSNumber
                 let startTime = st.substringToIndex(st.rangeOfString(".").location - 3).stringByReplacingOccurrencesOfString("T", withString: " ")
                 let endTime = et.substringToIndex(et.rangeOfString(".").location - 3).stringByReplacingOccurrencesOfString("T", withString: " ")
                 NSLog("detail ==> %@", detail);
                 NSLog("st ==> %@", st);
                 NSLog("et ==> %@", et);
-                vc.eventDetail = EventModel(title: title, detail: detail, startTime: dateFromString(startTime), endTime: dateFromString(endTime), id: id, share: share)
-            }
+                vc.eventDetail = EventModel(title: title, detail: detail, startTime: dateFromString(startTime), endTime: dateFromString(endTime), id: id, share: share, lng: lng, lat: lat, locationName: locationName)            }
         }
     }
     

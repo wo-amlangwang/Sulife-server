@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class EditEventVC: UIViewController {
 
@@ -23,11 +24,14 @@ class EditEventVC: UIViewController {
     
     @IBOutlet weak var switchButton: UISwitch!
     
+    var coordinateForEvent = CLLocationCoordinate2D()
+    
     var startDate : NSString = ""
     var endDate : NSString = ""
     var shareOrNot : Bool = false
     
     var eventDetail : EventModel!
+    var locationDetail : LocationModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +39,8 @@ class EditEventVC: UIViewController {
         // Do any additional setup after loading the view.
         titleTextField.text = eventDetail.title as String
         detailTextField.text = eventDetail.detail as String
+        locationTextField.text = eventDetail.locationName as String
+        
         startTimePicker.addTarget(self, action: Selector("datePickerValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
         endTimePicker.addTarget(self, action: Selector("datePickerValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
         
@@ -81,6 +87,25 @@ class EditEventVC: UIViewController {
     }
     
     // Mark : Text field END
+    
+    // MARK : Ask if save before back
+    
+    /*override func viewDidDisappear(animated: Bool) {
+        if self.isMovingToParentViewController() {
+            let myAlert = UIAlertController(title: "Alert", message: "Leave without saving?", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            myAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
+                myAlert .dismissViewControllerAnimated(true, completion: nil)
+            }))
+            
+            myAlert.addAction(UIAlertAction(title: "Save", style: .Default, handler: { (action: UIAlertAction!) in
+                self.saveAction()
+            }))
+            
+            presentViewController(myAlert, animated: true, completion: nil)
+        }
+    }*/
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -95,8 +120,23 @@ class EditEventVC: UIViewController {
     }
     
     @IBAction func saveButtonTapped(sender: UIButton) {
+        saveAction()
+    }
+    
+    func saveAction () {
         let title = titleTextField.text!
         let detail = detailTextField.text!
+        let eventLocation = locationTextField.text!
+        let lng = coordinateForEvent.longitude as NSNumber
+        let lat = coordinateForEvent.latitude as NSNumber
+        
+        if (title.isEmpty || detail.isEmpty || eventLocation.isEmpty || lng == 0 || lat == 0) {
+            let myAlert = UIAlertController(title: "Edit Event Failed!", message: "All fields required!", preferredStyle: UIAlertControllerStyle.Alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+            myAlert.addAction(okAction)
+            self.presentViewController(myAlert, animated:true, completion:nil)
+            return
+        }
         
         // Get date from input and convert format
         let dateFormatter = NSDateFormatter()
@@ -105,7 +145,7 @@ class EditEventVC: UIViewController {
         endDate = dateFormatter.stringFromDate(endTimePicker.date)
         
         // Post to server
-        let post:NSString = "title=\(title)&detail=\(detail)&starttime=\(startDate)&endtime=\(endDate)&share=\(shareOrNot)"
+        let post:NSString = "title=\(title)&detail=\(detail)&starttime=\(startDate)&endtime=\(endDate)&share=\(shareOrNot)&locationName=\(eventLocation)&lng=\(lng)&lat=\(lat)"
         
         NSLog("PostData: %@",post);
         
@@ -167,13 +207,24 @@ class EditEventVC: UIViewController {
         }
     }
     
-    // TODO!!!!!!!!!
-    
     @IBAction func shareEvent(sender: UISwitch) {
         if sender.on {
             shareOrNot = true
         } else {
             shareOrNot = false
+        }
+    }
+    
+    // MARK : pass information to new Event
+    
+    @IBAction func unwindToParent(segue: UIStoryboardSegue) {
+        if let childVC = segue.sourceViewController as? SearchMapVC {
+            // update this VC (parent) using newly created data from child
+            if (!childVC.placeNameForEvent!.isEmpty && childVC.coordinateForEvent != nil) {
+                self.locationTextField.text = childVC.placeNameForEvent
+                self.coordinateForEvent = childVC.coordinateForEvent!
+                
+            }
         }
     }
 }

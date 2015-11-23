@@ -20,8 +20,23 @@ class AddContactVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        // Tab The blank place, close keyboard
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
+        view.addGestureRecognizer(tap)
     }
+    
+    func DismissKeyboard () {
+        view.endEditing(true)
+    }
+    
+    
+    // Mark : Text field
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    // Mark : Text field END
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -201,11 +216,6 @@ class AddContactVC: UIViewController {
         }
         
         NSLog("the userid is: ",fuckingUserID)
-    }
-    
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder();
-        return true;
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
