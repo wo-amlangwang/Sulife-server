@@ -708,7 +708,7 @@
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="center" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="last name:" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="6C5-Wl-UcT">
                                         <rect key="frame" x="30" y="200" width="354" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                         <connections>
                                             <outlet property="delegate" destination="8Hn-vB-S7F" id="rK2-5E-BMC"/>
@@ -725,7 +725,7 @@
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="center" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email:" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="6b2-eb-ldn">
                                         <rect key="frame" x="30" y="300" width="354" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                         <connections>
                                             <outlet property="delegate" destination="8Hn-vB-S7F" id="VQc-7j-jRu"/>
@@ -760,7 +760,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="356" id="PB7-wN-ydF"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                         <variation key="default">
                                             <mask key="constraints">
@@ -1181,12 +1181,12 @@
                                         <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v0G-ir-PTq">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v0G-ir-PTq">
                                         <rect key="frame" x="0.0" y="40" width="344" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="8aM-2c-5hJ"/>
                                         </constraints>
-                                        <attributedString key="attributedText"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wbF-3r-gjE">
@@ -1198,12 +1198,12 @@
                                         <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="car-cC-aUh">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="car-cC-aUh">
                                         <rect key="frame" x="0.0" y="130" width="344" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="AlR-x1-3Qt"/>
                                         </constraints>
-                                        <attributedString key="attributedText"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E-mail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="41q-HK-OCa">
@@ -1215,12 +1215,12 @@
                                         <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tHO-db-xs7">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tHO-db-xs7">
                                         <rect key="frame" x="0.0" y="220" width="344" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="9Jj-8b-Phx"/>
                                         </constraints>
-                                        <attributedString key="attributedText"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
@@ -1274,7 +1274,7 @@
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Old password:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wU6-7h-w19">
                                         <rect key="frame" x="30" y="80" width="354" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                         <connections>
                                             <outlet property="delegate" destination="8Pk-DX-2ru" id="H04-HL-77W"/>
@@ -1300,7 +1300,7 @@
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New password:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5he-WR-jcL">
                                         <rect key="frame" x="30" y="170" width="354" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                         <connections>
                                             <outlet property="delegate" destination="8Pk-DX-2ru" id="3Th-Ob-Spu"/>
@@ -1317,7 +1317,7 @@
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Repeat new password:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xXv-gM-uui">
                                         <rect key="frame" x="30" y="250" width="354" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                         <connections>
                                             <outlet property="delegate" destination="8Pk-DX-2ru" id="sJF-fl-sIR"/>
@@ -1909,9 +1909,10 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="Title:" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8LH-Rg-oEA">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title:" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8LH-Rg-oEA">
                                         <rect key="frame" x="30" y="56" width="354" height="30"/>
-                                        <attributedString key="attributedText"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                         <connections>
                                             <outlet property="delegate" destination="UeK-KD-yrp" id="Qep-Oe-l6u"/>
@@ -2039,7 +2040,7 @@
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="location:" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="g8M-gt-R9B">
                                         <rect key="frame" x="60" y="278" width="324" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                         <connections>
                                             <outlet property="delegate" destination="UeK-KD-yrp" id="45M-R2-li5"/>
@@ -2305,7 +2306,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="IAE-q5-UgW"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
@@ -2451,9 +2452,10 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lpt-F8-lrI">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="Title:" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="TSD-tv-QOS">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title:" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="TSD-tv-QOS">
                                         <rect key="frame" x="30" y="56" width="354" height="30"/>
-                                        <attributedString key="attributedText"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                         <connections>
                                             <outlet property="delegate" destination="mfM-Xb-Zoa" id="Qxb-Hn-Uuu"/>
@@ -2466,7 +2468,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GyC-wn-0Ju">
-                                        <rect key="frame" x="107" y="405" width="200" height="30"/>
+                                        <rect key="frame" x="107" y="425" width="200" height="30"/>
                                         <color key="backgroundColor" red="0.29803921570000003" green="0.50196078430000002" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="MC9-GZ-3UA"/>
@@ -2481,7 +2483,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Set" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aml-8U-M8I">
-                                        <rect key="frame" x="48" y="248" width="336" height="17"/>
+                                        <rect key="frame" x="30" y="248" width="354" height="17"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -2492,13 +2494,13 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NX7-Qz-6fe">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NX7-Qz-6fe">
                                         <rect key="frame" x="30" y="117" width="354" height="80"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="80" id="iN3-H8-gE1"/>
                                         </constraints>
-                                        <attributedString key="attributedText"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -2541,7 +2543,7 @@
                                     <constraint firstItem="Ngb-BF-xrU" firstAttribute="leading" secondItem="Lpt-F8-lrI" secondAttribute="leading" constant="30" id="OLN-BQ-g1m"/>
                                     <constraint firstItem="5VP-LA-vgi" firstAttribute="top" secondItem="TSD-tv-QOS" secondAttribute="bottom" constant="10" id="SSt-Fy-IJM"/>
                                     <constraint firstItem="TSD-tv-QOS" firstAttribute="centerX" secondItem="Lpt-F8-lrI" secondAttribute="centerX" id="X2h-fL-FQs"/>
-                                    <constraint firstItem="Aml-8U-M8I" firstAttribute="leading" secondItem="Lpt-F8-lrI" secondAttribute="leading" constant="48" id="af8-vm-MMp"/>
+                                    <constraint firstItem="Aml-8U-M8I" firstAttribute="leading" secondItem="Lpt-F8-lrI" secondAttribute="leading" constant="30" id="af8-vm-MMp"/>
                                     <constraint firstItem="6N0-Ie-y9Y" firstAttribute="centerX" secondItem="Lpt-F8-lrI" secondAttribute="centerX" id="bOL-bX-6No"/>
                                     <constraint firstItem="TSD-tv-QOS" firstAttribute="top" secondItem="PdZ-8O-mJH" secondAttribute="bottom" constant="5" id="cKI-ge-hFz"/>
                                     <constraint firstAttribute="trailing" secondItem="TSD-tv-QOS" secondAttribute="trailing" constant="30" id="cUW-EI-qBK"/>
@@ -2549,11 +2551,11 @@
                                     <constraint firstAttribute="trailing" secondItem="Aml-8U-M8I" secondAttribute="trailing" constant="30" id="cp0-BE-E54"/>
                                     <constraint firstItem="Aml-8U-M8I" firstAttribute="top" secondItem="Ngb-BF-xrU" secondAttribute="bottom" constant="10" id="dNL-mU-oFG"/>
                                     <constraint firstItem="6N0-Ie-y9Y" firstAttribute="top" secondItem="Aml-8U-M8I" secondAttribute="bottom" constant="10" id="jiI-wN-eTJ"/>
-                                    <constraint firstItem="GyC-wn-0Ju" firstAttribute="top" secondItem="6N0-Ie-y9Y" secondAttribute="bottom" constant="30" id="rGC-pt-e2h"/>
+                                    <constraint firstItem="GyC-wn-0Ju" firstAttribute="top" secondItem="6N0-Ie-y9Y" secondAttribute="bottom" constant="50" id="rGC-pt-e2h"/>
                                     <constraint firstItem="NX7-Qz-6fe" firstAttribute="top" secondItem="5VP-LA-vgi" secondAttribute="bottom" id="tDE-Lj-ZI2"/>
                                     <constraint firstItem="PdZ-8O-mJH" firstAttribute="leading" secondItem="Lpt-F8-lrI" secondAttribute="leading" constant="30" id="tdM-B9-qGP"/>
                                     <constraint firstItem="Ngb-BF-xrU" firstAttribute="top" secondItem="NX7-Qz-6fe" secondAttribute="bottom" constant="20" id="xoj-2o-J2F"/>
-                                    <constraint firstAttribute="bottom" secondItem="GyC-wn-0Ju" secondAttribute="bottom" constant="30" id="zmT-PP-7zz"/>
+                                    <constraint firstAttribute="bottom" secondItem="GyC-wn-0Ju" secondAttribute="bottom" constant="50" id="zmT-PP-7zz"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -2578,7 +2580,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jGb-t4-mXd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1176" y="1020"/>
+            <point key="canvasLocation" x="1682" y="1008"/>
         </scene>
         <!--Map-->
         <scene sceneID="mlg-XA-ALn">
@@ -2951,9 +2953,10 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RBd-6h-EhW">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="Title:" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="LXL-hc-luj">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title:" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="LXL-hc-luj">
                                         <rect key="frame" x="30" y="56" width="354" height="30"/>
-                                        <attributedString key="attributedText"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                         <connections>
                                             <outlet property="delegate" destination="CyE-44-eKN" id="KWv-Rg-3lE"/>
@@ -2992,13 +2995,13 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0tk-UW-5o8">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0tk-UW-5o8">
                                         <rect key="frame" x="30" y="117" width="354" height="80"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="80" id="AHS-ma-60T"/>
                                         </constraints>
-                                        <attributedString key="attributedText"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -3155,9 +3158,10 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="Title:" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="JLr-vc-lUu">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title:" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="JLr-vc-lUu">
                                         <rect key="frame" x="30" y="56" width="354" height="30"/>
-                                        <attributedString key="attributedText"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                         <connections>
                                             <outlet property="delegate" destination="Dxe-gU-alO" id="iBQ-0v-y2P"/>
@@ -3285,7 +3289,7 @@
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="location:" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="E2V-iq-j0U">
                                         <rect key="frame" x="60" y="278" width="324" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                         <connections>
                                             <outlet property="delegate" destination="Dxe-gU-alO" id="Ac4-HZ-OTH"/>
@@ -3646,9 +3650,9 @@
         <image name="write" width="44" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gNS-lP-qNY"/>
-        <segue reference="chX-aW-Pzr"/>
-        <segue reference="bCD-Xk-LO4"/>
+        <segue reference="POt-Sk-UZR"/>
+        <segue reference="peH-9I-WWY"/>
+        <segue reference="SV8-ti-eqk"/>
         <segue reference="UY7-0D-aF6"/>
         <segue reference="Nza-Dj-OZA"/>
         <segue reference="5oU-wj-Tr2"/>

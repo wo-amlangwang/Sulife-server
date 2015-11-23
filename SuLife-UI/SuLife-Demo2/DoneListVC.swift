@@ -21,7 +21,7 @@ class DoneListVC: UITableViewController {
     var searchActive : Bool = false
     
     // reload data in table
-    override func viewDidAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
         
         /* get selected date */
         let date : NSDate = dateSelected != nil ? (dateSelected?.convertedDate())! : NSDate()

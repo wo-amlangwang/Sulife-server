@@ -22,7 +22,7 @@ class SharedEventsTVC: UITableViewController {
     var contactDetail : ContactsModel?
     
     // reload data in table
-    override func viewDidAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
 
         let contactID = contactDetail!.id
         

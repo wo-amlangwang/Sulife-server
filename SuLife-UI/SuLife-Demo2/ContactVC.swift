@@ -23,7 +23,7 @@ class ContactVC: UITableViewController, UISearchBarDelegate {
         super.viewDidLoad()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
         
         contactsInit = []
         contacts = []

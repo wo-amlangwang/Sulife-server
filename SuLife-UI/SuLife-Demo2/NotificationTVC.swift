@@ -25,7 +25,7 @@ class NotificationTVC: UITableViewController {
         notificationList.delegate = self
     }
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
         
         senders = []
         mailids = []

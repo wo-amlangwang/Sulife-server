@@ -23,7 +23,7 @@ class ToDoListTVC: UITableViewController {
     var searchActive : Bool = false
     
     // reload data in table
-    override func viewDidAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
         
         // because I user append function, the list will be reload withour clearing
         undoList = []
