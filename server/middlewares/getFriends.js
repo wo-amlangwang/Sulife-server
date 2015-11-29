@@ -11,6 +11,6 @@ module.exports = {
         req.reJson['relationships'] = relationships;
         res.status(200).send(req.reJson);
       }
-    });
+    }).sort({'userid2' : -1});
   }
 }
