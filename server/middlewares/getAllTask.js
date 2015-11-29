@@ -23,6 +23,7 @@ module.exports = {
                   'establishTime' : {
                     $gte: today,
                     $lt: tomorrow}})
+      .sort({'establishTime' : -1})
       .exec(function(err,tasks) {
         if(err){
           req.reJson['message'] = 'something wrong when get data from database';
