@@ -22,6 +22,7 @@ module.exports = {
       Event.find({'userid' : req.userid ,
                   'starttime' : {'$lt' : req.body.endtime} ,
                   'endtime' : {'$gte' : req.body.starttime}})
+      .sort({'starttime' : -1})
       .exec(function(err,events) {
         if(err){
           req.reJson['message'] = 'something wrong when get data from database';
